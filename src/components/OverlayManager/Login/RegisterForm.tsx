@@ -1,16 +1,15 @@
 import "./scss/index.scss";
 
-import * as React from "react";
-import { useState } from "react";
-import { accountConfirmUrl } from "../../../app/routes";
+import React,{ useState } from "react";
+import { useVerifyCode } from "@sdk/react";
 
 import { Button, Form, TextField } from "../..";
 import { maybe } from "../../../core/utils";
 import { TypedAccountRegisterMutation } from "./queries";
 import { RegisterAccount } from "./types/RegisterAccount";
-import { useVerifyCode } from "@sdk/react";
 
 import { AlertManager, useAlert } from "react-alert";
+import { accountConfirmUrl } from "../../../app/routes";
 
 const showSuccessNotification = (
   data: RegisterAccount,
@@ -37,9 +36,9 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const [phone, setPhone] = useState("");
   const [verifyCode, { loading, error }] = useVerifyCode();
   
-  const handleOnCodeSubmit = async (evt, {code}) => {
+  const handleOnCodeSubmit = async (evt, {smsCode}) => {
     evt.preventDefault();
-    const authenticated = await verifyCode({ code,phone });
+    const authenticated = await verifyCode({ smsCode,phone });
     if (authenticated && hide) {
       hide();
       alert.show(
@@ -59,8 +58,8 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
         onSubmit={handleOnCodeSubmit}
       >
         <TextField
-          name="code"
-          autoComplete="code"
+          name="smsCode"
+          autoComplete="smsCode"
           label="Enter Verification Code"
           type="number"
           required

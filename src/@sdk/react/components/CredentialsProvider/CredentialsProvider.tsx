@@ -18,8 +18,8 @@ export function CredentialsProvider({
 
     if (credentials) {
       await signIn({
-        phone: credentials.id,
         password: credentials.password,
+        phone: credentials.id,
       });
     }
 

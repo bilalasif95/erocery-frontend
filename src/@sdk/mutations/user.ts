@@ -50,8 +50,8 @@ export const setPassword = gql`
 
 export const VerifyCode = gql`
   ${userFragment}
-  mutation AccountVerify($code:String!,$phone:String!) {
-    accountVerify(input:{smsCode:$code,phone:$phone}){
+  mutation AccountVerify($smsCode:String!,$phone:String!) {
+    accountVerify(input:{smsCode:$smsCode,phone:$phone}){
       errors {
         field
         message

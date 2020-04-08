@@ -200,6 +200,6 @@ export interface VerifyCode {
 }
 
 export interface VerifyCodeVariables {
-  code: string;
+  smsCode: string;
   phone: string
 }
