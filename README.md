@@ -1,22 +1,22 @@
-# Saleor Storefront
+# Erocery Storefront
 
 ![1 copy 2x](https://user-images.githubusercontent.com/5421321/47798207-30aeea00-dd28-11e8-9398-3d8426836a83.png)
 
 _**Note:** This project is beta quality. We don't advise using it in production._
 
-A GraphQL-powered, PWA, single-page application storefront for [Saleor](https://github.com/mirumee/saleor/).
+A GraphQL-powered, PWA, single-page application storefront for [Erocery](https://github.com/mirumee/saleor/).
 
 ## Features
 
 - Headless ecommerce storefront built with [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/client), [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/)
 - Offline mode (beta)
-- Saleor GraphQL API integration
+- Erocery GraphQL API integration
 - Single-page application experience
 - [Braintree Payment Gateway](https://www.braintreepayments.com/) integration
 
 ## Demo
 
-See the [public demo](http://pwa.saleor.io) of Saleor Storefront!
+See the [public demo](http://pwa.saleor.io) of Erocery Storefront!
 
 Or launch the demo on a free Heroku instance.
 
@@ -29,9 +29,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - Node.js 10.0+
-- A running instance of Saleor.
+- A running instance of Erocery.
 
-  To run the storefront, you have to set the `API_URI` environment variable to point to the Saleor GraphQL API. If you are running Saleor locally with the default settings, set `API_URI` to: `http://localhost:8000/graphql/`.
+  To run the storefront, you have to set the `API_URI` environment variable to point to the Erocery GraphQL API. If you are running Erocery locally with the default settings, set `API_URI` to: `http://localhost:8000/graphql/`.
 
 ### Installing
 

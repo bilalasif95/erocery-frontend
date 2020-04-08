@@ -179,6 +179,8 @@ export class SaleorAPI {
 
   setPassword = this.fireQuery(MUTATIONS.SetPassword, data => data);
 
+  verifyCode = this.fireQuery(MUTATIONS.VerifyCode, data => data);
+
   private client: ApolloClient<any>;
 
   constructor(client: ApolloClient<any>) {
@@ -228,12 +230,12 @@ export class SaleorAPI {
               data.data,
               data.errors
             );
-            if (!handledData.errors && handledData.data) {
+            if (!handledData.errors && handledData.data && handledData.data.user.phone_verified) {
               setAuthToken(handledData.data.token);
               if (window.PasswordCredential && variables) {
                 navigator.credentials.store(
                   new window.PasswordCredential({
-                    id: variables.email,
+                    id: variables.phone,
                     password: variables.password,
                   })
                 );

@@ -10,13 +10,13 @@ import {
   Online,
   Overlay,
   OverlayContextInterface,
-  OverlayTheme,
-  OverlayType
+  // OverlayTheme,
+  // OverlayType
 } from "../..";
 import RegisterForm from "./RegisterForm";
 
 import closeImg from "../../../images/x.svg";
-import ForgottenPassword from "./ForgottenPassword";
+// import ForgottenPassword from "./ForgottenPassword";
 
 class Login extends React.Component<
   { overlay: OverlayContextInterface; active?: "login" | "register" },
@@ -38,14 +38,15 @@ class Login extends React.Component<
 
   render() {
     const { overlay } = this.props;
-    const { show, hide } = overlay;
+    const { hide } = overlay;
+    // const { show, hide } = overlay;
 
     return (
       <Overlay context={overlay}>
         <div className="login">
           <Online>
             <div className="overlay__header">
-              <p className="overlay__header-text">Saleor account</p>
+              <p className="overlay__header-text">account</p>
               <ReactSVG
                 path={closeImg}
                 onClick={hide}
@@ -57,24 +58,24 @@ class Login extends React.Component<
                 onClick={() => this.changeActiveTab("login")}
                 className={this.state.active === "login" ? "active-tab" : ""}
               >
-                Sign in to account
+                Sign in
               </span>
               <span
                 onClick={() => this.changeActiveTab("register")}
                 className={this.state.active === "register" ? "active-tab" : ""}
               >
-                Register new account
+                Register
               </span>
             </div>
             <div className="login__content">
               {this.state.active === "login" ? (
                 <>
                   <LoginForm hide={hide} />
-                  <ForgottenPassword
+                  {/* <ForgottenPassword
                     onClick={() => {
                       show(OverlayType.password, OverlayTheme.right);
                     }}
-                  />
+                  /> */}
                 </>
               ) : (
                 <RegisterForm hide={hide} />

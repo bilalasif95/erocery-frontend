@@ -26,10 +26,10 @@ import { CartContext } from "../CartProvider/context";
 import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
 
-import cartImg from "../../images/cart.svg";
+import cartImg from "../../images/Cart-icon.svg";
+import logoImg from "../../images/erocery_logo.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
-import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 
@@ -116,8 +116,9 @@ const MainMenu: React.FC = () => {
                       {user ? (
                         <MenuDropdown
                           head={
-                            <li className="main-menu__icon main-menu__user--active">
+                            <li className="main-menu__icon main-menu__user--active accountcss">
                               <ReactSVG path={userImg} />
+                              <p className="accountpara">Account</p>
                             </li>
                           }
                           content={
@@ -135,11 +136,11 @@ const MainMenu: React.FC = () => {
                                   Address book
                                 </Link>
                               </li>
-                              <li data-testid="payment_options__link">
+                              {/* <li data-testid="payment_options__link">
                                 <Link to={appPaths.paymentOptionsUrl}>
                                   Payment options
                                 </Link>
-                              </li>
+                              </li> */}
                               <li
                                 onClick={handleSignOut}
                                 data-testid="logout-link"

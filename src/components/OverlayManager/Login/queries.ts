@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+import { userFragment } from "@sdk/fragments/auth";
 
 import { TypedMutation } from "../../../core/mutations";
 import {
@@ -7,13 +8,21 @@ import {
 } from "./types/RegisterAccount";
 
 const accountRegisterMutation = gql`
-  mutation RegisterAccount($email: String!, $password: String!, $redirectUrl: String!) {
-    accountRegister(input: { email: $email, password: $password, redirectUrl: $redirectUrl }) {
+  ${userFragment}
+  mutation RegisterAccount($phone: String!, $password: String!) {
+    accountRegister(input: { phone: $phone, password: $password}) {
       errors {
         field
         message
       }
-      requiresConfirmation
+      user {
+        ...User
+      }
+      accountErrors {
+        field
+        message
+        code
+      }
     }
   }
 `;

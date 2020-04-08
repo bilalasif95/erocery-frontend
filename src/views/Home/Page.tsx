@@ -4,7 +4,8 @@ import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { Button, Loader, ProductsFeatured } from "../../components";
+// import { Button, Loader, ProductsFeatured } from "../../components";
+import { ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import {
@@ -40,7 +41,7 @@ const Page: React.FC<{
             : null
         }
       >
-        <div className="home-page__hero-text">
+        {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
               <h1>Final reduction</h1>
@@ -51,8 +52,8 @@ const Page: React.FC<{
               <h1>Up to 70% off sale</h1>
             </span>
           </div>
-        </div>
-        <div className="home-page__hero-action">
+        </div> */}
+        {/* <div className="home-page__hero-action">
           {loading && !categories ? (
             <Loader />
           ) : (
@@ -67,16 +68,20 @@ const Page: React.FC<{
               </Link>
             )
           )}
-        </div>
+        </div> */}
       </div>
       <ProductsFeatured />
+      <div
+        className="home-page__heroImage"
+      >
+      </div>
       {categoriesExist() && (
         <div className="home-page__categories">
-          <div className="container">
+          <div className="container categoriesContainer">
             <h3>Shop by category</h3>
             <div className="home-page__categories__list">
               {categories.edges.map(({ node: category }) => (
-                <div key={category.id}>
+                <div key={category.id} className="categoryBoxes">
                   <Link
                     to={generateCategoryUrl(category.id, category.name)}
                     key={category.id}
@@ -95,8 +100,9 @@ const Page: React.FC<{
                             : noPhotoImg
                         })`,
                       }}
-                    />
-                    <h3>{category.name}</h3>
+                    >
+                      <h4>{category.name}</h4>
+                    </div>
                   </Link>
                 </div>
               ))}

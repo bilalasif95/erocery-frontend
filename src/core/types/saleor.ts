@@ -1623,7 +1623,7 @@ export interface TokenAuth {
 }
 
 export interface TokenAuthVariables {
-  email: string;
+  phone: string;
   password: string;
 }
 

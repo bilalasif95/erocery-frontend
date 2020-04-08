@@ -27,6 +27,12 @@
   &__right {
     flex-basis: calc(50% - 2rem);
 
+    .accountcss {
+      display: flex;
+    }
+    .accountpara {
+      padding: 5px 0 0 5px;
+    }
     @media (min-width: $small-screen) {
       flex-basis: calc(50% - 4rem);
     }
@@ -45,7 +51,7 @@
       width: 4rem;
 
       @media (min-width: $small-screen) {
-        width: 6rem;
+        width: 12rem;
       }
     }
   }
@@ -109,7 +115,7 @@
 
     &:hover {
       svg * {
-        fill: $turquoise;
+        fill: #5fbe43;
       }
     }
 
@@ -140,7 +146,7 @@
 
   &__user {
     &--active * {
-      fill: $turquoise;
+      fill: #5fbe43;
       fill-rule: inherit;
     }
   }
@@ -179,6 +185,9 @@
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     @media (min-width: $medium-screen) {
       border-left: 1px solid $gray-light;
@@ -189,14 +198,14 @@
     }
 
     &:hover {
-      color: $turquoise;
+      color: #5fbe43;
       svg * {
-        fill: $turquoise;
+        fill: #5fbe43;
       }
     }
 
     span {
-      text-transform: uppercase;
+      text-transform: capitalize;
       font-weight: $bold-font-weight;
       margin-right: $spacer;
     }

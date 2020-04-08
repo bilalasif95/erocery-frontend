@@ -2,11 +2,13 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { AccountErrorCode } from "./../../types/globalTypes";
+
 // ====================================================
-// GraphQL mutation operation: TokenAuth
+// GraphQL mutation operation: VerifyCode
 // ====================================================
 
-export interface TokenAuth_tokenCreate_errors {
+export interface VerifyCode_verifyCode_errors {
   __typename: "Error";
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
@@ -19,7 +21,7 @@ export interface TokenAuth_tokenCreate_errors {
   message: string | null;
 }
 
-export interface TokenAuth_tokenCreate_user_defaultShippingAddress_country {
+export interface VerifyCode_verifyCode_user_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -31,7 +33,7 @@ export interface TokenAuth_tokenCreate_user_defaultShippingAddress_country {
   country: string;
 }
 
-export interface TokenAuth_tokenCreate_user_defaultShippingAddress {
+export interface VerifyCode_verifyCode_user_defaultShippingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -47,7 +49,7 @@ export interface TokenAuth_tokenCreate_user_defaultShippingAddress {
   /**
    * Shop's default country.
    */
-  country: TokenAuth_tokenCreate_user_defaultShippingAddress_country;
+  country: VerifyCode_verifyCode_user_defaultShippingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -60,7 +62,7 @@ export interface TokenAuth_tokenCreate_user_defaultShippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface TokenAuth_tokenCreate_user_defaultBillingAddress_country {
+export interface VerifyCode_verifyCode_user_defaultBillingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -72,7 +74,7 @@ export interface TokenAuth_tokenCreate_user_defaultBillingAddress_country {
   country: string;
 }
 
-export interface TokenAuth_tokenCreate_user_defaultBillingAddress {
+export interface VerifyCode_verifyCode_user_defaultBillingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -88,7 +90,7 @@ export interface TokenAuth_tokenCreate_user_defaultBillingAddress {
   /**
    * Shop's default country.
    */
-  country: TokenAuth_tokenCreate_user_defaultBillingAddress_country;
+  country: VerifyCode_verifyCode_user_defaultBillingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -101,7 +103,7 @@ export interface TokenAuth_tokenCreate_user_defaultBillingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface TokenAuth_tokenCreate_user_addresses_country {
+export interface VerifyCode_verifyCode_user_addresses_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -113,7 +115,7 @@ export interface TokenAuth_tokenCreate_user_addresses_country {
   country: string;
 }
 
-export interface TokenAuth_tokenCreate_user_addresses {
+export interface VerifyCode_verifyCode_user_addresses {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -129,7 +131,7 @@ export interface TokenAuth_tokenCreate_user_addresses {
   /**
    * Shop's default country.
    */
-  country: TokenAuth_tokenCreate_user_addresses_country;
+  country: VerifyCode_verifyCode_user_addresses_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -142,44 +144,62 @@ export interface TokenAuth_tokenCreate_user_addresses {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface TokenAuth_tokenCreate_user {
+export interface VerifyCode_verifyCode_user {
   __typename: "User";
   /**
    * The ID of the object.
    */
   id: string;
-  phone: string;
+  email: string;
   firstName: string;
-  phone_verified: boolean;
   lastName: string;
   isStaff: boolean;
-  defaultShippingAddress: TokenAuth_tokenCreate_user_defaultShippingAddress | null;
-  defaultBillingAddress: TokenAuth_tokenCreate_user_defaultBillingAddress | null;
+  defaultShippingAddress: VerifyCode_verifyCode_user_defaultShippingAddress | null;
+  defaultBillingAddress: VerifyCode_verifyCode_user_defaultBillingAddress | null;
   /**
    * List of all user's addresses.
    */
-  addresses: (TokenAuth_tokenCreate_user_addresses | null)[] | null;
+  addresses: (VerifyCode_verifyCode_user_addresses | null)[] | null;
 }
 
-export interface TokenAuth_tokenCreate {
-  __typename: "CreateToken";
-  token: string | null;
-  errors: (TokenAuth_tokenCreate_errors | null)[];
-  user: TokenAuth_tokenCreate_user | null;
-}
-
-export interface TokenAuth {
+export interface VerifyCode_verifyCode_accountErrors {
+  __typename: "AccountError";
   /**
-   * Mutation that authenticates a user and returns token and user data.
-   * 
-   * It overrides the default graphql_jwt.ObtainJSONWebToken to wrap potential
-   * authentication errors in our Error type, which is consistent to how the rest of
-   * the mutation works.
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
    */
-  tokenCreate: TokenAuth_tokenCreate | null;
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: AccountErrorCode | null;
 }
 
-export interface TokenAuthVariables {
-  phone: string;
-  password: string;
+export interface VerifyCode_verifyCode {
+  __typename: "VerifyCode";
+  errors: (VerifyCode_verifyCode_errors | null)[];
+  /**
+   * A user instance with new password.
+   */
+  user: VerifyCode_verifyCode_user | null;
+  /**
+   * List of errors that occurred executing the mutation.
+   */
+  accountErrors: VerifyCode_verifyCode_accountErrors[] | null;
+}
+
+export interface VerifyCode {
+  /**
+   * Sets the user's password from the token sent by email using the RequestPasswordReset mutation.
+   */
+  verifyCode: VerifyCode_verifyCode | null;
+}
+
+export interface VerifyCodeVariables {
+  code: string;
+  phone: string
 }

@@ -125,9 +125,11 @@ export interface TokenAuth_tokenCreate_user {
    */
   id: string;
   email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;
+  phone_verified: boolean;
   defaultShippingAddress: TokenAuth_tokenCreate_user_defaultShippingAddress | null;
   defaultBillingAddress: TokenAuth_tokenCreate_user_defaultBillingAddress | null;
   /**
@@ -155,6 +157,6 @@ export interface TokenAuth {
 }
 
 export interface TokenAuthVariables {
-  email: string;
+  phone: string;
   password: string;
 }

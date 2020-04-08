@@ -36,6 +36,8 @@ import {
 
 import { SetPassword, SetPasswordVariables } from "./types/SetPassword";
 
+import { VerifyCode, VerifyCodeVariables } from "./types/VerifyCode";
+
 import { TokenAuth, TokenAuthVariables } from "./types/TokenAuth";
 import {
   UpdateCheckoutBillingAddress,
@@ -235,6 +237,16 @@ export const MUTATIONS = {
     client.mutate({
       mutation: gql`
         ${User.setPassword}
+      `,
+      ...options,
+    }),
+  VerifyCode: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<VerifyCode, VerifyCodeVariables>
+  ) =>
+    client.mutate({
+      mutation: gql`
+        ${User.VerifyCode}
       `,
       ...options,
     }),

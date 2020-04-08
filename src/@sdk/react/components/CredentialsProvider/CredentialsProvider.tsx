@@ -18,7 +18,7 @@ export function CredentialsProvider({
 
     if (credentials) {
       await signIn({
-        email: credentials.id,
+        phone: credentials.id,
         password: credentials.password,
       });
     }

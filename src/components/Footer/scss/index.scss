@@ -5,6 +5,9 @@
     border-top: 1px solid $gray-light;
     display: flex;
     justify-content: center;
+    p {
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__menu {
@@ -14,7 +17,7 @@
     .container {
       display: flex;
       flex-wrap: wrap;
-
+      
       div {
         &:not(:last-of-type) {
           padding-right: $spacer * 3;
