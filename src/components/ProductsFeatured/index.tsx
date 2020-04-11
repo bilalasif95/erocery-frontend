@@ -23,7 +23,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
         if (products.length) {
           return (
             <div className="products-featured">
-              <div className="container">
+              <div className="container featuredContainer">
                 <h3>{title}</h3>
                 <Carousel>
                   {products.map(({ node: product }) => (
@@ -38,6 +38,8 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
               </div>
             </div>
           );
+        } else {
+          return null;
         }
       }}
     </TypedFeaturedProductsQuery>

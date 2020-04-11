@@ -1,4 +1,4 @@
-# Saleor API SDK
+# Erocery API SDK
 
 This package contains all queries and mutations that are used in our sample storefront. It can be used for semi-custom or fully-custom (with ability to extend existing queries) storefront solutions.
 
@@ -8,7 +8,7 @@ This package contains all queries and mutations that are used in our sample stor
 npm install saleor-sdk
 ```
 
-Create new saleor client by using our built-in pre-configured apollo client:
+Create new erocery client by using our built-in pre-configured apollo client:
 
 ```
 import { createSaleorClient } from 'saleor-sdk'

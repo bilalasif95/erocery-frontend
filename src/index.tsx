@@ -3,11 +3,15 @@ import { ThemeProvider } from "styled-components";
 
 import { NotificationTemplate } from "@components/atoms";
 import {
-  I18nLoader,
   ServiceWorkerContext,
-  ServiceWorkerProvider
+  ServiceWorkerProvider,
 } from "@components/containers";
-import { SaleorProvider, useAuth, useUserDetails } from "@sdk/react";
+import {
+  SaleorProvider,
+  useAuth,
+  useUserDetails,
+  WishlistProvider,
+} from "@sdk/react";
 import { defaultTheme, GlobalStyle } from "@styles";
 
 import { defaultDataIdFromObject, InMemoryCache } from "apollo-cache-inmemory";
@@ -24,7 +28,7 @@ import { Route, Router, Switch } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { App } from "./app";
-import CheckoutApp from "./checkout";
+import { CheckoutApp } from "./checkout";
 import { CheckoutProvider } from "./checkout/CheckoutProvider";
 import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
@@ -38,10 +42,8 @@ import ShopProvider from "./components/ShopProvider";
 
 import {
   authLink,
-  invalidTokenLinkWithTokenHandlerComponent
+  invalidTokenLinkWithTokenHandlerComponent,
 } from "./core/auth";
-
-import { languages } from "./languages";
 
 const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
   UserProvider
@@ -148,14 +150,16 @@ const startApp = async () => {
                           checkout={checkout}
                           apolloClient={apolloClient}
                         >
-                          <Switch>
-                            <Route
-                              path={checkoutBaseUrl}
-                              component={CheckoutApp}
-                            />
-                            <Route component={App} />
-                          </Switch>
-                          <Notifications />
+                          <WishlistProvider>
+                            <Switch>
+                              <Route
+                                path={checkoutBaseUrl}
+                                component={CheckoutApp}
+                              />
+                              <Route component={App} />
+                            </Switch>
+                            <Notifications />
+                          </WishlistProvider>
                         </CartProvider>
                       )}
                     </CheckoutContext.Consumer>
@@ -171,17 +175,15 @@ const startApp = async () => {
 
   render(
     <ThemeProvider theme={defaultTheme}>
-      <I18nLoader languages={languages}>
-        <AlertProvider
-          template={NotificationTemplate as any}
-          {...notificationOptions}
-        >
-          <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-            <GlobalStyle />
-            <Root />
-          </ServiceWorkerProvider>
-        </AlertProvider>
-      </I18nLoader>
+      <AlertProvider
+        template={NotificationTemplate as any}
+        {...notificationOptions}
+      >
+        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
+          <GlobalStyle />
+          <Root />
+        </ServiceWorkerProvider>
+      </AlertProvider>
     </ThemeProvider>,
     document.getElementById("root")
   );

@@ -4,8 +4,10 @@ import * as React from "react";
 import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
 
+import { TaxedMoney } from "@components/containers";
 import { useUserDetails } from "@sdk/react";
 
+import { checkoutLoginUrl } from "../../app/routes";
 import { CheckoutContextInterface } from "../../checkout/context";
 import { baseUrl as checkoutUrl } from "../../checkout/routes";
 import { Button, CartTable, EmptyCart, Loader } from "../../components";
@@ -13,12 +15,11 @@ import { CartInterface } from "../../components/CartProvider/context";
 import {
   extractCartLines,
   extractCheckoutLines,
-  getTotal
+  getTotal,
 } from "../../components/CartProvider/utils";
 import { OverlayContextInterface } from "../../components/Overlay/context";
 import { getShop_shop } from "../../components/ShopProvider/types/getShop";
 import { maybe } from "../../core/utils";
-import { checkoutLoginUrl } from "../../routes";
 import { TypedProductVariantsQuery } from "../Product/queries";
 
 interface PageProps {
@@ -88,7 +89,7 @@ const Page: React.FC<PageProps> = ({
         <CartTable
           {...productTableProps}
           lines={extractCheckoutLines(checkout.lines)}
-          subtotal={checkout.subtotalPrice.gross.localized}
+          subtotal={<TaxedMoney taxedMoney={checkout.subtotalPrice} />}
         />
       ) : (
         <TypedProductVariantsQuery

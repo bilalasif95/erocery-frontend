@@ -1,11 +1,12 @@
 import "./scss/index.scss";
 
-import * as React from "react";
-
+import React, {useState} from "react";
 import { useSignIn } from "@sdk/react";
 import { maybe } from "@utils/misc";
 
 import { Button, Form, TextField } from "..";
+import { CheckoutContext } from "../../checkout/context";
+import VerifyCodeForm from "./verifyCode";
 
 interface ILoginForm {
   hide?: () => void;
@@ -13,16 +14,24 @@ interface ILoginForm {
 
 const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
   const [signIn, { loading, error }] = useSignIn();
+  const { update } = React.useContext(CheckoutContext);
+  const [message, setMessage] = useState(true);
 
   const handleOnSubmit = async (evt, { phone, password }) => {
     evt.preventDefault();
     const authenticated = await signIn({ phone, password });
-    if (authenticated && hide) {
+    setMessage(authenticated.data.user.phone_verified)
+    if (authenticated && hide && authenticated.data.user.phone_verified) {
       hide();
     }
+    update({ syncUserCheckout: true });
   };
 
   return (
+    <>
+    {!message ?
+    <VerifyCodeForm hide={hide}/>
+    :
     <div className="login-form">
       <Form
         errors={maybe(() => error.extraInfo.userInputErrors, [])}
@@ -31,8 +40,9 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
         <TextField
           name="phone"
           autoComplete="phone"
-          label="Enter Registered Phone No"
-          type="text"
+          label="Enter Phone Number"
+          type="number"
+          minLength={13}
           required
         />
         <TextField
@@ -49,6 +59,8 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
         </div>
       </Form>
     </div>
+    }
+    </>
   );
 };
 

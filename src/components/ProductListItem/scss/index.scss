@@ -2,12 +2,20 @@
 
 .product-list-item {
   text-align: center;
+  padding: 0.5rem;
 
   &__title {
     text-transform: $product-item-title-text-transform;
     font-weight: $product-item-title-font-weight;
     margin-top: $spacer;
     text-align: left;
+  }
+
+  &__undiscounted_price {
+    text-decoration: line-through;
+    color: $gray;
+    font-size: $small-font-size;
+    font-weight: regular;
   }
 
   &__category {
@@ -22,7 +30,8 @@
   }
 
   &__image {
-    background-color: $turquoise-light;
+    // background-color: $turquoise-light;
+    border: 1px solid #80808024;
     display: flex;
     height: 350px;
     justify-content: center;

@@ -1,5 +1,5 @@
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloClient, ApolloError, ObservableQuery } from "apollo-client";
+import { ApolloClient, ApolloError, ObservableQuery, WatchQueryOptions } from "apollo-client";
 import { ApolloLink } from "apollo-link";
 import { BatchHttpLink } from "apollo-link-batch-http";
 import { RetryLink } from "apollo-link-retry";
@@ -7,7 +7,13 @@ import { GraphQLError } from "graphql";
 import urljoin from "url-join";
 
 import { TokenAuth } from "../components/User/types/TokenAuth";
-import { authLink, getAuthToken, invalidTokenLink, setAuthToken } from "./auth";
+import {
+  authLink,
+  clearStorage,
+  getAuthToken,
+  invalidTokenLink,
+  setAuthToken,
+} from "./auth";
 import { MUTATIONS } from "./mutations";
 import { QUERIES } from "./queries";
 import { RequireAtLeastOne } from "./tsHelpers";
@@ -16,13 +22,13 @@ import {
   MapFn,
   QueryShape,
   WatchMapFn,
-  WatchQueryData
+  WatchQueryData,
 } from "./types";
 import {
   getErrorsFromData,
   getMappedData,
   isDataEmpty,
-  mergeEdges
+  mergeEdges,
 } from "./utils";
 
 import { UserDetails } from "./queries/types/UserDetails";
@@ -88,6 +94,17 @@ export class SaleorAPI {
     data.me ? data.me.checkout : null
   );
 
+  getUserWishlist = this.watchQuery(QUERIES.Wishlist, data =>
+    data.me ? data.me.wishlist : null
+  );
+
+  getVariantsProducts = this.watchQuery(
+    QUERIES.VariantsProducts,
+    data => data.productVariants
+  );
+
+  getShopDetails = this.watchQuery(QUERIES.GetShopDetails, data => data);
+
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,
     data => data!.accountSetDefaultAddress
@@ -101,6 +118,16 @@ export class SaleorAPI {
   setCheckoutShippingAddress = this.fireQuery(
     MUTATIONS.UpdateCheckoutShippingAddress,
     data => data!.checkoutShippingAddressUpdate
+  );
+
+  setAddCheckoutPromoCode = this.fireQuery(
+    MUTATIONS.AddCheckoutPromoCode,
+    data => data!.checkoutAddPromoCode
+  );
+
+  setRemoveCheckoutPromoCode = this.fireQuery(
+    MUTATIONS.RemoveCheckoutPromoCode,
+    data => data!.checkoutRemovePromoCode
   );
 
   setDeleteUserAddress = this.fireQuery(
@@ -118,6 +145,26 @@ export class SaleorAPI {
     data => data!.accountAddressUpdate
   );
 
+  setAddWishlistProduct = this.fireQuery(
+    MUTATIONS.AddWishlistProduct,
+    data => data!.wishlistAddProduct
+  );
+
+  setRemoveWishlistProduct = this.fireQuery(
+    MUTATIONS.RemoveWishlistProduct,
+    data => data!.wishlistRemoveProduct
+  );
+
+  setAddWishlistProductVariant = this.fireQuery(
+    MUTATIONS.AddWishlistProductVariant,
+    data => data!.wishlistAddVariant
+  );
+
+  setRemoveWishlistProductVariant = this.fireQuery(
+    MUTATIONS.RemoveWishlistProductVariant,
+    data => data!.wishlistRemoveVariant
+  );
+
   setCheckoutBillingAddress = this.fireQuery(
     MUTATIONS.UpdateCheckoutBillingAddress,
     data => data!.checkoutBillingAddressUpdate
@@ -129,6 +176,10 @@ export class SaleorAPI {
   );
 
   setPasswordChange = this.fireQuery(MUTATIONS.PasswordChange, data => data);
+
+  setPassword = this.fireQuery(MUTATIONS.SetPassword, data => data);
+
+  verifyCode = this.fireQuery(MUTATIONS.VerifyCode, data => data);
 
   private client: ApolloClient<any>;
 
@@ -166,6 +217,8 @@ export class SaleorAPI {
   ) =>
     new Promise<{ data: TokenAuth["tokenCreate"] }>(async (resolve, reject) => {
       try {
+        this.client.resetStore();
+
         const data = await this.fireQuery(
           MUTATIONS.TokenAuth,
           data => data!.tokenCreate
@@ -177,7 +230,7 @@ export class SaleorAPI {
               data.data,
               data.errors
             );
-            if (!handledData.errors && handledData.data) {
+            if (!handledData.errors && handledData.data && handledData.data.user.phone_verified) {
               setAuthToken(handledData.data.token);
               if (window.PasswordCredential && variables) {
                 navigator.credentials.store(
@@ -195,6 +248,24 @@ export class SaleorAPI {
         });
 
         resolve(data);
+      } catch (e) {
+        reject(e);
+      }
+    });
+
+  signOut = () =>
+    new Promise(async (resolve, reject) => {
+      try {
+        clearStorage();
+        if (
+          navigator.credentials &&
+          navigator.credentials.preventSilentAccess
+        ) {
+          navigator.credentials.preventSilentAccess();
+        }
+        this.client.resetStore();
+
+        resolve();
       } catch (e) {
         reject(e);
       }
@@ -222,7 +293,7 @@ export class SaleorAPI {
   ) {
     return <
       TVariables extends InferOptions<T>["variables"],
-      TOptions extends Omit<InferOptions<T>, "variables">
+      TOptions extends Omit<InferOptions<T> | WatchQueryOptions<InferOptions<T>>, "variables">
     >(
       variables: TVariables,
       options: TOptions & {

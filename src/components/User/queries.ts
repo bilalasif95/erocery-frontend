@@ -9,7 +9,6 @@ export const userFragment = gql`
   fragment User on User {
     id
     email
-    phone
     firstName
     lastName
     isStaff

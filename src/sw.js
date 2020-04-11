@@ -4,7 +4,7 @@ workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
 workbox.core.setCacheNameDetails({
-  prefix: "saleor-store-front"
+  prefix: "erocery-store-front"
 });
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || []);

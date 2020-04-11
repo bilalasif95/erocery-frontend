@@ -9,9 +9,14 @@ import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
 import { getFormData } from "./utils";
 
-export const AddNewShippingAddressForm: React.FC<
-  IShippingNewAddressFormProps
-> = ({ data, errors, onSubmit, children, type }) => (
+export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> = ({
+  data,
+  errors,
+  onSubmit,
+  children,
+  type,
+  emailRequired = true,
+}) => (
   <div className="address-form">
     <ShopContext.Consumer>
       {({ countries, geolocalization, defaultCountry }) => (
@@ -96,7 +101,7 @@ export const AddNewShippingAddressForm: React.FC<
               }
             )}
           >
-            {type === "shipping" && (
+            {type === "shipping" && emailRequired && (
               <TextField
                 label="Email Address"
                 type="email"

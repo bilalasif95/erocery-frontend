@@ -26,3 +26,44 @@ export const accountUpdate = gql`
     }
   }
 `;
+
+export const setPassword = gql`
+  ${userFragment}
+  mutation SetPassword($token: String!, $email: String!, $password: String!) {
+    setPassword(token: $token, email: $email, password: $password) {
+      errors {
+        field
+        message
+      }
+      token
+      user {
+        ...User
+      }
+      accountErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+`;
+
+export const VerifyCode = gql`
+  ${userFragment}
+  mutation AccountVerify($smsCode:String!,$phone:String!) {
+    accountVerify(input:{smsCode:$smsCode,phone:$phone}){
+      errors {
+        field
+        message
+      }
+      user {
+        ...User
+      }
+      accountErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+`;

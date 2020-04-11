@@ -1,12 +1,19 @@
 import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
-export const PRODUCTS_PER_PAGE = 8;
+export const PRODUCTS_PER_PAGE = 6;
 export const SUPPORT_EMAIL = "support@example.com";
 export const PROVIDERS = {
-  BRAINTREE: "Braintree",
-  DUMMY: "Dummy",
-  STRIPE: "Stripe",
+  BRAINTREE: {
+    label: "Braintree",
+  },
+  DUMMY: {
+    label: "Dummy",
+  },
+  STRIPE: {
+    href: "https://js.stripe.com/v3/",
+    label: "Stripe",
+  },
 };
 export const STATIC_PAGES = [
   {
@@ -17,7 +24,7 @@ export const STATIC_PAGES = [
 export const SOCIAL_MEDIA = [
   {
     ariaLabel: "facebook",
-    href: "https://www.facebook.com/mirumeelabs/",
+    href: "https://web.facebook.com/Erocery-109977713975774/",
     path: require("../images/facebook-icon.svg"),
   },
   {
@@ -27,21 +34,21 @@ export const SOCIAL_MEDIA = [
   },
   {
     ariaLabel: "twitter",
-    href: "https://twitter.com/getsaleor",
+    href: "https://twitter.com/rnssol",
     path: require("../images/twitter-icon.svg"),
   },
   {
     ariaLabel: "youtube",
-    href: "https://www.youtube.com/channel/UCg_ptb-U75e7BprLCGS4s1g/videos",
+    href: "https://www.youtube.com/c/RNSSolutions",
     path: require("../images/youtube-icon.svg"),
   },
 ];
 export const META_DEFAULTS = {
   custom: [],
-  description: "PWA Storefront",
-
+  description:
+    "Open-source PWA storefront built with Erocery's e-commerce GraphQL API. Written with React and TypeScript.",
   image: `${window.location.origin}${require("../images/logo.svg")}`,
-  title: "Saleor",
+  title: "Demo PWA Storefront – Erocery Commerce",
   type: "website",
   url: window.location.origin,
 };

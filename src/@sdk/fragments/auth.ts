@@ -6,9 +6,9 @@ export const userFragment = gql`
   ${checkoutAddressFragment}
   fragment User on User {
     id
-    email
-    firstName
     phone
+    phone_verified
+    firstName
     lastName
     isStaff
     defaultShippingAddress {

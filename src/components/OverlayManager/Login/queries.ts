@@ -1,23 +1,33 @@
 import gql from "graphql-tag";
+import { userFragment } from "@sdk/fragments/auth";
 
 import { TypedMutation } from "../../../core/mutations";
 import {
-  RegisterCutomer,
-  RegisterCutomerVariables
-} from "./types/RegisterCutomer";
+  RegisterAccount,
+  RegisterAccountVariables
+} from "./types/RegisterAccount";
 
-const customerRegisterMutation = gql`
-  mutation RegisterCutomer($phone: String!, $password: String!) {
-    accountRegister(input: { phone: $phone, password: $password }) {
+const accountRegisterMutation = gql`
+  ${userFragment}
+  mutation RegisterAccount($phone: String!, $password: String!) {
+    accountRegister(input: { phone: $phone, password: $password}) {
       errors {
         field
         message
+      }
+      user {
+        ...User
+      }
+      accountErrors {
+        field
+        message
+        code
       }
     }
   }
 `;
 
-export const TypedCustomerRegisterMutation = TypedMutation<
-  RegisterCutomer,
-  RegisterCutomerVariables
->(customerRegisterMutation);
+export const TypedAccountRegisterMutation = TypedMutation<
+  RegisterAccount,
+  RegisterAccountVariables
+>(accountRegisterMutation);
