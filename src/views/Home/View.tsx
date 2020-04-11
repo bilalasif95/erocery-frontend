@@ -9,12 +9,14 @@ import { TypedHomePageQuery } from "./queries";
 import { ProductsList } from "./types/ProductsList";
 
 const canDisplay = (data: ProductsList) =>
-  maybe(() => !!data.shop.homepageCollection && !!data.categories.edges.length);
+  maybe(() => !!data.shop && !!data.categories.edges.length);
 
 const View: React.FC = () => (
   <div className="home-page">
-    <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
+    <div>Working</div>
+    <TypedHomePageQuery  displayLoader={false} errorPolicy="all">
       {({ data, loading }) => {
+        console.log(data,loading)
         if (canDisplay(data)) {
           return (
             <MetaWrapper
@@ -23,9 +25,10 @@ const View: React.FC = () => (
                 title: data.shop.name,
               }}
             >
+              
               <Page
                 loading={loading}
-                backgroundImage={data.shop.homepageCollection.backgroundImage}
+                backgroundImage={data.shop&&data.shop.homepageCollection?data.shop.homepageCollection.backgroundImage:null}
                 categories={data.categories}
                 shop={data.shop}
               />

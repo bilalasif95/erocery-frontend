@@ -9,7 +9,11 @@ import { RegisterCutomer } from "./types/RegisterCutomer";
 
 import { AlertManager, useAlert } from "react-alert";
 
-const showSuccessNotification = (
+
+
+const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
+  const alert = useAlert();
+  const showSuccessNotification = (
   data: RegisterCutomer,
   hide: () => void,
   alert: AlertManager
@@ -26,12 +30,11 @@ const showSuccessNotification = (
     );
   }
 };
-
-const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
-  const alert = useAlert();
   return (
     <TypedCustomerRegisterMutation
-      onCompleted={data => showSuccessNotification(data, hide, alert)}
+      onCompleted={data => {
+        // showSuccessNotification(data)
+      }}
     >
       {(registerCustomer, { loading, data }) => {
         return (
