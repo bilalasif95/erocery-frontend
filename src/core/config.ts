@@ -24,12 +24,12 @@ export const STATIC_PAGES = [
 export const SOCIAL_MEDIA = [
   {
     ariaLabel: "facebook",
-    href: "https://web.facebook.com/Erocery-109977713975774/",
+    href: "https://www.facebook.com/Erocery-109977713975774/",
     path: require("../images/facebook-icon.svg"),
   },
   {
     ariaLabel: "instagram",
-    href: "https://www.instagram.com/mirumeelabs/",
+    href: "https://www.instagram.com/erocerypk",
     path: require("../images/instagram-icon.svg"),
   },
   {

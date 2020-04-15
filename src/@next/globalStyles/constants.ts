@@ -17,13 +17,13 @@ export const grayLight = "#f1f5f5";
 export const green = "#3ed256";
 export const overlayColor = "rgba(199, 207, 207, 0.8)";
 export const rose = "#c22d74";
-export const turquoise = "#13bebb";
+export const turquoise = "#5fbe43";
 export const turquoiseDark = "#06a09e";
 export const turquoiseLight = "rgba(6, 132, 123, 0.25)";
 export const turquoiseTransparent = "rgba(6, 132, 123, 0.1)";
 export const white = "#fff";
 export const tabelGray = "#eaeaea";
-export const darkGreen = "#06847B";
+export const darkGreen = "#5fbe43";
 
 // theme colors
 export const theme = {

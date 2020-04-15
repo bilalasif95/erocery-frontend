@@ -1,8 +1,8 @@
 import "./scss/index.scss";
 
-import React, {useState} from "react";
 import { useSignIn } from "@sdk/react";
 import { maybe } from "@utils/misc";
+import * as React from "react";
 
 import { Button, Form, TextField } from "..";
 import { CheckoutContext } from "../../checkout/context";
@@ -15,12 +15,15 @@ interface ILoginForm {
 const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
   const [signIn, { loading, error }] = useSignIn();
   const { update } = React.useContext(CheckoutContext);
-  const [message, setMessage] = useState(true);
-
+  const [message, setMessage] = React.useState(true);
+  const [phone, setPhone] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const handleOnSubmit = async (evt, { phone, password }) => {
     evt.preventDefault();
+    setPassword(password);
     const authenticated = await signIn({ phone, password });
     setMessage(authenticated.data.user.phone_verified)
+    setPhone(authenticated.data.user.phone)
     if (authenticated && hide && authenticated.data.user.phone_verified) {
       hide();
     }
@@ -30,7 +33,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
   return (
     <>
     {!message ?
-    <VerifyCodeForm hide={hide}/>
+    <VerifyCodeForm hide={hide} phone={phone} password={password}/>
     :
     <div className="login-form">
       <Form

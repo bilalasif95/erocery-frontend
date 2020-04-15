@@ -105,6 +105,8 @@ export class SaleorAPI {
 
   getShopDetails = this.watchQuery(QUERIES.GetShopDetails, data => data);
 
+  resendSMSCode = this.fireQuery(MUTATIONS.ResendSMSCode, data => data);
+
   setUserDefaultAddress = this.fireQuery(
     MUTATIONS.AddressTypeUpdate,
     data => data!.accountSetDefaultAddress

@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
-import React,{ useState } from "react";
-import { useVerifyCode } from "@sdk/react";
+import { useResendSMSCode,useVerifyCode } from "@sdk/react";
+import React,{ useEffect , useState } from "react";
 
 import { Button, Form, TextField } from "../..";
 import { maybe } from "../../../core/utils";
@@ -34,11 +34,24 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const alert = useAlert();
   const [message, setMessage] = useState(true);
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [timer, setTimer] = useState(59);
   const [verifyCode, { loading, error }] = useVerifyCode();
-  
+  const [resendSMSCode] = useResendSMSCode();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(timer=>timer-1);
+    }, 1000);
+    if (timer === 0) {
+      setTimer(0);
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [timer]);
   const handleOnCodeSubmit = async (evt, {smsCode}) => {
     evt.preventDefault();
-    const authenticated = await verifyCode({ smsCode,phone });
+    const authenticated = await verifyCode({ smsCode,phone,password });
     if (authenticated && hide) {
       hide();
       alert.show(
@@ -47,6 +60,13 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             },
             { type: "success", timeout: 5000 }
           );
+    }
+  }
+  const sendCode = async (e) => {
+    e.preventDefault();
+    const authenticated = await resendSMSCode({ phone });
+    if (authenticated.data.accountResendSms.errors.length === 0) {
+      setTimer(59);
     }
   }
   return (
@@ -64,9 +84,12 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           type="number"
           required
         />
-        <div className="login-form__button">
-          <Button type="submit" {...(loading && { disabled: true })}>
+        <div className="login-form__button displayflex">
+          <Button type="submit" disabled={timer < 0} {...(loading && { disabled: true })}>
             {loading ? "Loading" : "Verify"}
+          </Button>
+          <Button onClick={sendCode} className="smsCodebtn" disabled={timer > 0}>
+            {timer > 0 ? `Send Again(${timer})`: "Send SMS"}
           </Button>
         </div>
       </Form>
@@ -85,6 +108,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             errors={maybe(() => data.accountRegister.errors, [])}
             onSubmit={(event, { phone, password }) => {
               event.preventDefault();
+              setPassword(password);
               const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
               registerCustomer({ variables: { phone, password, redirectUrl } });
             }}

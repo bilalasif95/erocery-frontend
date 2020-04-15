@@ -6,7 +6,7 @@ const ResetPasswordForm: React.FC<{
 }> = ({ onClick }) => (
   <>
     <h3 className="checkout__header">Registered user</h3>
-    <PasswordResetForm />
+    <PasswordResetForm hide={onClick} />
     <p>
       <span className="u-link" onClick={onClick}>
         Back to login

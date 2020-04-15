@@ -5,10 +5,10 @@
 import { AccountErrorCode } from "./../../types/globalTypes";
 
 // ====================================================
-// GraphQL mutation operation: VerifyCode
+// GraphQL mutation operation: ResendSMSCode
 // ====================================================
 
-export interface VerifyCode_verifyCode_errors {
+export interface ResendSMSCode_resendSMSCode_errors {
   __typename: "Error";
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
@@ -21,7 +21,7 @@ export interface VerifyCode_verifyCode_errors {
   message: string | null;
 }
 
-export interface VerifyCode_verifyCode_user_defaultShippingAddress_country {
+export interface ResendSMSCode_resendSMSCode_user_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -33,7 +33,7 @@ export interface VerifyCode_verifyCode_user_defaultShippingAddress_country {
   country: string;
 }
 
-export interface VerifyCode_verifyCode_user_defaultShippingAddress {
+export interface ResendSMSCode_resendSMSCode_user_defaultShippingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -49,7 +49,7 @@ export interface VerifyCode_verifyCode_user_defaultShippingAddress {
   /**
    * Shop's default country.
    */
-  country: VerifyCode_verifyCode_user_defaultShippingAddress_country;
+  country: ResendSMSCode_resendSMSCode_user_defaultShippingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -62,7 +62,7 @@ export interface VerifyCode_verifyCode_user_defaultShippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyCode_verifyCode_user_defaultBillingAddress_country {
+export interface ResendSMSCode_resendSMSCode_user_defaultBillingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -74,7 +74,7 @@ export interface VerifyCode_verifyCode_user_defaultBillingAddress_country {
   country: string;
 }
 
-export interface VerifyCode_verifyCode_user_defaultBillingAddress {
+export interface ResendSMSCode_resendSMSCode_user_defaultBillingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -90,7 +90,7 @@ export interface VerifyCode_verifyCode_user_defaultBillingAddress {
   /**
    * Shop's default country.
    */
-  country: VerifyCode_verifyCode_user_defaultBillingAddress_country;
+  country: ResendSMSCode_resendSMSCode_user_defaultBillingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -103,7 +103,7 @@ export interface VerifyCode_verifyCode_user_defaultBillingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyCode_verifyCode_user_addresses_country {
+export interface ResendSMSCode_resendSMSCode_user_addresses_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -115,7 +115,7 @@ export interface VerifyCode_verifyCode_user_addresses_country {
   country: string;
 }
 
-export interface VerifyCode_verifyCode_user_addresses {
+export interface ResendSMSCode_resendSMSCode_user_addresses {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -131,7 +131,7 @@ export interface VerifyCode_verifyCode_user_addresses {
   /**
    * Shop's default country.
    */
-  country: VerifyCode_verifyCode_user_addresses_country;
+  country: ResendSMSCode_resendSMSCode_user_addresses_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -144,7 +144,7 @@ export interface VerifyCode_verifyCode_user_addresses {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyCode_verifyCode_user {
+export interface ResendSMSCode_resendSMSCode_user {
   __typename: "User";
   /**
    * The ID of the object.
@@ -154,15 +154,15 @@ export interface VerifyCode_verifyCode_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
-  defaultShippingAddress: VerifyCode_verifyCode_user_defaultShippingAddress | null;
-  defaultBillingAddress: VerifyCode_verifyCode_user_defaultBillingAddress | null;
+  defaultShippingAddress: ResendSMSCode_resendSMSCode_user_defaultShippingAddress | null;
+  defaultBillingAddress: ResendSMSCode_resendSMSCode_user_defaultBillingAddress | null;
   /**
    * List of all user's addresses.
    */
-  addresses: (VerifyCode_verifyCode_user_addresses | null)[] | null;
+  addresses: (ResendSMSCode_resendSMSCode_user_addresses | null)[] | null;
 }
 
-export interface VerifyCode_verifyCode_accountErrors {
+export interface ResendSMSCode_resendSMSCode_accountErrors {
   __typename: "AccountError";
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
@@ -179,28 +179,26 @@ export interface VerifyCode_verifyCode_accountErrors {
   code: AccountErrorCode | null;
 }
 
-export interface VerifyCode_verifyCode {
-  __typename: "VerifyCode";
-  errors: (VerifyCode_verifyCode_errors | null)[];
+export interface ResendSMSCode_resendSMSCode {
+  __typename: "ResendSMSCode";
+  errors: (ResendSMSCode_resendSMSCode_errors | null)[];
   /**
    * A user instance with new password.
    */
-  user: VerifyCode_verifyCode_user | null;
+  user: ResendSMSCode_resendSMSCode_user | null;
   /**
    * List of errors that occurred executing the mutation.
    */
-  accountErrors: VerifyCode_verifyCode_accountErrors[] | null;
+  accountErrors: ResendSMSCode_resendSMSCode_accountErrors[] | null;
 }
 
-export interface VerifyCode {
+export interface ResendSMSCode {
   /**
    * Sets the user's password from the token sent by email using the RequestPasswordReset mutation.
    */
-  verifyCode: VerifyCode_verifyCode | null;
+  accountResendSms: ResendSMSCode_resendSMSCode | null;
 }
 
-export interface VerifyCodeVariables {
-  smsCode: string;
-  phone: string;
-  password: string;
+export interface ResendSMSCodeVariables {
+  phone: string
 }

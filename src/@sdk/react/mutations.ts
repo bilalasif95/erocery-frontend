@@ -2,6 +2,7 @@ import { mutationFactory } from "./useMutation";
 
 export const useSignIn = mutationFactory("signIn");
 export const useVerifyCode = mutationFactory("verifyCode");
+export const useResendSMSCode = mutationFactory("resendSMSCode");
 export const useSignOut = mutationFactory("signOut");
 
 // Address mutations

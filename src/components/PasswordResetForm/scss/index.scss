@@ -5,6 +5,15 @@
     margin: $spacer 0 $spacer * 2;
   }
 
+  .displayflex {
+    display: flex;
+  }
+  
+  .smsCodebtn {
+    padding: 0.5rem;
+    margin-left: 1rem;
+  }
+  
   &__button {
     text-align: center;
     margin: $spacer * 2 0 $spacer * 2 $spacer * 2;
