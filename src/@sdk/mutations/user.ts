@@ -49,21 +49,13 @@ export const setPassword = gql`
 `;
 
 export const VerifyCode = gql`
-  ${userFragment}
   mutation AccountVerify($smsCode:String!,$phone:String!,$password:String!) {
     accountVerify(input:{smsCode:$smsCode,phone:$phone,password:$password}){
       errors {
         field
         message
       }
-      user {
-        ...User
-      }
-      accountErrors {
-        field
-        message
-        code
-      }
+      token
     }
   }
 `;

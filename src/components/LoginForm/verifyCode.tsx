@@ -6,6 +6,11 @@ import React,{ useEffect,useState } from "react";
 
 import { Button, Form, TextField } from "..";
 
+import {
+  setAuthToken
+} from "../../../src/@sdk/auth";
+
+import { useAlert } from "react-alert";
 
 interface IVerifyCodeForm {
   hide?: () => void;
@@ -15,13 +20,21 @@ interface IVerifyCodeForm {
 
 const VerifyCodeForm: React.FC<IVerifyCodeForm> = ({ hide, phone,password }) => {
   const [verifyCode, { loading, error }] = useVerifyCode();
+  const alert = useAlert();
   const [resendSMSCode] = useResendSMSCode();
   const [timer, setTimer] = useState(59);
   const handleOnCodeSubmit = async (evt, {smsCode}) => {
     evt.preventDefault();
     const authenticated = await verifyCode({ smsCode, phone, password});
+    setAuthToken(authenticated.data.accountVerify.token)
     if (authenticated && hide) {
       hide();
+      alert.show(
+        {
+          title: "You are now logged in",
+        },
+        { type: "success", timeout: 5000 }
+      );
     }
   }
   useEffect(() => {

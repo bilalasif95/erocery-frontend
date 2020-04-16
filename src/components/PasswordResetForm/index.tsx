@@ -3,9 +3,12 @@ import "./scss/index.scss";
 import { useResendSMSCode } from "@sdk/react";
 
 import * as React from "react";
+import ReactSVG from "react-svg";
 
 import { Button, Form, TextField } from "..";
 import { maybe } from "../../core/utils";
+import removeImg from "../../images/pass-invisible.svg";
+import removeImgg from "../../images/pass-visible.svg";
 import { TypedPasswordResetMutation,TypedVerifyPasswordResetMutation } from "./queries";
 
 import { useAlert } from "react-alert";
@@ -14,6 +17,7 @@ import { useAlert } from "react-alert";
 const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const alert = useAlert();
   const [message, setMessage] = React.useState(true);
+  const [passwordType, setPasswordType] = React.useState(true);
   const [resendSMSCode] = useResendSMSCode();
   const [timer, setTimer] = React.useState(59);
   const [phone, setPhoneNumber] = React.useState("");
@@ -35,6 +39,12 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
       setTimer(59);
     }
   }
+  const onPasswordEyeIconClick = () => {
+		if (passwordType) {
+			return setPasswordType(false)
+		}
+		setPasswordType(true)
+	};
   return (
     <>
     {!message ?
@@ -75,13 +85,37 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               type="number"
               required
             />
-            <TextField
-              name="newPassword"
-              autoComplete="newPassword"
-              label="Enter New Password"
-              type="password"
-              required
-            />
+            {passwordType ? (
+              <div className="passwordInput">
+                <TextField
+                  name="newPassword"
+                  autoComplete="newPassword"
+                  label="Enter New Password"
+                  type="password"
+                  required
+                />
+                <ReactSVG
+                  path={removeImg}
+                  className="passwordEye"
+                  onClick={onPasswordEyeIconClick}
+                />
+              </div>
+            ) : (
+              <div className="passwordInput">
+                <TextField
+                  name="newPassword"
+                  autoComplete="newPassword"
+                  label="Enter New Password"
+                  type="text"
+                  required
+                />
+                <ReactSVG
+                  path={removeImgg}
+                  className="passwordEye"
+                  onClick={onPasswordEyeIconClick}
+                />
+              </div>
+            )}
             <div className="password-reset-form__button displayflex">
               <Button type="submit" disabled={timer < 0} {...(loading && { disabled: true })}>
                 {loading ? "Loading" : "Reset password"}

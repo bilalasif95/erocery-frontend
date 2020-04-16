@@ -2,14 +2,22 @@ import "./scss/index.scss";
 
 import { useResendSMSCode,useVerifyCode } from "@sdk/react";
 import React,{ useEffect , useState } from "react";
+import ReactSVG from "react-svg";
 
 import { Button, Form, TextField } from "../..";
 import { maybe } from "../../../core/utils";
+import removeImg from "../../../images/pass-invisible.svg";
+import removeImgg from "../../../images/pass-visible.svg";
 import { TypedAccountRegisterMutation } from "./queries";
 import { RegisterAccount } from "./types/RegisterAccount";
 
+import {
+  setAuthToken
+} from "../../../../src/@sdk/auth";
+
 import { AlertManager, useAlert } from "react-alert";
 import { accountConfirmUrl } from "../../../app/routes";
+
 
 const showSuccessNotification = (
   data: RegisterAccount,
@@ -33,6 +41,7 @@ const showSuccessNotification = (
 const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const alert = useAlert();
   const [message, setMessage] = useState(true);
+  const [passwordType, setPasswordType] = useState(true);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [timer, setTimer] = useState(59);
@@ -52,11 +61,12 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const handleOnCodeSubmit = async (evt, {smsCode}) => {
     evt.preventDefault();
     const authenticated = await verifyCode({ smsCode,phone,password });
+    setAuthToken(authenticated.data.accountVerify.token)
     if (authenticated && hide) {
       hide();
       alert.show(
             {
-              title: "New user has been created",
+              title: "You are now logged in",
             },
             { type: "success", timeout: 5000 }
           );
@@ -69,6 +79,12 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
       setTimer(59);
     }
   }
+  const onPasswordEyeIconClick = () => {
+		if (passwordType) {
+			return setPasswordType(false)
+		}
+		setPasswordType(true)
+	};
   return (
     <>
     {!message ?
@@ -121,13 +137,37 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               type="number"
               required
             />
-            <TextField
-              name="password"
-              autoComplete="password"
-              label="Password"
-              type="password"
-              required
-            />
+            {passwordType ? (
+              <div className="passwordInput">
+                <TextField
+                  name="password"
+                  autoComplete="password"
+                  label="Password"
+                  type="password"
+                  required
+                />
+                <ReactSVG
+                  path={removeImg}
+                  className="passwordEye"
+                  onClick={onPasswordEyeIconClick}
+                />
+              </div>
+            ) : (
+              <div className="passwordInput">
+                <TextField
+                  name="password"
+                  autoComplete="password"
+                  label="Password"
+                  type="text"
+                  required
+                />
+                <ReactSVG
+                  path={removeImgg}
+                  className="passwordEye"
+                  onClick={onPasswordEyeIconClick}
+                />
+              </div>
+            )}
             <div className="login__content__button">
               <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Loading" : "Register"}

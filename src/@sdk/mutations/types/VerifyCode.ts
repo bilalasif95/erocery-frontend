@@ -186,6 +186,7 @@ export interface VerifyCode_verifyCode {
    * A user instance with new password.
    */
   user: VerifyCode_verifyCode_user | null;
+  token: "";
   /**
    * List of errors that occurred executing the mutation.
    */
@@ -196,7 +197,7 @@ export interface VerifyCode {
   /**
    * Sets the user's password from the token sent by email using the RequestPasswordReset mutation.
    */
-  verifyCode: VerifyCode_verifyCode | null;
+  accountVerify: VerifyCode_verifyCode | null;
 }
 
 export interface VerifyCodeVariables {
