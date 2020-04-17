@@ -150,7 +150,7 @@ export interface AccountUpdate_accountUpdate_user {
    * The ID of the object.
    */
   id: string;
-  email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;
