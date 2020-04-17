@@ -86,7 +86,7 @@ export const CloseButton = styled.button<{
 
     &,
     &:hover {
-      cursor: default;
+      cursor: not-allowed;
     }
   }
 `;

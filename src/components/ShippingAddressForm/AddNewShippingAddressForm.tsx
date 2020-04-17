@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import * as React from "react";
 
-import { Form, Select, TextField } from "..";
+import { Form, TextField } from "..";
 
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
@@ -54,12 +54,12 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
             autoComplete="address-line1"
             required
           />
-          <TextField
+          {/* <TextField
             label="Company name (optional)"
             type="organization"
             name="companyName"
             autoComplete="organization"
-          />
+          /> */}
           <div className="address-form__grid address-form__grid--modal">
             <TextField
               label="ZIP Code"
@@ -83,7 +83,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               name="countryArea"
               autoComplete="address-level1"
             />
-            <Select
+            {/* <Select
               label="Country"
               name="country"
               options={countries.map(country => ({
@@ -91,7 +91,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
                 value: country.code,
               }))}
               autoComplete="country"
-            />
+            /> */}
           </div>
           <div
             className={classNames(

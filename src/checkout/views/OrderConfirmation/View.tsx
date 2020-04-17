@@ -39,7 +39,7 @@ const View: React.FC<RouteComponentProps> = ({
       </p>
       <div className="order-confirmation__actions">
         <Link to={BASE_URL}>
-          <Button secondary>Continue Shopping</Button>
+          <Button>Continue Shopping</Button>
         </Link>
         <Link to={orderDetailsRef}>
           <Button>Order Details</Button>

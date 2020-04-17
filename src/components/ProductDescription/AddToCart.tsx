@@ -31,7 +31,7 @@ const AddToCart: React.FC<{
                 if (user && !checkout) {
                   createCheckout({
                     variables: {
-                      checkoutInput: { email: user.email, lines },
+                      checkoutInput: { phone: user.phone, lines },
                     },
                   });
                 } else {
@@ -40,7 +40,7 @@ const AddToCart: React.FC<{
               }}
               disabled={disabled || mutationLoading || checkoutLoading}
             >
-              Add to basket
+              Add to Cart
             </AddToCartButton>
           )}
         </TypedCreateCheckoutMutation>

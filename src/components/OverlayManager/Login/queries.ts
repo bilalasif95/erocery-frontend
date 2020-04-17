@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
 import { userFragment } from "@sdk/fragments/auth";
+import gql from "graphql-tag";
 
 import { TypedMutation } from "../../../core/mutations";
 import {

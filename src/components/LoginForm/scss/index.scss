@@ -5,9 +5,35 @@
     margin-bottom: $spacer;
   }
 
+  .smsCodebtn {
+    padding: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .displayflex {
+    display: flex;
+  }
+
+
   &__button {
     margin-top: $spacer * 2;
     padding: 0 $spacer * 1.5;
     text-align: center;
+  }
+}
+
+.passwordInput {
+  display: flex;
+
+  .passwordEye {
+    height: 46px;
+    border: 1px solid black;
+    width: 40px;
+    cursor: pointer;
+    padding: 0.7rem 0.3rem;
+  }
+
+  .input {
+    width: 100%;
   }
 }

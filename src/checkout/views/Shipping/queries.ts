@@ -12,7 +12,7 @@ const updateCheckoutShippingAddressMutation = gql`
   mutation updateCheckoutShippingAddress(
     $checkoutId: ID!
     $shippingAddress: AddressInput!
-    $email: String!
+    $phone: String!
   ) {
     checkoutShippingAddressUpdate(
       checkoutId: $checkoutId
@@ -26,7 +26,7 @@ const updateCheckoutShippingAddressMutation = gql`
         ...Checkout
       }
     }
-    checkoutEmailUpdate(checkoutId: $checkoutId, email: $email) {
+    checkoutEmailUpdate(checkoutId: $checkoutId, phone: $phone) {
       checkout {
         ...Checkout
       }

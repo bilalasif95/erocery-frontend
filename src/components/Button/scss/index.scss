@@ -8,6 +8,7 @@ button.button {
   box-shadow: $button-box-shadow;
   transition: $button-transition;
   outline: none;
+  border-radius: 7px;
   font-family: $base-font-family;
   cursor: pointer;
 
@@ -18,7 +19,7 @@ button.button {
   }
 
   > span {
-    display: inline-block;
+    // display: inline-block;
     color: $white;
     font-size: $button-font-size;
     text-transform: $button-text-transform;
@@ -63,7 +64,7 @@ button.button {
 
     &,
     &:hover {
-      cursor: default;
+      cursor: not-allowed;
     }
   }
 }

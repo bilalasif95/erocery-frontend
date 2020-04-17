@@ -16,7 +16,7 @@ import {
 } from "../components";
 import { CartContext } from "../components/CartProvider/context";
 import { BASE_URL as appBaseUrl } from "../core/config";
-import logoImg from "../images/logo.svg";
+import logoImg from "../images/erocery_logo.svg";
 import { CheckoutContext } from "./context";
 import { useCheckoutStepFromPath, useCheckoutStepState } from "./hooks";
 import { baseUrl as checkoutBaseUrl, CheckoutRoutes } from "./routes";

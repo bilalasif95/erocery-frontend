@@ -13,7 +13,7 @@ const EmptyCart: React.FC<{}> = () => (
     </p>
     <div className="cart-page__empty__action">
       <Link to={baseUrl}>
-        <Button secondary>Continue Shopping</Button>
+        <Button>Continue Shopping</Button>
       </Link>
     </div>
   </div>

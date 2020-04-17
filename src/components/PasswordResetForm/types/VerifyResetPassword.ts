@@ -3,10 +3,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: ResetPassword
+// GraphQL mutation operation: VerifyResetPassword
 // ====================================================
 
-export interface ResetPassword_requestPasswordReset_errors {
+export interface VerifyResetPassword_requestPasswordReset_errors {
   __typename: "Error";
   /**
    * Name of a field that caused the error. A value of `null` indicates that the
@@ -19,36 +19,23 @@ export interface ResetPassword_requestPasswordReset_errors {
   message: string | null;
 }
 
-export interface ResetPassword_accountRegister_user {
-  __typename: "User";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  // email: string;
-  phone: string;
-  firstName: string;
-  lastName: string;
-  isStaff: boolean;
-}
-
-export interface ResetPassword_requestPasswordReset {
+export interface VerifyResetPassword_requestPasswordReset {
   __typename: "RequestPasswordReset";
   /**
    * List of errors that occurred executing the mutation.
    */
-  errors: ResetPassword_requestPasswordReset_errors[] | null;
-  user: ResetPassword_accountRegister_user | null;
+  errors: VerifyResetPassword_requestPasswordReset_errors[] | null;
 }
 
-export interface ResetPassword {
+export interface VerifyResetPassword {
   /**
    * Sends an email with the account password modification link.
    */
-  accountForgotPassword: ResetPassword_requestPasswordReset | null;
+  accountForgotVerify: VerifyResetPassword_requestPasswordReset | null;
 }
 
-export interface ResetPasswordVariables {
+export interface VerifyResetPasswordVariables {
+  smsCode: string;
   phone: string;
-  // redirectUrl: string;
+  newPassword: string;
 }

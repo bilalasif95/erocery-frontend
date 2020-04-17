@@ -19,7 +19,7 @@ import { Checkout } from "../../types/Checkout";
 
 export interface ICheckoutData {
   shippingAddress: AddressInput;
-  email?: string;
+  phone?: string;
   lines?: CartLineInterface[];
 }
 

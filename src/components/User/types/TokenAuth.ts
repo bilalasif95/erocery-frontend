@@ -124,7 +124,7 @@ export interface TokenAuth_tokenCreate_user {
    * The ID of the object.
    */
   id: string;
-  email: string;
+  // email: string;
   phone: string;
   firstName: string;
   lastName: string;

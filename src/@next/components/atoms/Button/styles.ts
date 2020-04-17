@@ -43,7 +43,7 @@ export const Primary = styled.button<{
 
     &,
     &:hover {
-      cursor: default;
+      cursor: not-allowed;
     }
   }
 

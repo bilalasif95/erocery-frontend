@@ -1094,5 +1094,5 @@ export interface UpdateCheckoutShippingAddress {
 export interface UpdateCheckoutShippingAddressVariables {
   checkoutId: string;
   shippingAddress: AddressInput;
-  email: string;
+  phone: string;
 }

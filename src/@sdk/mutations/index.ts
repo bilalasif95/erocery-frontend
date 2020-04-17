@@ -51,6 +51,8 @@ import {
   PasswordChangeVariables,
 } from "./types/PasswordChange";
 
+import { ResendSMSCode, ResendSMSCodeVariables } from "./types/ResendSMSCode";
+
 import { VerifyCode, VerifyCodeVariables } from "./types/VerifyCode";
 
 import {
@@ -227,6 +229,16 @@ export const MUTATIONS = {
     client.mutate({
       mutation: gql`
         ${Wishlist.removeWhishlistProductVariant}
+      `,
+      ...options,
+    }),
+  ResendSMSCode: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<ResendSMSCode, ResendSMSCodeVariables>
+  ) =>
+    client.mutate({
+      mutation: gql`
+        ${User.ResendSMSCode}
       `,
       ...options,
     }),

@@ -803,7 +803,7 @@ export interface updateCheckoutShippingAddress {
 export interface updateCheckoutShippingAddressVariables {
   checkoutId: string;
   shippingAddress: AddressInput;
-  email: string;
+  phone: string;
 }
 
 /* tslint:disable */
@@ -1290,7 +1290,7 @@ export interface RegisterAccount {
 }
 
 export interface RegisterAccountVariables {
-  email: string;
+  phone: string;
   password: string;
 }
 
@@ -1607,7 +1607,7 @@ export interface TokenAuth_tokenCreate_errors {
 
 export interface TokenAuth_tokenCreate_user {
   id: string;
-  email: string;
+  phone: string;
   isStaff: boolean;
   note: string | null;
 }
@@ -1636,7 +1636,7 @@ export interface TokenAuthVariables {
 
 export interface VerifyToken_tokenVerify_user {
   id: string;
-  email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;
@@ -2027,7 +2027,7 @@ export interface Checkout {
   subtotalPrice: Checkout_subtotalPrice | null;
   billingAddress: Checkout_billingAddress | null;
   shippingAddress: Checkout_shippingAddress | null;
-  email: string;
+  phone: string;
   availableShippingMethods: (Checkout_availableShippingMethods | null)[] | null;
   shippingMethod: Checkout_shippingMethod | null;
   shippingPrice: Checkout_shippingPrice | null;
@@ -2093,7 +2093,7 @@ export interface ProductVariantFields {
 
 export interface User {
   id: string;
-  email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;
@@ -2155,7 +2155,7 @@ export interface PaymentInput {
 // null
 export interface CheckoutCreateInput {
   lines?: (CheckoutLineInput | null)[] | null;
-  email?: string | null;
+  phone?: string | null;
   shippingAddress?: AddressInput | null;
 }
 

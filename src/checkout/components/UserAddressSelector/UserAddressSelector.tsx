@@ -69,8 +69,8 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
   const updateAddresses = (address: FormAddressType) => {
     const isSelectedAsNew = address.asNew;
 
-    if (user.email) {
-      address.email = user.email;
+    if (user.phone) {
+      address.phone = user.phone;
     }
 
     addAddressToList([...addressesList, address]);
@@ -98,7 +98,7 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
         onAddressSelect={handleAddressSelect}
         handleAddressAdd={handleAddressAdd}
         selectedAddress={selectedAddress}
-        emailRequired={!user.email}
+        emailRequired={!user.phone}
         isVisibleModalForm={isVisibleModalForm}
         hideAddNewModalForm={hideAddModalForm}
         showAddNewModalForm={showAddModalForm}

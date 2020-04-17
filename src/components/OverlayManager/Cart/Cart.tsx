@@ -101,7 +101,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                                     token: null,
                                   })}
                                 >
-                                  <Button secondary>Go to my bag</Button>
+                                  <Button>Go to my bag</Button>
                                 </Link>
                               </div>
                               <div className="cart__footer__button">

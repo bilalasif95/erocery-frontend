@@ -2,11 +2,26 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { AccountErrorCode } from "./../../types/globalTypes";
+
 // ====================================================
-// GraphQL mutation operation: VerifyToken
+// GraphQL mutation operation: ResendSMSCode
 // ====================================================
 
-export interface VerifyToken_tokenVerify_user_defaultShippingAddress_country {
+export interface ResendSMSCode_resendSMSCode_errors {
+  __typename: "Error";
+  /**
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
+   */
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+}
+
+export interface ResendSMSCode_resendSMSCode_user_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -18,7 +33,7 @@ export interface VerifyToken_tokenVerify_user_defaultShippingAddress_country {
   country: string;
 }
 
-export interface VerifyToken_tokenVerify_user_defaultShippingAddress {
+export interface ResendSMSCode_resendSMSCode_user_defaultShippingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -34,7 +49,7 @@ export interface VerifyToken_tokenVerify_user_defaultShippingAddress {
   /**
    * Shop's default country.
    */
-  country: VerifyToken_tokenVerify_user_defaultShippingAddress_country;
+  country: ResendSMSCode_resendSMSCode_user_defaultShippingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -47,7 +62,7 @@ export interface VerifyToken_tokenVerify_user_defaultShippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyToken_tokenVerify_user_defaultBillingAddress_country {
+export interface ResendSMSCode_resendSMSCode_user_defaultBillingAddress_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -59,7 +74,7 @@ export interface VerifyToken_tokenVerify_user_defaultBillingAddress_country {
   country: string;
 }
 
-export interface VerifyToken_tokenVerify_user_defaultBillingAddress {
+export interface ResendSMSCode_resendSMSCode_user_defaultBillingAddress {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -75,7 +90,7 @@ export interface VerifyToken_tokenVerify_user_defaultBillingAddress {
   /**
    * Shop's default country.
    */
-  country: VerifyToken_tokenVerify_user_defaultBillingAddress_country;
+  country: ResendSMSCode_resendSMSCode_user_defaultBillingAddress_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -88,7 +103,7 @@ export interface VerifyToken_tokenVerify_user_defaultBillingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyToken_tokenVerify_user_addresses_country {
+export interface ResendSMSCode_resendSMSCode_user_addresses_country {
   __typename: "CountryDisplay";
   /**
    * Country code.
@@ -100,7 +115,7 @@ export interface VerifyToken_tokenVerify_user_addresses_country {
   country: string;
 }
 
-export interface VerifyToken_tokenVerify_user_addresses {
+export interface ResendSMSCode_resendSMSCode_user_addresses {
   __typename: "Address";
   /**
    * The ID of the object.
@@ -116,7 +131,7 @@ export interface VerifyToken_tokenVerify_user_addresses {
   /**
    * Shop's default country.
    */
-  country: VerifyToken_tokenVerify_user_addresses_country;
+  country: ResendSMSCode_resendSMSCode_user_addresses_country;
   countryArea: string;
   phone: string | null;
   /**
@@ -129,7 +144,7 @@ export interface VerifyToken_tokenVerify_user_addresses {
   isDefaultShippingAddress: boolean | null;
 }
 
-export interface VerifyToken_tokenVerify_user {
+export interface ResendSMSCode_resendSMSCode_user {
   __typename: "User";
   /**
    * The ID of the object.
@@ -139,27 +154,51 @@ export interface VerifyToken_tokenVerify_user {
   firstName: string;
   lastName: string;
   isStaff: boolean;
-  defaultShippingAddress: VerifyToken_tokenVerify_user_defaultShippingAddress | null;
-  defaultBillingAddress: VerifyToken_tokenVerify_user_defaultBillingAddress | null;
+  defaultShippingAddress: ResendSMSCode_resendSMSCode_user_defaultShippingAddress | null;
+  defaultBillingAddress: ResendSMSCode_resendSMSCode_user_defaultBillingAddress | null;
   /**
    * List of all user's addresses.
    */
-  addresses: (VerifyToken_tokenVerify_user_addresses | null)[] | null;
+  addresses: (ResendSMSCode_resendSMSCode_user_addresses | null)[] | null;
 }
 
-export interface VerifyToken_tokenVerify {
-  __typename: "VerifyToken";
-  payload: any | null;
-  user: VerifyToken_tokenVerify_user | null;
-}
-
-export interface VerifyToken {
+export interface ResendSMSCode_resendSMSCode_accountErrors {
+  __typename: "AccountError";
   /**
-   * Mutation that confirms if token is valid and also returns user data.
+   * Name of a field that caused the error. A value of `null` indicates that the
+   * error isn't associated with a particular field.
    */
-  tokenVerify: VerifyToken_tokenVerify | null;
+  field: string | null;
+  /**
+   * The error message.
+   */
+  message: string | null;
+  /**
+   * The error code.
+   */
+  code: AccountErrorCode | null;
 }
 
-export interface VerifyTokenVariables {
-  token: string;
+export interface ResendSMSCode_resendSMSCode {
+  __typename: "ResendSMSCode";
+  errors: (ResendSMSCode_resendSMSCode_errors | null)[];
+  /**
+   * A user instance with new password.
+   */
+  user: ResendSMSCode_resendSMSCode_user | null;
+  /**
+   * List of errors that occurred executing the mutation.
+   */
+  accountErrors: ResendSMSCode_resendSMSCode_accountErrors[] | null;
+}
+
+export interface ResendSMSCode {
+  /**
+   * Sets the user's password from the token sent by email using the RequestPasswordReset mutation.
+   */
+  accountResendSms: ResendSMSCode_resendSMSCode | null;
+}
+
+export interface ResendSMSCodeVariables {
+  phone: string
 }

@@ -15,18 +15,18 @@ import { shippingOptionsUrl } from "../../routes";
 import { ICheckoutData, ICheckoutUserArgs } from "../../types";
 import { IShippingPageProps } from "./types";
 
-import { CountryCode } from "types/globalTypes";
+// import { CountryCode } from "types/globalTypes";
 
 const computeCheckoutData = (
   data: FormAddressType,
   lines: CartLineInterface[],
-  email?: string
+  phone?: string
 ): ICheckoutData => ({
-  email: data.email || email,
+  phone: data.phone || phone,
   shippingAddress: {
     city: data.city,
-    companyName: data.companyName,
-    country: (data.country.value || data.country.code) as CountryCode,
+    // companyName: data.companyName,
+    // country: (data.country.value || data.country.code) as CountryCode,
     countryArea: data.countryArea,
     firstName: data.firstName,
     lastName: data.lastName,
@@ -65,23 +65,23 @@ const Page: React.FC<IShippingPageProps> = ({
     maybe(() => updateAddressError.extraInfo.userInputErrors, [])
   );
   const loading = createCheckoutLoading || updateAddressLoading;
-  const email = maybe(() => user.email, null);
+  const phone = maybe(() => user.phone, null);
 
   const onSaveShippingAddressHandler = async (formData: FormAddressType) => {
     if (!checkoutId) {
       const data = computeCheckoutData(formData, lines);
       return create({
         checkoutInput: {
-          email: data.email,
           lines: data.lines,
+          phone: data.phone,
           shippingAddress: data.shippingAddress,
         },
       });
     }
-    const data = computeCheckoutData(formData, null, email);
+    const data = computeCheckoutData(formData, null, phone);
     return updateAddress({
       checkoutId,
-      email: data.email,
+      phone: data.phone,
       shippingAddress: data.shippingAddress,
     });
   };

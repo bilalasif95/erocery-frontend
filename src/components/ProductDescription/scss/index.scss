@@ -41,11 +41,12 @@
 
   &__action {
     min-height: 49px;
+    border-radius: 7px;
 
     &--fade {
       $animation-speed: 200ms;
       background-color: $turquoise-dark;
-
+      
       &-enter {
         opacity: 0;
 
