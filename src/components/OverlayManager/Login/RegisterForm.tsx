@@ -101,7 +101,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           required
         />
         <div className="login-form__button displayflex">
-          <Button type="submit" disabled={timer < 0} {...(loading && { disabled: true })}>
+          <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Loading" : "Verify"}
           </Button>
           <Button onClick={sendCode} className="smsCodebtn" disabled={timer > 0}>

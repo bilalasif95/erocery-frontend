@@ -117,7 +117,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               </div>
             )}
             <div className="password-reset-form__button displayflex">
-              <Button type="submit" disabled={timer < 0} {...(loading && { disabled: true })}>
+              <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Loading" : "Reset password"}
               </Button>
               <Button onClick={sendCode} className="smsCodebtn" disabled={timer > 0}>
