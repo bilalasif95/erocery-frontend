@@ -101,7 +101,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 "address-form__grid--full": type === "billing",
               })}
             >
-              {(type === "shipping" || noShipping) && (
+              {/* {(type === "shipping" || noShipping) && (
                 <TextField
                   label="Email Address"
                   type="email"
@@ -109,7 +109,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   name="email"
                   required
                 />
-              )}
+              )} */}
 
               <TextField
                 label="Phone number"

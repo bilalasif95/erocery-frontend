@@ -119,6 +119,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
               countryArea: billingAddress.countryArea,
               firstName: billingAddress.firstName,
               lastName: billingAddress.lastName,
+              phone: billingAddress.phone,
               postalCode: billingAddress.postalCode,
               streetAddress1: billingAddress.streetAddress1,
               streetAddress2: billingAddress.streetAddress2,
