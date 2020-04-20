@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import * as React from "react";
 
-import { Button, Form, Select, TextField } from "..";
+import { Button, Form, TextField } from "..";
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingAddressFormProps } from "./types";
 import { getFormData } from "./utils";
@@ -86,7 +86,14 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 name="countryArea"
                 autoComplete="address-level1"
               />
-              <Select
+              <TextField
+                label="Phone number"
+                type="tel"
+                name="phone"
+                autoComplete="phone"
+                required
+              />
+              {/* <Select
                 label="Country"
                 name="country"
                 options={countries.map(country => ({
@@ -94,7 +101,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   value: country.code,
                 }))}
                 autoComplete="country"
-              />
+              /> */}
             </div>
             <div
               className={classNames("address-form__grid", {
@@ -111,13 +118,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 />
               )} */}
 
-              <TextField
-                label="Phone number"
-                type="tel"
-                name="phone"
-                autoComplete="phone"
-                required
-              />
+
             </div>
           </fieldset>
           <Button type="submit" disabled={loading}>

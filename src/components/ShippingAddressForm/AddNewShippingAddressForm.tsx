@@ -83,6 +83,13 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               name="countryArea"
               autoComplete="address-level1"
             />
+            <TextField
+              label="Phone number"
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              required
+            />
             {/* <Select
               label="Country"
               name="country"
@@ -110,14 +117,6 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
                 required
               />
             )}
-
-            <TextField
-              label="Phone number"
-              type="tel"
-              name="phone"
-              autoComplete="tel"
-              required
-            />
           </div>
           <label className="checkbox checkbox__bottom">
             <input name="asNew" type="checkbox" />
