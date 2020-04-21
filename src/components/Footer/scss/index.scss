@@ -5,8 +5,15 @@
     border-top: 1px solid $gray-light;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     p {
       padding: 1.5rem 0.5rem;
+    }
+    @media(max-width:480px){
+      p{
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 

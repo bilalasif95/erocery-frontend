@@ -17,6 +17,7 @@ import {
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 import noPhotoImg from "../../images/no-photo.svg";
+import offerImg from "../../images/banner-03.jpg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -74,6 +75,7 @@ const Page: React.FC<{
       <div
         className="home-page__heroImage"
       >
+        <img src={offerImg}/>
       </div>
       {categoriesExist() && (
         <div className="home-page__categories">
@@ -101,7 +103,9 @@ const Page: React.FC<{
                         })`,
                       }}
                     >
+                      <div className="catBg">
                       <h4>{category.name}</h4>
+                      </div>
                     </div>
                   </Link>
                 </div>

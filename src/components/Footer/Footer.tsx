@@ -10,7 +10,7 @@ import { SOCIAL_MEDIA } from "../../core/config";
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
     <div className="footer__favicons container">
-      <p>Copyright © 2020 erocery</p>
+      <p>Copyright © 2020 Erocery</p>
       {SOCIAL_MEDIA.map(medium => (
         <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
       ))}

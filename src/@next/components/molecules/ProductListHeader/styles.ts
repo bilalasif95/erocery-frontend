@@ -26,7 +26,19 @@ export const FiltersButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-`;
+`
+if (matchMedia) {
+  const mq = window.matchMedia("(min-width: 500px)");
+  mq.addListener(WidthChange);
+  WidthChange(mq);
+}
+function WidthChange(mq) {
+
+  const msg = (mq.matches ? "more" : "less") + " than 500 pixels";
+  document.getElementById("current").firstChild.nodeValue = msg;
+
+}
+;
 
 export const Clear = styled.button`
   padding-left: 2rem;

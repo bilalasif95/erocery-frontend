@@ -9,18 +9,18 @@
   flex-direction: row;
   height: 3.55rem;
   position: relative;
-
   &__left {
-    flex-basis: calc(50% - 2rem);
-
+    flex-basis: 25%;
     @media (min-width: $small-screen) {
-      flex-basis: calc(50% - 4rem);
+      flex-basis: calc(50% - 1rem);
     }
 
     ul {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 100%;
+      
     }
   }
 
@@ -45,14 +45,12 @@
   }
 
   &__center {
-    align-self: center;
-
-    svg {
-      width: 4rem;
-
-      @media (min-width: $small-screen) {
-        width: 12rem;
-      }
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
     }
   }
 
@@ -74,9 +72,11 @@
   }
 
   &__hamburger {
-    border-right: 1px solid $gray-light;
+    width: 60px;
+    height: 100%;
     cursor: pointer;
-    padding: $spacer;
+    border-right: 1px solid $gray-light;
+    // padding: $spacer;
 
     &--hover {
       display: none;
