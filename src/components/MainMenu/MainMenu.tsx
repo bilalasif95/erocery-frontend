@@ -32,7 +32,6 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
-import { classExpression } from "babel-types";
 
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
