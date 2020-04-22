@@ -97,6 +97,9 @@
         width: 85%;
       }
     }
+    @media(max-width: 480px){
+      width: 100%;
+    }
   }
 
   &__empty {

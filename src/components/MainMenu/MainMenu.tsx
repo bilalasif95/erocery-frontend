@@ -32,6 +32,7 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
+import { classExpression } from "babel-types";
 
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
@@ -102,8 +103,8 @@ const MainMenu: React.FC = () => {
 
           <div className="main-menu__center">
             <Link to={appPaths.baseUrl}>
-              <img src={logoImg}/>
-              {/* <ReactSVG path={logoImg} /> */}
+              {/* <img src={logoImg}/> */}
+              <ReactSVG path={logoImg} className="logoImg" />
             </Link>
           </div>
 

@@ -27,14 +27,11 @@
     }
 
     &-logo {
-      width: 100px;
+      width: 180px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       margin: 0 0 0 0.5rem;
-      img {
-        width: 100%;
-      }
     }
 
     &-link,

@@ -17,7 +17,7 @@ import {
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 import noPhotoImg from "../../images/no-photo.svg";
-import offerImg from "../../images/banner-03.jpg";
+import offerImg from "../../images/offerBanner.jpg";
 
 const Page: React.FC<{
   loading: boolean;

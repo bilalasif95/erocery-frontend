@@ -69,7 +69,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                             className="overlay__header__cart-icon"
                           />
                           <div className="overlay__header-text">
-                            My bag,{" "}
+                            My Cart,{" "}
                             <span className="overlay__header-text-items">
                               {cart.getQuantity() || 0} items
                             </span>
@@ -101,7 +101,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                                     token: null,
                                   })}
                                 >
-                                  <Button>Go to my bag</Button>
+                                  <Button>Go to my cart</Button>
                                 </Link>
                               </div>
                               <div className="cart__footer__button">

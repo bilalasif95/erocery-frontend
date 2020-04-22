@@ -11,7 +11,7 @@
   position: relative;
   &__left {
     flex-basis: 25%;
-    @media (min-width: $small-screen) {
+    @media (min-width: 767px) {
       flex-basis: calc(50% - 1rem);
     }
 
@@ -23,7 +23,6 @@
       
     }
   }
-
   &__right {
     flex-basis: calc(50% - 2rem);
 
@@ -45,15 +44,30 @@
   }
 
   &__center {
-    width: 150px;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-      width: 100%;
+    svg {
+      width: 192px;
+    }
+    @media(max-width: 400px){
+      .logoImg{
+        width: 58px;
+        overflow: hidden;
+      }
     }
   }
-
+  @media(max-width: 767px){
+    &__center {
+    width: 35%;
+    }
+  }
+  @media(max-width: 480px){
+    &__center {
+    width: 45%;
+    }
+  }
   &__item {
     font-weight: $bold-font-weight;
     height: 100%;

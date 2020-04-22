@@ -5,12 +5,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Bar = styled.div`
-  height: 5rem;
   background-color: ${props => props.theme.tile.backgroundColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  flex-wrap: wrap;
+  padding: 1rem 2rem 0.5rem;
   font-size: ${props => props.theme.typography.smallFontSize};
   margin-top: 1rem;
   margin-bottom: 1.4rem;
@@ -19,6 +19,8 @@ export const Bar = styled.div`
 export const LeftSide = styled.div`
   display: flex;
   align-items: center;
+  padding-right: 2rem;
+  margin: 0 0 1rem;
 `;
 
 export const FiltersButton = styled.button`
@@ -26,19 +28,7 @@ export const FiltersButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-`
-// if (matchMedia) {
-//   const mq = window.matchMedia("(min-width: 500px)");
-//   mq.addListener(WidthChange);
-//   WidthChange(mq);
-// }
-// function WidthChange(mq) {
-
-//   const msg = (mq.matches ? "more" : "less") + " than 500 pixels";
-//   document.getElementById("current").firstChild.nodeValue = msg;
-
-// }
-;
+`;
 
 export const Clear = styled.button`
   padding-left: 2rem;
@@ -47,7 +37,7 @@ export const Clear = styled.button`
   color: ${props => props.theme.colors.lightFont};
 `;
 export const Element = styled.span`
-  padding-left: 2rem;
+  padding-right: 1rem;
 `;
 
 export const Filters = styled.span`
