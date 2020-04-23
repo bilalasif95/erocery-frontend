@@ -1,5 +1,14 @@
 @import "../../../globalStyles/scss/variables.scss";
 
+.buttonsFlex {
+  display: flex;
+  .buyButton {
+    border-radius: 7px;
+    margin-left: 0.5rem;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
 .product-description {
   h3 {
     text-transform: uppercase;

@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { Button } from "@temp/@next/components/atoms";
 
 import { useUserDetails } from "@sdk/react";
+
+import { baseUrl as checkoutUrl } from "../../checkout/routes";
 
 import { CheckoutContext } from "../../checkout/context";
 import { TypedCreateCheckoutMutation } from "../../checkout/queries";
@@ -25,6 +30,7 @@ const AddToCart: React.FC<{
           }}
         >
           {(createCheckout, { loading: mutationLoading }) => (
+            <div className="buttonsFlex">
             <AddToCartButton
               className="product-description__action"
               onClick={() => {
@@ -42,6 +48,43 @@ const AddToCart: React.FC<{
             >
               Add to Cart
             </AddToCartButton>
+            {disabled || mutationLoading || checkoutLoading ? 
+            <Button
+            className="buyButton"
+            onClick={() => {
+              if (user && !checkout) {
+                createCheckout({
+                  variables: {
+                    checkoutInput: { phone: user.phone, lines },
+                  },
+                });
+              } else {
+                onSubmit();
+              }
+            }}
+            disabled={disabled || mutationLoading || checkoutLoading}>
+              Buy Now
+            </Button> :
+            <Link to={checkoutUrl}>
+              <Button
+              className="buyButton"
+              onClick={() => {
+                if (user && !checkout) {
+                  createCheckout({
+                    variables: {
+                      checkoutInput: { phone: user.phone, lines },
+                    },
+                  });
+                } else {
+                  onSubmit();
+                }
+              }}
+              disabled={disabled || mutationLoading || checkoutLoading}>
+                Buy Now
+              </Button>
+            </Link>
+            }
+            </div>
           )}
         </TypedCreateCheckoutMutation>
       )}
