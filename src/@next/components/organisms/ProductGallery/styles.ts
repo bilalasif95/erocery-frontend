@@ -76,10 +76,16 @@ export const ThumbnailList = styled.div`
 export const Preview = styled.div`
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  height:300px;
+  max-height: 300px;
   overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   img {
     width: 100%;
+    max-width:300px;
     object-fit: contain;
+
   }
 `;
