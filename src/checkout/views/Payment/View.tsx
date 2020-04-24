@@ -245,7 +245,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
                       case PROVIDERS.DUMMY.label:
                         return (
-                          <Option label="Dummy" {...optionProps(providerName)}>
+                          <Option label="Cash on Delivery" {...optionProps(providerName)}>
                             <Dummy {...paymentGatewayProps} />
                           </Option>
                         );
