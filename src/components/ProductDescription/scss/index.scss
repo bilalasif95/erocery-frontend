@@ -5,7 +5,8 @@
   .buyButton {
     border-radius: 7px;
     margin-left: 0.5rem;
-    padding: 0.9rem 1.5rem;
+    padding: 0.9rem 0.2rem;
+    width: 50%;
   }
 }
 
@@ -51,6 +52,8 @@
   &__action {
     min-height: 49px;
     border-radius: 7px;
+    padding: 0.9rem 0.2rem;
+    width: 50%;
 
     &--fade {
       $animation-speed: 200ms;

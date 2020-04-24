@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   text-align: center;
   max-height: 30rem;
   transition: 0.3s;
+  border: 1px solid #f5f5f5;
 
   :hover {
     background-color: ${props => props.theme.colors.hoverLightBackground};
@@ -26,6 +27,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h4`
   text-transform: uppercase;
   font-weight: normal;
+  min-height: 40px;
   ${textProps}
 `;
 
@@ -35,7 +37,10 @@ export const Price = styled.p`
 
 export const Image = styled.div`
   width: auto;
-  height: auto;
+  height:230px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
   max-width: 100%;
 
   > img {
