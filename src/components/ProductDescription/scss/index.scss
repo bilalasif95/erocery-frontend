@@ -6,10 +6,13 @@
     border-radius: 7px;
     margin-left: 0.5rem;
     padding: 0.9rem 0.2rem;
-    width: 50%;
+    width: 150px !important;
   }
 }
 
+.btnLink{
+  width: 150px;
+}
 .product-description {
   h3 {
     text-transform: uppercase;
