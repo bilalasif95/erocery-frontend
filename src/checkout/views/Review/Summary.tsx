@@ -85,7 +85,7 @@ class Summary extends React.PureComponent<{
           <p>
             {!!cardData
               ? `Ending in ${cardData.lastDigits}`
-              : `Dummy: ${dummyStatus}`}
+              : `Cash on Delivery: ${dummyStatus}`}
           </p>
         </div>
       </div>
