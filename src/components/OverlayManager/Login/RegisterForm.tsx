@@ -1,8 +1,10 @@
 import "./scss/index.scss";
 
 import { useResendSMSCode,useVerifyCode } from "@sdk/react";
-import React,{ useEffect , useState } from "react";
+import React,{ useState } from "react";
 import ReactSVG from "react-svg";
+
+import Timer from 'react-compound-timer';
 
 import { Button, Form, TextField } from "../..";
 import { maybe } from "../../../core/utils";
@@ -44,20 +46,20 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const [passwordType, setPasswordType] = useState(true);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [timer, setTimer] = useState(59);
+  const [timer, setTimer] = useState(179);
   const [verifyCode, { loading, error }] = useVerifyCode();
   const [resendSMSCode] = useResendSMSCode();
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(timer=>timer-1);
-    }, 1000);
-    if (timer === 0) {
-      setTimer(0);
-    }
-    return () => {
-      clearInterval(interval)
-    }
-  }, [timer]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTimer(timer=>timer-1);
+  //   }, 1000);
+  //   if (timer === 0) {
+  //     setTimer(0);
+  //   }
+  //   return () => {
+  //     clearInterval(interval)
+  //   }
+  // }, [timer]);
   const handleOnCodeSubmit = async (evt, {smsCode}) => {
     evt.preventDefault();
     const authenticated = await verifyCode({ smsCode,phone,password });
@@ -76,7 +78,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
     e.preventDefault();
     const authenticated = await resendSMSCode({ phone });
     if (authenticated.data.accountResendSms.errors.length === 0) {
-      setTimer(59);
+      setTimer(179);
     }
   }
   const onPasswordEyeIconClick = () => {
@@ -105,7 +107,21 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             {loading ? "Loading" : "Verify"}
           </Button>
           <Button onClick={sendCode} className="smsCodebtn" disabled={timer > 0}>
-            {timer > 0 ? `Send Again(${timer})`: "Send SMS"}
+            {timer > 0 ?
+              <Timer
+                initialTime={179000}
+                direction="backward"
+                checkpoints={[
+                  {
+                    callback: () => setTimer(0),
+                    time: 0,
+                  },
+                ]}
+              >
+                Send Again(<Timer.Minutes />:
+                <Timer.Seconds />)
+              </Timer>
+              : "Send Code"}
           </Button>
         </div>
       </Form>
