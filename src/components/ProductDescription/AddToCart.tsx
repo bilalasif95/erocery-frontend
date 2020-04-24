@@ -11,6 +11,7 @@ import { CheckoutContext } from "../../checkout/context";
 import { TypedCreateCheckoutMutation } from "../../checkout/queries";
 import { CartLine } from "../CartProvider/context";
 import AddToCartButton from "./AddToCartButton";
+import { classes } from "istanbul-lib-coverage";
 
 const AddToCart: React.FC<{
   disabled: boolean;
@@ -65,7 +66,7 @@ const AddToCart: React.FC<{
             disabled={disabled || mutationLoading || checkoutLoading}>
               Buy Now
             </Button> :
-            <Link to={checkoutUrl}>
+            <Link to={checkoutUrl} className="btnLink">
               <Button
               className="buyButton"
               onClick={() => {
