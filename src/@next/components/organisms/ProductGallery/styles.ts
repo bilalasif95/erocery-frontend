@@ -86,6 +86,6 @@ export const Preview = styled.div`
     width: 100%;
     max-width:300px;
     object-fit: contain;
-
+    height: 100%;
   }
 `;

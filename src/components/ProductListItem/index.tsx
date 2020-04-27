@@ -72,7 +72,10 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       </div>
       <h4 className="product-list-item__title">{product.name}</h4>
       <p className="product-list-item__category">{category.name}</p>
+      <div className="footerDiv">
       <p className="product-list-item__price">{getProductPrice()}</p>
+      <button className="buyBtn">Buy</button>
+      </div>
     </div>
   );
 };

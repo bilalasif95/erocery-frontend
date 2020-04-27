@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import {
   mediumScreen,
-  smallScreen,
+  // smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
 
@@ -49,6 +49,7 @@ const MainMenu: React.FC = () => {
     <OverlayContext.Consumer>
       {overlayContext => (
         <nav className="main-menu" id="header">
+          <div className="menubar">
           <div className="main-menu__left">
             <TypedMainMenuQuery renderOnError displayLoader={false}>
               {({ data }) => {
@@ -110,9 +111,9 @@ const MainMenu: React.FC = () => {
           <div className="main-menu__right">
             <ul>
               <Online>
-                <Media
+                {/* <Media
                   query={{ minWidth: smallScreen }}
-                  render={() => (
+                  render={() => ( */}
                     <>
                       {user ? (
                         <MenuDropdown
@@ -166,8 +167,8 @@ const MainMenu: React.FC = () => {
                         </li>
                       )}
                     </>
-                  )}
-                />
+                  {/* )}
+                /> */}
                 <CartContext.Consumer>
                   {cart => (
                     <li
@@ -197,6 +198,23 @@ const MainMenu: React.FC = () => {
                   />
                 </li>
               </Offline>
+              <li
+                className="main-menu__search deskview"
+                onClick={() =>
+                  overlayContext.show(OverlayType.search, OverlayTheme.right)
+                }
+              >
+                <Media
+                  query={{ minWidth: mediumScreen }}
+                  render={() => <span>Search</span>}
+                />
+                <ReactSVG path={searchImg} />
+              </li>
+            </ul>
+          </div>
+          </div>
+          <div className="res-search">
+            <ul>
               <li
                 className="main-menu__search"
                 onClick={() =>
