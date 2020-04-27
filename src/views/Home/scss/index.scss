@@ -96,10 +96,10 @@
     }
 
     h4 {
-      text-transform: uppercase;
+      text-transform: capitalize;
       font-weight: $bold-font-weight;
-      color: white;
-      text-align: center;
+      color: black;
+      text-align: left;
       // padding: 100px;
      
     }
@@ -120,7 +120,7 @@
 
       .categoryBoxes {
         padding: 0.5rem;
-        width: 33%;
+        width: 50%;
       }
       @media(max-width:767px){
         .categoryBoxes {
@@ -138,15 +138,15 @@
       @media (min-width: $small-screen) {
         grid-template-columns: 1fr 1fr;
 
-        > div {
-          &:nth-child(3) {
-            grid-column: 3 / 1;
-          }
+        // > div {
+        //   &:nth-child(3) {
+        //     grid-column: 3 / 1;
+        //   }
 
-          &:nth-child(n + 4) {
-            display: none;
-          }
-        }
+        //   &:nth-child(n + 4) {
+        //     display: none;
+        //   }
+        // }
       }
 
       a {
@@ -190,6 +190,54 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+      }
+      .cat-item {
+        border: 1px solid #80808024;
+        padding: 1rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        .cat-img {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg{
+            width: 100%;
+          }
+        }
+        .cat-detail {
+          width: 70%;
+          padding: 0 0 0 0.3rem;
+          p{
+            color: #8e8e8e;
+
+          }
+      }
+      .cat-detail-link {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    }
+    @media(max-width: 375px){
+      .cat-item {
+        padding: 0.5rem;
+        .cat-img {
+          width: 30%;
+        }
+        .cat-detail {
+          width: 70%;
+          padding: 0;
+          p{
+            font-size: 11px;
+            line-height: 18px;
+            overflow: hidden;
+            max-height: 38px;
+           }
+          }
+        }
       }
     }
     @media(max-width:767px){
