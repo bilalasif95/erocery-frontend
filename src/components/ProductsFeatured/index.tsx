@@ -36,7 +36,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                   ))}
                 </Carousel> */}
                 <div className="products-list">
-                {products.map(({ node: product }) => (
+                {products.slice(0,8).map(({ node: product }) => (
                     <Link
                       to={generateProductUrl(product.id, product.name)}
                       key={product.id}
