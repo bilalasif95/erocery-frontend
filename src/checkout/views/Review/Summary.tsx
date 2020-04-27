@@ -23,7 +23,8 @@ class Summary extends React.PureComponent<{
   token: string;
 }> {
   render() {
-    const { checkout, cardData, dummyStatus, history, token } = this.props;
+    // const { checkout, cardData, dummyStatus, history, token } = this.props;
+    const { checkout, cardData, history, token } = this.props;
 
     const handleEdit = (editUrl: string) => {
       history.push(
@@ -85,7 +86,8 @@ class Summary extends React.PureComponent<{
           <p>
             {!!cardData
               ? `Ending in ${cardData.lastDigits}`
-              : `Cash on Delivery: ${dummyStatus}`}
+              // : `Cash on Delivery: ${dummyStatus}`}
+              : `Cash on Delivery`}
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+// import classNames from "classnames";
 import React from "react";
 
 import { PROVIDERS } from "../../../../core/config";
@@ -17,7 +17,7 @@ class Dummy extends React.PureComponent<
 
   render() {
     const {
-      loading,
+      // loading,
       formRef,
       processPayment,
       checkout: { update },
@@ -34,7 +34,7 @@ class Dummy extends React.PureComponent<
         }}
         className="c-option__content"
       >
-        {this.statuses.map(({ token, label }) => {
+        {/* {this.statuses.map(({ token, label }) => {
           const selected = selectedStatus.token === token;
           return (
             <div
@@ -51,7 +51,7 @@ class Dummy extends React.PureComponent<
               <label>{label}</label>
             </div>
           );
-        })}
+        })} */}
       </form>
     );
   }

@@ -26,7 +26,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
               <div className="container featuredContainer">
                 <h3>{title}</h3>
                 <Carousel>
-                  {products.map(({ node: product }) => (
+                  {products.slice(0,8).map(({ node: product }) => (
                     <Link
                       to={generateProductUrl(product.id, product.name)}
                       key={product.id}

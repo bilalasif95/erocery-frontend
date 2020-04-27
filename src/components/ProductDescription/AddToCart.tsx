@@ -10,8 +10,9 @@ import { baseUrl as checkoutUrl } from "../../checkout/routes";
 import { CheckoutContext } from "../../checkout/context";
 import { TypedCreateCheckoutMutation } from "../../checkout/queries";
 import { CartLine } from "../CartProvider/context";
+
 import AddToCartButton from "./AddToCartButton";
-import { classes } from "istanbul-lib-coverage";
+// import { classes } from "istanbul-lib-coverage";
 
 const AddToCart: React.FC<{
   disabled: boolean;
