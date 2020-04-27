@@ -15,18 +15,18 @@
   a {
     color: $base-font-color;
     display: inline-block;
-    width: 23%;
+    width: 25%;
     text-decoration: none;
     padding: 0 0.5rem;
   }
   @media(max-width: 991px){
     a{
-      width: 31% !important;
+      width: 33.333% !important;
     }
   }
   @media(max-width: 767px){
     a{
-      width: 48% !important;
+      width: 50% !important;
     }
   }
   @media(max-width:424px){
