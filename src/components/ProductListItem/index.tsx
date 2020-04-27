@@ -65,6 +65,12 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       );
     }
   };
+
+  const handleSubmit = () => {
+    console.log(product,"=======")
+    // this.props.addToCart(product.variants, this.state.quantity);
+  };
+
   return (
     <div className="product-list-item">
       <div className="product-list-item__image">
@@ -74,7 +80,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       <p className="product-list-item__category">{category.name}</p>
       <div className="footerDiv">
       <p className="product-list-item__price">{getProductPrice()}</p>
-      <button className="buyBtn">Buy</button>
+      <button className="buyBtn" onClick={handleSubmit}>+ Cart</button>
       </div>
     </div>
   );
