@@ -1,7 +1,6 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .main-menu {
-  align-items: center;
   align-items: stretch;
   background-color: $white;
   border-bottom: 1px solid $gray-light;
@@ -14,6 +13,9 @@
     @media (min-width: 767px) {
       flex-basis: calc(50% - 1rem);
     }
+    @media (max-width: 424px) {
+      flex-basis: 15%;
+    }
 
     ul {
       display: flex;
@@ -25,6 +27,7 @@
   }
   &__right {
     flex-basis: calc(50% - 2rem);
+    
 
     .accountcss {
       display: flex;
@@ -34,6 +37,11 @@
     }
     @media (min-width: $small-screen) {
       flex-basis: calc(50% - 4rem);
+    }
+    @media (max-width: 424px) {
+      flex-basis: 20%;
+      display: flex;
+      align-items: center;
     }
 
     ul {
@@ -51,12 +59,12 @@
     svg {
       width: 192px;
     }
-    @media(max-width: 400px){
-      .logoImg{
-        width: 58px;
-        overflow: hidden;
-      }
-    }
+    // @media(max-width: 400px){
+    //   .logoImg{
+    //     width: 58px;
+    //     overflow: hidden;
+    //   }
+    // }
   }
   @media(max-width: 767px){
     &__center {
@@ -66,6 +74,11 @@
   @media(max-width: 480px){
     &__center {
     width: 45%;
+    }
+  }
+  @media(max-width: 424px){
+    &__center {
+    width: 65%;
     }
   }
   &__item {
@@ -110,6 +123,11 @@
       vertical-align: bottom;
     }
   }
+  @media(max-width:424px){
+    &__hamburger {
+      width: 50px;
+    }
+  }
 
   &__item,
   &__hamburger {
@@ -120,7 +138,7 @@
   }
 
   &__icon {
-    padding: 0 $spacer;
+    padding: 0 1rem;
     cursor: pointer;
 
     svg * {
@@ -135,6 +153,11 @@
 
     svg {
       vertical-align: bottom;
+    }
+  }
+  @media(max-width:424px){
+    &__icon {
+      padding: 0 0.5rem;
     }
   }
 
@@ -232,6 +255,11 @@
       vertical-align: bottom;
     }
   }
+  @media(max-width:414px){
+   .deskview {
+      display: none;
+    }
+  }
 
   &__nav-dropdown {
     padding: 0 1.5rem;
@@ -310,4 +338,25 @@
       }
     }
   }
+  .res-search{
+    display: none;
+  }
+  @media(max-width: 414px){
+    .res-search{
+      display: block;
+      width: 100%;
+    }
+  }
+  .menubar {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $gray-light;
+  }
 }
+@media(max-width:414px){
+  .main-menu {
+    height: auto !important;
+    flex-wrap: wrap;
+  }
+}
+

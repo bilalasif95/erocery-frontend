@@ -2,12 +2,12 @@ import { styled } from "@styles";
 
 export const Wrapper = styled.div`
   overflow: scroll;
-  width: 410px;
+  width: 100%;
+  min-width:320px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-
   box-shadow: 6px 0px 30px rgba(0, 0, 0, 0.15);
 `;
 export const Header = styled.div`
