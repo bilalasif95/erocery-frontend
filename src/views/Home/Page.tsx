@@ -1,6 +1,6 @@
 import "./scss/index.scss";
 
-import classNames from "classnames";
+// import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
@@ -16,8 +16,11 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-import noPhotoImg from "../../images/no-photo.svg";
+// import noPhotoImg from "../../images/no-photo.svg";
 import offerImg from "../../images/offerBanner.jpg";
+import arrowLink from "../../images/subcategories.svg";
+import catImg from "../../images/discover.svg";
+import ReactSVG from "react-svg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -75,13 +78,13 @@ const Page: React.FC<{
       <div
         className="home-page__heroImage"
       >
-        <img src={offerImg}/>
+        <img src={offerImg} />
       </div>
       {categoriesExist() && (
         <div className="home-page__categories">
           <div className="container categoriesContainer">
-            <h3>Shop by category</h3>
-            <div className="home-page__categories__list">
+            <h3>Categories</h3>
+            {/* <div className="home-page__categories__list">
               {categories.edges.map(({ node: category }) => (
                 <div key={category.id} className="categoryBoxes">
                   <Link
@@ -100,11 +103,34 @@ const Page: React.FC<{
                           category.backgroundImage
                             ? category.backgroundImage.url
                             : noPhotoImg
-                        })`,
+                          })`,
                       }}
                     >
                       <div className="catBg">
-                      <h4>{category.name}</h4>
+                        <h4>{category.name}</h4>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div> */}
+            <div className="home-page__categories__list">
+              {categories.edges.map(({ node: category }) => (
+                <div key={category.id} className="categoryBoxes">
+                  <Link
+                    to={generateCategoryUrl(category.id, category.name)}
+                    key={category.id}
+                  >
+                    <div className="cat-item">
+                      <div className="cat-img">
+                        <ReactSVG path={catImg} />
+                      </div>
+                      <div className="cat-detail">
+                        <h4>{category.name}</h4>
+                        <p>Lorem ipsum is the short-hand term for the most popular placeholder text in history.</p>
+                      </div>
+                      <div className="cat-detail-link">
+                        <ReactSVG path={arrowLink} />
                       </div>
                     </div>
                   </Link>
