@@ -25,22 +25,22 @@ export const SOCIAL_MEDIA = [
   {
     ariaLabel: "facebook",
     href: "https://www.facebook.com/Erocery-109977713975774/",
-    path: require("../images/facebook-icon.svg"),
+    path: require("../images/facebook.png"),
   },
   {
     ariaLabel: "instagram",
     href: "https://www.instagram.com/erocerypk",
-    path: require("../images/instagram-icon.svg"),
+    path: require("../images/instagram.png"),
   },
   {
     ariaLabel: "twitter",
     href: "https://twitter.com/rnssol",
-    path: require("../images/twitter-icon.svg"),
+    path: require("../images/twitter.png"),
   },
   {
     ariaLabel: "youtube",
     href: "https://www.youtube.com/c/RNSSolutions",
-    path: require("../images/youtube-icon.svg"),
+    path: require("../images/youtube.png"),
   },
 ];
 export const META_DEFAULTS = {

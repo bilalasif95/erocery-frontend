@@ -16,7 +16,7 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-// import noPhotoImg from "../../images/no-photo.svg";
+// import catNoImg from "../../images/catNoImg.jpg";
 import arrowLink from "../../images/catArrow.png";
 import catImg from "../../images/discover.svg";
 import offerImg from "../../images/offerBanner.jpg";

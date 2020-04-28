@@ -42,6 +42,11 @@ const Footer: React.FC = () => (
         </div>
         <div className="footer-item">
           <h4>Social Media</h4>
+          {/* <div className="social-media">
+          {SOCIAL_MEDIA.map(medium => (
+        <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
+      ))}
+          </div> */}
           <ul className="social-media">
             <li><a href="#" target="_blank"><img src={facebook} /></a></li>
             <li><a href="#" target="_blank"><img src={twitter} /></a></li>
@@ -52,10 +57,8 @@ const Footer: React.FC = () => (
       </div>
       <div className="footer__favicons">
         <p>Erocery.com 2020. All Rights Reserved.</p>
-        {/* <p>Copyright © 2020 Erocery</p> */}
-        {/* {SOCIAL_MEDIA.map(medium => (
-        <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
-      ))} */}
+        <p>Copyright © 2020 Erocery</p>
+       
       </div>
     </div>
     {/* <Nav /> */}
