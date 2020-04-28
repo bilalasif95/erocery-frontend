@@ -3,7 +3,7 @@ import "./scss/index.scss";
 // import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
-import ReactSVG from "react-svg";
+// import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
 import { ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
@@ -18,9 +18,12 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 import noPhotoImg from "../../images/no-photo.svg";
 import offerImg from "../../images/offerBanner.jpg";
-import arrowLink from "../../images/subcategories.svg";
+// import arrowLink from "../../images/subcategories.svg";
 // import catImg from "../../images/discover.svg";
 
+// import noPhotoImg from "../../images/no-photo.svg";
+import arrowLink from "../../images/catArrow.png";
+// import catImg from "../../images/discover.svg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -133,7 +136,7 @@ const Page: React.FC<{
                         <p>Lorem ipsum is the short-hand term for the most popular placeholder text in history.</p>
                       </div>
                       <div className="cat-detail-link">
-                        <ReactSVG path={arrowLink} />
+                        <img src={arrowLink} />
                       </div>
                     </div>
                   </Link>
