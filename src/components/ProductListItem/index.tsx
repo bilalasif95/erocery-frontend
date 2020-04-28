@@ -3,15 +3,15 @@ import "./scss/index.scss";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
 
-import { useUserDetails } from "@sdk/react";
+// import { useUserDetails } from "@sdk/react";
 
 import { Thumbnail } from "@components/molecules";
 
 import { TaxedMoney } from "../../@next/components/containers";
 import { BasicProductFields } from "../../views/Product/types/BasicProductFields";
 
-import { TypedCreateCheckoutMutation } from "../../checkout/queries";
-import { CartLine } from "../CartProvider/context";
+// import { TypedCreateCheckoutMutation } from "../../checkout/queries";
+// import { CartLine } from "../CartProvider/context";
 
 export interface Product extends BasicProductFields {
   category?: {
@@ -48,12 +48,12 @@ export interface Product extends BasicProductFields {
 
 interface ProductListItemProps {
   product: Product;
-  disabled: boolean;
-  lines: CartLine[];
-  onSubmit: () => void;
+  // disabled: boolean;
+  // lines: CartLine[];
+  // onSubmit: () => void;
 }
 
-const ProductListItem: React.FC<ProductListItemProps> = ({ product,disabled, lines, onSubmit }) => {
+const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const { category } = product;
   const price = product.pricing.priceRange.start;
   const priceUndiscounted = product.pricing.priceRangeUndiscounted.start;
@@ -78,7 +78,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product,disabled, lin
   //   console.log(product,"=======")
     // this.props.addToCart(product.variants, this.state.quantity);
   // };
-  const { data: user } = useUserDetails();
+  // const { data: user } = useUserDetails();
   return (
     <div className="product-list-item">
       <div className="product-list-item__image">
@@ -88,7 +88,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product,disabled, lin
       <p className="product-list-item__category">{category.name}</p>
       <div className="footerDiv">
       <p className="product-list-item__price">{getProductPrice()}</p>
-      {({ checkout, update, loading: checkoutLoading }) => (
+      {/* {({ checkout, update, loading: checkoutLoading }) => (
         <TypedCreateCheckoutMutation
           onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
             if (!errors.length) {
@@ -116,7 +116,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product,disabled, lin
             </button>
             )}
           </TypedCreateCheckoutMutation>
-          )}
+          )} */}
       </div>
     </div>
   );
