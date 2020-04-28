@@ -17,9 +17,10 @@ import {
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import noPhotoImg from "../../images/no-photo.svg";
-import offerImg from "../../images/offerBanner.jpg";
-import arrowLink from "../../images/subcategories.svg";
+import arrowLink from "../../images/catArrow.png";
 import catImg from "../../images/discover.svg";
+import offerImg from "../../images/offerBanner.jpg";
+
 import ReactSVG from "react-svg";
 
 const Page: React.FC<{
@@ -130,7 +131,7 @@ const Page: React.FC<{
                         <p>Lorem ipsum is the short-hand term for the most popular placeholder text in history.</p>
                       </div>
                       <div className="cat-detail-link">
-                        <ReactSVG path={arrowLink} />
+                        <img src={arrowLink} />
                       </div>
                     </div>
                   </Link>

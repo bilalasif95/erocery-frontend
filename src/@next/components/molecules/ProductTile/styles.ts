@@ -22,17 +22,44 @@ export const Wrapper = styled.div`
   ${media.mediumScreen`
     padding: 1.8rem;
   `}
+  ${media.smallScreen`
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e7e7e7 !important;
+`}
 `;
-
+export const DeskView = styled.div`
+  ${media.smallScreen`
+    display: none;
+  `}
+`;
+export const MobView = styled.div`
+display: none;
+  ${media.smallScreen`
+    display: flex;
+    justify-content: flex-start;
+  `}
+`;
+export const Details = styled.div`
+width: 80%;
+padding:0 0 0 0.5rem;
+`;
 export const Title = styled.h4`
   text-transform: uppercase;
   font-weight: normal;
   min-height: 40px;
   ${textProps}
+  ${media.smallScreen`
+  text-transform: capitalize;
+`}
 `;
 
 export const Price = styled.p`
   ${textProps}
+  ${media.smallScreen`
+  font-weight:600;
+`}
 `;
 
 export const Image = styled.div`
@@ -42,10 +69,16 @@ export const Image = styled.div`
   align-items: center;
   justify-content:center;
   max-width: 100%;
-
   > img {
     width: auto;
     height: auto;
     max-width: 100%;
   }
+  ${media.smallScreen`
+  width:20%;
+  height:auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`}
 `;

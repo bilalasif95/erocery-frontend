@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 // import { SocialMediaIcon } from "..";
 // import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
-import arrowLink from "../../images/subcategories.svg";
-import ReactSVG from "react-svg";
+
+// import ReactSVG from "react-svg";
 import easypaisa from "../../images/easypaisa.png";
-import jazzcash from "../../images/jazzcash.png";
 import facebook from "../../images/facebook.png";
+import arrowLink from "../../images/footerArrow.png";
+import instagram from "../../images/instagram.png";
+import jazzcash from "../../images/jazzcash.png";
 import twitter from "../../images/twitter.png";
-import linkedin from "../../images/linkedin.png";
 import youtube from "../../images/youtube.png";
 
 const Footer: React.FC = () => (
@@ -21,10 +22,10 @@ const Footer: React.FC = () => (
         <div className="footer-item">
           <h4>Help</h4>
           <ul className="quick-links">
-            <li><Link to="#"><ReactSVG path={arrowLink} /><span>How to order</span></Link></li>
-            <li><Link to="#"><ReactSVG path={arrowLink} /><span>Return & Refunds</span></Link></li>
-            <li><Link to="#"><ReactSVG path={arrowLink} /><span>Delivery</span></Link></li>
-            <li><Link to="#"><ReactSVG path={arrowLink} /><span>Terms & Conditions</span></Link></li>
+            <li><Link to="#"><img src={arrowLink} /><span>How to order</span></Link></li>
+            <li><Link to="#"><img src={arrowLink} /><span>Return & Refunds</span></Link></li>
+            <li><Link to="#"><img src={arrowLink} /><span>Delivery</span></Link></li>
+            <li><Link to="#"><img src={arrowLink} /><span>Terms & Conditions</span></Link></li>
           </ul>
         </div>
         <div className="footer-item">
@@ -44,7 +45,7 @@ const Footer: React.FC = () => (
           <ul className="social-media">
             <li><a href="#" target="_blank"><img src={facebook} /></a></li>
             <li><a href="#" target="_blank"><img src={twitter} /></a></li>
-            <li><a href="#" target="_blank"><img src={linkedin} /></a></li>
+            <li><a href="#" target="_blank"><img src={instagram} /></a></li>
             <li><a href="#" target="_blank"><img src={youtube} /></a></li>
           </ul>
         </div>
