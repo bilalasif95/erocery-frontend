@@ -3,7 +3,7 @@ import "./scss/index.scss";
 // import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
-
+// import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
 import { ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
@@ -16,12 +16,10 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-// import catNoImg from "../../images/catNoImg.jpg";
 import arrowLink from "../../images/catArrow.png";
-import catImg from "../../images/discover.svg";
-import offerImg from "../../images/offerBanner.jpg";
+import catNoImg from "../../images/catNoImg.jpg";
 
-import ReactSVG from "react-svg";
+import offerImg from "../../images/offerBanner.jpg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -124,7 +122,10 @@ const Page: React.FC<{
                   >
                     <div className="cat-item">
                       <div className="cat-img">
-                        <ReactSVG path={catImg} />
+                        <img src={category.backgroundImage
+                            ? category.backgroundImage.url
+                            : catNoImg}/>
+                        {/* <ReactSVG path={catImg} /> */}
                       </div>
                       <div className="cat-detail">
                         <h4>{category.name}</h4>

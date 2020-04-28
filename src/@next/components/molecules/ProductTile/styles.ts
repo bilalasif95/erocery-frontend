@@ -45,6 +45,12 @@ export const Details = styled.div`
 width: 80%;
 padding:0 0 0 0.5rem;
 `;
+export const Content = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+`;
 export const Title = styled.h4`
   text-transform: uppercase;
   font-weight: normal;
@@ -54,12 +60,29 @@ export const Title = styled.h4`
   text-transform: capitalize;
 `}
 `;
+export const Link = styled.div`
+width: 10%;
+`;
 
 export const Price = styled.p`
   ${textProps}
   ${media.smallScreen`
   font-weight:600;
+  margin: 0;
 `}
+`;
+export const AddCartBtn = styled.div`
+display: flex;
+justify-content: flex-end;
+background: #f4423c;
+text-align: center;
+align-items: center;
+color: #fff;
+border-radius: 5px;
+font-size: 12px;
+font-weight: 600;
+text-transform: uppercase;
+padding: 0.5rem;
 `;
 
 export const Image = styled.div`
@@ -80,5 +103,6 @@ export const Image = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin:0 0.5rem 0 0;
 `}
 `;
