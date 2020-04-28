@@ -34,7 +34,7 @@ export const ProductList: React.FC<IProps> = ({
           canLoadMore && (
             <Button
               data-cy="load-more_button"
-              color="secondary"
+              // color="secondary"
               onClick={onLoadMore}
             >
               More +

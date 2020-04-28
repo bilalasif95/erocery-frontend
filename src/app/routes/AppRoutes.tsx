@@ -6,6 +6,7 @@ import UserAccount, * as accountPaths from "../../userAccount/routes";
 import { OrderDetails } from "../../userAccount/views";
 import { Account, AccountConfirm } from "../../views/Account";
 import { ArticlePage } from "../../views/Article";
+// import OrderGuide from "../../views/OrderGuide";
 import { CartPage } from "../../views/Cart";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
@@ -39,6 +40,7 @@ export const Routes: React.FC = () => (
     <Route path={paths.paymentOptionsUrl} component={Account} />
     <Route path={paths.passwordResetUrl} component={PasswordReset} />
     <Route component={NotFound} />
+    {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
   </Switch>
 );
 
