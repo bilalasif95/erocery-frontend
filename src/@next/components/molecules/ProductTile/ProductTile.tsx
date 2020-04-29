@@ -42,7 +42,7 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
           <S.Price>
             <TaxedMoney taxedMoney={price} />
           </S.Price>
-          <S.AddCartBtn>Add To Cart</S.AddCartBtn>
+          {/* <S.AddCartBtn>Add To Cart</S.AddCartBtn> */}
           </S.Content>
         </S.Details>
       </S.MobView>
