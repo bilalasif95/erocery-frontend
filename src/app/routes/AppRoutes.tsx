@@ -10,6 +10,10 @@ import { ArticlePage } from "../../views/Article";
 import { CartPage } from "../../views/Cart";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
+import Delivery from "../../views/FooterPages/Delivery";
+import HowToOrder from "../../views/FooterPages/How-To-Order";
+import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
+import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
 import { HomePage } from "../../views/Home";
 import OrderConfirmation from "../../views/OrderConfirmation/View";
 import { ProductPage } from "../../views/Product";
@@ -39,6 +43,10 @@ export const Routes: React.FC = () => (
     <Route path={paths.addressBookUrl} component={Account} />
     <Route path={paths.paymentOptionsUrl} component={Account} />
     <Route path={paths.passwordResetUrl} component={PasswordReset} />
+    <Route path={paths.howToOrderUrl} component={HowToOrder} />
+    <Route path={paths.returnAndRefundsUrl} component={ReturnAndRefunds} />
+    <Route path={paths.deliveryUrl} component={Delivery} />
+    <Route path={paths.termsAndConditionsUrl} component={TermsAndConditions} />
     <Route component={NotFound} />
     {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
   </Switch>

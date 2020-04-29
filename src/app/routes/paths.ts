@@ -15,5 +15,9 @@ export const orderHistoryUrl = `${baseUrl}order-history/`;
 export const addressBookUrl = `${baseUrl}address-book/`;
 export const paymentOptionsUrl = `${baseUrl}payment-options/`;
 export const passwordResetUrl = `${baseUrl}reset-password/`;
+export const howToOrderUrl = `${baseUrl}how-to-order/`;
+export const returnAndRefundsUrl = `${baseUrl}return-and-refunds/`;
+export const deliveryUrl = `${baseUrl}delivery/`;
+export const termsAndConditionsUrl = `${baseUrl}terms-and-conditions/`;
 
 // export const orderGuideUrl = `/orderguide`;
