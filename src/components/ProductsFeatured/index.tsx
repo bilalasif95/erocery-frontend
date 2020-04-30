@@ -46,8 +46,7 @@ interface ProductDescriptionState {
   // variantPricingRange: {
   //   min: ITaxedMoney;
   //   max: ITaxedMoney;
-  // };
-}
+};
 
 class ProductsFeatured extends React.Component<ProductDescriptionProps,
 ProductDescriptionState> {
@@ -113,7 +112,7 @@ ProductDescriptionState> {
           return (
             <div className="products-featured">
               <div className="container featuredContainer">
-                <h3>FEATURED</h3>
+              <h3>FEATURED</h3>
                 {/* <Carousel>
                   {products.map(({ node: product }) => (
                     <Link
@@ -189,7 +188,6 @@ ProductDescriptionState> {
   );
 };
 }
-
 // ProductsFeatured.defaultProps = {
 //   title: "Featured",
 // };

@@ -18,14 +18,10 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-import noPhotoImg from "../../images/no-photo.svg";
-import offerImg from "../../images/offerBanner.jpg";
-// import arrowLink from "../../images/subcategories.svg";
-// import catImg from "../../images/discover.svg";
-
-// import noPhotoImg from "../../images/no-photo.svg";
 import arrowLink from "../../images/catArrow.png";
-// import catImg from "../../images/discover.svg";
+import catNoImg from "../../images/catNoImg.jpg";
+
+import offerImg from "../../images/offerBanner.jpg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -136,7 +132,7 @@ const Page: React.FC<{
                       <div className="cat-img">
                         <img src={category.backgroundImage
                             ? category.backgroundImage.url
-                            : noPhotoImg}></img>
+                            : catNoImg}/>
                         {/* <ReactSVG path={catImg} /> */}
                       </div>
                       <div className="cat-detail">

@@ -6,6 +6,10 @@ import { Thumbnail } from "@components/molecules";
 import * as S from "./styles";
 import { IProps } from "./types";
 
+// import AddToCartButton from "../ProductDescription/AddToCartButton";
+
+// import arrowLink from "../../images/catArrow.png";
+
 export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   const price =
     product.pricing &&
@@ -30,10 +34,16 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
           <Thumbnail source={product} />
         </S.Image>
         <S.Details>
+          <S.Content>
           <S.Title>{product.name}</S.Title>
+          {/* <S.Link><img src={arrowLink} /></S.Link> */}
+          </S.Content>
+          <S.Content>
           <S.Price>
             <TaxedMoney taxedMoney={price} />
           </S.Price>
+          {/* <S.AddCartBtn>Add To Cart</S.AddCartBtn> */}
+          </S.Content>
         </S.Details>
       </S.MobView>
     </S.Wrapper>
