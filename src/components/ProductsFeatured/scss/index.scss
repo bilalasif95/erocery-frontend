@@ -45,5 +45,14 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
+    .buyBtn{
+      background: #F43C3C;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-align: center;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
 }

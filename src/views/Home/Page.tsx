@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
+import { CartContext } from "../../components/CartProvider/context";
+
 import {
   ProductsList_categories,
   ProductsList_shop,
@@ -77,7 +79,13 @@ const Page: React.FC<{
           )}
         </div> */}
       </div>
-      <ProductsFeatured />
+      <CartContext.Consumer>
+        {cart => (
+          <ProductsFeatured
+            addToCart={cart.add}
+          />
+        )}
+      </CartContext.Consumer>
       <div
         className="home-page__heroImage"
       >
