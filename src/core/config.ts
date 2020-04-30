@@ -8,7 +8,7 @@ export const PROVIDERS = {
     label: "Braintree",
   },
   DUMMY: {
-    label: "Dummy",
+    label: "Cash On Delivery",
   },
   STRIPE: {
     href: "https://js.stripe.com/v3/",

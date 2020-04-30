@@ -55,6 +55,7 @@ export interface ProductsList_categories_edges_node {
    */
   id: string;
   name: string;
+  descriptionJson: string;
   backgroundImage: ProductsList_categories_edges_node_backgroundImage | null;
 }
 

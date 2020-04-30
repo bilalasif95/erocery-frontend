@@ -21,6 +21,7 @@ export const homePageQuery = gql`
         node {
           id
           name
+          descriptionJson
           backgroundImage {
             url
           }

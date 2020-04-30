@@ -137,7 +137,7 @@ const Page: React.FC<{
                       </div>
                       <div className="cat-detail">
                         <h4>{category.name}</h4>
-                        <p>Lorem ipsum is the short-hand term for the most popular placeholder text in history.</p>
+                        <p>{JSON.parse(category.descriptionJson).blocks[0].text}</p>
                       </div>
                       <div className="cat-detail-link">
                         <img src={arrowLink} />

@@ -125,7 +125,7 @@ ProductDescriptionState> {
                 </Carousel> */}
                 <div className="products-list">
                 {products.slice(0,8).map(({ node: product }) => (
-                  <>
+                  <div className="proItem">
                       <Link
                         to={generateProductUrl(product.id, product.name)}
                         key={product.id}
@@ -174,7 +174,7 @@ ProductDescriptionState> {
                           </CheckoutContext.Consumer>
                           )}
                           </CartContext.Consumer>
-                          </>
+                          </div>
                   ))}
                 </div>
               </div>
