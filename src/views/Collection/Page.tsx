@@ -4,9 +4,11 @@ import * as React from "react";
 
 import { IFilterAttributes, IFilters } from "@types";
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
 import { Breadcrumbs, ProductsFeatured } from "../../components";
 import { getDBIdFromGraphqlId, maybe } from "../../core/utils";
+
+import { CartContext } from "../../components/CartProvider/context";
 
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { Collection_collection, Collection_products } from "./types/Collection";
@@ -110,16 +112,27 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-          />
+           <CartContext.Consumer>
+            {cart => (
+              <ProductList
+                products={products.edges.map(edge => edge.node)}
+                canLoadMore={hasNextPage}
+                loading={displayLoader}
+                onLoadMore={onLoadMore}
+                addToCart={cart.add}
+              />
+            )}
+          </CartContext.Consumer>
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured />}
+      {!hasProducts && 
+      <CartContext.Consumer>
+      {cart => (
+        <ProductsFeatured addToCart={cart.add} />
+        )}
+      </CartContext.Consumer>
+      }
     </div>
   );
 };

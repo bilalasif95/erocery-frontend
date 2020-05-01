@@ -48,6 +48,10 @@ export const collectionProductsQuery = gql`
             id
             name
           }
+          variants{
+            id
+            name
+          }
         }
       }
       pageInfo {

@@ -38,6 +38,10 @@ export const categoryProductsQuery = gql`
             id
             name
           }
+          variants{
+            id
+            name
+          }
         }
       }
       pageInfo {

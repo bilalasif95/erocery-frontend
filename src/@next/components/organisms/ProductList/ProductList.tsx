@@ -1,41 +1,132 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { UserDetails_me } from "@sdk/queries/types/UserDetails";
+
 import { Button, Loader } from "@components/atoms";
 import { ProductTile } from "@components/molecules";
 
+// import {
+//   ProductDetails_product_variants_pricing,
+// } from "@sdk/queries/types/ProductDetails";
+
 import { generateProductUrl } from "../../../../core/utils";
 
-import * as S from "./styles";
-import { IProps } from "./types";
+import { CheckoutContext } from "../../../../checkout/context";
+import { TypedCreateCheckoutMutation } from "../../../../checkout/queries";
 
-export const ProductList: React.FC<IProps> = ({
-  products,
-  canLoadMore = false,
-  loading = false,
-  onLoadMore = () => null,
-}: IProps) => {
+import { CartContext,CartLine } from "../../../../components/CartProvider/context";
+
+import { Category_products } from "../../../../views/Category/types/Category";
+
+import AddToCartButton from "../../../../components/ProductDescription/AddToCartButton";
+
+import * as S from "./styles";
+// import { IProps } from "./types";
+
+interface ProductDescriptionProps {
+  products: Category_products;
+  canLoadMore: Boolean;
+  loading: Boolean;
+  user: UserDetails_me;
+  addToCart(varinatId: string, quantity?: number): void;
+  onLoadMore: () => void;
+}
+
+interface ProductDescriptionState {
+  quantity: number;
+  variant: string;
+  // variantStock: number;
+  // variantPricing: ProductDetails_product_variants_pricing;
+  // variantPricingRange: {
+  //   min: ITaxedMoney;
+  //   max: ITaxedMoney;
+};
+
+class ProductList extends React.Component<ProductDescriptionProps,
+ProductDescriptionState> {
+  constructor(props: ProductDescriptionProps) {
+    super(props);
+
+    this.state = {
+      quantity: 1,
+      variant: "",
+      // variantPricing: null,
+      // variantPricingRange: {
+      //   max: props.pricing.priceRange.stop,
+      //   min: props.pricing.priceRange.start,
+      // },
+      // variantStock: null,
+    };
+  }
+  handleSubmit = (id: string) => {
+    this.setState({variant: id})
+    this.props.addToCart(id , this.state.quantity);
+  };
+  canAddToCart = (lines: CartLine[]) => {
+    const { quantity } = this.state;
+    return quantity !== 0;
+  };
+  render() {
   return (
     <>
       <S.List>
-        {products.map(product => (
-          <Link
-            to={generateProductUrl(product.id, product.name)}
-            key={product.id}
-          >
-            <ProductTile product={product} />
-          </Link>
+        {this.props.products.map(product => (
+          <div className="proItem">
+            <Link
+              to={generateProductUrl(product.id, product.name)}
+              key={product.id}
+            >
+              <ProductTile product={product} />
+            </Link>
+            <CartContext.Consumer>
+                        {({ lines }) => (
+                      <CheckoutContext.Consumer>
+                      {({ checkout, update, loading: checkoutLoading }) => (
+                        <TypedCreateCheckoutMutation
+                          onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
+                            if (!errors.length) {
+                              await update({ checkout });
+                            }
+                            this.handleSubmit(product.variants[0].id);
+                          }}
+                        >
+                          {(createCheckout, { loading: mutationLoading }) => (
+                            <AddToCartButton className="buyBtn"
+                              onClick={() => {
+                                this.setState({variant: product.id})
+                                if (this.props.user && !checkout) {
+                                  createCheckout({
+                                    variables: {
+                                      checkoutInput: { phone: this.props.user.phone, lines },
+                                    },
+                                  });
+                                } else {
+                                  this.handleSubmit(product.variants[0].id);
+                                }
+                              }}
+                              disabled={!this.canAddToCart(lines) || mutationLoading || checkoutLoading}
+                            >
+                              Add to Cart
+                            </AddToCartButton>
+                            )}
+                          </TypedCreateCheckoutMutation>
+                          )}
+                          </CheckoutContext.Consumer>
+                          )}
+                          </CartContext.Consumer>
+          </div>
         ))}
       </S.List>
       <S.Loader>
-        {loading ? (
+        {this.props.loading ? (
           <Loader />
         ) : (
-          canLoadMore && (
+          this.props.canLoadMore && (
             <Button
               data-cy="load-more_button"
               // color="secondary"
-              onClick={onLoadMore}
+              onClick={this.props.onLoadMore}
             >
               More +
             </Button>
@@ -45,3 +136,5 @@ export const ProductList: React.FC<IProps> = ({
     </>
   );
 };
+}
+export default ProductList;

@@ -6,10 +6,12 @@ import { IFilterAttributes, IFilters } from "@types";
 import { DebounceChange, ProductsFeatured, TextField } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
 import { maybe } from "../../core/utils";
+
+import { CartContext } from "../../components/CartProvider/context";
 
 import { SearchProducts_products } from "./types/SearchProducts";
 
@@ -129,16 +131,27 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-          />
+          <CartContext.Consumer>
+            {cart => (
+              <ProductList
+                products={products.edges.map(edge => edge.node)}
+                canLoadMore={hasNextPage}
+                loading={displayLoader}
+                onLoadMore={onLoadMore}
+                addToCart={cart.add}
+              />
+            )}
+          </CartContext.Consumer>
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured />}
+      {!hasProducts && 
+      <CartContext.Consumer>
+      {cart => (
+        <ProductsFeatured addToCart={cart.add} />
+        )}
+      </CartContext.Consumer>
+      }
     </div>
   );
 };
