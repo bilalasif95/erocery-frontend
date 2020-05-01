@@ -25,12 +25,12 @@ import * as S from "./styles";
 // import { IProps } from "./types";
 
 interface ProductDescriptionProps {
+  onLoadMore: () => void;
   products: Category_products;
-  canLoadMore: Boolean;
-  loading: Boolean;
+  canLoadMore: boolean;
+  loading: boolean;
   user: UserDetails_me;
   addToCart(varinatId: string, quantity?: number): void;
-  onLoadMore: () => void;
 }
 
 interface ProductDescriptionState {

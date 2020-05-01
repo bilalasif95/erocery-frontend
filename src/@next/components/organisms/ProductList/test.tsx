@@ -3,7 +3,8 @@ import "jest-styled-components";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { ProductList } from ".";
+import ProductList from "./ProductList";
+
 import { PRODUCTS } from "./fixtures";
 
 describe("<ProductList />", () => {

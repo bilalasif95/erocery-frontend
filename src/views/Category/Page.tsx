@@ -10,8 +10,9 @@ import {
 } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
-import ProductList from "../../@next/components/organisms/ProductList/ProductList";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
 
 import { maybe } from "../../core/utils";
 

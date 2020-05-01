@@ -2,7 +2,8 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { ProductList } from ".";
+import ProductList  from "./ProductList";
+
 import { PRODUCTS } from "./fixtures";
 
 storiesOf("@components/organisms/ProductList", module)

@@ -4,7 +4,7 @@ import isEqual from "lodash/isEqual";
 import * as React from "react";
 
 import { TextField } from "@components/molecules";
-import { ProductVariantPicker } from "@components/organisms";
+// import { ProductVariantPicker } from "@components/organisms";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
@@ -104,32 +104,37 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    this.props.addToCart(this.state.variant, this.state.quantity);
+    this.props.addToCart(this.props.productVariants[0].id, this.state.quantity);
   };
 
   canAddToCart = (lines: CartLine[]) => {
-    const { variant, quantity, variantStock } = this.state;
-    const cartLine = lines.find(({ variantId }) => variantId === variant);
-    const syncedQuantityWithCart = cartLine
-      ? quantity + cartLine.quantity
-      : quantity;
-    return quantity !== 0 && variant && variantStock >= syncedQuantityWithCart;
+    const { quantity } = this.state;
+    // const cartLine = lines.find(({ variantId }) => variantId === variant);
+    // const syncedQuantityWithCart = cartLine
+    //   ? quantity + cartLine.quantity
+    //   : quantity;
+    return quantity !== 0;
   };
-
+  
   render() {
     const { name } = this.props;
     const { quantity } = this.state;
-
     return (
       <div className="product-description">
         <h3>{name}</h3>
         <h4>{this.getProductPrice()}</h4>
         <div className="product-description__variant-picker">
-          <ProductVariantPicker
+          {this.props.productVariants.length === 0 ? "" :
+          <TextField
+            label={this.props.productVariants && this.props.productVariants[0].attributes[0].attribute.name}
+            value={this.props.productVariants && this.props.productVariants[0].attributes[0].values[0].value}
+            readOnly
+          />}
+          {/* <ProductVariantPicker
             productVariants={this.props.productVariants}
             onChange={this.onVariantPickerChange}
-            selectSidebar={true}
-          />
+            // selectSidebar={true}
+          /> */}
         </div>
         <div className="product-description__quantity-input">
           <TextField
@@ -147,7 +152,7 @@ class ProductDescription extends React.Component<
             <AddToCart
               onSubmit={this.handleSubmit}
               lines={lines}
-              disabled={!this.canAddToCart(lines)}
+              disabled={!this.canAddToCart(lines) || this.props.productVariants.length === 0}
             />
           )}
         </CartContext.Consumer>
