@@ -47,27 +47,28 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               required
             />
           </div>
-          <TextField
-            label="Street Name"
-            type="address-line1"
-            name="streetAddress1"
-            autoComplete="address-line1"
-            required
-          />
+          <div className="address-form__grid">
+            <TextField
+              label="Address"
+              type="address-line1"
+              name="streetAddress1"
+              autoComplete="address-line1"
+              required
+            />
           {/* <TextField
             label="Company name (optional)"
             type="organization"
             name="companyName"
             autoComplete="organization"
           /> */}
-          <div className="address-form__grid address-form__grid--modal">
+          {/* <div className="address-form__grid">
             <TextField
               label="ZIP Code"
               type="postal-code"
               name="postalCode"
               autoComplete="postal-code"
               required
-            />
+            /> */}
             <TextField
               label="City"
               type="city"

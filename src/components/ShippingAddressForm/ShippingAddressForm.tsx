@@ -50,27 +50,27 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
             </div>
             <div className="address-form__grid">
               <TextField
-                label="Street Name"
+                label="Address"
                 type="address-line1"
                 name="streetAddress1"
                 autoComplete="address-line1"
                 required
               />
-              <TextField
+              {/* <TextField
                 label="Company name (optional)"
                 type="organization"
                 name="companyName"
                 autoComplete="organization"
-              />
-            </div>
-            <div className="address-form__grid address-form__grid--uneven">
+              /> */}
+            {/* </div> */}
+            {/* <div className="address-form__grid">
               <TextField
                 label="ZIP Code"
                 type="postal-code"
                 name="postalCode"
                 autoComplete="postal-code"
                 required
-              />
+              /> */}
               <TextField
                 label="City"
                 type="city"

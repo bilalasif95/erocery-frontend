@@ -17,7 +17,7 @@ import { TypedCreateCheckoutMutation } from "../../../../checkout/queries";
 
 import { CartContext,CartLine } from "../../../../components/CartProvider/context";
 
-import { Category_products } from "../../../../views/Category/types/Category";
+import { Category_products_edges_node } from "../../../../views/Category/types/Category";
 
 import AddToCartButton from "../../../../components/ProductDescription/AddToCartButton";
 
@@ -26,10 +26,10 @@ import * as S from "./styles";
 
 interface ProductDescriptionProps {
   onLoadMore: () => void;
-  products: Category_products;
+  products: Category_products_edges_node[];
   canLoadMore: boolean;
   loading: boolean;
-  user: UserDetails_me;
+  user: UserDetails_me | null;
   addToCart(varinatId: string, quantity?: number): void;
 }
 
@@ -80,41 +80,41 @@ ProductDescriptionState> {
               <ProductTile product={product} />
             </Link>
             <CartContext.Consumer>
-                        {({ lines }) => (
-                      <CheckoutContext.Consumer>
-                      {({ checkout, update, loading: checkoutLoading }) => (
-                        <TypedCreateCheckoutMutation
-                          onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
-                            if (!errors.length) {
-                              await update({ checkout });
-                            }
+              {({ lines }) => (
+                <CheckoutContext.Consumer>
+                  {({ checkout, update, loading: checkoutLoading }) => (
+                    <TypedCreateCheckoutMutation
+                      onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
+                        if (!errors.length) {
+                          await update({ checkout });
+                        }
+                        this.handleSubmit(product.variants[0].id);
+                      }}
+                    >
+                    {(createCheckout, { loading: mutationLoading }) => (
+                      <AddToCartButton className="buyBtn"
+                        onClick={() => {
+                          this.setState({variant: product.id})
+                          if (this.props.user && !checkout) {
+                            createCheckout({
+                              variables: {
+                                checkoutInput: { phone: this.props.user.phone, lines },
+                              },
+                            });
+                          } else {
                             this.handleSubmit(product.variants[0].id);
-                          }}
-                        >
-                          {(createCheckout, { loading: mutationLoading }) => (
-                            <AddToCartButton className="buyBtn"
-                              onClick={() => {
-                                this.setState({variant: product.id})
-                                if (this.props.user && !checkout) {
-                                  createCheckout({
-                                    variables: {
-                                      checkoutInput: { phone: this.props.user.phone, lines },
-                                    },
-                                  });
-                                } else {
-                                  this.handleSubmit(product.variants[0].id);
-                                }
-                              }}
-                              disabled={!this.canAddToCart(lines) || mutationLoading || checkoutLoading}
-                            >
-                              Add to Cart
-                            </AddToCartButton>
-                            )}
-                          </TypedCreateCheckoutMutation>
-                          )}
-                          </CheckoutContext.Consumer>
-                          )}
-                          </CartContext.Consumer>
+                          }
+                        }}
+                        disabled={!this.canAddToCart(lines) || mutationLoading || checkoutLoading}
+                      >
+                        Add to Cart
+                      </AddToCartButton>
+                    )}
+                    </TypedCreateCheckoutMutation>
+                  )}
+                </CheckoutContext.Consumer>
+              )}
+            </CartContext.Consumer>
           </div>
         ))}
       </S.List>

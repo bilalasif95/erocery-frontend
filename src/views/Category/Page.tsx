@@ -9,6 +9,10 @@ import {
   ProductsFeatured,
 } from "../../components";
 
+import {
+  useUserDetails
+} from "@sdk/react";
+
 import { ProductListHeader } from "../../@next/components/molecules";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
@@ -63,7 +67,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-
+  const {data: user} = useUserDetails();
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
       attributeSlug,
@@ -116,6 +120,7 @@ const Page: React.FC<PageProps> = ({
                 loading={displayLoader}
                 onLoadMore={onLoadMore}
                 addToCart={cart.add}
+                user={user}
               />
             )}
           </CartContext.Consumer>
@@ -125,7 +130,7 @@ const Page: React.FC<PageProps> = ({
       {!hasProducts && 
       <CartContext.Consumer>
       {cart => (
-        <ProductsFeatured addToCart={cart.add} />
+        <ProductsFeatured addToCart={cart.add} user={user} />
         )}
       </CartContext.Consumer>
       }

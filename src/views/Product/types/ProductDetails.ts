@@ -423,6 +423,16 @@ export interface ProductDetails_product_category_products_edges_node_category {
   name: string;
 }
 
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
+
 export interface ProductDetails_product_category_products_edges_node {
   __typename: "Product";
   /**
@@ -443,6 +453,7 @@ export interface ProductDetails_product_category_products_edges_node {
    */
   pricing: ProductDetails_product_category_products_edges_node_pricing | null;
   category: ProductDetails_product_category_products_edges_node_category | null;
+  variants: FeaturedProducts_shop_homepageCollection_products_edges_node_variants[];
 }
 
 export interface ProductDetails_product_category_products_edges {

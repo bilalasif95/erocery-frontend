@@ -26,7 +26,7 @@ import { TypedPaymentMethodCreateMutation } from "./queries";
 import "./scss/index.scss";
 import { createPayment, createPaymentVariables } from "./types/createPayment";
 
-import { CountryCode } from "types/globalTypes";
+// import { CountryCode } from "types/globalTypes";
 
 export interface ProviderProps {
   loading: boolean;
@@ -115,12 +115,12 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
             amount: totalPrice.gross.amount,
             billingAddress: {
               city: billingAddress.city,
-              country: billingAddress.country.code as CountryCode,
+              // country: billingAddress.country.code as CountryCode,
               countryArea: billingAddress.countryArea,
               firstName: billingAddress.firstName,
               lastName: billingAddress.lastName,
               phone: billingAddress.phone,
-              postalCode: billingAddress.postalCode,
+              // postalCode: billingAddress.postalCode,
               streetAddress1: billingAddress.streetAddress1,
               streetAddress2: billingAddress.streetAddress2,
             },

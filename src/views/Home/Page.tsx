@@ -3,6 +3,10 @@ import "./scss/index.scss";
 // import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
+
+import {
+  useUserDetails
+} from "@sdk/react";
 // import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
 import { ProductsFeatured } from "../../components";
@@ -29,6 +33,7 @@ const Page: React.FC<{
   backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
   shop: ProductsList_shop;
 }> = ({ loading, categories, backgroundImage, shop }) => {
+  const {data: user} = useUserDetails();
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
@@ -79,6 +84,7 @@ const Page: React.FC<{
         {cart => (
           <ProductsFeatured
             addToCart={cart.add}
+            user={user}
           />
         )}
       </CartContext.Consumer>

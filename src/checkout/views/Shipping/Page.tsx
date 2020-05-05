@@ -31,7 +31,7 @@ const computeCheckoutData = (
     firstName: data.firstName,
     lastName: data.lastName,
     phone: data.phone,
-    postalCode: data.postalCode,
+    // postalCode: data.postalCode,
     streetAddress1: data.streetAddress1,
     streetAddress2: data.streetAddress2,
   },

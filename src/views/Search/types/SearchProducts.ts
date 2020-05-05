@@ -221,6 +221,15 @@ export interface SearchProducts_products_edges_node_category {
   name: string;
 }
 
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface SearchProducts_products_edges_node {
   __typename: "Product";
   /**
@@ -241,6 +250,7 @@ export interface SearchProducts_products_edges_node {
    */
   thumbnail2x: SearchProducts_products_edges_node_thumbnail2x | null;
   category: SearchProducts_products_edges_node_category | null;
+  variants: FeaturedProducts_shop_homepageCollection_products_edges_node_variants[];
 }
 
 export interface SearchProducts_products_edges {

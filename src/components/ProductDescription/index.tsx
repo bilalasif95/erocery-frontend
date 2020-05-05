@@ -123,19 +123,20 @@ class ProductDescription extends React.Component<
       <div className="product-description">
         <h3>{name}</h3>
         <h4>{this.getProductPrice()}</h4>
-        <div className="product-description__variant-picker">
-          {this.props.productVariants.length === 0 ? "" :
-          <TextField
-            label={this.props.productVariants && this.props.productVariants[0].attributes[0].attribute.name}
-            value={this.props.productVariants && this.props.productVariants[0].attributes[0].values[0].value}
-            readOnly
-          />}
-          {/* <ProductVariantPicker
-            productVariants={this.props.productVariants}
-            onChange={this.onVariantPickerChange}
-            // selectSidebar={true}
-          /> */}
-        </div>
+        {this.props.productVariants.length === 0 || this.props.productVariants[0].attributes.length === 0 ? "" :
+          <div className="product-description__variant-picker">
+            <TextField
+              label={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].attribute.name}
+              value={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].values[0].value}
+              readOnly
+            />
+            {/* <ProductVariantPicker
+              productVariants={this.props.productVariants}
+              onChange={this.onVariantPickerChange}
+              // selectSidebar={true}
+            /> */}
+          </div>
+        }
         <div className="product-description__quantity-input">
           <TextField
             type="number"

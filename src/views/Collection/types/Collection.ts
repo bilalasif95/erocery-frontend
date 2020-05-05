@@ -242,6 +242,15 @@ export interface Collection_products_edges_node_category {
   name: string;
 }
 
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+}
+
 export interface Collection_products_edges_node {
   __typename: "Product";
   /**
@@ -262,6 +271,7 @@ export interface Collection_products_edges_node {
    */
   pricing: Collection_products_edges_node_pricing | null;
   category: Collection_products_edges_node_category | null;
+  variants: FeaturedProducts_shop_homepageCollection_products_edges_node_variants[];
 }
 
 export interface Collection_products_edges {

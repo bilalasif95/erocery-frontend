@@ -6,8 +6,8 @@ import { UserDetails_me } from "@sdk/queries/types/UserDetails";
 // import { ProductVariantPicker } from "@components/organisms";
 
 import {
-  ProductDetails_product_pricing,
-  ProductDetails_product_variants,
+  // ProductDetails_product_pricing,
+  // ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from "@sdk/queries/types/ProductDetails";
 // import { IProductVariantsAttributesSelectedValues } from "@types";
@@ -29,13 +29,13 @@ import "./scss/index.scss";
 //   title?: string;
 // }
 interface ProductDescriptionProps {
-  productId: string;
-  productVariants: ProductDetails_product_variants[];
+  // productId: string;
+  // productVariants: ProductDetails_product_variants[];
   user: UserDetails_me;
-  name: string;
-  pricing: ProductDetails_product_pricing;
+  // name: string;
+  // pricing: ProductDetails_product_pricing;
   addToCart(varinatId: string, quantity?: number): void;
-  setVariantId(variantId: string);
+  // setVariantId(variantId: string);
 }
 
 interface ProductDescriptionState {
