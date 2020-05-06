@@ -67,9 +67,9 @@ const VerifyCodeForm: React.FC<IVerifyCodeForm> = ({ hide, phone,password }) => 
       >
         <TextField
           name="smsCode"
-          autoComplete="smsCode"
+          autoComplete="tel"
           label="Enter Verification Code"
-          type="number"
+          type="tel"
           required
         />
         <div className="login-form__button displayflex">

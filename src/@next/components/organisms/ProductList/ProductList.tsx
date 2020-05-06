@@ -63,9 +63,9 @@ ProductDescriptionState> {
     this.setState({variant: id})
     this.props.addToCart(id , this.state.quantity);
   };
-  canAddToCart = (lines: CartLine[]) => {
+  canAddToCart = (lines: CartLine[],product) => {
     const { quantity } = this.state;
-    return quantity !== 0;
+    return quantity !== 0 && product.variants[0].stockQuantity !==0;
   };
   render() {
   return (
@@ -105,7 +105,7 @@ ProductDescriptionState> {
                             this.handleSubmit(product.variants[0].id);
                           }
                         }}
-                        disabled={!this.canAddToCart(lines) || mutationLoading || checkoutLoading}
+                        disabled={!this.canAddToCart(lines,product) || mutationLoading || checkoutLoading}
                       >
                         Add to Cart
                       </AddToCartButton>

@@ -97,9 +97,9 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
       >
         <TextField
           name="smsCode"
-          autoComplete="smsCode"
+          autoComplete="tel"
           label="Enter Verification Code"
-          type="number"
+          type="tel"
           required
         />
         <div className="login-form__button displayflex">
@@ -147,10 +147,9 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           >
             <TextField
               name="phone"
-              autoComplete="phone"
+              autoComplete="tel"
               label="Enter Phone Number"
-              minLength={13}
-              type="number"
+              type="tel"
               required
             />
             {passwordType ? (

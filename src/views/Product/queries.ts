@@ -34,6 +34,7 @@ export const basicProductFragment = gql`
     variants{
       id
       name
+      stockQuantity
     }
   }
 `;
@@ -142,6 +143,7 @@ export const productDetailsQuery = gql`
         ...SelectedAttributeFields
       }
       variants {
+        stockQuantity
         ...ProductVariantFields
       }
       seoDescription

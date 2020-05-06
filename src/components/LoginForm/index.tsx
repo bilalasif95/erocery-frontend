@@ -51,10 +51,9 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
       >
         <TextField
           name="phone"
-          autoComplete="phone"
+          autoComplete="tel"
           label="Enter Phone Number"
-          type="number"
-          minLength={13}
+          type="tel"
           required
         />
         {passwordType ? (

@@ -52,7 +52,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
     {!message ?
     <div className="password-reset-form">
     <p>
-      Please provide us your phone number, code sent on your phone number and new password so we can reset
+      Please provide us code sent on your phone number and new password so we can reset
       your password
     </p>
     <TypedVerifyPasswordResetMutation>
@@ -82,9 +82,9 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           >
             <TextField
               name="smsCode"
-              autoComplete="smsCode"
+              autoComplete="tel"
               label="Enter SMS Code"
-              type="number"
+              type="tel"
               required
             />
             {passwordType ? (
@@ -172,9 +172,9 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           >
             <TextField
               name="phone"
-              autoComplete="phone"
+              autoComplete="tel"
               label="Phone Number"
-              type="number"
+              type="tel"
               required
             />
             <div className="password-reset-form__button">

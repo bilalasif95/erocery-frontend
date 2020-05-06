@@ -113,7 +113,7 @@ class ProductDescription extends React.Component<
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
-    return quantity !== 0;
+    return quantity !== 0 && (this.props.productVariants && this.props.productVariants[0].stockQuantity !==0);
   };
   
   render() {

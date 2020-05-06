@@ -97,7 +97,7 @@ ProductDescriptionState> {
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
-    return quantity !== 0;
+    return quantity !== 0 && product.variants[0].stockQuantity !==0;
   };
   render() {
   return (

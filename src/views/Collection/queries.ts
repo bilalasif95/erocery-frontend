@@ -51,6 +51,7 @@ export const collectionProductsQuery = gql`
           variants{
             id
             name
+            stockQuantity
           }
         }
       }

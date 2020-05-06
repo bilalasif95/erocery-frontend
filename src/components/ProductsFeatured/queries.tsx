@@ -26,6 +26,7 @@ export const featuredProducts = gql`
               variants{
                 id
                 name
+                stockQuantity
               }
             }
           }

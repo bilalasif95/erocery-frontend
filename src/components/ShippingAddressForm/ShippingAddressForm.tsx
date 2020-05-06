@@ -90,7 +90,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 label="Phone number"
                 type="tel"
                 name="phone"
-                autoComplete="phone"
+                autoComplete="tel"
                 required
               />
               {/* <Select

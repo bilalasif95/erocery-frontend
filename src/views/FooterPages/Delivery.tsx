@@ -9,7 +9,7 @@ const Delivery: React.FC = () => (
     </div><br />
     <h4><b>Delivery time:</b></h4><br/>
     <p>
-    Team Erocery aims to dispatch and deliver your orders within 24 working hours (9 am- 6 pm) once the order is confirmed.<br/><br/>
+    Team Erocery aims to dispatch and deliver your orders within 3 working hours once the order is confirmed.<br/><br/>
     Once your order is confirmed you will receive a message and an email with your order details for confirmation. We request you to be available on the provided contact number so our team can reach you.<br/><br/>
     Due to the current lock down situation, delivery time may be affected.<br/><br/>
     Orders received on weekends and on Pakistan's National Holidays will be processed and shipped on the next working day.<br/><br/>
