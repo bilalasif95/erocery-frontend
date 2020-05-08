@@ -1,7 +1,10 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .homePage {
-  padding: 2rem;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1140px;
+  width: 100%;
   h4 {
     font-weight: 600;
   }

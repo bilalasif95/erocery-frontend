@@ -6,13 +6,13 @@ import ReactSVG from "react-svg";
 import { SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
+import payment_methods from "../../images/payment-method.jpg";
 
-
-import easypaisa from "../../images/easypaisa.png";
+// import easypaisa from "../../images/easypaisa.png";
 // import facebook from "../../images/facebook.png";
 
 // import instagram from "../../images/instagram.png";
-import jazzcash from "../../images/jazzcash.png";
+// import jazzcash from "../../images/jazzcash.png";
 import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
@@ -33,13 +33,14 @@ const Footer: React.FC = () => (
         <div className="footer-item">
           <h4>Payment Methods</h4>
           <ul className="pay-method">
-            <li>
+            {/* <li>
               <div className="cash-delivery">
                 Cash Delivery
               </div>
             </li>
             <li><img src={easypaisa} /></li>
-            <li><img src={jazzcash} /></li>
+            <li><img src={jazzcash} /></li> */}
+            <li><img src={payment_methods} /></li>
           </ul>
         </div>
         <div className="footer-item">
@@ -49,13 +50,13 @@ const Footer: React.FC = () => (
               <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
             ))}
           </div>
-          <ul className="social-media">
+          {/* <ul className="social-media">
             {SOCIAL_MEDIA.map(medium => (
               <li>
                 <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
               </li>
             ))}
-          </ul>
+          </ul> */}
           {/* <ul className="social-media">
             <li><a href="https://www.facebook.com/Erocery-109977713975774/" target="_blank"><img src={facebook} /></a></li>
             <li><a href="https://twitter.com/rnssol" target="_blank"><img src={twitter} /></a></li>

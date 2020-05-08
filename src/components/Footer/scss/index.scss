@@ -49,9 +49,9 @@
     margin: 0 1rem 1rem 0;
     border-radius: 3px;
     overflow: hidden;
-    background: #fff;
-    width: 115px;
-    height: 60px;
+    // background: #fff;
+    // width: 115px;
+    // height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,6 +84,10 @@
     }
   }
 }
+.social-icon svg *{
+  fill: #fff;
+}
+
 @media(max-width:800px){
   .footer-list {
     flex-wrap: wrap;
