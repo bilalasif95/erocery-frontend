@@ -3,19 +3,19 @@ import "./scss/index.scss";
 import * as React from "react";
 import { Link } from "react-router-dom";
 // import ReactSVG from "react-svg";
-// import { SocialMediaIcon } from "..";
-// import { SOCIAL_MEDIA } from "../../core/config";
+import { SocialMediaIcon } from "..";
+import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
 
 
 import easypaisa from "../../images/easypaisa.png";
-import facebook from "../../images/facebook.png";
+// import facebook from "../../images/facebook.png";
 import arrowLink from "../../images/footerArrow.png";
-import instagram from "../../images/instagram.png";
+// import instagram from "../../images/instagram.png";
 import jazzcash from "../../images/jazzcash.png";
 
-import twitter from "../../images/twitter.png";
-import youtube from "../../images/youtube.png";
+// import twitter from "../../images/twitter.png";
+// import youtube from "../../images/youtube.png";
 
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
@@ -44,17 +44,19 @@ const Footer: React.FC = () => (
         </div>
         <div className="footer-item">
           <h4>Social Media</h4>
-          {/* <div className="social-media">
-          {SOCIAL_MEDIA.map(medium => (
-        <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
-      ))}
-          </div> */}
           <ul className="social-media">
+            {SOCIAL_MEDIA.map(medium => (
+              <li>
+                <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
+              </li>
+            ))}
+          </ul>
+          {/* <ul className="social-media">
             <li><a href="https://www.facebook.com/Erocery-109977713975774/" target="_blank"><img src={facebook} /></a></li>
             <li><a href="https://twitter.com/rnssol" target="_blank"><img src={twitter} /></a></li>
             <li><a href="https://www.instagram.com/erocerypk" target="_blank"><img src={instagram} /></a></li>
             <li><a href="https://www.youtube.com/c/RNSSolutions" target="_blank"><img src={youtube} /></a></li>
-          </ul>
+          </ul> */}
         </div>
       </div>
       <div className="footer__favicons">
