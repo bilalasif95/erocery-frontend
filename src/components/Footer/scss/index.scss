@@ -22,8 +22,11 @@
   ul{
     padding: 0;
   }
-  img{
+  svg{
     margin: 0 0.5rem 0 0;
+  }
+  path {
+    fill: #fff !important;
   }
   li{
     margin: 0 0 1rem;
