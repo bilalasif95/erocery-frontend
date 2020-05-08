@@ -2,7 +2,7 @@ import "./scss/index.scss";
 
 import * as React from "react";
 import { Link } from "react-router-dom";
-// import ReactSVG from "react-svg";
+import ReactSVG from "react-svg";
 import { SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
@@ -10,10 +10,10 @@ import { SOCIAL_MEDIA } from "../../core/config";
 
 import easypaisa from "../../images/easypaisa.png";
 // import facebook from "../../images/facebook.png";
-import arrowLink from "../../images/footerArrow.png";
+
 // import instagram from "../../images/instagram.png";
 import jazzcash from "../../images/jazzcash.png";
-
+import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
 
@@ -24,10 +24,10 @@ const Footer: React.FC = () => (
         <div className="footer-item">
           <h4>Help</h4>
           <ul className="quick-links">
-            <li><Link to="/how-to-order"><img src={arrowLink} /><span>How to order?</span></Link></li>
-            <li><Link to="/return-and-refunds"><img src={arrowLink} /><span>Return & Refund</span></Link></li>
-            <li><Link to="/delivery"><img src={arrowLink} /><span>Delivery</span></Link></li>
-            <li><Link to="/terms-and-conditions"><img src={arrowLink} /><span>Terms & Conditions</span></Link></li>
+            <li><Link to="/how-to-order"><ReactSVG path={listIcon} /><span>How to order?</span></Link></li>
+            <li><Link to="/return-and-refunds"><ReactSVG path={listIcon} /><span>Return & Refund</span></Link></li>
+            <li><Link to="/delivery"><ReactSVG path={listIcon} /><span>Delivery</span></Link></li>
+            <li><Link to="/terms-and-conditions"><ReactSVG path={listIcon} /><span>Terms & Conditions</span></Link></li>
           </ul>
         </div>
         <div className="footer-item">
@@ -44,6 +44,11 @@ const Footer: React.FC = () => (
         </div>
         <div className="footer-item">
           <h4>Social Media</h4>
+          <div className="social-media">
+            {SOCIAL_MEDIA.map(medium => (
+              <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
+            ))}
+          </div>
           <ul className="social-media">
             {SOCIAL_MEDIA.map(medium => (
               <li>
@@ -62,7 +67,7 @@ const Footer: React.FC = () => (
       <div className="footer__favicons">
         <p>Erocery.com 2020. All Rights Reserved.</p>
         {/* <p>Copyright © 2020 Erocery</p> */}
-       
+
       </div>
     </div>
     {/* <Nav /> */}

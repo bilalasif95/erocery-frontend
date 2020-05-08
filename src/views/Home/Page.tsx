@@ -22,8 +22,7 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-import arrowLink from "../../images/catArrow.png";
-import catNoImg from "../../images/catNoImg.jpg";
+// import catNoImg from "../../images/catNoImg.jpg";
 
 import offerImg from "../../images/offerBanner.jpg";
 
@@ -136,17 +135,24 @@ const Page: React.FC<{
                   >
                     <div className="cat-item">
                       <div className="cat-img">
-                        <img src={category.backgroundImage
+                        {/* <img src={category.backgroundImage
                             ? category.backgroundImage.url
-                            : catNoImg}/>
+                            : catNoImg}/> */}
                         {/* <ReactSVG path={catImg} /> */}
+                        {category.backgroundImage
+                            ? <img src={category.backgroundImage.url}/> :
+                          <div className="noCatImg">
+                            <p>Photo Unavailable</p>
+                            </div>
+                           }
                       </div>
                       <div className="cat-detail">
                         <h4>{category.name}</h4>
                         <p>{JSON.parse(category.descriptionJson).blocks[0].text}</p>
                       </div>
                       <div className="cat-detail-link">
-                        <img src={arrowLink} />
+                        <span className="colored"/>
+                        <span className="trans"/>
                       </div>
                     </div>
                   </Link>

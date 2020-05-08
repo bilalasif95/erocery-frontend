@@ -92,6 +92,7 @@ export const Image = styled.div`
   align-items: center;
   justify-content:center;
   max-width: 100%;
+  overflow: hidden;
   > img {
     width: auto;
     height: auto;
