@@ -3,10 +3,10 @@ import "../globalStyles/scss/index.scss";
 import React from "react";
 import { RouteComponentProps } from "react-router";
 
-import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
-import { isPath } from "../core/utils";
+// import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
+// import { isPath } from "../core/utils";
 import {
-  orderConfirmationUrl,
+  // orderConfirmationUrl,
   Routes,
 } from "./routes";
 
@@ -15,17 +15,17 @@ const App: React.FC<RouteComponentProps> = ({
     location: { pathname },
   },
 }) => {
-  const orderConfirmationPage = isPath(pathname, orderConfirmationUrl);
+  // const orderConfirmationPage = isPath(pathname, orderConfirmationUrl);
 
   return (
     <>
-      <MetaConsumer />
+      {/* <MetaConsumer />
       <header>
         <MainMenu />
-      </header>
+      </header> */}
       <Routes />
-      {!orderConfirmationPage && <Footer />}
-      <OverlayManager />
+      {/* {!orderConfirmationPage && <Footer />}
+      <OverlayManager /> */}
     </>
   );
 };
