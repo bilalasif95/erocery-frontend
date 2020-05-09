@@ -98,6 +98,10 @@ module.exports = ({ sourceDir, distDir }) => ({
       exclude: "node_modules",
       async: false,
     }),
+
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production"),
+    }),
     // PWA plugins
     new WebappWebpackPlugin({
       logo: `${sourceDir}/images/favicon-32x32.png`,
