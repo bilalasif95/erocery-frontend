@@ -4,9 +4,7 @@ import "./scss/index.scss";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  useUserDetails
-} from "@sdk/react";
+import { useUserDetails } from "@sdk/react";
 // import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
 import { ProductsFeatured } from "../../components";
@@ -23,7 +21,7 @@ import {
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import catNoImg from "../../images/catNoImg.jpg";
-
+import bannerimg from "../../images/homeBanner.jpg";
 import offerImg from "../../images/offerBanner.jpg";
 
 const Page: React.FC<{
@@ -32,7 +30,7 @@ const Page: React.FC<{
   backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
   shop: ProductsList_shop;
 }> = ({ loading, categories, backgroundImage, shop }) => {
-  const {data: user} = useUserDetails();
+  const { data: user } = useUserDetails();
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
@@ -44,11 +42,7 @@ const Page: React.FC<{
       </script>
       <div
         className="home-page__hero"
-        style={
-          backgroundImage
-            ? { backgroundImage: `url(${backgroundImage.url})` }
-            : null
-        }
+        style={{ backgroundImage: `url(${bannerimg})` }}
       >
         {/* <div className="home-page__hero-text">
           <div>
@@ -80,16 +74,9 @@ const Page: React.FC<{
         </div> */}
       </div>
       <CartContext.Consumer>
-        {cart => (
-          <ProductsFeatured
-            addToCart={cart.add}
-            user={user}
-          />
-        )}
+        {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
-      <div
-        className="home-page__heroImage"
-      >
+      <div className="home-page__heroImage">
         <img src={offerImg} />
       </div>
       {categoriesExist() && (
@@ -139,20 +126,23 @@ const Page: React.FC<{
                             ? category.backgroundImage.url
                             : catNoImg}/> */}
                         {/* <ReactSVG path={catImg} /> */}
-                        {category.backgroundImage
-                            ? <img src={category.backgroundImage.url}/> :
+                        {category.backgroundImage ? (
+                          <img src={category.backgroundImage.url} />
+                        ) : (
                           <div className="noCatImg">
                             <p>Photo Unavailable</p>
-                            </div>
-                           }
+                          </div>
+                        )}
                       </div>
                       <div className="cat-detail">
                         <h4>{category.name}</h4>
-                        <p>{JSON.parse(category.descriptionJson).blocks[0].text}</p>
+                        <p>
+                          {JSON.parse(category.descriptionJson).blocks[0].text}
+                        </p>
                       </div>
                       <div className="cat-detail-link">
-                        <span className="colored"/>
-                        <span className="trans"/>
+                        <span className="colored" />
+                        <span className="trans" />
                       </div>
                     </div>
                   </Link>
