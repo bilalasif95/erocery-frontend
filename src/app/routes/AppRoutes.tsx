@@ -10,12 +10,12 @@ import { Account, AccountConfirm } from "../../views/Account";
 // import { CartPage } from "../../views/Cart";
 // import { CategoryPage } from "../../views/Category";
 // import { CollectionPage } from "../../views/Collection";
-import Delivery from "../../views/FooterPages/Delivery";
-import HowToOrder from "../../views/FooterPages/How-To-Order";
-import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
-import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
+// import Delivery from "../../views/FooterPages/Delivery";
+// import HowToOrder from "../../views/FooterPages/How-To-Order";
+// import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
+// import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
 // import { HomePage } from "../../views/Home";
-import OrderConfirmation from "../../views/OrderConfirmation/View";
+// import OrderConfirmation from "../../views/OrderConfirmation/View";
 // import { ProductPage } from "../../views/Product";
 // import { SearchPage } from "../../views/Search";
 
@@ -66,6 +66,20 @@ const SearchPage = React.lazy(() =>
   import("../../views/Search").then(({ SearchPage }) => ({
     default: SearchPage,
   }))
+);
+
+const Delivery = React.lazy(() => import("../../views/FooterPages/Delivery"));
+const HowToOrder = React.lazy(() =>
+  import("../../views/FooterPages/How-To-Order")
+);
+const ReturnAndRefunds = React.lazy(() =>
+  import("../../views/FooterPages/Return-And-Refunds")
+);
+const TermsAndConditions = React.lazy(() =>
+  import("../../views/FooterPages/Terms-And-Conditions")
+);
+const OrderConfirmation = React.lazy(() =>
+  import("../../views/OrderConfirmation/View")
 );
 
 export const Routes: React.FC = () => (
