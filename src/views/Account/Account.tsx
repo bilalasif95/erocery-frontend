@@ -11,7 +11,7 @@ import "./scss/index.scss";
 import {
   accountUrl,
   addressBookUrl,
-  baseUrl,
+  homeUrl,
   orderHistoryUrl,
   paymentOptionsUrl,
 } from "../../app/routes";
@@ -54,7 +54,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   }
 
   if (!user) {
-    history.push(baseUrl);
+    history.push(homeUrl);
   }
 
   return (

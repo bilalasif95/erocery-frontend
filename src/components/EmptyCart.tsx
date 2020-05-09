@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { baseUrl } from "../app/routes";
+import { homeUrl } from "../app/routes";
 import Button from "./Button";
 
 const EmptyCart: React.FC<{}> = () => (
@@ -12,7 +12,7 @@ const EmptyCart: React.FC<{}> = () => (
       in our store
     </p>
     <div className="cart-page__empty__action">
-      <Link to={baseUrl}>
+      <Link to={homeUrl}>
         <Button>Continue Shopping</Button>
       </Link>
     </div>

@@ -10,11 +10,12 @@ import { ArticlePage } from "../../views/Article";
 import { CartPage } from "../../views/Cart";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
+import Base from "../../views/FooterPages/Base";
 import Delivery from "../../views/FooterPages/Delivery";
 import HowToOrder from "../../views/FooterPages/How-To-Order";
 import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
 import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
-// import { HomePage } from "../../views/Home";
+import { HomePage } from "../../views/Home";
 import OrderConfirmation from "../../views/OrderConfirmation/View";
 import { ProductPage } from "../../views/Product";
 import { SearchPage } from "../../views/Search";
@@ -25,7 +26,8 @@ import * as paths from "./paths";
 
 export const Routes: React.FC = () => (
   <Switch>
-    <Route exact path={paths.baseUrl} component={HowToOrder} />
+    <Route exact path={paths.baseUrl} component={Base} />
+    <Route exact path={paths.homeUrl} component={HomePage} />
     <Route path={paths.searchUrl} component={SearchPage} />
     <Route path={paths.categoryUrl} component={CategoryPage} />
     <Route path={paths.collectionUrl} component={CollectionPage} />

@@ -4,7 +4,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
-import { baseUrl } from "../../app/routes";
+import { homeUrl } from "../../app/routes";
 import NavItem, { INavItem } from "./NavItem";
 
 import backImg from "../../images/arrow-back.svg";
@@ -73,7 +73,7 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
           <>
             <li className="side-nav__menu-item side-nav__menu-item--parent">
               <Link
-                to={baseUrl}
+                to={homeUrl}
                 className="side-nav__menu-item-logo"
                 onClick={hideOverlay}
               >
@@ -87,7 +87,7 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
             </li>
             <li className="side-nav__menu-item">
               <Link
-                to={baseUrl}
+                to={homeUrl}
                 className="side-nav__menu-item-link"
                 onClick={hideOverlay}
               >

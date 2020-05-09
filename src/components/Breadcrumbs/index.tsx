@@ -6,7 +6,7 @@ import * as React from "react";
 import Media from "react-media";
 import { Link } from "react-router-dom";
 
-import { baseUrl } from "../../app/routes";
+import { homeUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
 import { Category_category } from "../../views/Category/types/Category";
 
@@ -51,7 +51,7 @@ const Breadcrumbs: React.FC<{
       matches ? (
         <ul className="breadcrumbs">
           <li>
-            <Link to={baseUrl}>Home</Link>
+            <Link to={homeUrl}>Home</Link>
           </li>
           {breadcrumbs.map((breadcrumb, index) => (
             <li
