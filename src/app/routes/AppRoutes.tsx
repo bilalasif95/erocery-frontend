@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import { CheckoutLogin, NotFound } from "../../components";
@@ -70,7 +69,7 @@ const SearchPage = React.lazy(() =>
 );
 
 export const Routes: React.FC = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <React.Suspense fallback={<div>Loading...</div>}>
     <Switch>
       <Route exact path={paths.baseUrl} component={HomePage} />
       <Route path={paths.searchUrl} component={SearchPage} />
@@ -100,7 +99,7 @@ export const Routes: React.FC = () => (
       <Route component={NotFound} />
       {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
     </Switch>
-  </Suspense>
+  </React.Suspense>
 );
 
 export default Routes;
