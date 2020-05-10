@@ -9,12 +9,9 @@ import Button from "../../components/Button";
 
 const Base: React.FC = () => (
   <div className="homePage">
-    <div className="mainHeading">
-    </div><br />
+    <br />
     <Link to={homeUrl}>
-    <Button>
-      Continue Shopping
-    </Button>
+      <Button>Continue Shopping</Button>
     </Link>
   </div>
 );
