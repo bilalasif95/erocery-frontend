@@ -1,4 +1,5 @@
-import { isEqual, pullAllBy } from "lodash";
+import isEqual from "lodash/isEqual";
+import pullAllBy from "lodash/pullAllBy";
 import * as React from "react";
 
 import { ApolloClient } from "apollo-client";

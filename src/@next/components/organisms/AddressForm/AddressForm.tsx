@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { pick } from "lodash";
+import pick from "lodash/pick";
 import React from "react";
 
 import { IAddress } from "@types";

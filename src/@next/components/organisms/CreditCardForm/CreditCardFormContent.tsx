@@ -1,4 +1,4 @@
-import { compact } from "lodash";
+import compact from "lodash/compact";
 import React, { useCallback } from "react";
 import NumberFormat from "react-number-format";
 

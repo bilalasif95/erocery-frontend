@@ -1,4 +1,7 @@
-import { each, isEqual, omit, uniqWith } from "lodash";
+import each from "lodash/each";
+import isEqual from "lodash/isEqual";
+import omit from "lodash/omit";
+import uniqWith from "lodash/uniqWith";
 import { maybe } from "../../../core/utils";
 import { IInitialUserAddressesArgs } from "../../types";
 

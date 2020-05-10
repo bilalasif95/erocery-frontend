@@ -1,6 +1,6 @@
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
-import { each } from "lodash";
+import each from "lodash/each";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
 import { generatePath } from "react-router";
