@@ -4,7 +4,7 @@ import { Transition } from "react-transition-group";
 
 import { Icon } from "@components/atoms";
 import { mediumScreen } from "@styles/constants";
-import LogoSmall from "images/logo-small.svg";
+import LogoSmall from "images/favicon-32x32.png";
 
 import { Overlay } from "../";
 import * as S from "./styles";

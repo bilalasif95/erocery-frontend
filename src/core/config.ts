@@ -47,7 +47,7 @@ export const META_DEFAULTS = {
   custom: [],
   description:
     "Open-source PWA storefront built with Erocery's e-commerce GraphQL API. Written with React and TypeScript.",
-  image: `${window.location.origin}${require("../images/logo.svg")}`,
+  image: `${window.location.origin}${require("../images/erocery_logo.svg")}`,
   title: "Products – Erocery Commerce",
   type: "website",
   url: window.location.origin,
