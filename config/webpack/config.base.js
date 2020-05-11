@@ -28,7 +28,7 @@ module.exports = ({ sourceDir, distDir }) => ({
     path: distDir,
     publicPath: "/",
   },
-  devtool: "source-map",
+  devtool: "",
   module: {
     rules: [
       {
