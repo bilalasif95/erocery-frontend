@@ -2,7 +2,18 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = ({ sourceDir, distDir }) => ({
   output: {
-    filename: "js/[name].[contenthash].js"
+    filename: "js/[name].[contenthash].js",
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -12,17 +23,17 @@ module.exports = ({ sourceDir, distDir }) => ({
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { sourceMap: true }
+            options: { sourceMap: true },
           },
-          { loader: "sass-loader" }
-        ]
-      }
-    ]
+          { loader: "sass-loader" },
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css",
-      chunkFilename: "[id].[hash].css"
-    })
-  ]
+      chunkFilename: "[id].[hash].css",
+    }),
+  ],
 });
