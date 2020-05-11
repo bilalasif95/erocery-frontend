@@ -28,7 +28,7 @@ module.exports = ({ sourceDir, distDir }) => ({
     path: distDir,
     publicPath: "/",
   },
-  devtool: "source-map",
+  devtool: "",
   module: {
     rules: [
       {
@@ -97,10 +97,6 @@ module.exports = ({ sourceDir, distDir }) => ({
       tslint: true,
       exclude: "node_modules",
       async: false,
-    }),
-
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     // PWA plugins
     new WebappWebpackPlugin({
