@@ -36,7 +36,7 @@ export const Overlay: React.FC<IProps> = ({
               state={state}
               onClick={e => e.stopPropagation()}
             >
-              <h1>djaskdhksjadhskajdh</h1>
+              {/* <h1>djaskdhksjadhskajdh</h1> */}
               {children}
             </S.Lightbox>
           </S.Overlay>
