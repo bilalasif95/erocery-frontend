@@ -127,7 +127,7 @@ const Page: React.FC<{
                             : catNoImg}/> */}
                         {/* <ReactSVG path={catImg} /> */}
                         {category.backgroundImage ? (
-                          <img src={category.backgroundImage.url} />
+                          <img src={bannerimg} />
                         ) : (
                           <div className="noCatImg">
                             <p>Photo Unavailable</p>
