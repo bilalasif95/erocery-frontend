@@ -8,7 +8,7 @@ export interface IFormikProps {
   values?: IAddress;
   options?: Array<{
     code: string;
-    country: string;
+    city: string;
   }>;
 }
 
@@ -20,7 +20,7 @@ export interface IProps {
   formId?: string;
   formRef?: React.RefObject<HTMLFormElement>;
   errors?: any;
-  handleSubmit?: (formData: IAddress | undefined) => void;
+  handleSubmit?: (formData: any | undefined) => void;
   handleChange?: (e: React.ChangeEvent) => void;
   handleBlur?: (e: React.FocusEvent) => void;
 }
