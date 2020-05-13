@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import * as React from "react";
 
-import { Form, TextField } from "..";
+import { Form, Select, TextField } from "..";
 
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
@@ -16,6 +16,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
   children,
   type,
   emailRequired = true,
+  cities,
 }) => (
   <div className="address-form">
     <ShopContext.Consumer>
@@ -25,6 +26,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
           errors={errors}
           onSubmit={(evt, data) => {
             evt.preventDefault();
+            data = {...data,city:data.city}
             onSubmit(data);
           }}
           data={getFormData(geolocalization, defaultCountry, data)}
@@ -69,13 +71,22 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               autoComplete="postal-code"
               required
             /> */}
-            <TextField
+            <Select
+                label="City"
+                name="city"
+                options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
+                  label: value.city,
+                  value: value.city,
+                }))}
+                autoComplete="address-level2"
+            />
+            {/* <TextField
               label="City"
               type="city"
               name="city"
               autoComplete="address-level2"
               required
-            />
+            /> */}
           </div>
           <div className="address-form__grid address-form__grid--modal">
             <TextField
@@ -85,7 +96,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               autoComplete="address-level1"
             />
             <TextField
-              label="Phone number"
+              label="Phone Number"
               type="tel"
               name="phone"
               autoComplete="tel"

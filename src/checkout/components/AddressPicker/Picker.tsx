@@ -6,10 +6,15 @@ import ReactSVG from "react-svg";
 
 import { Modal } from "@components/organisms";
 
+import { maybe } from "@utils/misc";
+
 import AddressSummary from "../../../components/AddressSummary";
 import { AddNewShippingAddressForm } from "../../../components/ShippingAddressForm";
 import { Option } from "../../components";
 import { IAddressPickerProps } from "../../types";
+
+import { TypedStaffListQuery } from "../../queries";
+
 
 import plusSvg from "../../../images/plus.svg";
 
@@ -58,13 +63,21 @@ const renderModalForm = ({
     submitBtnText="Save"
     cancelBtnText="Cancel"
   >
-    <AddNewShippingAddressForm
-      type={type}
-      loading={loading}
-      errors={errors}
-      onSubmit={handleAddressAdd}
-      emailRequired={emailRequired}
-    />
+    <TypedStaffListQuery>
+    {({ data }) => {
+      return (
+        <AddNewShippingAddressForm
+          type={type}
+          loading={loading}
+          errors={errors}
+          onSubmit={handleAddressAdd}
+          emailRequired={emailRequired}
+          cities={maybe(() =>
+            data.subshops.map(edge => edge)
+          )}
+        />
+      )}}
+    </TypedStaffListQuery>
   </Modal>
 );
 

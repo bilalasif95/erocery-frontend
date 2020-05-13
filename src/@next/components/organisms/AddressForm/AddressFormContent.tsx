@@ -2,6 +2,10 @@ import React, { useCallback } from "react";
 
 import { InputSelect, TextField } from "@components/molecules";
 
+// import { TextField } from "@components/molecules";
+
+// import { Select } from "../../../../components";
+
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 
@@ -31,7 +35,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         : [{ message }];
     });
   }
-
+  
   return (
     <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
       <S.Wrapper>
@@ -55,23 +59,31 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>
           <TextField
+            name="streetAddress1"
+            label="Address"
+            value={values!.streetAddress1}
+            autoComplete="address-line1"
+            errors={fieldErrors!.streetAddress1}
+            {...basicInputProps()}
+          />
+          {/* <TextField
             name="companyName"
             label="Company Name (Optional)"
             value={values!.companyName}
             autoComplete="organization"
             errors={fieldErrors!.companyName}
             {...basicInputProps()}
-          />
+          /> */}
           <TextField
             name="phone"
-            label="Phone"
+            label="Phone Number"
             value={values!.phone}
             autoComplete="tel"
             errors={fieldErrors!.phone}
             {...basicInputProps()}
           />
         </S.RowWithTwoCells>
-        <S.RowWithOneCell>
+        {/* <S.RowWithOneCell>
           <TextField
             name="streetAddress1"
             label="Address line 1"
@@ -90,26 +102,55 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             errors={fieldErrors!.streetAddress2}
             {...basicInputProps()}
           />
-        </S.RowWithOneCell>
+        </S.RowWithOneCell> */}
         <S.RowWithTwoCells>
-          <TextField
+          {/* <TextField
             name="city"
             label="City"
             value={values!.city}
             autoComplete="address-level1"
             errors={fieldErrors!.city}
             {...basicInputProps()}
+          /> */}
+          <InputSelect
+            // options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
+            //   label: value.city,
+            //   value: value.city,
+            // }))}
+            // autoComplete="address-level2"
+
+            // defaultValue={defaultValue}
+            label="City"
+            name="city"
+            options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
+                city: value.city,
+              }))}
+            value={
+              values!.city &&
+              options &&
+              options!.find(option => option.city === values!.city!)
+            }
+            onChange={(value: any, name: any) => setFieldValue(name, value)}
+            optionLabelKey="city"
           />
           <TextField
+            name="countryArea"
+            label="State/Province"
+            value={values!.countryArea}
+            autoComplete="address-level2"
+            errors={fieldErrors!.countryArea}
+            {...basicInputProps()}
+          />
+          {/* <TextField
             name="postalCode"
             label="ZIP/Postal Code"
             value={values!.postalCode}
             autoComplete="postal-code"
             errors={fieldErrors!.postalCode}
             {...basicInputProps()}
-          />
+          /> */}
         </S.RowWithTwoCells>
-        <S.RowWithTwoCells>
+        {/* <S.RowWithTwoCells>
           <InputSelect
             defaultValue={defaultValue}
             label="Country"
@@ -132,7 +173,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             errors={fieldErrors!.countryArea}
             {...basicInputProps()}
           />
-        </S.RowWithTwoCells>
+        </S.RowWithTwoCells> */}
       </S.Wrapper>
     </S.AddressForm>
   );

@@ -17,7 +17,7 @@ import SelectOptionsList from "./SelectOptionsList";
 const updateOptions = (
   { label, value }: ISelectItem,
   onChange: ISelectChange
-) => onChange({ country: label, code: value });
+) => onChange(value);
 
 const filterList = ({ searchPhrase, options }: IFilteredListArgs) =>
   filter(options, ({ label }) =>

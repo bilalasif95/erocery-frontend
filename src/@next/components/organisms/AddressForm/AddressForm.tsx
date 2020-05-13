@@ -31,7 +31,7 @@ export const AddressForm: React.FC<IProps> = ({
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
   if (defaultValue) {
-    addressWithPickedFields.country = defaultValue;
+    addressWithPickedFields.city = defaultValue;
   }
   return (
     <Formik

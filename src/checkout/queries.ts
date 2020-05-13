@@ -12,6 +12,7 @@ import {
   getVariantsProducts,
   getVariantsProductsVariables,
 } from "./types/getVariantsProducts";
+import { StaffList, StaffListVariables } from "./types/StaffList";
 
 export const checkoutAddressFragment = gql`
   fragment Address on Address {
@@ -248,3 +249,19 @@ export const TypedGetVariantsProductsQuery = TypedQuery<
   getVariantsProducts,
   getVariantsProductsVariables
 >(getVariantsProductsQuery);
+
+const staffList = gql`
+  query SubShops {
+    subshops {
+      id
+      name
+      city
+        orders{
+          totalCount
+        }
+    }
+  }
+`;
+export const TypedStaffListQuery = TypedQuery<StaffList, StaffListVariables>(
+  staffList
+);
