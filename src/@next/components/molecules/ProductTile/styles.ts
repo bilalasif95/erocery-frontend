@@ -3,8 +3,9 @@ import { css } from "styled-components";
 
 const textProps = css`
   font-size: ${props => props.theme.typography.baseFontSize};
-  margin: 0 0 0.5rem 0;
   text-align: left;
+  font-weight:600;
+  margin: 0 0 0.5rem;
 `;
 
 export const Wrapper = styled.div`
@@ -18,10 +19,10 @@ export const Wrapper = styled.div`
   }
 
   ${media.mediumScreen`
-    padding: 1.8rem;
+    padding: 0;
   `}
   ${media.smallScreen`
-  padding: 0.5rem 0;
+  padding: 0;
   background: transparent;
   border: none;
   border-bottom: 1px solid #e7e7e7 !important;
@@ -59,6 +60,7 @@ export const Title = styled.h4`
 
   ${media.smallScreen`
   text-transform: capitalize;
+  font-size: 0.7rem;
 `}
 `;
 export const Link = styled.div`
@@ -67,10 +69,6 @@ width: 10%;
 
 export const Price = styled.p`
   ${textProps}
-  ${media.smallScreen`
-  font-weight:600;
-  margin: 0;
-`}
 `;
 export const AddCartBtn = styled.div`
 display: flex;
@@ -80,7 +78,7 @@ text-align: center;
 align-items: center;
 color: #fff;
 border-radius: 5px;
-font-size: 12px;
+font-size: 12px !important;
 font-weight: 600;
 text-transform: uppercase;
 padding: 0.5rem;
@@ -100,9 +98,11 @@ export const Image = styled.div`
     height: auto;
     max-width: 100%;
   }
+  ${media.mediumScreen`
+  height:180px;
+`}
   ${media.smallScreen`
   width:20%;
-  height:auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;

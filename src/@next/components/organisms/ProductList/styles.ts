@@ -16,6 +16,11 @@ export const List = styled.div`
   `}
 `;
 
+export const Item = styled.div`
+  position: relative;
+`;
+
+
 export const Loader = styled.div`
   text-align: center;
   margin: 2.5rem 0;
