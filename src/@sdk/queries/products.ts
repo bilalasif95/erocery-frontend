@@ -86,7 +86,7 @@ export const productDetails = gql`
       category {
         id
         name
-        products(first: 3) {
+        products(first: 4) {
           edges {
             node {
               ...BasicProductFields
