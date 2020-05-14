@@ -21,13 +21,13 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   return (
     <S.Wrapper data-cy="product-tile">
       <S.DeskView>
+      <S.Image>
+          <Thumbnail source={product} />
+        </S.Image>
         <S.Title>{product.name}</S.Title>
         <S.Price>
           <TaxedMoney taxedMoney={price} />
-        </S.Price>
-        <S.Image>
-          <Thumbnail source={product} />
-        </S.Image>
+        </S.Price> 
       </S.DeskView>
       <S.MobView>
         <S.Image>
