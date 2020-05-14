@@ -72,7 +72,7 @@ ProductDescriptionState> {
     <>
       <S.List>
         {this.props.products.map(product => (
-          <div className="proItem">
+          <S.Item>
             <Link
               to={generateProductUrl(product.id, product.name)}
               key={product.id}
@@ -115,7 +115,7 @@ ProductDescriptionState> {
                 </CheckoutContext.Consumer>
               )}
             </CartContext.Consumer>
-          </div>
+          </S.Item>
         ))}
       </S.List>
       <S.Loader>
