@@ -126,8 +126,6 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   required
                 />
               )} */}
-
-
             </div>
           </fieldset>
           <Button type="submit" disabled={loading}>

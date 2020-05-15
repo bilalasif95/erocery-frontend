@@ -2,7 +2,8 @@
 
 .address-form {
   button {
-    margin: $spacer * 2 0 0 $spacer * 2;
+    width: 100px !important;
+    // margin: $spacer * 2 0 0 $spacer * 2;
   }
 
   .react-select-wrapper {
