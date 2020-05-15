@@ -4,7 +4,10 @@
   .input {
     margin-bottom: $spacer;
   }
-
+  .form-error{
+    display: block;
+    margin: 0 0 1.5rem;
+  }
   .smsCodebtn {
     padding: 0.5rem;
     margin-left: 1rem;
