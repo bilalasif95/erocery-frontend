@@ -47,6 +47,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="given-name"
             errors={fieldErrors!.firstName}
             {...basicInputProps()}
+            required
           />
           <TextField
             name="lastName"
@@ -55,6 +56,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="family-name"
             errors={fieldErrors!.lastName}
             {...basicInputProps()}
+            required
           />
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>
@@ -65,6 +67,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="address-line1"
             errors={fieldErrors!.streetAddress1}
             {...basicInputProps()}
+            required
           />
           {/* <TextField
             name="companyName"
@@ -81,6 +84,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="tel"
             errors={fieldErrors!.phone}
             {...basicInputProps()}
+            required
           />
         </S.RowWithTwoCells>
         {/* <S.RowWithOneCell>
