@@ -31,9 +31,9 @@ const View: React.FC<RouteComponentProps> = ({
         Thank you for <br /> your order
       </h3>
       <p className="order-confirmation__info">
-        We’ve emailed you a order confirmation
+        We’ll call you on provided phone number for order confirmation
         <br />
-        and we’ll notify you when order has
+        and we’ll notify you when order has been
         <br />
         shipped.
       </p>

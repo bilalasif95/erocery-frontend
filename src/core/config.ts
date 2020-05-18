@@ -1,7 +1,7 @@
 import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
-export const PRODUCTS_PER_PAGE = 6;
+export const PRODUCTS_PER_PAGE = 8;
 export const SUPPORT_EMAIL = "support@example.com";
 export const PROVIDERS = {
   BRAINTREE: {
@@ -41,6 +41,14 @@ export const SOCIAL_MEDIA = [
     ariaLabel: "youtube",
     href: "https://www.youtube.com/c/RNSSolutions",
     path: require("../images/youtube-icon.svg"),
+  },
+];
+export const CITIES = [
+  {
+    city:"Islamabad",
+  },
+  {
+    city:"Sargodha",
   },
 ];
 export const META_DEFAULTS = {

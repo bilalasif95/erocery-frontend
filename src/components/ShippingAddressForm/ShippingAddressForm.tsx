@@ -8,6 +8,8 @@ import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingAddressFormProps } from "./types";
 import { getFormData } from "./utils";
 
+import { CITIES } from "../../core/config";
+
 const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   data,
   buttonText,
@@ -74,7 +76,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
               <Select
                 label="City"
                 name="city"
-                options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
+                options={CITIES.map(value => ({
                   label: value.city,
                   value: value.city,
                 }))}
@@ -126,8 +128,6 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   required
                 />
               )} */}
-
-
             </div>
           </fieldset>
           <Button type="submit" disabled={loading}>

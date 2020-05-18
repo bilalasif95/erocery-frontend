@@ -35,6 +35,12 @@
     .accountpara {
       padding: 5px 0 0 5px;
     }
+    @media (max-width: 480px) {
+      .accountpara {
+        display:none;
+      }
+    }
+
     @media (min-width: $small-screen) {
       flex-basis: calc(50% - 4rem);
     }

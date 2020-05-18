@@ -9,6 +9,8 @@ import { InputSelect, TextField } from "@components/molecules";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 
+import { CITIES } from "../../../../core/config";
+
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
   handleChange,
@@ -47,6 +49,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="given-name"
             errors={fieldErrors!.firstName}
             {...basicInputProps()}
+            required
           />
           <TextField
             name="lastName"
@@ -55,6 +58,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="family-name"
             errors={fieldErrors!.lastName}
             {...basicInputProps()}
+            required
           />
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>
@@ -65,6 +69,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="address-line1"
             errors={fieldErrors!.streetAddress1}
             {...basicInputProps()}
+            required
           />
           {/* <TextField
             name="companyName"
@@ -81,6 +86,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="tel"
             errors={fieldErrors!.phone}
             {...basicInputProps()}
+            required
           />
         </S.RowWithTwoCells>
         {/* <S.RowWithOneCell>
@@ -113,16 +119,9 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             {...basicInputProps()}
           /> */}
           <InputSelect
-            // options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
-            //   label: value.city,
-            //   value: value.city,
-            // }))}
-            // autoComplete="address-level2"
-
-            // defaultValue={defaultValue}
             label="City"
             name="city"
-            options={[{city:"Islamabad"},{city:"Sargodha"}].map(value => ({
+            options={CITIES.map(value => ({
                 city: value.city,
               }))}
             value={

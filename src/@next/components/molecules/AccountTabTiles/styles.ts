@@ -76,6 +76,9 @@ export const ContentExtendInput = styled.div`
 
 export const Form = styled.form`
   background-color: ${props => props.theme.tile.backgroundColor};
+  & > div {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const FormButtons = styled.div`

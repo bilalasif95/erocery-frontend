@@ -40,11 +40,11 @@ const AddressSummary: React.FC<{
             Phone number: {address.phone} <br />
           </>
         )}
-        {email && (
+        {/* {email && (
           <>
             {email} <br />
           </>
-        )}
+        )} */}
       </p>
     );
   } else if (email) {
