@@ -107,5 +107,6 @@ export const Image = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin:0 0.5rem 0 0;
+  height:100px
 `}
 `;
