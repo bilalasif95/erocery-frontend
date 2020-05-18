@@ -6,8 +6,11 @@ import { RouteComponentProps } from "react-router";
 import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
 import { isPath } from "../core/utils";
 import { orderConfirmationUrl, Routes } from "./routes";
+
 import MessengerCustomerChat from "react-messenger-customer-chat";
-import { pageId, appId } from "../config/index";
+
+import { appId,pageId } from "../config/index";
+
 const App: React.FC<RouteComponentProps> = ({
   history: {
     location: { pathname },
