@@ -6,14 +6,14 @@ import { RouteComponentProps } from "react-router";
 import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
 import { isPath } from "../core/utils";
 import { orderConfirmationUrl, Routes } from "./routes";
-
+import MessengerCustomerChat from "react-messenger-customer-chat";
+import { pageId, appId } from "../config/index";
 const App: React.FC<RouteComponentProps> = ({
   history: {
     location: { pathname },
   },
 }) => {
   const orderConfirmationPage = isPath(pathname, orderConfirmationUrl);
-
   return (
     <>
       <MetaConsumer />
@@ -21,6 +21,7 @@ const App: React.FC<RouteComponentProps> = ({
         <MainMenu />
       </header>
       <Routes />
+      <MessengerCustomerChat pageId={pageId} appId={appId} />
       {!orderConfirmationPage && <Footer />}
       <OverlayManager />
     </>
