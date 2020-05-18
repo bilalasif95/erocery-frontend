@@ -16,6 +16,7 @@ export const RowWithTwoCells = styled.div`
   justify-content: space-between;
   & > div {
     width: calc(50% - ${props => props.theme.spacing.spacer} / 2);
+    margin-bottom: 2rem;
     ${media.smallScreen`
       width: 100%;
     `}
