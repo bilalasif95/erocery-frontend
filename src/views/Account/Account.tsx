@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 import { useUserDetails } from "@sdk/react";
 import { smallScreen } from "@styles/constants";
 import AddressBook from "../../account/AddressBook/AddressBook";
+import WishList from "../../wishlist/WishList/WishList";
 
 import "./scss/index.scss";
 
@@ -14,6 +15,7 @@ import {
   homeUrl,
   orderHistoryUrl,
   paymentOptionsUrl,
+  wishlistUrl,
 } from "../../app/routes";
 
 import { AccountMenu, AccountMenuMobile } from "@components/molecules";
@@ -35,6 +37,10 @@ const returnTab: any = (path: string, userDetails, history) => {
       tabContent = <OrdersHistory {...{ history }} />;
       break;
     }
+    case wishlistUrl: {
+      tabContent = <WishList />;
+      break;
+    }
   }
   return tabContent;
 };
@@ -47,6 +53,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
     orderHistoryUrl,
     addressBookUrl,
     paymentOptionsUrl,
+    wishlistUrl,
   ];
 
   if (loading) {

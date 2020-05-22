@@ -133,6 +133,11 @@ const MainMenu: React.FC = () => {
                                   Order history
                                 </Link>
                               </li>
+                              <li data-testid="order_history__link">
+                                <Link to={appPaths.wishlistUrl}>
+                                  Wishlist
+                                </Link>
+                              </li>
                               <li data-testid="address_book__link">
                                 <Link to={appPaths.addressBookUrl}>
                                   Address book
