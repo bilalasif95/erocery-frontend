@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import classNames from "classnames";
-import * as React from "react";
+import React, { useState } from "react";
 
 import { Button, Form, Select, TextField } from "..";
 import { ShopContext } from "../ShopProvider/context";
@@ -20,52 +20,54 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   shippingAsBilling = false,
   noShipping = false,
   type = "shipping",
-}) => (
-  <div className="address-form">
-    <ShopContext.Consumer>
-      {({ countries, geolocalization, defaultCountry }) => (
-        <Form<FormAddressType>
-          errors={errors}
-          onSubmit={(evt, data) => {
-            evt.preventDefault();
-            onSubmit(data);
-          }}
-          data={getFormData(geolocalization, defaultCountry, data)}
-        >
-          {children}
-          <fieldset disabled={shippingAsBilling}>
-            <div className="address-form__grid">
-              <TextField
-                label="First Name"
-                type="given-name"
-                name="firstName"
-                autoComplete="given-name"
-                required
-              />
-              <TextField
-                label="Last Name"
-                type="family-name"
-                name="lastName"
-                autoComplete="family-name"
-                required
-              />
-            </div>
-            <div className="address-form__grid">
-              <TextField
-                label="Address"
-                type="address-line1"
-                name="streetAddress1"
-                autoComplete="address-line1"
-                required
-              />
-              {/* <TextField
+}) => {
+  const [phone, setPhone] = useState("03");
+  return (
+    <div className="address-form">
+      <ShopContext.Consumer>
+        {({ countries, geolocalization, defaultCountry }) => (
+          <Form<FormAddressType>
+            errors={errors}
+            onSubmit={(evt, data) => {
+              evt.preventDefault();
+              onSubmit(data);
+            }}
+            data={getFormData(geolocalization, defaultCountry, data)}
+          >
+            {children}
+            <fieldset disabled={shippingAsBilling}>
+              <div className="address-form__grid">
+                <TextField
+                  label="First Name"
+                  type="given-name"
+                  name="firstName"
+                  autoComplete="given-name"
+                  required
+                />
+                <TextField
+                  label="Last Name"
+                  type="family-name"
+                  name="lastName"
+                  autoComplete="family-name"
+                  required
+                />
+              </div>
+              <div className="address-form__grid">
+                <TextField
+                  label="Address"
+                  type="address-line1"
+                  name="streetAddress1"
+                  autoComplete="address-line1"
+                  required
+                />
+                {/* <TextField
                 label="Company name (optional)"
                 type="organization"
                 name="companyName"
                 autoComplete="organization"
               /> */}
-            {/* </div> */}
-            {/* <div className="address-form__grid">
+                {/* </div> */}
+                {/* <div className="address-form__grid">
               <TextField
                 label="ZIP Code"
                 type="postal-code"
@@ -73,38 +75,40 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 autoComplete="postal-code"
                 required
               /> */}
-              <Select
-                label="City"
-                name="city"
-                options={CITIES.map(value => ({
-                  label: value.city,
-                  value: value.city,
-                }))}
-                autoComplete="address-level2"
-              />
-              {/* <TextField
+                <Select
+                  label="City"
+                  name="city"
+                  options={CITIES.map(value => ({
+                    label: value.city,
+                    value: value.city,
+                  }))}
+                  autoComplete="address-level2"
+                />
+                {/* <TextField
                 label="City"
                 type="city"
                 name="city"
                 autoComplete="address-level2"
                 required
               /> */}
-            </div>
-            <div className="address-form__grid">
-              <TextField
-                label="State/Province"
-                type="state"
-                name="countryArea"
-                autoComplete="address-level1"
-              />
-              <TextField
-                label="Phone Number"
-                type="tel"
-                name="phone"
-                autoComplete="tel"
-                required
-              />
-              {/* <Select
+              </div>
+              <div className="address-form__grid">
+                <TextField
+                  label="State/Province"
+                  type="state"
+                  name="countryArea"
+                  autoComplete="address-level1"
+                />
+                <TextField
+                  label="Phone Number"
+                  type="tel"
+                  name="phone"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                  autoComplete="tel"
+                  required
+                />
+                {/* <Select
                 label="Country"
                 name="country"
                 options={countries.map(country => ({
@@ -113,13 +117,13 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 }))}
                 autoComplete="country"
               /> */}
-            </div>
-            <div
-              className={classNames("address-form__grid", {
-                "address-form__grid--full": type === "billing",
-              })}
-            >
-              {/* {(type === "shipping" || noShipping) && (
+              </div>
+              <div
+                className={classNames("address-form__grid", {
+                  "address-form__grid--full": type === "billing",
+                })}
+              >
+                {/* {(type === "shipping" || noShipping) && (
                 <TextField
                   label="Email Address"
                   type="email"
@@ -128,15 +132,16 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   required
                 />
               )} */}
-            </div>
-          </fieldset>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Loading" : buttonText}
-          </Button>
-        </Form>
-      )}
-    </ShopContext.Consumer>
-  </div>
-);
+              </div>
+            </fieldset>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Loading" : buttonText}
+            </Button>
+          </Form>
+        )}
+      </ShopContext.Consumer>
+    </div>
+  );
+};
 
 export default ShippingAddressForm;
