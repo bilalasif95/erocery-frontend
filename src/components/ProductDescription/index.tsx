@@ -127,7 +127,7 @@ class ProductDescription extends React.Component<
           <div className="product-description__variant-picker">
             <TextField
               label={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].attribute.name}
-              value={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].values[0].value}
+              value={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].values[0] && this.props.productVariants[0].attributes[0].values[0].value}
               readOnly
             />
             {/* <ProductVariantPicker

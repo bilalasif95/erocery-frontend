@@ -44,6 +44,7 @@ export const Routes: React.FC = () => (
     <Route path={paths.orderHistoryUrl} component={Account} />
     <Route path={paths.addressBookUrl} component={Account} />
     <Route path={paths.paymentOptionsUrl} component={Account} />
+    <Route path={paths.wishlistUrl} component={Account} />
     <Route path={paths.passwordResetUrl} component={PasswordReset} />
     <Route path={paths.howToOrderUrl} component={HowToOrder} />
     <Route path={paths.returnAndRefundsUrl} component={ReturnAndRefunds} />
