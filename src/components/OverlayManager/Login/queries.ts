@@ -1,5 +1,6 @@
-import { userFragment } from "@sdk/fragments/auth";
 import gql from "graphql-tag";
+
+import { userFragment } from "@sdk/fragments/auth";
 
 import { TypedMutation } from "../../../core/mutations";
 import {
@@ -9,8 +10,8 @@ import {
 
 const accountRegisterMutation = gql`
   ${userFragment}
-  mutation RegisterAccount($phone: String!, $password: String!) {
-    accountRegister(input: { phone: $phone, password: $password}) {
+  mutation RegisterAccount($email: String, $phone: String!, $password: String!) {
+    accountRegister(input: { email: $email, phone: $phone, password: $password}) {
       errors {
         field
         message

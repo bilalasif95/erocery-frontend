@@ -138,11 +138,11 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
         return (
           <Form
             errors={maybe(() => data.accountRegister.errors, [])}
-            onSubmit={(event, { phone, password }) => {
+            onSubmit={(event, { email, phone, password }) => {
               event.preventDefault();
               setPassword(password);
               const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
-              registerCustomer({ variables: { phone, password, redirectUrl } });
+              registerCustomer({ variables: { email: email || "", phone, password, redirectUrl } });
             }}
           >
             <TextField
@@ -183,6 +183,12 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                 />
               </div>
             )}
+            <TextField
+              name="email"
+              autoComplete="email"
+              label="Email (Optional)"
+              type="email"
+            />
             <div className="login__content__button">
               <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Loading" : "Register"}
