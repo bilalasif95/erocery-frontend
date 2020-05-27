@@ -50,168 +50,171 @@ const MainMenu: React.FC = () => {
       {overlayContext => (
         <nav className="main-menu" id="header">
           <div className="menubar">
-          <div className="main-menu__left">
-            <TypedMainMenuQuery renderOnError displayLoader={false}>
-              {({ data }) => {
-                const items = maybe(() => data.shop.navigation.main.items, []);
+            <div className="main-menu__left">
+              <TypedMainMenuQuery renderOnError displayLoader={false}>
+                {({ data }) => {
+                  const items = maybe(
+                    () => data.shop.navigation.main.items,
+                    []
+                  );
 
-                return (
-                  <ul>
-                    <Media
-                      query={{ maxWidth: mediumScreen }}
-                      render={() => (
-                        <li
-                          className="main-menu__hamburger"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.sideNav,
-                              OverlayTheme.left,
-                              { data: items }
-                            )
-                          }
-                        >
-                          <ReactSVG
-                            path={hamburgerImg}
-                            className={"main-menu__hamburger--icon"}
-                          />
-                          <ReactSVG
-                            path={hamburgerHoverImg}
-                            className={"main-menu__hamburger--hover"}
-                          />
-                        </li>
-                      )}
-                    />
-                    <Media
-                      query={{ minWidth: mediumScreen }}
-                      render={() =>
-                        items.map(item => (
+                  return (
+                    <ul>
+                      <Media
+                        query={{ maxWidth: mediumScreen }}
+                        render={() => (
                           <li
-                            data-cy="main-menu__item"
-                            className="main-menu__item"
-                            key={item.id}
+                            className="main-menu__hamburger"
+                            onClick={() =>
+                              overlayContext.show(
+                                OverlayType.sideNav,
+                                OverlayTheme.left,
+                                { data: items }
+                              )
+                            }
                           >
-                            <NavDropdown overlay={overlayContext} {...item} />
+                            <ReactSVG
+                              path={hamburgerImg}
+                              className={"main-menu__hamburger--icon"}
+                            />
+                            <ReactSVG
+                              path={hamburgerHoverImg}
+                              className={"main-menu__hamburger--hover"}
+                            />
                           </li>
-                        ))
-                      }
-                    />
-                  </ul>
-                );
-              }}
-            </TypedMainMenuQuery>
-          </div>
+                        )}
+                      />
+                      <Media
+                        query={{ minWidth: mediumScreen }}
+                        render={() =>
+                          items.map(item => (
+                            <li
+                              data-cy="main-menu__item"
+                              className="main-menu__item"
+                              key={item.id}
+                            >
+                              <NavDropdown overlay={overlayContext} {...item} />
+                            </li>
+                          ))
+                        }
+                      />
+                    </ul>
+                  );
+                }}
+              </TypedMainMenuQuery>
+            </div>
 
-          <div className="main-menu__center">
-            <Link to={appPaths.homeUrl}>
-              {/* <img src={logoImg}/> */}
-              <ReactSVG path={logoImg} className="logoImg" />
-            </Link>
-          </div>
+            <div className="main-menu__center">
+              <Link to={appPaths.homeUrl}>
+                {/* <img src={logoImg}/> */}
+                <ReactSVG path={logoImg} className="logoImg" />
+              </Link>
+            </div>
 
-          <div className="main-menu__right">
-            <ul>
-              <Online>
-                {/* <Media
+            <div className="main-menu__right">
+              <ul>
+                <Online>
+                  {/* <Media
                   query={{ minWidth: smallScreen }}
                   render={() => ( */}
-                    <>
-                      {user ? (
-                        <MenuDropdown
-                          head={
-                            <li className="main-menu__icon main-menu__user--active accountcss">
-                              <ReactSVG path={userImg} />
-                              <p className="accountpara">Account</p>
+                  <>
+                    {user ? (
+                      <MenuDropdown
+                        head={
+                          <li className="main-menu__icon main-menu__user--active accountcss">
+                            <ReactSVG path={userImg} />
+                            <p className="accountpara">Account</p>
+                          </li>
+                        }
+                        content={
+                          <ul className="main-menu__dropdown">
+                            <li data-testid="my_account__link">
+                              <Link to={appPaths.accountUrl}>My Account</Link>
                             </li>
-                          }
-                          content={
-                            <ul className="main-menu__dropdown">
-                              <li data-testid="my_account__link">
-                                <Link to={appPaths.accountUrl}>My Account</Link>
-                              </li>
-                              <li data-testid="order_history__link">
-                                <Link to={appPaths.orderHistoryUrl}>
-                                  Order history
-                                </Link>
-                              </li>
-                              <li data-testid="address_book__link">
-                                <Link to={appPaths.addressBookUrl}>
-                                  Address book
-                                </Link>
-                              </li>
-                              {/* <li data-testid="payment_options__link">
+                            <li data-testid="order_history__link">
+                              <Link to={appPaths.orderHistoryUrl}>
+                                Order history
+                              </Link>
+                            </li>
+                            <li data-testid="address_book__link">
+                              <Link to={appPaths.addressBookUrl}>
+                                Address book
+                              </Link>
+                            </li>
+                            {/* <li data-testid="payment_options__link">
                                 <Link to={appPaths.paymentOptionsUrl}>
                                   Payment options
                                 </Link>
                               </li> */}
-                              <li
-                                onClick={handleSignOut}
-                                data-testid="logout-link"
-                              >
-                                Log Out
-                              </li>
-                            </ul>
-                          }
-                        />
-                      ) : (
-                        <li
-                          data-testid="login-btn"
-                          className="main-menu__icon"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.login,
-                              OverlayTheme.right
-                            )
-                          }
-                        >
-                          <ReactSVG path={userImg} />
-                        </li>
-                      )}
-                    </>
+                            <li
+                              onClick={handleSignOut}
+                              data-testid="logout-link"
+                            >
+                              Log Out
+                            </li>
+                          </ul>
+                        }
+                      />
+                    ) : (
+                      <li
+                        data-testid="login-btn"
+                        className="main-menu__icon"
+                        onClick={() =>
+                          overlayContext.show(
+                            OverlayType.login,
+                            OverlayTheme.right
+                          )
+                        }
+                      >
+                        <ReactSVG path={userImg} />
+                      </li>
+                    )}
+                  </>
                   {/* )}
                 /> */}
-                <CartContext.Consumer>
-                  {cart => (
-                    <li
-                      className="main-menu__icon main-menu__cart"
-                      onClick={() => {
-                        overlayContext.show(
-                          OverlayType.cart,
-                          OverlayTheme.right
-                        );
-                      }}
-                    >
-                      <ReactSVG path={cartImg} />
-                      {cart.getQuantity() > 0 ? (
-                        <span className="main-menu__cart__quantity">
-                          {cart.getQuantity()}
-                        </span>
-                      ) : null}
-                    </li>
-                  )}
-                </CartContext.Consumer>
-              </Online>
-              <Offline>
-                <li className="main-menu__offline">
+                  <CartContext.Consumer>
+                    {cart => (
+                      <li
+                        className="main-menu__icon main-menu__cart"
+                        onClick={() => {
+                          overlayContext.show(
+                            OverlayType.cart,
+                            OverlayTheme.right
+                          );
+                        }}
+                      >
+                        <ReactSVG path={cartImg} />
+                        {cart.getQuantity() > 0 ? (
+                          <span className="main-menu__cart__quantity">
+                            {cart.getQuantity()}
+                          </span>
+                        ) : null}
+                      </li>
+                    )}
+                  </CartContext.Consumer>
+                </Online>
+                <Offline>
+                  <li className="main-menu__offline">
+                    <Media
+                      query={{ minWidth: mediumScreen }}
+                      render={() => <span>Offline</span>}
+                    />
+                  </li>
+                </Offline>
+                <li
+                  className="main-menu__search deskview"
+                  onClick={() =>
+                    overlayContext.show(OverlayType.search, OverlayTheme.right)
+                  }
+                >
                   <Media
                     query={{ minWidth: mediumScreen }}
-                    render={() => <span>Offline</span>}
+                    render={() => <span>Search</span>}
                   />
+                  <ReactSVG path={searchImg} />
                 </li>
-              </Offline>
-              <li
-                className="main-menu__search deskview"
-                onClick={() =>
-                  overlayContext.show(OverlayType.search, OverlayTheme.right)
-                }
-              >
-                <Media
-                  query={{ minWidth: mediumScreen }}
-                  render={() => <span>Search</span>}
-                />
-                <ReactSVG path={searchImg} />
-              </li>
-            </ul>
-          </div>
+              </ul>
+            </div>
           </div>
           <div className="res-search">
             <ul>
