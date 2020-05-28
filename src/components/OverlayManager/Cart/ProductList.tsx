@@ -1,3 +1,4 @@
+import isEqual from "lodash/isEqual";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
@@ -16,6 +17,23 @@ const ProductList: React.SFC<{
   <ul className="cart__list">
     {lines.map(line => {
       const productUrl = generateProductUrl(line.product.id, line.product.name);
+      const price = line.pricing.price;
+      const priceUndiscounted = line.pricing.priceUndiscounted;
+      const getProductPrice = () => {
+        if (isEqual(price, priceUndiscounted)) {
+          return <TaxedMoney taxedMoney={price} />;
+        } else {
+          return (
+            <>
+              <span className="product-list-item__undiscounted_price">
+                <TaxedMoney taxedMoney={priceUndiscounted} />
+              </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <TaxedMoney taxedMoney={price} />
+            </>
+          );
+        }
+      };
       return (
         <li key={line.id} className="cart__list__item">
           <Link to={productUrl}>
@@ -23,7 +41,8 @@ const ProductList: React.SFC<{
           </Link>
           <div className="cart__list__item__details">
             <p>
-              <TaxedMoney taxedMoney={line.pricing.price} />
+              {getProductPrice()}
+              {/* <TaxedMoney taxedMoney={line.pricing.price} /> */}
             </p>
             <Link to={productUrl}>
               <p>{line.product.name}</p>

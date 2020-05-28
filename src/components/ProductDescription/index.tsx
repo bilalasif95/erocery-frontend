@@ -35,6 +35,8 @@ interface ProductDescriptionState {
     min: ITaxedMoney;
     max: ITaxedMoney;
   };
+  price: any;
+  priceUndiscounted: any;
 }
 
 class ProductDescription extends React.Component<
@@ -45,6 +47,8 @@ class ProductDescription extends React.Component<
     super(props);
 
     this.state = {
+      price: props.pricing.priceRange.start,
+      priceUndiscounted: props.pricing.priceRangeUndiscounted.start,
       quantity: 1,
       variant: "",
       variantPricing: null,
@@ -57,33 +61,45 @@ class ProductDescription extends React.Component<
   }
 
   getProductPrice = () => {
-    const { variantPricingRange, variantPricing } = this.state;
-
-    const { min, max } = variantPricingRange;
-    if (variantPricing) {
-      if (isEqual(variantPricing.priceUndiscounted, variantPricing.price)) {
-        return <TaxedMoney taxedMoney={variantPricing.price} />;
-      } else {
-        return (
-          <>
-            <span className="product-description__undiscounted_price">
-              <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
-            </span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <TaxedMoney taxedMoney={variantPricing.price} />
-          </>
-        );
-      }
-    }
-    if (isEqual(min, max)) {
-      return <TaxedMoney taxedMoney={min} />;
+    if (isEqual(this.state.price, this.state.priceUndiscounted)) {
+      return <TaxedMoney taxedMoney={this.state.price} />;
     } else {
       return (
         <>
-          <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+          <span className="product-list-item__undiscounted_price">
+            <TaxedMoney taxedMoney={this.state.priceUndiscounted} />
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <TaxedMoney taxedMoney={this.state.price} />
         </>
       );
     }
+    // const { variantPricingRange, variantPricing } = this.state;
+    // const { min, max } = variantPricingRange;
+    // if (variantPricing) {
+    //   if (isEqual(variantPricing.priceUndiscounted, variantPricing.price)) {
+    //     return <TaxedMoney taxedMoney={variantPricing.price} />;
+    //   } else {
+    //     return (
+    //       <>
+    //         <span className="product-description__undiscounted_price">
+    //           <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
+    //         </span>
+    //         &nbsp;&nbsp;&nbsp;&nbsp;
+    //         <TaxedMoney taxedMoney={variantPricing.price} />
+    //       </>
+    //     );
+    //   }
+    // }
+    // if (isEqual(min, max)) {
+    //   return <TaxedMoney taxedMoney={min} />;
+    // } else {
+    //   return (
+    //     <>
+    //       <TaxedMoney taxedMoney={min} /> - <TaxedMoney taxedMoney={max} />
+    //     </>
+    //   );
+    // }
   };
 
   onVariantPickerChange = (

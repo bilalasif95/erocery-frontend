@@ -63,7 +63,7 @@ ProductDescriptionState> {
     this.setState({variant: id})
     this.props.addToCart(id , this.state.quantity);
   };
-  canAddToCart = (lines: CartLine[],product) => {
+  canAddToCart = (lines: CartLine[],product: any) => {
     const { quantity } = this.state;
     return quantity !== 0 && product.variants[0].stockQuantity !==0;
   };

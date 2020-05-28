@@ -5,11 +5,11 @@ import { Redirect } from "react-router";
 
 import { useUserDetails } from "@sdk/react";
 
-import { Offline, OfflinePlaceholder, Online, OverlayContext } from "..";
+import { Offline, OfflinePlaceholder, Online, OverlayContext,OverlayTheme, OverlayType } from "..";
 
 import { baseUrl as checkoutUrl } from "../../checkout/routes";
 
-import CheckoutAsGuest from "./CheckoutAsGuest";
+// import CheckoutAsGuest from "./CheckoutAsGuest";
 import ResetPasswordForm from "./ResetPasswordForm";
 import SignInForm from "./SignInForm";
 
@@ -24,7 +24,7 @@ const CheckoutLogin: React.FC<{}> = () => {
     <div className="container">
       <Online>
         <div className="checkout-login">
-          <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} />
+          {/* <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} /> */}
           <div className="checkout-login__user">
             {resetPassword ? (
               <ResetPasswordForm
@@ -39,6 +39,15 @@ const CheckoutLogin: React.FC<{}> = () => {
                 }}
               />
             )}
+            <p>
+              You can also{" "}
+              <span
+                className="u-link"
+                onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
+              >
+                create an account
+              </span>
+            </p>
           </div>
         </div>
       </Online>

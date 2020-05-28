@@ -56,7 +56,8 @@ const Table: React.FC<TableProps> = ({
           {discount && (
             <CostRow
               mediumScreen={mediumScreen}
-              heading={`Discount: ${discountName}`}
+              // heading={`Discount: ${discountName}`}
+              heading="Discount"
               cost={discount}
             />
           )}

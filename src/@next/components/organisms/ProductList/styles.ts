@@ -16,9 +16,7 @@ export const List = styled.div`
   `}
 `;
 
-export const Item = styled.div`
-  position: relative;
-`;
+export const Item = styled.div``;
 
 
 export const Loader = styled.div`

@@ -2,7 +2,7 @@
 
 .checkout-login {
   margin: $spacer * 10 0;
-  display: flex;
+  // display: flex;
 
   @media (max-width: $medium-screen) {
     display: block;
@@ -38,8 +38,8 @@
   }
 
   &__user {
-    width: 50%;
-    padding: 0 $spacer * 4;
+    // width: 50%;
+    padding: 0 $spacer * 20;
 
     @media (max-width: $medium-screen) {
       width: 60%;
@@ -50,6 +50,11 @@
     @media (max-width: $small-screen) {
       width: 100%;
       padding: 0;
+    }
+
+    p {
+      margin-top: 1rem;
+      text-align: center;
     }
 
     .input {
