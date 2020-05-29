@@ -30,7 +30,7 @@ export const Title = styled.p`
   text-transform: ${props => props.theme.message.titleTransform};
   font-weight: ${props => props.theme.message.titleWeight};
   letter-spacing: ${props => props.theme.message.letterSpacing};
-  margin: ${props => props.theme.message.titleMargin};
+  margin: 0px 0px 0px 1.5rem;
 `;
 
 export const CloseButton = styled.button`

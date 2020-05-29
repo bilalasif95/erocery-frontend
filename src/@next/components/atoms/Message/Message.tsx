@@ -16,7 +16,6 @@ export const Message: React.FC<IProps> = ({
   return (
     <S.Wrapper status={status} data-cy="alert">
       <S.TopWrapper>
-        <S.Title>{title}</S.Title>
         {isAction ? (
           !children && (
             <S.ActionButton onClick={onClick}>{actionText}</S.ActionButton>
@@ -26,6 +25,7 @@ export const Message: React.FC<IProps> = ({
             <Icon name="x" size={15} />
           </S.CloseButton>
         )}
+        <S.Title>{title}</S.Title>
       </S.TopWrapper>
       {children && <S.Content>{children}</S.Content>}
       {children && isAction && (
