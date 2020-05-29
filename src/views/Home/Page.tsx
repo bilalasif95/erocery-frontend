@@ -4,10 +4,12 @@ import "./scss/index.scss";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+// import { CachedImage } from "@components/molecules";
+
 import { useUserDetails } from "@sdk/react";
 // import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
-import { ProductsFeatured } from "../../components";
+import { Carousel,ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import { CartContext } from "../../components/CartProvider/context";
@@ -23,6 +25,8 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 // import catNoImg from "../../images/catNoImg.jpg";
 import bannerimg from "../../images/homeBanner.jpg";
 import offerImg from "../../images/offerBanner.jpg";
+
+// import noPhotoImg from "../../images/no-photo.svg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -40,10 +44,53 @@ const Page: React.FC<{
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>
-      <div
+      <div className="product-page__product__mainSlider">
+        <Carousel
+          autoplay={true}
+          wrapAround={true}
+          autoplayReverse={true}
+          autoplayInterval={2000}
+          renderCenterLeftControls={() => null}
+          renderCenterRightControls={() => null}
+          renderBottomCenterControls={props => {
+            const indexes = [];
+
+            for (let i = 0; i < props.slideCount; i++) {
+              indexes.push(i);
+            }
+
+            return (
+              <ul className="product-page__product__gallery__nav">
+                {indexes.map(index => (
+                  <li
+                    key={index}
+                    onClick={props.goToSlide.bind(null, index)}
+                    className={props.currentSlide === index ? "active" : ""}
+                  >
+                    <span />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        >
+          {[{url: bannerimg},{url: bannerimg},{url: bannerimg},{url: bannerimg}].map(image => (
+            // <div
+            //   className="home-page__hero"
+            //   style={{ backgroundImage: `url(${image.url})` }}
+            // >
+            // </div>
+            // <CachedImage url={image.url || noPhotoImg}>
+              <img src={image.url} />
+            // </CachedImage>
+          ))}
+        </Carousel>
+      </div>
+      {/* <div
         className="home-page__hero"
         style={{ backgroundImage: `url(${bannerimg})` }}
       >
+      </div> */}
         {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
@@ -72,7 +119,6 @@ const Page: React.FC<{
             )
           )}
         </div> */}
-      </div>
       <CartContext.Consumer>
         {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
