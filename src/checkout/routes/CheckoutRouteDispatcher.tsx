@@ -44,18 +44,18 @@ export const CheckoutRouteDispatcher: React.FC<RouteComponentProps<{
 
   switch (step) {
     case CheckoutStep.BillingAddress:
-      return <Redirect to={generatePath(paths.billingUrl, { token })} />;
+      return <Redirect to={generatePath(paths.shippingAddressUrl, { token })} />;
     case CheckoutStep.ShippingAddress:
       return (
         <Redirect to={generatePath(paths.shippingAddressUrl, { token })} />
       );
     case CheckoutStep.Review:
-      return <Redirect to={generatePath(paths.reviewUrl, { token })} />;
+      return <Redirect to={generatePath(paths.shippingAddressUrl, { token })} />;
     case CheckoutStep.Payment:
-      return <Redirect to={generatePath(paths.paymentUrl, { token })} />;
+      return <Redirect to={generatePath(paths.shippingAddressUrl, { token })} />;
     case CheckoutStep.ShippingOption:
       return (
-        <Redirect to={generatePath(paths.shippingOptionsUrl, { token })} />
+        <Redirect to={generatePath(paths.shippingAddressUrl, { token })} />
       );
   }
 };
