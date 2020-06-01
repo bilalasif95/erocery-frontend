@@ -16,6 +16,13 @@
   @media(max-width:480px){
     &__title {
       min-height: 60px;
+      max-height: 60px;
+      overflow: hidden;
+    }
+    &__category {
+      min-height: 50px;
+      max-height: 50px;
+      overflow: hidden;
     }
   }
 
