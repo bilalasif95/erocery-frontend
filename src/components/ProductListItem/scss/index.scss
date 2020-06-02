@@ -7,11 +7,14 @@
   // border: 1px solid #80808024;
 
   &__title {
-    text-transform: $product-item-title-text-transform;
-    font-weight: $product-item-title-font-weight;
+    // text-transform: $product-item-title-text-transform;
+    font-weight: 500;
     margin-top: $spacer;
     text-align: left;
     min-height: 44px;
+    max-height: 44px;
+    overflow: hidden;
+    font-size: 1.1rem;
   }
   @media(max-width:480px){
     &__title {

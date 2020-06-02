@@ -71,7 +71,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                           <div className="overlay__header-text">
                             My Cart,{" "}
                             <span className="overlay__header-text-items">
-                              {cart.getQuantity() || 0} items
+                              {extractCartLines(data, cart.lines, locale).length !== 0 ? cart.getQuantity() : 0} items
                             </span>
                           </div>
                           <ReactSVG

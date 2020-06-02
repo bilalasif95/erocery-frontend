@@ -9,6 +9,8 @@ export const getTotal = (
   lines: CartLineInterface[],
   locale?: string
 ): string => {
+  lines = lines.filter(line=> variantList.productVariants.edges.find(({ node: { id } }) => id === line.variantId));
+  localStorage.setItem("cart",JSON.stringify(lines));
   const amount = lines.reduce((sum, { variantId, quantity }) => {
     const { node } = variantList.productVariants.edges.find(
       ({ node: { id } }) => id === variantId
@@ -17,9 +19,9 @@ export const getTotal = (
   }, 0);
   const {
     currency,
-  } = variantList.productVariants.edges[0].node.pricing.price.gross;
+  } = variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
 
-  return priceToString({ amount, currency }, locale);
+  return currency === "" ? "" : priceToString({ amount, currency }, locale);
 };
 
 export const extractCartLines = (

@@ -51,12 +51,13 @@ align-items: center;
 
 `;
 export const Title = styled.h4`
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   margin:1rem 0 0;
   min-height: 40px;
-  font-size: 1rem;
+  max-height: 40px;
+  font-size: 1.1rem;
   text-align: left;
+  overflow: hidden;
 
   ${media.smallScreen`
   text-transform: capitalize;
