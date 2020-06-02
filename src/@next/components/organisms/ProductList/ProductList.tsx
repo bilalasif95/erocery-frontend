@@ -92,23 +92,25 @@ ProductDescriptionState> {
                       }}
                     >
                     {(createCheckout, { loading: mutationLoading }) => (
-                      <AddToCartButton className="buyBtn"
-                        onClick={() => {
-                          this.setState({variant: product.id})
-                          if (this.props.user && !checkout) {
-                            createCheckout({
-                              variables: {
-                                checkoutInput: { phone: this.props.user.phone, lines },
-                              },
-                            });
-                          } else {
-                            this.handleSubmit(product.variants[0].id);
-                          }
-                        }}
-                        disabled={!this.canAddToCart(lines,product) || mutationLoading || checkoutLoading}
-                      >
-                        Add to Cart
-                      </AddToCartButton>
+                      <S.CartButton>
+                        <AddToCartButton
+                          onClick={() => {
+                            this.setState({variant: product.id})
+                            if (this.props.user && !checkout) {
+                              createCheckout({
+                                variables: {
+                                  checkoutInput: { phone: this.props.user.phone, lines },
+                                },
+                              });
+                            } else {
+                              this.handleSubmit(product.variants[0].id);
+                            }
+                          }}
+                          disabled={!this.canAddToCart(lines,product) || mutationLoading || checkoutLoading}
+                        >
+                          Add to Cart
+                        </AddToCartButton>
+                      </S.CartButton>
                     )}
                     </TypedCreateCheckoutMutation>
                   )}

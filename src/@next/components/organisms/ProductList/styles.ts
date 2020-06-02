@@ -18,6 +18,11 @@ export const List = styled.div`
 
 export const Item = styled.div``;
 
+export const CartButton = styled.div`
+  button {
+    padding: 0.5rem 1rem;
+  }
+`;
 
 export const Loader = styled.div`
   text-align: center;
