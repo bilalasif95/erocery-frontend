@@ -53,49 +53,52 @@ const CheckoutApp: React.FC<RouteComponentProps> = ({
   const stepFromPath = useCheckoutStepFromPath(pathname);
 
   return (
-    <div className="checkout">
+    <>
       <header>
         <MainMenu />
       </header>
-      {/* <div className="checkout__menu">
+      <div className="checkout">
+
+        {/* <div className="checkout__menu">
         <div className="checkout__menu__bar">
           <ReactSVG path={logoImg} />
         </div>
         <Link to={appBaseUrl}>Return to shopping</Link>
       </div> */}
-      <div className="container">
-        <Online>
-          {(() => {
-            if (
-              cartLoading ||
-              checkoutLoading ||
-              variantsProductsLoading ||
-              !step ||
-              (!stepFromPath && checkoutBaseUrl !== pathname)
-            ) {
-              return <Loader />;
-            }
+        <div className="container">
+          <Online>
+            {(() => {
+              if (
+                cartLoading ||
+                checkoutLoading ||
+                variantsProductsLoading ||
+                !step ||
+                (!stepFromPath && checkoutBaseUrl !== pathname)
+              ) {
+                return <Loader />;
+              }
 
-            if (!cartLines.length) {
-              return <Redirect to={appBaseUrl} />;
-            }
+              if (!cartLines.length) {
+                return <Redirect to={appBaseUrl} />;
+              }
 
-            if (
-              ((!checkout && !variantsProducts) || step < stepFromPath) &&
-              checkoutBaseUrl !== pathname
-            ) {
-              return <Redirect to={checkoutBaseUrl} />;
-            }
+              if (
+                ((!checkout && !variantsProducts) || step < stepFromPath) &&
+                checkoutBaseUrl !== pathname
+              ) {
+                return <Redirect to={checkoutBaseUrl} />;
+              }
 
-            return <CheckoutRoutes />;
-          })()}
-        </Online>
-        <Offline>
-          <OfflinePlaceholder />
-        </Offline>
+              return <CheckoutRoutes />;
+            })()}
+          </Online>
+          <Offline>
+            <OfflinePlaceholder />
+          </Offline>
+        </div>
+        <OverlayManager />
       </div>
-      <OverlayManager />
-    </div>
+    </>
   );
 };
 

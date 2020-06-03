@@ -33,6 +33,12 @@ import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 
+import { ShopContext } from "../ShopProvider/context";
+
+import { TypedProductVariantsQuery } from "../../views/Product/queries";
+
+import { extractCartLines } from "../CartProvider/utils";
+
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
@@ -106,7 +112,6 @@ const MainMenu: React.FC = () => {
 
             <div className="main-menu__center">
               <Link to={appPaths.homeUrl}>
-                {/* <img src={logoImg}/> */}
                 <ReactSVG path={logoImg} className="logoImg" />
               </Link>
             </div>
@@ -177,6 +182,20 @@ const MainMenu: React.FC = () => {
                 /> */}
                   <CartContext.Consumer>
                     {cart => (
+                      <ShopContext.Consumer>
+                      {({ defaultCountry, geolocalization }) => (
+                        <TypedProductVariantsQuery
+                          displayLoader={false}
+                          variables={{ ids: cart.lines.map(line => line.variantId) }}
+                          skip={!cart.lines.length}
+                          alwaysRender
+                        >
+                          {({ data, loading, error }) => {
+                            const locale = maybe(
+                              () => geolocalization.country.code,
+                              defaultCountry.code
+                            );
+                            return (
                       <li
                         className="main-menu__icon main-menu__cart"
                         onClick={() => {
@@ -187,12 +206,17 @@ const MainMenu: React.FC = () => {
                         }}
                       >
                         <ReactSVG path={cartImg} />
-                        {cart.getQuantity() > 0 ? (
+                        {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length > 0 ? (
                           <span className="main-menu__cart__quantity">
-                            {cart.getQuantity()}
+                            {extractCartLines(data, cart.lines, locale).length}
                           </span>
                         ) : null}
                       </li>
+                      );
+                    }}
+                  </TypedProductVariantsQuery>
+                )}
+              </ShopContext.Consumer>
                     )}
                   </CartContext.Consumer>
                 </Online>
@@ -219,7 +243,7 @@ const MainMenu: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="res-search">
+          {/* <div className="res-search">
             <ul>
               <li
                 className="main-menu__search"
@@ -234,7 +258,7 @@ const MainMenu: React.FC = () => {
                 <ReactSVG path={searchImg} />
               </li>
             </ul>
-          </div>
+          </div> */}
         </nav>
       )}
     </OverlayContext.Consumer>

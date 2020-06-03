@@ -29,17 +29,15 @@ export const Wrapper = styled.div`
 `}
 `;
 export const DeskView = styled.div`
-  ${media.smallScreen`
-    display: none;
-  `}
+display: block;
 `;
-export const MobView = styled.div`
-display: none;
-  ${media.smallScreen`
-    display: flex;
-    justify-content: flex-start;
-  `}
-`;
+// export const MobView = styled.div`
+// display: none;
+//   ${media.smallScreen`
+//     display: flex;
+//     justify-content: flex-start;
+//   `}
+// `;
 export const Details = styled.div`
 width: 80%;
 padding:0 0 0 0.5rem;
@@ -86,7 +84,6 @@ padding: 0.5rem;
 `;
 
 export const Image = styled.div`
-
   width: auto;
   height:250px;
   display: flex;
@@ -99,15 +96,7 @@ export const Image = styled.div`
     height: auto;
     max-width: 100%;
   }
-  ${media.mediumScreen`
-  height:180px;
-`}
   ${media.smallScreen`
-  width:20%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin:0 0.5rem 0 0;
-  height:100px
-`}
+    height: 150px;
+ `}
 `;

@@ -29,7 +29,7 @@ export const extractCartLines = (
   lines: CartLineInterface[],
   locale?: string
 ): LineI[] =>
-  data && data.productVariants.edges
+  data && data.productVariants && data.productVariants.edges
     .map(({ node }) => {
       const line = lines.find(({ variantId }) => variantId === node.id);
       if (!line) {
