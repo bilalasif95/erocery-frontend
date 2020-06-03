@@ -62,14 +62,14 @@
 
     &--fade {
       $animation-speed: 200ms;
-      background-color: grey;
+      background-color: grey !important;
       
       &:active {
-        background-color: grey;
+        background-color: grey !important;
       }
 
       &:hover {
-        background-color: grey;
+        background-color: grey !important;
       }
 
       &-enter {
