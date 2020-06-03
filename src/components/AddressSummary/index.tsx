@@ -33,7 +33,7 @@ const AddressSummary: React.FC<{
             {address.countryArea} <br />
           </>
         )}
-        {address.country.country}
+        {address && address.country && address.country.country}
         <br />
         {address.phone && (
           <>

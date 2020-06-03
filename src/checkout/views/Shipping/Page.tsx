@@ -134,6 +134,7 @@ const Page: React.FC<IShippingPageProps> = ({
           checkout={checkout}
         >
           {user ? (
+          
             <UserAddressSelector
               {...shippingProps}
               update={update}

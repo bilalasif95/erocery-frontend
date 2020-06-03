@@ -22,8 +22,10 @@ const renderAddressesList = ({
   addresses,
   onAddressSelect,
   selectedAddress,
-}: IAddressPickerProps) =>
-  addresses.map((address, id) => {
+}: IAddressPickerProps) =>{
+const addressFilter=addresses.filter((item)=>item.isDefaultShippingAddress!==null)
+return (
+  addressFilter.map((address, id) => {
     const isSelected = selectedAddress === address;
     return (
       <div
@@ -43,7 +45,7 @@ const renderAddressesList = ({
         />
       </div>
     );
-  });
+  }))}
 
 const renderModalForm = ({
   errors,
