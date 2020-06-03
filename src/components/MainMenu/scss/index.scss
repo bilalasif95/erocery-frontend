@@ -248,6 +248,7 @@
       text-transform: capitalize;
       font-weight: $bold-font-weight;
       margin-right: $spacer;
+      margin-left: $spacer;
     }
 
     div {
@@ -362,4 +363,13 @@
     flex-wrap: wrap;
   }
 }
+
+  header{
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+  }
+
+
+
 
