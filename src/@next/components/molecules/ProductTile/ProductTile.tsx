@@ -49,23 +49,23 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
           {/* <TaxedMoney taxedMoney={price} /> */}
         </S.Price> 
       </S.DeskView>
-      <S.MobView>
+      {/* <S.MobView>
         <S.Image>
           <Thumbnail source={product} />
         </S.Image>
         <S.Details>
           <S.Content>
           <S.Title>{product.name}</S.Title>
-          {/* <S.Link><img src={arrowLink} /></S.Link> */}
+          <S.Link><img src={arrowLink} /></S.Link>
           </S.Content>
           <S.Content>
           <S.Price>
             <TaxedMoney taxedMoney={price} />
           </S.Price>
-          {/* <S.AddCartBtn>Add To Cart</S.AddCartBtn> */}
+          <S.AddCartBtn>Add To Cart</S.AddCartBtn>
           </S.Content>
         </S.Details>
-      </S.MobView>
+      </S.MobView> */}
     </S.Wrapper>
   );
 };
