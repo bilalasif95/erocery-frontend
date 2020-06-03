@@ -62,8 +62,16 @@
 
     &--fade {
       $animation-speed: 200ms;
-      background-color: $turquoise-dark;
+      background-color: grey;
       
+      &:active {
+        background-color: grey;
+      }
+
+      &:hover {
+        background-color: grey;
+      }
+
       &-enter {
         opacity: 0;
 
