@@ -68,7 +68,7 @@ export interface ISubmitArgs {
 }
 
 export interface IAddressPickerProps {
-  addresses: FormAddressType[];
+  addresses: any[];
   type: CheckoutFormType;
   errors: FormError[];
   isVisibleModalForm: boolean;
