@@ -243,7 +243,7 @@ const MainMenu: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="res-search">
+          {/* <div className="res-search">
             <ul>
               <li
                 className="main-menu__search"
@@ -258,7 +258,7 @@ const MainMenu: React.FC = () => {
                 <ReactSVG path={searchImg} />
               </li>
             </ul>
-          </div>
+          </div> */}
         </nav>
       )}
     </OverlayContext.Consumer>
