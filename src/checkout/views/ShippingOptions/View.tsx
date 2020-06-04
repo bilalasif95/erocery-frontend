@@ -10,7 +10,7 @@ import {
   CheckoutContextInterface,
   CheckoutStep,
 } from "../../context";
-import { billingUrl } from "../../routes";
+import { paymentUrl } from "../../routes";
 import { TypedUpdateCheckoutShippingOptionsMutation } from "./queries";
 import "./scss/index.scss";
 import { updateCheckoutShippingOptions } from "./types/updateCheckoutShippingOptions";
@@ -30,7 +30,8 @@ class View extends React.Component<
 
     if (canProceed) {
       update({ checkout: data.checkoutShippingMethodUpdate.checkout });
-      this.props.history.push(generatePath(billingUrl, { token }));
+      // this.props.history.push(generatePath(billingUrl, { token }));
+      this.props.history.push(generatePath(paymentUrl, { token }));
     }
   }
 

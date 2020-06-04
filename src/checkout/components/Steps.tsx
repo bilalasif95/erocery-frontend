@@ -8,7 +8,7 @@ import { ShippingOptionSummary } from ".";
 import { AddressSummary } from "../../components";
 import { CartContext } from "../../components/CartProvider/context";
 import { CheckoutStep } from "../context";
-import { billingUrl, shippingAddressUrl, shippingOptionsUrl } from "../routes";
+import {  shippingAddressUrl, shippingOptionsUrl } from "../routes";
 import { Checkout } from "../types/Checkout";
 
 const steps = [
@@ -24,11 +24,11 @@ const steps = [
     step: CheckoutStep.ShippingOption,
     type: "shipping",
   },
-  {
-    header: "Billing Address",
-    path: billingUrl,
-    step: CheckoutStep.BillingAddress,
-  },
+  // {
+  //   header: "Billing Address",
+  //   path: billingUrl,
+  //   step: CheckoutStep.BillingAddress,
+  // },
   {
     header: "Payment Method",
     step: CheckoutStep.Payment,
@@ -73,14 +73,14 @@ const getSummary = (
       );
       break;
 
-    case CheckoutStep.BillingAddress:
-      summary = (
-        <AddressSummary
-          email={checkout.email}
-          address={checkout.billingAddress}
-        />
-      );
-      break;
+    // case CheckoutStep.BillingAddress:
+    //   summary = (
+    //     <AddressSummary
+    //       email={checkout.email}
+    //       address={checkout.billingAddress}
+    //     />
+    //   );
+    //   break;
 
     case CheckoutStep.ShippingOption:
       summary = checkout.shippingMethod && (
