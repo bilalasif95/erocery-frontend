@@ -96,7 +96,7 @@ export const Image = styled.div`
     height: auto;
     max-width: 100%;
     min-width: 185px !important;
-    ${media.smallScreen`
+    ${media.mediumScreen`
     min-width: 100% !important;
  `}
   }

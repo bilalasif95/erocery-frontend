@@ -81,8 +81,8 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                           </S.Value>
                         </>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                       <S.Status>{order.node.statusDisplay}</S.Status>
                     </S.Row>
                   );
