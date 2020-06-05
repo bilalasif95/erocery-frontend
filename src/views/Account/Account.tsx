@@ -65,6 +65,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   }
 
   return (
+    <div>
     <div className="container">
       <Breadcrumbs breadcrumbs={[{ link: match.path, value: "My Account" }]} />
       <div className="account">
@@ -82,6 +83,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
           {user && returnTab(match.path, user, history)}
         </div>
       </div>
+    </div>
     </div>
   );
 };
