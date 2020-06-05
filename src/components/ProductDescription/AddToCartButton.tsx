@@ -39,9 +39,7 @@ class AddToCartButton extends React.PureComponent<
     clearTimeout(this.timeout);
   }
 
-
   render() {
-  
     const { animate } = this.state;
 
     return (

@@ -10,6 +10,7 @@ import {
 const distDir = path.join(__dirname, "../dist");
 
 const generateSitemap = async (hostname: string) => {
+  console.log("gerllllllllll",hostname)
   const sitemap = new SitemapGenerator({ hostname, destinationDir: distDir });
 
   sitemap.add({ url: "/" });

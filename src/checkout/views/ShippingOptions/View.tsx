@@ -29,6 +29,7 @@ class View extends React.Component<
     const canProceed = !data.checkoutShippingMethodUpdate.errors.length;
 
     if (canProceed) {
+     data.checkoutShippingMethodUpdate.checkout.billingAddress=data.checkoutShippingMethodUpdate.checkout.shippingAddress
       update({ checkout: data.checkoutShippingMethodUpdate.checkout });
       // this.props.history.push(generatePath(billingUrl, { token }));
       this.props.history.push(generatePath(paymentUrl, { token }));

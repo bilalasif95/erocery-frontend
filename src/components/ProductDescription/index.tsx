@@ -125,7 +125,6 @@ class ProductDescription extends React.Component<
     this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data)=>{
       this.setState({error:data})
     }).catch((error)=>{
-       console.log("Error in component",error);
        this.setState({error})
     })
   };
