@@ -164,9 +164,9 @@ ProductDescriptionState> {
                                   this.handleSubmit(product.variants[0].id);
                                 }
                               }}
-                              disabled={!this.canAddToCart(lines,product) || mutationLoading || checkoutLoading}
+                              disabled={!this.canAddToCart(lines,product) || mutationLoading}
                             >
-                              Add to Cart
+                              {product.variants[0].stockQuantity !==0 ? "Add to Cart" : "Out of Stock"}
                             </AddToCartButton>
                             )}
                           </TypedCreateCheckoutMutation>

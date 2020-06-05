@@ -9,7 +9,7 @@ import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
 import { getFormData } from "./utils";
 
-import { CITIES } from "../../core/config";
+// import { CITIES } from "../../core/config";
 
 export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> = ({
   data,
@@ -18,7 +18,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
   children,
   type,
   emailRequired = true,
-  // cities,
+  cities,
 }) => {
   const [phone, setPhone] = useState("03");
 
@@ -79,7 +79,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
               <Select
                 label="City"
                 name="city"
-                options={CITIES.map(value => ({
+                options={cities.map(value => ({
                   label: value.city,
                   value: value.city,
                 }))}

@@ -86,6 +86,7 @@ export const PRODUCT: ProductList_products_edges_node = {
     __typename: "ProductVariant",
     id: "",
     name: "",
+    stockQuantity: 0,
     },
   ],
 };

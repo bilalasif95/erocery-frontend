@@ -226,6 +226,7 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_va
    */
   id: string;
   name: string;
+  stockQuantity: number;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node {

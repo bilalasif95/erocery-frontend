@@ -46,11 +46,11 @@ const AddToCart: React.FC<{
                   onSubmit();
                 }
               }}
-              disabled={disabled || mutationLoading || checkoutLoading}
+              disabled={disabled || mutationLoading}
             >
-              Add to Cart
+              {!disabled ? "Add to Cart" : "Out of Stock"}
             </AddToCartButton>
-            {disabled || mutationLoading || checkoutLoading ? 
+            {disabled || mutationLoading ? 
             <Button
             className="buyButton"
             onClick={() => {
@@ -64,7 +64,7 @@ const AddToCart: React.FC<{
                 onSubmit();
               }
             }}
-            disabled={disabled || mutationLoading || checkoutLoading}>
+            disabled={disabled || mutationLoading}>
               Buy Now
             </Button> :
             <Link to={checkoutUrl} className="btnLink">
@@ -81,7 +81,7 @@ const AddToCart: React.FC<{
                   onSubmit();
                 }
               }}
-              disabled={disabled || mutationLoading || checkoutLoading}>
+              disabled={disabled || mutationLoading}>
                 Buy Now
               </Button>
             </Link>

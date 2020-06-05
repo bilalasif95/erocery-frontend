@@ -1,7 +1,7 @@
 import { AddressInterface } from "../../core/types";
 import { FormError } from "../Form";
 
-// import {StaffList_staffUsers_edges_node} from "../../checkout/types/StaffList"
+import {StaffList_staffUsers_edges_node} from "../../checkout/types/StaffList"
 
 export type CheckoutFormType = "billing" | "shipping";
 export interface AddressType extends Partial<AddressInterface> {
@@ -33,5 +33,5 @@ export interface IShippingNewAddressFormProps
   extends IBaseShippingAddressFormProps {
   onSubmit: (data: FormAddressType) => void;
   emailRequired?: boolean;
-  // cities: StaffList_staffUsers_edges_node[];
+  cities: StaffList_staffUsers_edges_node[];
 }
