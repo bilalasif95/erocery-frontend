@@ -22,7 +22,9 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      
+      @media (max-width: 992px) {
+        justify-content: flex-start;
+      }
     }
   }
   &__right {
@@ -132,7 +134,15 @@
     }
   }
 
-  &__item,
+  &__item{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media(max-width:992px){
+      display: none;
+    }
+  }
   &__hamburger {
     align-items: center;
     display: flex;

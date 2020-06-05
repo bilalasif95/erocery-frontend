@@ -4,54 +4,14 @@
   width: 100%;
   h4 {
     font-weight: 600;
+
   }
 }
 
 .mainHeading{
-  // background-blend-mode: multiply;
-  //   background-size: cover;
-  //   background-position: center;
     text-align: center;
     h3 {
       font-weight: 600;
+      margin: 2rem auto 0;
     }
-    // background-image: url("../../../../src/images/homeBanner.jpg");
-    // padding: 12rem 0;
-    // height: 500px;
-    // &-text {
-    //   overflow: hidden;
-    // }
-    // @media (min-width: 1440px) {
-    //   height: 590px;
-    //   min-height: 50vh;
-    // }
-    // @media (max-width: 1366px) {
-    //   height: 390px;
-    // }
-
-    // @media (max-width: 991px) {
-    //   height: 230px;
-    // }
-
-    // @media (max-width: 575px) {
-    //   align-items: center;
-    //   display: flex;
-    //   flex-direction: column;
-    //   height: 170px;
-    //   justify-content: space-between;
-    //   padding: $spacer;
-
-    //   &-text {
-    //     margin-top: $spacer * 5;
-    //     width: 100%;
-    //   }
-
-    //   &-action {
-    //     margin-bottom: $spacer * 3;
-    //     width: 100%;
-    //   }
-    // }
-    // @media (max-width: 480px) {
-    //   height: 130px;
-    // }
 }
