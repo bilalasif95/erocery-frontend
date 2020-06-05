@@ -106,7 +106,8 @@ ProductDescriptionState> {
                               this.handleSubmit(product.variants[0].id);
                             }
                           }}
-                          disabled={!this.canAddToCart(lines,product) || mutationLoading || checkoutLoading}
+                        
+                          disabled={!this.canAddToCart(lines,product) || mutationLoading }
                         >
                           Add to Cart
                         </AddToCartButton>

@@ -46,7 +46,8 @@ const AddToCart: React.FC<{
                   onSubmit();
                 }
               }}
-              disabled={disabled || mutationLoading || checkoutLoading}
+              disabled={disabled || mutationLoading }
+          
             >
               Add to Cart
             </AddToCartButton>
