@@ -22,11 +22,12 @@ interface ProductDescriptionProps {
   productVariants: ProductDetails_product_variants[];
   name: string;
   pricing: ProductDetails_product_pricing;
-  addToCart(varinatId: string, quantity?: number): void;
+  addToCart(varinatId: string, quantity?: number): any;
   setVariantId(variantId: string);
 }
 
 interface ProductDescriptionState {
+  error:any;
   quantity: number;
   variant: string;
   variantStock: number;
@@ -47,6 +48,7 @@ class ProductDescription extends React.Component<
     super(props);
 
     this.state = {
+      error: undefined,
       price: props.pricing.priceRange.start,
       priceUndiscounted: props.pricing.priceRangeUndiscounted.start,
       quantity: 1,
@@ -120,7 +122,12 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    this.props.addToCart(this.props.productVariants[0].id, this.state.quantity);
+    this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data)=>{
+      this.setState({error:data})
+    }).catch((error)=>{
+       console.log("Error in component",error);
+       this.setState({error})
+    })
   };
 
   canAddToCart = (lines: CartLine[]) => {
@@ -155,6 +162,8 @@ class ProductDescription extends React.Component<
         }
         <div className="product-description__quantity-input">
           <TextField
+            name="quantity"
+            errors={this.state.error}
             type="number"
             label="Quantity"
             min="1"
@@ -170,6 +179,7 @@ class ProductDescription extends React.Component<
               onSubmit={this.handleSubmit}
               lines={lines}
               disabled={!this.canAddToCart(lines) || this.props.productVariants.length === 0}
+              
             />
           )}
         </CartContext.Consumer>

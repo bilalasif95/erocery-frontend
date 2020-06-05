@@ -31,7 +31,7 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
   const [
     selectedAddress,
     setSelectedAddress,
-  ] = React.useState<FormAddressType | null>(
+  ] = React.useState<any | null>(
     !shippingAsBilling ? addressesList[0] : null
   );
 
@@ -87,7 +87,6 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
       updateAddresses(address);
     }
   };
-
   return (
     <>
       <AddressPicker
@@ -105,7 +104,7 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
       />
       <Button
         type="submit"
-        disabled={(!selectedAddress && !shippingAsBilling) || loading}
+        disabled={(selectedAddress && selectedAddress.isDefaultBillingAddress !== null ||  selectedAddress && selectedAddress.isDefaultBillingAddress ===  !undefined ? false:true ) || loading}
         onClick={() => proceedToNextStep(selectedAddress)}
       >
         {buttonText}

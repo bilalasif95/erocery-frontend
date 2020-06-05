@@ -142,8 +142,6 @@ const View: React.FC<IBillingPageProps> = ({
 
   const { data: user } = useUserDetails();
 
-  console.log("userDetails...",user)
-
   return (
     <CartSummary checkout={checkout}>
       <Steps
