@@ -104,7 +104,7 @@ const UserAddressSelector: React.FC<UserAddressSelectorProps> = ({
       />
       <Button
         type="submit"
-        disabled={(selectedAddress.isDefaultBillingAddress !== null ||  selectedAddress.isDefaultBillingAddress ===  !undefined ? false:true ) || loading}
+        disabled={(selectedAddress && selectedAddress.isDefaultBillingAddress !== null ||  selectedAddress && selectedAddress.isDefaultBillingAddress ===  !undefined ? false:true ) || loading}
         onClick={() => proceedToNextStep(selectedAddress)}
       >
         {buttonText}
