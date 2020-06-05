@@ -3,19 +3,23 @@ import * as React from "react";
 import { Money } from "@components/containers";
 
 import { CartInterface } from "../../../components/CartProvider/context";
+import { getTotal } from "../../../components/CartProvider/utils";
 import { TypedProductVariantsQuery } from "../../../views/Product/queries";
 import { Checkout } from "../../types/Checkout";
 import Line from "./Line";
 import Subtotal from "./Subtotal";
 
+import { maybe } from "../../../core/utils";
+
 const Cart: React.FC<{
   cart: CartInterface;
   checkout: Checkout | null;
 }> = ({ cart: { lines }, checkout }) => {
+  const locale = maybe(() => "PK", "PK");
   return (
     <div className="cart-summary">
       <p className="cart-summary__header">Cart summary</p>
-      {!checkout ? (
+      {checkout ? (
         <TypedProductVariantsQuery
           variables={{ ids: lines.map(line => line.variantId) }}
         >
@@ -32,6 +36,27 @@ const Cart: React.FC<{
                 />
               ))}
               <Subtotal checkout={checkout} variants={data} lines={lines} />
+              {checkout.discount && !!checkout.discount.amount && (
+                <div className="cart-summary__totals">
+                  <h5>Discount:</h5>
+                  <h5>
+                    - <Money defaultValue="-" money={checkout.discount} />
+                  </h5>
+                </div>
+              )}
+              <div className="cart-summary__totals">
+                <h5>Delivery</h5>
+                <h5>
+                  <Money defaultValue="-" money={checkout.shippingPrice.gross} />
+                </h5>
+              </div>
+              <div className="cart-summary__totals last">
+                <h4>Grand total</h4>
+                <h4>
+                  {getTotal(data, lines, locale)}
+                  {/* <Money defaultValue="-" money={checkout.totalPrice.gross} /> */}
+                </h4>
+              </div>
             </>
           )}
         </TypedProductVariantsQuery>

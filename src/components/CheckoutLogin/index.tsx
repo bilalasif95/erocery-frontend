@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 
 import { useUserDetails } from "@sdk/react";
 
-import { Offline, OfflinePlaceholder, Online, OverlayContext,OverlayTheme, OverlayType } from "..";
+import { Offline, OfflinePlaceholder, Online, OverlayContext, OverlayTheme, OverlayType } from "..";
 
 import { baseUrl as checkoutUrl } from "../../checkout/routes";
 
@@ -21,39 +21,41 @@ const CheckoutLogin: React.FC<{}> = () => {
     return <Redirect to={checkoutUrl} />;
   }
   return (
-    <div className="container">
-      <Online>
-        <div className="checkout-login">
-          {/* <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} /> */}
-          <div className="checkout-login__user">
-            {resetPassword ? (
-              <ResetPasswordForm
-                onClick={() => {
-                  setResetPassword(false);
-                }}
-              />
-            ) : (
-              <SignInForm
-                onClick={() => {
-                  setResetPassword(true);
-                }}
-              />
-            )}
-            <p>
-              You can also{" "}
-              <span
-                className="u-link"
-                onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
-              >
-                create an account
+    <div>
+      <div className="container">
+        <Online>
+          <div className="checkout-login">
+            {/* <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} /> */}
+            <div className="checkout-login__user">
+              {resetPassword ? (
+                <ResetPasswordForm
+                  onClick={() => {
+                    setResetPassword(false);
+                  }}
+                />
+              ) : (
+                  <SignInForm
+                    onClick={() => {
+                      setResetPassword(true);
+                    }}
+                  />
+                )}
+              <p>
+                You can also{" "}
+                <span
+                  className="u-link"
+                  onClick={() => overlay.show(OverlayType.register, OverlayTheme.right)}
+                >
+                  create an account
               </span>
-            </p>
+              </p>
+            </div>
           </div>
-        </div>
-      </Online>
-      <Offline>
-        <OfflinePlaceholder />
-      </Offline>
+        </Online>
+        <Offline>
+          <OfflinePlaceholder />
+        </Offline>
+      </div>
     </div>
   );
 };
