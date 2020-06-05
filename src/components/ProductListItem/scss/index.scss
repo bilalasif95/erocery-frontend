@@ -63,6 +63,9 @@
       object-fit: contain;
       max-width: 100%;
       min-width: 185px;
+      @media (max-width: $small-screen) {
+        min-width: 100%;
+      }
     }
    
     @media (max-width: $small-screen) {
