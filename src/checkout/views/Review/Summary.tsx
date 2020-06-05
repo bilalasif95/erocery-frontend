@@ -9,7 +9,6 @@ import { Checkout } from "../../types/Checkout";
 
 import copyImg from "../../../images/copy.svg";
 import {
-  billingUrl,
   paymentUrl,
   shippingAddressUrl,
   shippingOptionsUrl,
@@ -50,7 +49,7 @@ class Summary extends React.PureComponent<{
             email={checkout.email}
           />
         </div>
-        <div>
+        {/* <div>
           <h4>
             Billing address
             <ReactSVG
@@ -60,7 +59,7 @@ class Summary extends React.PureComponent<{
             />
           </h4>
           <AddressSummary address={checkout.billingAddress} />
-        </div>
+        </div> */}
         {checkout.isShippingRequired && (
           <div>
             <h4>
