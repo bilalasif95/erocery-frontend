@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import React, { useState } from "react";
 
-import { Form, NumberField, Select, TextField  } from "..";
+import { Form, Select, TextField  } from "..";
 
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
@@ -98,15 +98,16 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
                 name="countryArea"
                 autoComplete="address-level1"
               />
-              <NumberField
-                label="Phone Number"
-                type="tel"
-                name="phone"
-                autoComplete="tel"
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
-                required
-              />
+               <div className="phoneField">
+                      <div className="startNum">03</div>
+                      <TextField
+                        name="phone"
+                        autoComplete="tel"
+                        label="Phone Number"
+                        type="tel"
+                        required
+                      />
+                    </div>
               {/* <Select
               label="Country"
               name="country"

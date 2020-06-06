@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import React, { useState } from "react";
 
-import { Button, Form, NumberField, Select, TextField } from "..";
+import { Button, Form, Select, TextField } from "..";
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingAddressFormProps } from "./types";
 import { getFormData } from "./utils";
@@ -20,7 +20,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   type = "shipping",
   cities,
 }) => {
-  const [phone, setPhone] = useState("03");
+  const [phone, setPhone] = useState("");
   return (
     <div className="address-form">
       <ShopContext.Consumer>
@@ -98,15 +98,16 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   name="countryArea"
                   autoComplete="address-level1"
                 />
-                <NumberField
-                  label="Phone Number"
-                  type="tel"
-                  name="phone"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  autoComplete="tel"
-                  required
-                />
+                <div className="phoneField">
+                  <div className="startNum">03</div>
+                  <TextField
+                    name="phone"
+                    autoComplete="tel"
+                    label="Phone Number"
+                    type="tel"
+                    required
+                  />
+                </div>
                 {/* <Select
                 label="Country"
                 name="country"

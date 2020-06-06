@@ -5,7 +5,7 @@ import { maybe } from "@utils/misc";
 import * as React from "react";
 import ReactSVG from "react-svg";
 
-import { Button, Form,  NumberField, TextField } from "..";
+import { Button, Form, TextField } from "..";
 import { CheckoutContext } from "../../checkout/context";
 import removeImg from "../../images/pass-invisible.svg";
 import removeImgg from "../../images/pass-visible.svg";
@@ -20,12 +20,12 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
   const { update } = React.useContext(CheckoutContext);
   const [message, setMessage] = React.useState(true);
   const [passwordType, setPasswordType] = React.useState(true);
-  const [phone, setPhone] = React.useState("03");
+  const [phone, setPhone] = React.useState("");
   const [password, setPassword] = React.useState("");
   const handleOnSubmit = async (evt, { phone, password }) => {
     evt.preventDefault();
     setPassword(password);
-    const authenticated = await signIn({ phone, password });
+    const authenticated = await signIn({ phone: "03"+phone, password });
     setMessage(authenticated.data.user.phone_verified);
     setPhone(authenticated.data.user.phone);
     if (authenticated && hide && authenticated.data.user.phone_verified) {
@@ -49,15 +49,16 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
             errors={maybe(() => error.extraInfo.userInputErrors, [])}
             onSubmit={handleOnSubmit}
           >
-            <NumberField
+            <div className="phoneField">
+              <div className="startNum">03</div>
+            <TextField
               name="phone"
               autoComplete="tel"
               label="Enter Phone Number"
               type="tel"
-              onChange={e => setPhone(e.target.value)}
-              value={phone}
               required
             />
+            </div>
             {passwordType ? (
               <div className="passwordInput">
                 <TextField

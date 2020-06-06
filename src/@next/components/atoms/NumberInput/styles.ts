@@ -56,7 +56,7 @@ export const InputWrapper = styled.div`
 export const StartNumber = styled.div`
   position:absolute;
   left: 1.1rem;
-  top: 0.7rem;
+  top: 12px;
   z-index: 1;
 `;
 
