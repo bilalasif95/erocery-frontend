@@ -43,14 +43,6 @@ export const SOCIAL_MEDIA = [
     path: require("../images/youtube-icon.svg"),
   },
 ];
-export const CITIES = [
-  {
-    city:"Islamabad",
-  },
-  {
-    city:"Sargodha",
-  },
-];
 export const META_DEFAULTS = {
   custom: [],
   description:

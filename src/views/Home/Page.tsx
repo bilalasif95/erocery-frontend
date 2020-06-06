@@ -48,7 +48,6 @@ const Page: React.FC<{
         <Carousel
           autoplay={true}
           wrapAround={true}
-          autoplayReverse={true}
           autoplayInterval={2000}
           renderCenterLeftControls={() => null}
           renderCenterRightControls={() => null}

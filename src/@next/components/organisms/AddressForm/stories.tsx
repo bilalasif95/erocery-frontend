@@ -15,6 +15,7 @@ const withContainer = (children: ReactNode) => (
 
 const NO_ERRORS: any = [];
 const PROPS = {
+  cities: [],
   errors: NO_ERRORS,
   handleSubmit: action("handleSubmit"),
 };

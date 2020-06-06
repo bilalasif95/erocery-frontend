@@ -6,6 +6,8 @@ import { maybe } from "../../../core/utils";
 import { CheckoutFormType, IGuestAddressProps } from "../../types";
 import { Checkout } from "../../types/Checkout";
 
+import { TypedStaffListQuery } from "../../queries";
+
 const getCountryData = (shop: getShop_shop) => {
   const { geolocalization, defaultCountry } = shop;
   return {
@@ -71,21 +73,29 @@ const GuestAddressForm: React.FC<IGuestAddressProps> = ({
   type = "shipping",
   noShipping,
 }) => (
-  <ShippingAddressForm
-    type={type as CheckoutFormType}
-    data={extractData(
-      type as CheckoutFormType,
-      checkout,
-      shop,
-      shippingAsBilling
-    )}
-    buttonText={buttonText}
-    errors={errors}
-    loading={loading}
-    shippingAsBilling={shippingAsBilling}
-    onSubmit={proceedToNextStep}
-    noShipping={noShipping}
-  />
+  <TypedStaffListQuery>
+    {({ data }) => {
+      return (
+        <ShippingAddressForm
+          type={type as CheckoutFormType}
+          data={extractData(
+            type as CheckoutFormType,
+            checkout,
+            shop,
+            shippingAsBilling
+          )}
+          buttonText={buttonText}
+          errors={errors}
+          loading={loading}
+          shippingAsBilling={shippingAsBilling}
+          onSubmit={proceedToNextStep}
+          noShipping={noShipping}
+          cities={maybe(() =>
+            data.subshops.map(edge => edge)
+          )}
+        />
+    )}}
+  </TypedStaffListQuery>
 );
 
 export default GuestAddressForm;

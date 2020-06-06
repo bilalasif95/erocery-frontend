@@ -6,6 +6,10 @@ import { useDefaultUserAddress, useDeleteUserAddresss } from "@sdk/react";
 import { AddressTypeEnum } from "@sdk/types/globalTypes";
 import { ShopContext } from "../../components/ShopProvider/context";
 
+import { maybe } from "@utils/misc";
+
+import { TypedStaffListQuery } from "../../checkout/queries";
+
 const AddressBook: React.FC<{
   user: any;
 }> = ({ user }) => {
@@ -53,6 +57,9 @@ const AddressBook: React.FC<{
         }}
       />
       {displayNewModal && (
+        <TypedStaffListQuery>
+        {({ data }) => {
+          return (
         <AddressFormModal
           hideModal={() => {
             setDisplayNewModal(false);
@@ -63,9 +70,17 @@ const AddressBook: React.FC<{
           title={"Add new address"}
           {...{ options: countries }}
           formId="address-form"
+          cities={maybe(() =>
+            data.subshops.map(edge => edge)
+          )}
         />
+        )}}
+        </TypedStaffListQuery>
       )}
       {displayEditModal && (
+        <TypedStaffListQuery>
+        {({ data }) => {
+          return (
         <AddressFormModal
           hideModal={() => {
             setDisplayEditModal(false);
@@ -75,7 +90,12 @@ const AddressBook: React.FC<{
           title={"Edit address"}
           {...{ options: countries }}
           formId="address-form"
+          cities={maybe(() =>
+            data.subshops.map(edge => edge)
+          )}
         />
+        )}}
+        </TypedStaffListQuery>
       )}
     </div>
   );

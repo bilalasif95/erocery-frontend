@@ -7,6 +7,7 @@ import { Input } from "@components/atoms";
 import { AddressForm } from ".";
 
 const PROPS = {
+  cities: [],
   errors: [],
   handleSubmit: jest.fn(),
   options: [

@@ -8,8 +8,6 @@ import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingAddressFormProps } from "./types";
 import { getFormData } from "./utils";
 
-import { CITIES } from "../../core/config";
-
 const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   data,
   buttonText,
@@ -20,6 +18,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   shippingAsBilling = false,
   noShipping = false,
   type = "shipping",
+  cities,
 }) => {
   const [phone, setPhone] = useState("03");
   return (
@@ -78,7 +77,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                 <Select
                   label="City"
                   name="city"
-                  options={CITIES.map(value => ({
+                  options={cities.map(value => ({
                     label: value.city,
                     value: value.city,
                   }))}
