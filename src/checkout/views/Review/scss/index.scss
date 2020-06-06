@@ -37,7 +37,7 @@
         padding-bottom: $spacer;
         text-transform: uppercase;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
       }
 
       p {
@@ -68,6 +68,7 @@
     justify-content: center;
     width: $bcg-height;
     align-items: center;
+    margin-left: 1rem;
 
     &:hover {
       cursor: pointer;

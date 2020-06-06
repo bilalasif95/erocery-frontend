@@ -22,6 +22,8 @@ import { AccountMenu, AccountMenuMobile } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
 import { Breadcrumbs, Loader } from "../../components";
 
+import { UserAllAddressesQuery } from "./queries";
+
 const returnTab: any = (path: string, userDetails, history) => {
   let tabContent = <></>;
   switch (path) {
@@ -30,7 +32,12 @@ const returnTab: any = (path: string, userDetails, history) => {
       break;
     }
     case addressBookUrl: {
-      tabContent = <AddressBook user={userDetails} />;
+      tabContent = 
+      <UserAllAddressesQuery>
+        {({ data }) => (
+        <AddressBook user={userDetails} />
+        )}
+      </UserAllAddressesQuery>;
       break;
     }
     case orderHistoryUrl: {

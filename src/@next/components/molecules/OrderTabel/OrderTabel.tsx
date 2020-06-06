@@ -39,7 +39,8 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
               <S.Row>{header(matches)}</S.Row>
               {orders &&
                 orders.map(order => {
-                  const date = new Date(order.node.created);
+                  const apiDate = order.node.created.slice(0,10)
+                  const date = new Date(apiDate);
                   return (
                     <S.Row
                       data-testid="order__row"
