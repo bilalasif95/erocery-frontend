@@ -6,6 +6,8 @@ type ButtonType = "submit" | "reset" | "button";
 export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   secondary?: boolean;
   btnRef?: React.RefObject<HTMLButtonElement>;
+  error ?:any
+  typeCart ? :any
 }
 
 const Button: React.FC<ButtonProps> = ({

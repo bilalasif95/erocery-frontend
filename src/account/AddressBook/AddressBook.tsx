@@ -44,6 +44,7 @@ const AddressBook: React.FC<{
     return addressToDisplay;
   });
 
+
   return (
     <div className="address-book-container">
       <AddressGrid

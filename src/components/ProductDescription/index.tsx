@@ -178,6 +178,8 @@ class ProductDescription extends React.Component<
               onSubmit={this.handleSubmit}
               lines={lines}
               disabled={!this.canAddToCart(lines) || this.props.productVariants.length === 0}
+              error={this.state.error}
+              typeCart={true}
               
             />
           )}
