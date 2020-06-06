@@ -39,8 +39,9 @@ export const AddressForm: React.FC<IProps> = ({
   return (
     <Formik
       initialValues={addressWithPickedFields}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values: any, { setSubmitting }) => {
         if (handleSubmit) {
+          values = { ...values, phone: values.phone.length >= 11 ? values.phone : "03"+values.phone };
           handleSubmit(values);
         }
         setSubmitting(false);

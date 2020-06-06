@@ -6,7 +6,7 @@ import ReactSVG from "react-svg";
 
 import Timer from "react-compound-timer";
 
-import { Button, Form, NumberField, TextField } from "../..";
+import { Button, Form, TextField } from "../..";
 import { maybe } from "../../../core/utils";
 import removeImg from "../../../images/pass-invisible.svg";
 import removeImgg from "../../../images/pass-visible.svg";
@@ -147,7 +147,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     setPassword(password);
                     const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
                     registerCustomer({
-                      variables: { email: email || "", phone, password, redirectUrl },
+                      variables: { email: email || "", phone: "03"+phone, password, redirectUrl },
                     });
                   }}
                 >

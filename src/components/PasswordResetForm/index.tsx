@@ -175,7 +175,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                       event.preventDefault();
                       passwordReset({
                         variables: {
-                          phone,
+                          phone: "03"+phone,
                           // redirectUrl: `${window.location.origin}${passwordResetUrl}`,
                         },
                       });

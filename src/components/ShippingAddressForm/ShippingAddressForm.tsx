@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import classNames from "classnames";
-import React, { useState } from "react";
+import React from "react";
 
 import { Button, Form, Select, TextField } from "..";
 import { ShopContext } from "../ShopProvider/context";
@@ -20,7 +20,6 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
   type = "shipping",
   cities,
 }) => {
-  const [phone, setPhone] = useState("");
   return (
     <div className="address-form">
       <ShopContext.Consumer>
@@ -29,6 +28,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
             errors={errors}
             onSubmit={(evt, data) => {
               evt.preventDefault();
+              data = { ...data, phone: "03"+data.phone };
               onSubmit(data);
             }}
             data={getFormData(geolocalization, defaultCountry, data)}
