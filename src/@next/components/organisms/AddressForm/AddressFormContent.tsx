@@ -9,8 +9,6 @@ import { InputSelect, NumberField, TextField  } from "@components/molecules";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 
-import { CITIES } from "../../../../core/config";
-
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
   handleChange,
@@ -19,6 +17,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   errors,
   handleSubmit,
   values,
+  cities,
   options,
   defaultValue,
   setFieldValue,
@@ -124,9 +123,9 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           <InputSelect
             label="City"
             name="city"
-            options={CITIES.map(value => ({
-              city: value.city,
-            }))}
+            options={cities.map(value => ({
+                city: value.city,
+              }))}
             value={
               values!.city &&
               options &&

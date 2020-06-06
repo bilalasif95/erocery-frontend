@@ -24,6 +24,7 @@ export const AddressForm: React.FC<IProps> = ({
   handleSubmit,
   formId,
   defaultValue,
+  cities,
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddress> = {
@@ -56,6 +57,7 @@ export const AddressForm: React.FC<IProps> = ({
         return (
           <AddressFormContent
             {...{
+              cities,
               defaultValue,
               formId,
               handleBlur,

@@ -62,11 +62,11 @@ const Cart: React.FC<{
         </TypedProductVariantsQuery>
       ) : (
         <>
-          {checkout.lines.map(({ variant, quantity, id }) => (
+          {checkout && checkout.lines && checkout.lines.map(({ variant, quantity, id }) => (
             <Line key={id} {...variant} quantity={quantity} />
           ))}
           <Subtotal checkout={checkout} lines={lines} />
-          {checkout.discount && !!checkout.discount.amount && (
+          {checkout && checkout.discount && !!checkout.discount.amount && (
             <div className="cart-summary__totals">
               <h5>Discount: {checkout.discountName}</h5>
               <h5>
@@ -77,13 +77,13 @@ const Cart: React.FC<{
           <div className="cart-summary__totals">
             <h5>Delivery</h5>
             <h5>
-              <Money defaultValue="-" money={checkout.shippingPrice.gross} />
+              <Money defaultValue="-" money={checkout && checkout.shippingPrice.gross} />
             </h5>
           </div>
           <div className="cart-summary__totals last">
             <h4>Grand total</h4>
             <h4>
-              <Money defaultValue="-" money={checkout.totalPrice.gross} />
+              <Money defaultValue="-" money={checkout && checkout.totalPrice.gross} />
             </h4>
           </div>
         </>

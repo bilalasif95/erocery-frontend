@@ -18,7 +18,9 @@ const AddToCart: React.FC<{
   disabled: boolean;
   lines: CartLine[];
   onSubmit: () => void;
-}> = ({ disabled, lines, onSubmit }) => {
+  error:any,
+  typeCart:any
+}> = ({ disabled, lines, onSubmit ,error}) => {
   const { data: user } = useUserDetails();
   return (
     <CheckoutContext.Consumer>
@@ -47,6 +49,8 @@ const AddToCart: React.FC<{
                 }
               }}
               disabled={disabled || mutationLoading}
+              error={error}
+              typeCart={true}
             >
               {!disabled ? "Add to Cart" : "Out of Stock"}
             </AddToCartButton>
