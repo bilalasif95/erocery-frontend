@@ -10,6 +10,7 @@ jest.mock("@sdk/react", () => ({
 }));
 
 const DEFAULT_PROPS = {
+  cities: [],
   formId: "address-form",
   handleSubmit: jest.fn(),
   hideModal: jest.fn(),

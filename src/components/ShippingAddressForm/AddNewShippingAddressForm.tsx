@@ -9,8 +9,6 @@ import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
 import { getFormData } from "./utils";
 
-// import { CITIES } from "../../core/config";
-
 export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> = ({
   data,
   errors,

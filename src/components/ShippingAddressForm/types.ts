@@ -27,6 +27,7 @@ export interface IShippingAddressFormProps
   onSubmit: (data: FormAddressType) => void;
   shippingAsBilling?: boolean;
   noShipping?: boolean;
+  cities: StaffList_staffUsers_edges_node[];
 }
 
 export interface IShippingNewAddressFormProps
