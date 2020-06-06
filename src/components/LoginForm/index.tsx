@@ -5,7 +5,7 @@ import { maybe } from "@utils/misc";
 import * as React from "react";
 import ReactSVG from "react-svg";
 
-import { Button, Form, TextField } from "..";
+import { Button, Form,  NumberField, TextField } from "..";
 import { CheckoutContext } from "../../checkout/context";
 import removeImg from "../../images/pass-invisible.svg";
 import removeImgg from "../../images/pass-visible.svg";
@@ -49,7 +49,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
             errors={maybe(() => error.extraInfo.userInputErrors, [])}
             onSubmit={handleOnSubmit}
           >
-            <TextField
+            <NumberField
               name="phone"
               autoComplete="tel"
               label="Enter Phone Number"

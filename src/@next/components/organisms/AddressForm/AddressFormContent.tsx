@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-import { InputSelect, TextField } from "@components/molecules";
+import { InputSelect, NumberField, TextField  } from "@components/molecules";
 
 // import { TextField } from "@components/molecules";
 
@@ -37,7 +37,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         : [{ message }];
     });
   }
-  
+
   return (
     <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
       <S.Wrapper>
@@ -79,15 +79,18 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             errors={fieldErrors!.companyName}
             {...basicInputProps()}
           /> */}
-          <TextField
-            name="phone"
-            label="Phone Number"
-            value={values!.phone}
-            autoComplete="tel"
-            errors={fieldErrors!.phone}
-            {...basicInputProps()}
-            required
-          />
+          {/* <S.PhoneField> */}
+            
+            <NumberField
+              name="phone"
+              label="Phone Number"
+              value={values!.phone}
+              autoComplete="tel"
+              errors={fieldErrors!.phone}
+              {...basicInputProps()}
+              required
+            />
+          {/* </S.PhoneField> */}
         </S.RowWithTwoCells>
         {/* <S.RowWithOneCell>
           <TextField
@@ -122,8 +125,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             label="City"
             name="city"
             options={CITIES.map(value => ({
-                city: value.city,
-              }))}
+              city: value.city,
+            }))}
             value={
               values!.city &&
               options &&

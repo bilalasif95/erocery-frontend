@@ -60,7 +60,7 @@ export const StartNumber = styled.div`
   z-index: 1;
 `;
 
-export const Input = styled.input`
+export const NumberInput= styled.input`
   padding: 0.8rem 1rem 0.8rem 2.2rem;
   margin: 0;
   border: none;

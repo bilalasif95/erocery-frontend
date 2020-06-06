@@ -6,7 +6,7 @@ import ReactSVG from "react-svg";
 
 import Timer from "react-compound-timer";
 
-import { Button, Form, TextField } from "../..";
+import { Button, Form, NumberField, TextField } from "../..";
 import { maybe } from "../../../core/utils";
 import removeImg from "../../../images/pass-invisible.svg";
 import removeImgg from "../../../images/pass-visible.svg";
@@ -151,7 +151,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                   });
                 }}
               >
-                <TextField
+                <NumberField
                   name="phone"
                   autoComplete="tel"
                   label="Enter Phone Number"

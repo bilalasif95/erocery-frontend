@@ -26,3 +26,10 @@ export const RowWithTwoCells = styled.div`
 export const RowWithOneCell = styled.div`
   width: 100%;
 `;
+export const PhoneField = styled.div`
+  position: relative;
+  height: 45px;
+  background: red;
+`;
+
+

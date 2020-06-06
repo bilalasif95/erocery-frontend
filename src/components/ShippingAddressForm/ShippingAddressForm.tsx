@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import React, { useState } from "react";
 
-import { Button, Form, Select, TextField } from "..";
+import { Button, Form, NumberField, Select, TextField } from "..";
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingAddressFormProps } from "./types";
 import { getFormData } from "./utils";
@@ -99,7 +99,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                   name="countryArea"
                   autoComplete="address-level1"
                 />
-                <TextField
+                <NumberField
                   label="Phone Number"
                   type="tel"
                   name="phone"

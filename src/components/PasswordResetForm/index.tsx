@@ -7,7 +7,7 @@ import ReactSVG from "react-svg";
 
 import Timer from "react-compound-timer";
 
-import { Button, Form, TextField } from "..";
+import { Button, Form, NumberField, TextField  } from "..";
 import { maybe } from "../../core/utils";
 import removeImg from "../../images/pass-invisible.svg";
 import removeImgg from "../../images/pass-visible.svg";
@@ -161,6 +161,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
             Please provide us your phone number so we can share you a code to
             reset your password
           </p>
+          <br/>
           <TypedPasswordResetMutation>
             {(passwordReset, { loading, data }) => {
               if (data && data.accountForgotPassword.errors.length === 0) {
@@ -180,7 +181,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     });
                   }}
                 >
-                  <TextField
+                  <NumberField
                     name="phone"
                     autoComplete="tel"
                     label="Phone Number"

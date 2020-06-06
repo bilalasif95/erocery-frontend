@@ -27,7 +27,7 @@ export const AddressForm: React.FC<IProps> = ({
   ...props
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddress> = {
-    phone: "03",
+    // phone: "03",
   };
   if (address) {
     addressWithPickedFields = pick(address, ADDRESS_FIELDS);
