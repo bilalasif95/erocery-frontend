@@ -41,7 +41,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   const alert = useAlert();
   const [message, setMessage] = useState(true);
   const [passwordType, setPasswordType] = useState(true);
-  const [phone, setPhone] = useState("03");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [timer, setTimer] = useState(179);
   const [verifyCode, { loading, error }] = useVerifyCode();
@@ -59,7 +59,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   // }, [timer]);
   const handleOnCodeSubmit = async (evt, { smsCode }) => {
     evt.preventDefault();
-    const authenticated = await verifyCode({ smsCode, phone, password });
+    const authenticated = await verifyCode({ smsCode, phone: "03" + phone, password });
     setAuthToken(authenticated.data.accountVerify.token);
     if (authenticated && hide) {
       hide();
@@ -124,89 +124,90 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     <Timer.Seconds />)
                   </Timer>
                 ) : (
-                  "Send Code"
-                )}
+                    "Send Code"
+                  )}
               </Button>
             </div>
           </Form>
         </div>
       ) : (
-        <TypedAccountRegisterMutation
-          onCompleted={data => showSuccessNotification(data, hide, alert)}
-        >
-          {(registerCustomer, { loading, data }) => {
-            if (data && data.accountRegister.errors.length === 0) {
-              setMessage(false);
-              setPhone(data.accountRegister.user.phone);
-            }
-            return (
-              <Form
-                errors={maybe(() => data.accountRegister.errors, [])}
-                onSubmit={(event, { email, phone, password }) => {
-                  event.preventDefault();
-                  setPassword(password);
-                  const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
-                  registerCustomer({
-                    variables: { email: email || "", phone, password, redirectUrl },
-                  });
-                }}
-              >
-                <NumberField
-                  name="phone"
-                  autoComplete="tel"
-                  label="Enter Phone Number"
-                  type="tel"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  required
-                />
-                {passwordType ? (
-                  <div className="passwordInput">
+          <TypedAccountRegisterMutation
+            onCompleted={data => showSuccessNotification(data, hide, alert)}
+          >
+            {(registerCustomer, { loading, data }) => {
+              if (data && data.accountRegister.errors.length === 0) {
+                setMessage(false);
+                setPhone(data.accountRegister.user.phone);
+              }
+              return (
+                <Form
+                  errors={maybe(() => data.accountRegister.errors, [])}
+                  onSubmit={(event, { email, phone, password }) => {
+                    event.preventDefault();
+                    setPassword(password);
+                    const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
+                    registerCustomer({
+                      variables: { email: email || "", phone, password, redirectUrl },
+                    });
+                  }}
+                >
+                  <div className="phoneField">
+                    <div className="startNum">03</div>
                     <TextField
-                      name="password"
-                      autoComplete="password"
-                      label="Password"
-                      type="password"
+                      name="phone"
+                      autoComplete="tel"
+                      label="Enter Phone Number"
+                      type="tel"
                       required
                     />
-                    <ReactSVG
-                      path={removeImg}
-                      className="passwordEye"
-                      onClick={onPasswordEyeIconClick}
-                    />
                   </div>
-                ) : (
-                  <div className="passwordInput">
-                    <TextField
-                      name="password"
-                      autoComplete="password"
-                      label="Password"
-                      type="text"
-                      required
-                    />
-                    <ReactSVG
-                      path={removeImgg}
-                      className="passwordEye"
-                      onClick={onPasswordEyeIconClick}
-                    />
+                  {passwordType ? (
+                    <div className="passwordInput">
+                      <TextField
+                        name="password"
+                        autoComplete="password"
+                        label="Password"
+                        type="password"
+                        required
+                      />
+                      <ReactSVG
+                        path={removeImg}
+                        className="passwordEye"
+                        onClick={onPasswordEyeIconClick}
+                      />
+                    </div>
+                  ) : (
+                      <div className="passwordInput">
+                        <TextField
+                          name="password"
+                          autoComplete="password"
+                          label="Password"
+                          type="text"
+                          required
+                        />
+                        <ReactSVG
+                          path={removeImgg}
+                          className="passwordEye"
+                          onClick={onPasswordEyeIconClick}
+                        />
+                      </div>
+                    )}
+                  <TextField
+                    name="email"
+                    autoComplete="email"
+                    label="Email (Optional)"
+                    type="email"
+                  />
+                  <div className="login__content__button">
+                    <Button type="submit" {...(loading && { disabled: true })}>
+                      {loading ? "Loading" : "Register"}
+                    </Button>
                   </div>
-                )}
-                <TextField
-                  name="email"
-                  autoComplete="email"
-                  label="Email (Optional)"
-                  type="email"
-                />
-                <div className="login__content__button">
-                  <Button type="submit" {...(loading && { disabled: true })}>
-                    {loading ? "Loading" : "Register"}
-                  </Button>
-                </div>
-              </Form>
-            );
-          }}
-        </TypedAccountRegisterMutation>
-      )}
+                </Form>
+              );
+            }}
+          </TypedAccountRegisterMutation>
+        )}
     </>
   );
 };

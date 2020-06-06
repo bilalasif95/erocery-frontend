@@ -7,7 +7,7 @@ import ReactSVG from "react-svg";
 
 import Timer from "react-compound-timer";
 
-import { Button, Form, NumberField, TextField  } from "..";
+import { Button, Form, TextField } from "..";
 import { maybe } from "../../core/utils";
 import removeImg from "../../images/pass-invisible.svg";
 import removeImgg from "../../images/pass-visible.svg";
@@ -106,21 +106,21 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                       />
                     </div>
                   ) : (
-                    <div className="passwordInput">
-                      <TextField
-                        name="newPassword"
-                        autoComplete="newPassword"
-                        label="Enter New Password"
-                        type="text"
-                        required
-                      />
-                      <ReactSVG
-                        path={removeImgg}
-                        className="passwordEye"
-                        onClick={onPasswordEyeIconClick}
-                      />
-                    </div>
-                  )}
+                      <div className="passwordInput">
+                        <TextField
+                          name="newPassword"
+                          autoComplete="newPassword"
+                          label="Enter New Password"
+                          type="text"
+                          required
+                        />
+                        <ReactSVG
+                          path={removeImgg}
+                          className="passwordEye"
+                          onClick={onPasswordEyeIconClick}
+                        />
+                      </div>
+                    )}
                   <div className="password-reset-form__button displayflex">
                     <Button type="submit" {...(loading && { disabled: true })}>
                       {loading ? "Loading" : "Reset password"}
@@ -146,8 +146,8 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                           <Timer.Seconds />)
                         </Timer>
                       ) : (
-                        "Send Code"
-                      )}
+                          "Send Code"
+                        )}
                     </Button>
                   </div>
                 </Form>
@@ -156,51 +156,52 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
           </TypedVerifyPasswordResetMutation>
         </div>
       ) : (
-        <div className="password-reset-form">
-          <p>
-            Please provide us your phone number so we can share you a code to
-            reset your password
+          <div className="password-reset-form">
+            <p>
+              Please provide us your phone number so we can share you a code to
+              reset your password
           </p>
-          <br/>
-          <TypedPasswordResetMutation>
-            {(passwordReset, { loading, data }) => {
-              if (data && data.accountForgotPassword.errors.length === 0) {
-                setMessage(false);
-                setPhoneNumber(data.accountForgotPassword.user.phone);
-              }
-              return (
-                <Form
-                  errors={maybe(() => data.accountForgotPassword.errors, [])}
-                  onSubmit={(event, { phone }) => {
-                    event.preventDefault();
-                    passwordReset({
-                      variables: {
-                        phone,
-                        // redirectUrl: `${window.location.origin}${passwordResetUrl}`,
-                      },
-                    });
-                  }}
-                >
-                  <NumberField
-                    name="phone"
-                    autoComplete="tel"
-                    label="Phone Number"
-                    type="tel"
-                    value={phone}
-                    onChange={e => setPhoneNumber(e.target.value)}
-                    required
-                  />
-                  <div className="password-reset-form__button">
-                    <Button type="submit" {...(loading && { disabled: true })}>
-                      {loading ? "Loading" : "Reset password"}
-                    </Button>
-                  </div>
-                </Form>
-              );
-            }}
-          </TypedPasswordResetMutation>
-        </div>
-      )}
+            <br />
+            <TypedPasswordResetMutation>
+              {(passwordReset, { loading, data }) => {
+                if (data && data.accountForgotPassword.errors.length === 0) {
+                  setMessage(false);
+                  setPhoneNumber(data.accountForgotPassword.user.phone);
+                }
+                return (
+                  <Form
+                    errors={maybe(() => data.accountForgotPassword.errors, [])}
+                    onSubmit={(event, { phone }) => {
+                      event.preventDefault();
+                      passwordReset({
+                        variables: {
+                          phone,
+                          // redirectUrl: `${window.location.origin}${passwordResetUrl}`,
+                        },
+                      });
+                    }}
+                  >
+                    <div className="phoneField">
+                      <div className="startNum">03</div>
+                      <TextField
+                        name="phone"
+                        autoComplete="tel"
+                        label="Phone Number"
+                        type="tel"
+                        required
+                      />
+                    </div>
+                    <div className="password-reset-form__button">
+                      <Button type="submit" {...(loading && { disabled: true })}>
+                        {loading ? "Loading" : "Reset password"}
+                      </Button>
+                    </div>
+                  </Form>
+                );
+              }}
+            </TypedPasswordResetMutation>
+          </div>
+        )}
     </>
   );
 };

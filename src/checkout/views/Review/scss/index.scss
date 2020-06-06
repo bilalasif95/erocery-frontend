@@ -29,12 +29,18 @@
       @media (min-width: $medium-screen) {
         grid-template-columns: 1fr 1fr 1fr;
       }
+      &__summary-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
 
       h4 {
         border-bottom: 1px solid $gray-light;
         font-weight: $bold-font-weight;
         margin-bottom: $spacer;
         padding-bottom: $spacer;
+        margin-right: $spacer;
         text-transform: uppercase;
         display: flex;
         justify-content: space-between;

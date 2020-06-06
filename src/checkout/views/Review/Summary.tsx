@@ -36,14 +36,16 @@ class Summary extends React.PureComponent<{
     return (
       <div className="checkout-review__content__summary">
         <div>
-          <h4>
-            Shipping address
+          <div className="checkout-review__summary-header">
+            <h4>
+              Shipping address
+            </h4>
             <ReactSVG
               className="checkout-review__summary-copy"
               path={copyImg}
               onClick={() => handleEdit(shippingAddressUrl)}
             />
-          </h4>
+          </div>
           <AddressSummary
             address={checkout.isShippingRequired && checkout.shippingAddress}
             email={checkout.email}
