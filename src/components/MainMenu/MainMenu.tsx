@@ -52,7 +52,7 @@ const MainMenu: React.FC = () => {
     clearCart();
     clearCheckout();
   };
-console.log("appPathsappPathsappPaths",appPaths.categoryUrl)
+
   return (
     <OverlayContext.Consumer>
       {overlayContext => (
