@@ -23,15 +23,17 @@ import * as appPaths from "../../app/routes";
 import { CheckoutContext } from "../../checkout/context";
 import { maybe } from "../../core/utils";
 import { CartContext } from "../CartProvider/context";
-import NavDropdown from "./NavDropdown";
+// import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
 
 import cartImg from "../../images/Cart-icon.svg";
+import categorydropdown from "../../images/categorydropdown.svg"
 import logoImg from "../../images/erocery_logo.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
+
 
 import { ShopContext } from "../ShopProvider/context";
 
@@ -50,7 +52,7 @@ const MainMenu: React.FC = () => {
     clearCart();
     clearCheckout();
   };
-
+console.log("appPathsappPathsappPaths",appPaths.categoryUrl)
   return (
     <OverlayContext.Consumer>
       {overlayContext => (
@@ -93,6 +95,34 @@ const MainMenu: React.FC = () => {
                       <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
+                          <MenuDropdown
+                            head={
+                              <li className="main-menu__icon main-menu__user--active accountcss">
+                                <ReactSVG path={categorydropdown}  />
+                                <p className="accountpara">Categories</p>
+                              </li>
+                            }
+                            content={
+                              <ul className="main-menu__dropdown">
+                                {items.map(item => (
+                                  <li
+                                    key={item.id}
+                                  >
+                                    <Link to={`/category/${item.name}/${item.category.number}`}>
+                                      {item.name}
+                                    </Link>
+
+                                  </li>
+                                ))}
+                              </ul>
+                            }
+                          />
+                        }
+                      />
+
+                      {/* <Media
+                        query={{ minWidth: mediumScreen }}
+                        render={() =>
                           items.map(item => (
                             <li
                               data-cy="main-menu__item"
@@ -103,7 +133,7 @@ const MainMenu: React.FC = () => {
                             </li>
                           ))
                         }
-                      />
+                      /> */}
                     </ul>
                   );
                 }}
@@ -164,59 +194,59 @@ const MainMenu: React.FC = () => {
                         }
                       />
                     ) : (
-                      <li
-                        data-testid="login-btn"
-                        className="main-menu__icon"
-                        onClick={() =>
-                          overlayContext.show(
-                            OverlayType.login,
-                            OverlayTheme.right
-                          )
-                        }
-                      >
-                        <ReactSVG path={userImg} />
-                      </li>
-                    )}
+                        <li
+                          data-testid="login-btn"
+                          className="main-menu__icon"
+                          onClick={() =>
+                            overlayContext.show(
+                              OverlayType.login,
+                              OverlayTheme.right
+                            )
+                          }
+                        >
+                          <ReactSVG path={userImg} />
+                        </li>
+                      )}
                   </>
                   {/* )}
                 /> */}
                   <CartContext.Consumer>
                     {cart => (
                       <ShopContext.Consumer>
-                      {({ defaultCountry, geolocalization }) => (
-                        <TypedProductVariantsQuery
-                          displayLoader={false}
-                          variables={{ ids: cart.lines.map(line => line.variantId) }}
-                          skip={!cart.lines.length}
-                          alwaysRender
-                        >
-                          {({ data, loading, error }) => {
-                            const locale = maybe(
-                              () => geolocalization.country.code,
-                              defaultCountry.code
-                            );
-                            return (
-                      <li
-                        className="main-menu__icon main-menu__cart"
-                        onClick={() => {
-                          overlayContext.show(
-                            OverlayType.cart,
-                            OverlayTheme.right
-                          );
-                        }}
-                      >
-                        <ReactSVG path={cartImg} />
-                        {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length > 0 ? (
-                          <span className="main-menu__cart__quantity">
-                            {extractCartLines(data, cart.lines, locale).length}
-                          </span>
-                        ) : null}
-                      </li>
-                      );
-                    }}
-                  </TypedProductVariantsQuery>
-                )}
-              </ShopContext.Consumer>
+                        {({ defaultCountry, geolocalization }) => (
+                          <TypedProductVariantsQuery
+                            displayLoader={false}
+                            variables={{ ids: cart.lines.map(line => line.variantId) }}
+                            skip={!cart.lines.length}
+                            alwaysRender
+                          >
+                            {({ data, loading, error }) => {
+                              const locale = maybe(
+                                () => geolocalization.country.code,
+                                defaultCountry.code
+                              );
+                              return (
+                                <li
+                                  className="main-menu__icon main-menu__cart"
+                                  onClick={() => {
+                                    overlayContext.show(
+                                      OverlayType.cart,
+                                      OverlayTheme.right
+                                    );
+                                  }}
+                                >
+                                  <ReactSVG path={cartImg} />
+                                  {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length > 0 ? (
+                                    <span className="main-menu__cart__quantity">
+                                      {extractCartLines(data, cart.lines, locale).length}
+                                    </span>
+                                  ) : null}
+                                </li>
+                              );
+                            }}
+                          </TypedProductVariantsQuery>
+                        )}
+                      </ShopContext.Consumer>
                     )}
                   </CartContext.Consumer>
                 </Online>
@@ -260,8 +290,9 @@ const MainMenu: React.FC = () => {
             </ul>
           </div> */}
         </nav>
-      )}
-    </OverlayContext.Consumer>
+      )
+      }
+    </OverlayContext.Consumer >
   );
 };
 

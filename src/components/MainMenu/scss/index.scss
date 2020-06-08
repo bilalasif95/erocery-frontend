@@ -17,6 +17,17 @@
       flex-basis: 15%;
     }
 
+    .accountcss {
+      display: flex;
+    }
+.accountpara {
+      padding: 5px 0 0 5px;
+    }
+    @media (max-width: 480px) {
+      .accountpara {
+        display:none;
+      }
+    }
     ul {
       display: flex;
       align-items: center;

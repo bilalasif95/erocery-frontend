@@ -9,6 +9,7 @@ export const mainMenu = gql`
     category {
       id
       name
+      number
     }
     url
     collection {
