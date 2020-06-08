@@ -56,6 +56,7 @@ export const Title = styled.h4`
   font-size: 1.1rem;
   text-align: left;
   overflow: hidden;
+  padding: 0 0.5rem;
 
   ${media.smallScreen`
   text-transform: capitalize;
@@ -67,7 +68,8 @@ width: 10%;
 `;
 
 export const Price = styled.p`
-  ${textProps}
+  ${textProps};
+  padding: 0 0.5rem;
 `;
 export const AddCartBtn = styled.div`
 display: flex;
