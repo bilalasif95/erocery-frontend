@@ -21,7 +21,7 @@ import { TypedProductVariantsQuery } from "../../../views/Product/queries";
 import { CartContext } from "../../CartProvider/context";
 import { extractCartLines, getTotal } from "../../CartProvider/utils";
 import { Error } from "../../Error";
-import Loader from "../../Loader";
+// import Loader from "../../Loader";
 import { ShopContext } from "../../ShopProvider/context";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
@@ -45,11 +45,66 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                   alwaysRender
                 >
                   {({ data, loading, error }) => {
+
+                    const locale = maybe(
+                      () => geolocalization.country.code,
+                      defaultCountry.code
+                    );
                     if (loading) {
                       return (
-                        <div className="cart">
-                          <Loader full />
+                         <div className="cart">
+                        <div className="overlay__header">
+                          <ReactSVG
+                            path={cartImg}
+                            className="overlay__header__cart-icon"
+                          />
+                          <div className="overlay__header-text">
+                            My Cart,{" "}
+                            <span className="overlay__header-text-items">
+                              {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length !== 0 ? extractCartLines(data, cart.lines, locale).length : 0} items
+                            </span>
+                          </div>
+                          <ReactSVG
+                            path={closeImg}
+                            onClick={overlay.hide}
+                            className="overlay__header__close-icon"
+                          />
                         </div>
+                      
+                       
+                            <ProductList
+                              lines={extractCartLines(data, cart.lines, locale)}
+                              remove={cart.remove}
+              
+                            />
+                            <div className="cart__footer">
+                              <div className="cart__footer__subtotoal">
+                                <span>Subtotal</span>
+
+                                <span>
+                                  {getTotal(data, cart.lines, locale)}
+                                </span>
+                              </div>
+
+                              <div className="cart__footer__button">
+                                <Link
+                                  to={generatePath(cartUrl, {
+                                    token: null,
+                                  })}
+                                >
+                                  <Button>Go to my cart</Button>
+                                </Link>
+                              </div>
+                              <div className="cart__footer__button">
+                                <Link
+                                  to={user ? checkoutUrl : checkoutLoginUrl}
+                                >
+                                  <Button>Checkout</Button>
+                                </Link>
+                              </div>
+                            </div>
+                     
+                      </div>
                       );
                     }
 
@@ -57,10 +112,6 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                       return <Error error={error.message} />;
                     }
 
-                    const locale = maybe(
-                      () => geolocalization.country.code,
-                      defaultCountry.code
-                    );
                     return (
                       <div className="cart">
                         <div className="overlay__header">
@@ -85,6 +136,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                             <ProductList
                               lines={extractCartLines(data, cart.lines, locale)}
                               remove={cart.remove}
+                             
                             />
                             <div className="cart__footer">
                               <div className="cart__footer__subtotoal">
