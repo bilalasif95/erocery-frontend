@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import classNames from "classnames";
-import React, { useState } from "react";
+import React from "react";
 
 import { Form, Select, TextField  } from "..";
 
@@ -18,7 +18,6 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
   emailRequired = true,
   cities,
 }) => {
-  const [phone, setPhone] = useState("03");
 
   return (
     <div className="address-form">

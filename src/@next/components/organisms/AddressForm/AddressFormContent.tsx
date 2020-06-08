@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-import { InputSelect, NumberField, TextField  } from "@components/molecules";
+import { InputSelect, TextField  } from "@components/molecules";
 
 // import { TextField } from "@components/molecules";
 
@@ -78,9 +78,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             errors={fieldErrors!.companyName}
             {...basicInputProps()}
           /> */}
-          {/* <S.PhoneField> */}
-            
-            <NumberField
+          <S.PhoneField>
+            <S.StartNum>03</S.StartNum>
+            <S.NumCont>03</S.NumCont>
+            <TextField
               name="phone"
               label="Phone Number"
               value={values!.phone}
@@ -89,7 +90,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               {...basicInputProps()}
               required
             />
-          {/* </S.PhoneField> */}
+          </S.PhoneField>
         </S.RowWithTwoCells>
         {/* <S.RowWithOneCell>
           <TextField
