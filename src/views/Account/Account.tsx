@@ -18,7 +18,8 @@ import {
   wishlistUrl,
 } from "../../app/routes";
 
-import { AccountMenu, AccountMenuMobile } from "@components/molecules";
+// import { AccountMenu, AccountMenuMobile } from "@components/molecules";
+import { AccountMenu } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
 import { Breadcrumbs, Loader } from "../../components";
 
@@ -81,11 +82,11 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
             <AccountMenu links={links} active={match.path} />
           </div>
         </Media>
-        <Media maxWidth={smallScreen - 1}>
+        {/* <Media maxWidth={smallScreen - 1}>
           <div className="account__menu_mobile">
             <AccountMenuMobile links={links} active={match.path} />
           </div>
-        </Media>
+        </Media> */}
         <div className="account__content">
           {user && returnTab(match.path, user, history)}
         </div>

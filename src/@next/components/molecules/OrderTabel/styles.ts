@@ -1,6 +1,10 @@
 import { media, styled } from "@styles";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+${media.mediumScreen`
+  width: 100%;
+  `}
+`;
 
 export const Row = styled.div`
   display: flex;
@@ -18,6 +22,10 @@ export const Row = styled.div`
 export const HeaderRow = styled(Row)`
   color: ${props => props.theme.colors.lightFont};
   cursor: default;
+  ${media.smallScreen`
+  width: 1000px;
+  overflow-x: scroll;
+`}
 `;
 
 export const IndexNumber = styled.div`

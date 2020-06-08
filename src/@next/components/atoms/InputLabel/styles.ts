@@ -5,7 +5,7 @@ export const Label = styled.label<{
   labelBackground: string | null;
 }>`
   position: absolute;
-  left: ${props => (props.active ? "0.5rem" : "2.2rem")};
+  left: ${props => (props.active ? "0.5rem" : "1rem")};
   padding: 0 ${props => (props.active ? 0.5 : 0)}rem;
   background-color: ${props =>
     props.active ? props.labelBackground : "transparent"};
@@ -17,4 +17,6 @@ export const Label = styled.label<{
   transform: translateY(-50%);
   transition: all 0.3s ease, color 0s;
   pointer-events: none;
+  z-index: ${props => (props.active ? 1 : 0)};
 `;
+
