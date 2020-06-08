@@ -16,7 +16,9 @@ export const List = styled.div`
   `}
 `;
 
-export const Item = styled.div``;
+export const Item = styled.div`
+  border: 1px solid #f6f6f6;
+`;
 
 export const CartButton = styled.div`
   button {
