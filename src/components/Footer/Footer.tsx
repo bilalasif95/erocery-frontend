@@ -66,7 +66,7 @@ const Footer: React.FC = () => (
         </div>
       </div>
       <div className="footer__favicons">
-        <p>Erocery.com 2020. All Rights Reserved.</p>
+        <p>Copyright © 2020 Erocery, All Rights Reserved</p>
         {/* <p>Copyright © 2020 Erocery</p> */}
 
       </div>

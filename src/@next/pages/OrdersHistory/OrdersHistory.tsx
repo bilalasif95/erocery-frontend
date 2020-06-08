@@ -23,8 +23,8 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
     <Loader />
   ) : (
     <>
-      <OrderTabel orders={data!.edges} history={history} />
-      {data!.pageInfo.hasNextPage && (
+      <OrderTabel orders={data! && data!.edges} history={history} />
+      {data! && data!.pageInfo.hasNextPage && (
         <S.Wrapper>
           <Button
             data-testid="load_more__button"

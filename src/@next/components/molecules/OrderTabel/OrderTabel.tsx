@@ -110,7 +110,12 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
               const apiDate = order.node.created.slice(0, 10)
               const date = new Date(apiDate);
               return (
-                <tr>
+                <tr data-testid="order__row"
+                key={order.node.number}
+                onClick={evt => {
+                  evt.stopPropagation();
+                  history.push(`/order-history/${order.node.token}`);
+                }}>
                   <td>{order.node.number}</td>
                   <td> {order.node.lines
                     .slice(0, 5)
