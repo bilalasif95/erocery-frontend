@@ -18,7 +18,6 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
   emailRequired = true,
   cities,
 }) => {
-
   return (
     <div className="address-form">
       <ShopContext.Consumer>
@@ -28,7 +27,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
             errors={errors}
             onSubmit={(evt, data) => {
               evt.preventDefault();
-              data = { ...data, city: data.city };
+              data = { ...data, city: data.city, phone: "03"+data.phone };
               onSubmit(data);
             }}
             data={getFormData(geolocalization, defaultCountry, data)}

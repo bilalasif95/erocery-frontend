@@ -44,9 +44,10 @@ export const StartNum = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 45.5px;
+  height: 46px;
   z-index: 2;
   position: absolute;
+  color: #000;
 `;
 
 export const NumCont = styled.div`

@@ -147,7 +147,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     setPassword(password);
                     const redirectUrl = `${window.location.origin}${accountConfirmUrl}`;
                     registerCustomer({
-                      variables: { email: email || "", phone, password, redirectUrl },
+                      variables: { email: email || "", phone: "03"+phone, password, redirectUrl },
                     });
                   }}
                 >
