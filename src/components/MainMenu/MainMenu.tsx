@@ -27,7 +27,7 @@ import { CartContext } from "../CartProvider/context";
 import { TypedMainMenuQuery } from "./queries";
 
 import cartImg from "../../images/Cart-icon.svg";
-import categorydropdown from "../../images/categorydropdown.svg"
+// import categorydropdown from "../../images/categorydropdown.svg"
 import logoImg from "../../images/erocery_logo.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
@@ -97,9 +97,9 @@ const MainMenu: React.FC = () => {
                         render={() =>
                           <MenuDropdown
                             head={
-                              <li className="main-menu__icon main-menu__user--active accountcss">
-                                <ReactSVG path={categorydropdown}  />
-                                <p className="accountpara">Categories</p>
+                              <li className="main-menu__cats">
+                                <ReactSVG path={hamburgerImg}  />
+                                <p className="cats">Categories</p>
                               </li>
                             }
                             content={

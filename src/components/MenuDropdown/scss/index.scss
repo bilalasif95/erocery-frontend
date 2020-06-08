@@ -6,11 +6,11 @@
   &__body {
     display: none;
     position: absolute;
-    right: 1rem;
+    left: 1rem;
     top: 1.5rem;
     box-shadow: $message-shadow;
     background-color: $white;
-    padding: $spacer;
+    padding: 0;
     width: 15rem;
 
     &--visible {
@@ -24,11 +24,12 @@
       font-style: normal;
       font-weight: normal;
 
-      line-height: 2rem;
       align-items: flex-start;
 
       li {
-        width: 80%;
+        width: 100%;
+        line-height: 2rem;
+        padding: 0.5rem 1rem;
       }
     }
   }
