@@ -12,17 +12,22 @@
   &__product {
     display: flex;
     margin-top: $spacer;
-    padding-bottom: $spacer * 5;
+    padding-bottom: $spacer * 2;
 
     @media (max-width: $small-screen) {
       display: block;
-      margin-bottom: $spacer * 2;
+      margin-bottom: 0;
+      padding-bottom: $spacer * 1;
     }
 
     &__description {
       width: 100%;
       min-height: $spacer * 10;
       margin-bottom: $spacer * 9; 
+      @media (max-width: $small-screen) {
+        min-height: $spacer * 5;
+        margin-bottom: $spacer; 
+      }
     }
 
     &__info {
