@@ -23,7 +23,7 @@ import * as appPaths from "../../app/routes";
 import { CheckoutContext } from "../../checkout/context";
 import { maybe } from "../../core/utils";
 import { CartContext } from "../CartProvider/context";
-// import NavDropdown from "./NavDropdown";
+import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
 
 import cartImg from "../../images/Cart-icon.svg";
@@ -92,7 +92,7 @@ const MainMenu: React.FC = () => {
                           </li>
                         )}
                       />
-                      <Media
+                      {/* <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
                           <MenuDropdown
@@ -118,9 +118,9 @@ const MainMenu: React.FC = () => {
                             }
                           />
                         }
-                      />
+                      /> */}
 
-                      {/* <Media
+                      <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
                           items.map(item => (
@@ -133,7 +133,7 @@ const MainMenu: React.FC = () => {
                             </li>
                           ))
                         }
-                      /> */}
+                      />
                     </ul>
                   );
                 }}

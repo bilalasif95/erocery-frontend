@@ -99,8 +99,8 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
               deliveryCost={
                 <Money defaultValue="0" money={checkout.shippingMethod?.price} />
               }
-              totalCost={getTotal(data, cart.lines, locale)}
-              // totalCost={<Money money={checkout.totalPrice.gross} />}
+              // totalCost={getTotal(data, cart.lines, locale)}
+              totalCost={<Money money={checkout.totalPrice.gross} />}
               discount={
                 discountExists && (
                   <>

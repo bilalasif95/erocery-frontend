@@ -6,7 +6,7 @@ import ReactSVG from "react-svg";
 import { SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
-import payment_methods from "../../images/payment-method.jpg";
+import payment_methods from "../../images/Group_39.png";
 
 // import easypaisa from "../../images/easypaisa.png";
 // import facebook from "../../images/facebook.png";
@@ -66,7 +66,7 @@ const Footer: React.FC = () => (
         </div>
       </div>
       <div className="footer__favicons">
-        <p>Erocery.com 2020. All Rights Reserved.</p>
+        <p>Copyright © 2020 Erocery, All Rights Reserved</p>
         {/* <p>Copyright © 2020 Erocery</p> */}
 
       </div>

@@ -9,17 +9,17 @@ export const getTotal = (
   lines: CartLineInterface[],
   locale?: string
 ): string => {
-  lines = lines.filter(line=> variantList.productVariants.edges.find(({ node: { id } }) => id === line.variantId));
+  lines = lines.filter(line=> variantList && variantList.productVariants && variantList.productVariants.edges.find(({ node: { id } }) => id === line.variantId));
   localStorage.setItem("cart",JSON.stringify(lines));
   const amount = lines.reduce((sum, { variantId, quantity }) => {
-    const { node } = variantList.productVariants.edges.find(
+    const { node } = variantList && variantList.productVariants && variantList.productVariants.edges.find(
       ({ node: { id } }) => id === variantId
     );
     return sum + node.pricing.price.gross.amount * quantity;
   }, 0);
   const {
     currency,
-  } = variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
+  } = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
 
   return currency === "" ? "" : priceToString({ amount, currency }, locale);
 };

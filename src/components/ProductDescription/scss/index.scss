@@ -10,6 +10,9 @@
     background-color: #999999;
     width: 150px !important;
   }
+  @media(max-width: $small-screen){
+    margin-top: 1rem;
+  }
 }
 
 .btnLink{
@@ -25,6 +28,20 @@
   h4 {
     font-weight: $bold-font-weight;
     margin-bottom: $spacer;
+  }
+
+  @media(max-width: $small-screen){
+    h3 {
+      font-weight: normal;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+  
+    h4 {
+      font-weight: normal;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
   }
 
   &__about {
@@ -46,6 +63,8 @@
       max-width: 100%;
     }
   }
+
+
 
   &__undiscounted_price {
     text-decoration: line-through;
@@ -130,6 +149,10 @@
   &__quantity-input {
     margin-top: 20px;
     padding-top: 20px;
+    @media(max-width: $small-screen){
+      margin-top: 10px;
+      padding-top: 0;
+    }
   }
 
   &__add-to-wishlist {

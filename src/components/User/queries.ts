@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { checkoutAddressFragment } from "../../checkout/queries";
 import { TypedMutation } from "../../core/mutations";
 import { TokenAuth, TokenAuthVariables } from "./types/TokenAuth";
+import { VerifyTokenAuth, VerifyTokenAuthVariables } from "./types/VerifyTokenAuth";
 
 export const userFragment = gql`
   ${checkoutAddressFragment}
@@ -12,6 +13,7 @@ export const userFragment = gql`
     firstName
     lastName
     isStaff
+    isActive
     defaultShippingAddress {
       ...Address
     }
@@ -51,6 +53,11 @@ export const tokenVeryficationMutation = gql`
     }
   }
 `;
+
+export const VerifyTokenAuthMutation = TypedMutation<
+  VerifyTokenAuth,
+  VerifyTokenAuthVariables
+>(tokenVeryficationMutation);
 
 export const TypedTokenAuthMutation = TypedMutation<
   TokenAuth,
