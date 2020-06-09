@@ -37,6 +37,10 @@
         width: 100% !important;
         margin: 2rem 0 0;
       }
+      @media (max-width: 540px) {
+        width: 100% !important;
+        margin: 0;
+      }
 
       > div {
         @media (min-width: $small-screen) {
@@ -69,6 +73,19 @@
         width: 100% !important;
       }
 
+      @media (max-width: 540px) {
+        .slider-list{
+          height: 250px !important;
+        }
+        .slider-slide > img{
+          width: 185px;
+          margin: 0 auto;
+          height: 100%;
+        }
+      }
+
+
+
       &__nav {
         li {
           display: inline-block;
@@ -93,6 +110,9 @@
     }
     @media(max-width: 767px){
       flex-wrap: wrap;
+    }
+    @media (max-width: $small-screen) {
+      margin-top: 0;
     }
   }
 
