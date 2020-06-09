@@ -29,8 +29,12 @@ import ProductList from "./ProductList";
 import cartImg from "../../../images/cart.svg";
 import closeImg from "../../../images/x.svg";
 
+import { VerifyTokenAuthMutation } from "../../User/queries";
+
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { data: user } = useUserDetails();
+  const tok = window.localStorage.getItem("token");
+  const [userAvailable, setUserAvailable] = React.useState(true);
   return (
     <Overlay context={overlay}>
       <Online>
@@ -38,140 +42,151 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           {cart => (
             <ShopContext.Consumer>
               {({ defaultCountry, geolocalization }) => (
-                <TypedProductVariantsQuery
-                  displayLoader={false}
-                  variables={{ ids: cart.lines.map(line => line.variantId) }}
-                  skip={!cart.lines.length}
-                  alwaysRender
+                <VerifyTokenAuthMutation
+                  onCompleted={res => setUserAvailable(res.tokenVerify.user.isActive)}
                 >
-                  {({ data, loading, error }) => {
+                  {(tokenVerify) => {
+                    tokenVerify({
+                      variables: { token: tok },
+                    })
+                    return(
+                      <TypedProductVariantsQuery
+                        displayLoader={false}
+                        variables={{ ids: cart.lines.map(line => line.variantId) }}
+                        skip={!cart.lines.length}
+                        alwaysRender
+                      >
+                        {({ data, loading, error }) => {
 
-                    const locale = maybe(
-                      () => geolocalization.country.code,
-                      defaultCountry.code
-                    );
-                    if (loading) {
-                      return (
-                         <div className="cart">
-                        <div className="overlay__header">
-                          <ReactSVG
-                            path={cartImg}
-                            className="overlay__header__cart-icon"
-                          />
-                          <div className="overlay__header-text">
-                            My Cart,{" "}
-                            <span className="overlay__header-text-items">
-                              {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length !== 0 ? extractCartLines(data, cart.lines, locale).length : 0} items
-                            </span>
-                          </div>
-                          <ReactSVG
-                            path={closeImg}
-                            onClick={overlay.hide}
-                            className="overlay__header__close-icon"
-                          />
-                        </div>
-                      
-                       
-                            <ProductList
-                              lines={extractCartLines(data, cart.lines, locale)}
-                              remove={cart.remove}
-              
-                            />
-                            <div className="cart__footer">
-                              <div className="cart__footer__subtotoal">
-                                <span>Subtotal</span>
+                          const locale = maybe(
+                            () => geolocalization.country.code,
+                            defaultCountry.code
+                          );
+                          if (loading) {
+                            return (
+                              <div className="cart">
+                              <div className="overlay__header">
+                                <ReactSVG
+                                  path={cartImg}
+                                  className="overlay__header__cart-icon"
+                                />
+                                <div className="overlay__header-text">
+                                  My Cart,{" "}
+                                  <span className="overlay__header-text-items">
+                                    {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length !== 0 ? extractCartLines(data, cart.lines, locale).length : 0} items
+                                  </span>
+                                </div>
+                                <ReactSVG
+                                  path={closeImg}
+                                  onClick={overlay.hide}
+                                  className="overlay__header__close-icon"
+                                />
+                              </div>
+                            
+                            
+                                  <ProductList
+                                    lines={extractCartLines(data, cart.lines, locale)}
+                                    remove={cart.remove}
+                    
+                                  />
+                                  <div className="cart__footer">
+                                    <div className="cart__footer__subtotoal">
+                                      <span>Subtotal</span>
 
-                                <span>
-                                  {getTotal(data, cart.lines, locale)}
-                                </span>
-                              </div>
+                                      <span>
+                                        {getTotal(data, cart.lines, locale)}
+                                      </span>
+                                    </div>
 
-                              <div className="cart__footer__button">
-                                <Link
-                                  to={generatePath(cartUrl, {
-                                    token: null,
-                                  })}
-                                >
-                                  <Button>Go to my cart</Button>
-                                </Link>
-                              </div>
-                              <div className="cart__footer__button">
-                                <Link
-                                  to={user ? checkoutUrl : checkoutLoginUrl}
-                                >
-                                  <Button>Checkout</Button>
-                                </Link>
-                              </div>
+                                    <div className="cart__footer__button">
+                                      <Link
+                                        to={generatePath(cartUrl, {
+                                          token: null,
+                                        })}
+                                      >
+                                        <Button disabled={userAvailable === false}>Go to my cart</Button>
+                                      </Link>
+                                    </div>
+                                    <div className="cart__footer__button">
+                                      <Link
+                                        to={user ? checkoutUrl : checkoutLoginUrl}
+                                      >
+                                        <Button disabled={userAvailable === false}>Checkout</Button>
+                                      </Link>
+                                    </div>
+                                  </div>
+                          
                             </div>
-                     
-                      </div>
-                      );
-                    }
+                            );
+                          }
 
-                    if (error) {
-                      return <Error error={error.message} />;
-                    }
+                          if (error) {
+                            return <Error error={error.message} />;
+                          }
 
-                    return (
-                      <div className="cart">
-                        <div className="overlay__header">
-                          <ReactSVG
-                            path={cartImg}
-                            className="overlay__header__cart-icon"
-                          />
-                          <div className="overlay__header-text">
-                            My Cart,{" "}
-                            <span className="overlay__header-text-items">
-                              {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length !== 0 ? extractCartLines(data, cart.lines, locale).length : 0} items
-                            </span>
-                          </div>
-                          <ReactSVG
-                            path={closeImg}
-                            onClick={overlay.hide}
-                            className="overlay__header__close-icon"
-                          />
-                        </div>
-                        {cart.lines.length && data ? (
-                          <>
-                            <ProductList
-                              lines={extractCartLines(data, cart.lines, locale)}
-                              remove={cart.remove}
-                             
-                            />
-                            <div className="cart__footer">
-                              <div className="cart__footer__subtotoal">
-                                <span>Subtotal</span>
-
-                                <span>
-                                  {getTotal(data, cart.lines, locale)}
-                                </span>
+                          return (
+                            <div className="cart">
+                              <div className="overlay__header">
+                                <ReactSVG
+                                  path={cartImg}
+                                  className="overlay__header__cart-icon"
+                                />
+                                <div className="overlay__header-text">
+                                  My Cart,{" "}
+                                  <span className="overlay__header-text-items">
+                                    {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length !== 0 ? extractCartLines(data, cart.lines, locale).length : 0} items
+                                  </span>
+                                </div>
+                                <ReactSVG
+                                  path={closeImg}
+                                  onClick={overlay.hide}
+                                  className="overlay__header__close-icon"
+                                />
                               </div>
+                              {cart.lines.length && data ? (
+                                <>
+                                  <ProductList
+                                    lines={extractCartLines(data, cart.lines, locale)}
+                                    remove={cart.remove}
+                                  
+                                  />
+                                  <div className="cart__footer">
+                                    <div className="cart__footer__subtotoal">
+                                      <span>Subtotal</span>
 
-                              <div className="cart__footer__button">
-                                <Link
-                                  to={generatePath(cartUrl, {
-                                    token: null,
-                                  })}
-                                >
-                                  <Button>Go to my cart</Button>
-                                </Link>
-                              </div>
-                              <div className="cart__footer__button">
-                                <Link
-                                  to={user ? checkoutUrl : checkoutLoginUrl}
-                                >
-                                  <Button>Checkout</Button>
-                                </Link>
-                              </div>
+                                      <span>
+                                        {getTotal(data, cart.lines, locale)}
+                                      </span>
+                                    </div>
+
+                                    <div className="cart__footer__button">
+                                      <Link
+                                        to={generatePath(cartUrl, {
+                                          token: null,
+                                        })}
+                                      >
+                                        <Button disabled={userAvailable === false}>Go to my cart</Button>
+                                      </Link>
+                                    </div>
+                                    <div className="cart__footer__button">
+                                      <Link
+                                        to={user ? checkoutUrl : checkoutLoginUrl}
+                                      >
+                                        <Button disabled={userAvailable === false}>Checkout</Button>
+                                      </Link>
+                                    </div>
+                                  </div>
+                                </>
+                              ) : (
+                                <Empty overlayHide={overlay.hide} />
+                              )}
                             </div>
-                          </>
-                        ) : (
-                          <Empty overlayHide={overlay.hide} />
-                        )}
-                      </div>
-                    );
-                  }}
-                </TypedProductVariantsQuery>
+                          );
+                        }}
+                      </TypedProductVariantsQuery>
+                      )
+                    }}
+                </VerifyTokenAuthMutation>
               )}
             </ShopContext.Consumer>
           )}
