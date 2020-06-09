@@ -4,9 +4,11 @@
   $item-height: 3.7rem;
   max-width: calc(100vw - 5rem);
   width: 30rem;
-  max-height: 100vh;
-  overflow-y: scroll;
 
+  .menu-list{
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
   &__menu-item {
     border-bottom: 1px solid $gray-light;
     display: grid;
@@ -103,9 +105,9 @@
 
     &--parent {
       color: $gray;
-      position: fixed;
+      // position: fixed;
       background: #fff;
-      width: 15rem;
+      // width: 15rem;
 
       a {
         color: inherit;

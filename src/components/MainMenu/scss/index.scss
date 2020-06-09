@@ -36,11 +36,48 @@
       height: 100%;
       justify-content: flex-start;
     }
+
+    .menu-dropdown {
+      position: relative;
+    
+      &__body {
+        display: none;
+        position: absolute;
+        left: 1rem;
+        top: 1.5rem;
+        box-shadow: $message-shadow;
+        background-color: $white;
+        padding: 0;
+        width: 15rem;
+    
+        &--visible {
+          display: block;
+          z-index: 2;
+        }
+    
+        ul {
+          display: flex;
+          flex-direction: column;
+          font-style: normal;
+          font-weight: normal;
+    
+          align-items: flex-start;
+    
+          li {
+            width: 100%;
+            line-height: 2rem;
+            padding: 0.5rem 1rem;
+          }
+        }
+      }
+    }
+    
+
   }
   &__right {
     flex-basis: calc(50% - 2rem);
     
-
+    
     .accountcss {
       display: flex;
     }
@@ -67,6 +104,43 @@
       justify-content: flex-end;
       align-items: center;
     }
+
+    .menu-dropdown {
+      position: relative;
+    
+      &__body {
+        display: none;
+        position: absolute;
+        right: 1rem;
+        top: 1.5rem;
+        box-shadow: $message-shadow;
+        background-color: $white;
+        padding: 0;
+        width: 15rem;
+    
+        &--visible {
+          display: block;
+          z-index: 2;
+        }
+    
+        ul {
+          display: flex;
+          flex-direction: column;
+          font-style: normal;
+          font-weight: normal;
+    
+          align-items: flex-start;
+    
+          li {
+            width: 100%;
+            line-height: 2rem;
+            padding: 0.5rem 1rem;
+          }
+        }
+      }
+    }
+    
+
   }
 
   &__center {
