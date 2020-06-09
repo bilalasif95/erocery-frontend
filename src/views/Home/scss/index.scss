@@ -7,6 +7,11 @@
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
     margin-top: $spacer * 2;
+
+    @media (max-width: $small-screen) {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
   }
 
   &__product {

@@ -102,7 +102,7 @@ export const Image = styled.div`
     min-width: 100% !important;
  `}
   }
-  ${media.smallScreen`
-    height: 150px;
- `}
+//   ${media.smallScreen`
+//     height: 150px;
+//  `}
 `;
