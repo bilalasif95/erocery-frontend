@@ -35,7 +35,6 @@ export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
       </a>
     );
   } else if (category) {
-    console.log("urllllllllllllllll333",link(generateCategoryUrl(category.id, category.name)))
     return link(generateCategoryUrl(category.id, category.name));
   } else if (collection) {
     return link(generateCollectionUrl(collection.id, collection.name));

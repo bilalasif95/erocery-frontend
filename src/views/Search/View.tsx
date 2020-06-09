@@ -92,7 +92,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       ? convertToAttributeScalar(filters.attributes)
       : {},
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
-    query: search || null,
+    query: search ? search:"a",
     sortBy: convertSortByFromString(filters.sortBy),
   };
 
@@ -126,7 +126,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "-updated_at",
     },
   ];
-
   return (
     <NetworkStatus>
       {isOnline => (
@@ -140,7 +139,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
               () => !!data.attributes.edges && !!data.products.edges,
               false
             );
-
             if (canDisplayFilters) {
               const handleLoadMore = () =>
                 loadMore(
@@ -199,3 +197,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
 };
 
 export default View;
+
+
+

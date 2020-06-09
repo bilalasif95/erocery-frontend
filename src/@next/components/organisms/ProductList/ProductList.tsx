@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import { UserDetails_me } from "@sdk/queries/types/UserDetails";
 
-import { Button, Loader } from "@components/atoms";
+// Loader
+import { Button } from "@components/atoms";
 import { ProductTile } from "@components/molecules";
 
 // import {
@@ -71,7 +72,7 @@ ProductDescriptionState> {
   return (
     <>
       <S.List>
-        {this.props.products.map(product => (
+        {this.props.products.length  > 0 && this.props.products.map(product => (
           <S.Item>
             <Link
               to={generateProductUrl(product.id, product.name)}
@@ -121,7 +122,7 @@ ProductDescriptionState> {
         ))}
       </S.List>
       <S.Loader>
-        {this.props.loading ? (
+        {/* {this.props.loading ? (
           <Loader />
         ) : (
           this.props.canLoadMore && (
@@ -133,6 +134,23 @@ ProductDescriptionState> {
               More +
             </Button>
           )
+        )} */}
+
+
+         { this.props.loading ? (
+          this.props.products.length >0 ?  "":  <h1>No result found.</h1>
+         
+         
+        ) : (
+          this.props.canLoadMore ?  (
+            <Button
+              data-cy="load-more_button"
+              // color="secondary"
+              onClick={this.props.onLoadMore}
+            >
+              More +
+            </Button>
+          ): this.props.products.length <=0 && <h1>No result found.</h1>
         )}
       </S.Loader>
     </>
