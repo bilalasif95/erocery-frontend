@@ -33,7 +33,10 @@ import { CheckoutProvider } from "./checkout/CheckoutProvider";
 import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
 import { apiUrl, serviceWorkerTimeout } from "./constants";
-import { history } from "./history";
+
+import {gtmId} from "../src/config"
+
+import { history } from "./history"; 
 
 import TagManager from 'react-gtm-module'
 
@@ -52,11 +55,11 @@ const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
 );
 
 const tagManagerArgs = {
-    gtmId: 'GTM-57V6P6W',
-  
+    gtmId,
 };
  
 TagManager.initialize(tagManagerArgs)
+
 const link = ApolloLink.from([
   invalidTokenLink,
   authLink,
