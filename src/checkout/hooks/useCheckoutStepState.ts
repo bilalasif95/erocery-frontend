@@ -42,7 +42,8 @@ export const useCheckoutStepState = (
     const isBillingStep =
       (isShippingOptionStep && !!checkout.shippingMethod) ||
       !checkout.isShippingRequired;
-    const isPaymentStep = isBillingStep && !!checkout.billingAddress;
+    // const isPaymentStep = isBillingStep && !!checkout.billingAddress;
+    const isPaymentStep = true;
     const isReviewStep = isPaymentStep && !!(cardData || dummyStatus);
 
     if (isReviewStep) {

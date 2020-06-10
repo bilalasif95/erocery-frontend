@@ -17,11 +17,9 @@ export const getTotal = (
     );
     return sum + node.pricing.price.gross.amount * quantity;
   }, 0);
-  const {
-    currency,
-  } = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
+  const currency = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? "PKR" : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross.currency;
 
-  return currency === "" ? "" : priceToString({ amount, currency }, locale);
+  return currency === "PKR" ? "PKR" : priceToString({ amount, currency }, locale);
 };
 
 export const extractCartLines = (
