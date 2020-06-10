@@ -104,7 +104,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     checkout: CheckoutContextInterface
   ) => async (token: string, gateway: string) => {
     const {
-      checkout: { billingAddress, totalPrice, id },
+      checkout: { billingAddress,shippingAddress, totalPrice, id },
     } = checkout;
 
     if (token) {
@@ -114,15 +114,15 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           input: {
             amount: totalPrice.gross.amount,
             billingAddress: {
-              city: billingAddress.city,
+              city: billingAddress === null ? shippingAddress.city : billingAddress.city,
               // country: billingAddress.country.code as CountryCode,
-              countryArea: billingAddress.countryArea,
-              firstName: billingAddress.firstName,
-              lastName: billingAddress.lastName,
-              phone: billingAddress.phone,
+              countryArea: billingAddress === null ? shippingAddress.countryArea : billingAddress.countryArea,
+              firstName: billingAddress === null ? shippingAddress.firstName : billingAddress.firstName,
+              lastName: billingAddress === null ? shippingAddress.lastName : billingAddress.lastName,
+              phone: billingAddress === null ? shippingAddress.phone : billingAddress.phone,
               // postalCode: billingAddress.postalCode,
-              streetAddress1: billingAddress.streetAddress1,
-              streetAddress2: billingAddress.streetAddress2,
+              streetAddress1: billingAddress === null ? shippingAddress.streetAddress1 : billingAddress.streetAddress1,
+              streetAddress2: billingAddress === null ? shippingAddress.streetAddress2 : billingAddress.streetAddress2,
             },
             gateway,
             token,
