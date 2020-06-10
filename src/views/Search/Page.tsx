@@ -7,7 +7,8 @@ import {
 } from "@sdk/react";
 
 import { IFilterAttributes, IFilters } from "@types";
-import { DebounceChange, ProductsFeatured, TextField } from "../../components";
+// ProductsFeatured
+import { DebounceChange,  TextField } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
@@ -66,7 +67,7 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  const hasProducts = canDisplayProducts && !!products.totalCount;
+  // const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
   const {data: user} = useUserDetails();
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
@@ -151,13 +152,13 @@ const Page: React.FC<PageProps> = ({
         )}
       </div>
 
-      {!hasProducts && 
+      {/* {!hasProducts && 
       <CartContext.Consumer>
       {cart => (
         <ProductsFeatured addToCart={cart.add} user={user} />
         )}
-      </CartContext.Consumer>
-      }
+      </CartContext.Consumer> */}
+      
     </div>
   );
 };

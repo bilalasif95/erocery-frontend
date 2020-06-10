@@ -87,13 +87,10 @@ ProductDescriptionState> {
   canAddToCart = (lines: CartLine[],product) => {
     const { quantity } = this.state;
     // Object.values(product)[0] === variant;
-    // console.log(Object.values(product)[0],"======")
     // Object.values(product).forEach((variantId) => {
-    //   console.log(variantId,"=======")
     //   variantId[0] === variant
     // });
     // const cartLine = lines.find(({ variantId }) => variantId === variant);
-    
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
