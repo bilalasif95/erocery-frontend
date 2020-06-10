@@ -19,6 +19,7 @@ export const RowWithTwoCells = styled.div`
     margin-bottom: 2rem;
     ${media.smallScreen`
       width: 100%;
+      margin-bottom: 1.5rem;
     `}
   }
 `;
@@ -41,10 +42,6 @@ export const PhoneField = styled.div`
   }
 `;
 export const StartNum = styled.div`
-  // border-top:1px solid #323232;
-  // border-left:1px solid #323232;
-  // border-bottom:1px solid #323232;
-  // border-right: none;
   width: 32px;
   display: flex;
   justify-content: flex-end;
@@ -55,13 +52,5 @@ export const StartNum = styled.div`
   color: #000;
 `;
 
-export const NumCont = styled.div`
-  width: 20px;
-  display: none;
-  justify-content: flex-end;
-  align-items: center;
-  height: 46px;
-  color: #fff;
-`;
 
 

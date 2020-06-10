@@ -80,7 +80,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           /> */}
           <S.PhoneField>
             <S.StartNum>03</S.StartNum>
-            <S.NumCont>03</S.NumCont>
             <TextField
               name="phone"
               label="Phone Number"
