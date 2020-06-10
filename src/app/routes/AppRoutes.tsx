@@ -23,7 +23,6 @@ import { SearchPage } from "../../views/Search";
 import { PasswordReset } from "@pages";
 
 import * as paths from "./paths";
-
 export const Routes: React.FC = () => (
   <Switch>
     {/* <Route exact path={paths.baseUrl} component={Base} /> */}
