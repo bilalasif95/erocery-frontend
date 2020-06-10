@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 import { UserDetails_me } from "@sdk/queries/types/UserDetails";
 
-// Loader
-import { Button } from "@components/atoms";
+import { Button ,Loader} from "@components/atoms";
 import { ProductTile } from "@components/molecules";
 
 // import {
@@ -138,7 +137,7 @@ ProductDescriptionState> {
 
 
          { this.props.loading ? (
-          this.props.products.length >0 ?  "":  <h1>No result found.</h1>
+          this.props.products.length >0 ? this.props.canLoadMore && <Loader/>:  <h1>No result found.</h1>
          
          
         ) : (

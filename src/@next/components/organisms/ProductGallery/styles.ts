@@ -84,7 +84,7 @@ export const Preview = styled.div`
   align-items: center;
   img {
     width: 100%;
-    max-width:300px;
+    max-width:185px;
     object-fit: contain;
     height: 100%;
   }
