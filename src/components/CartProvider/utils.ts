@@ -5,7 +5,7 @@ import { LineI } from "../CartTable/ProductRow";
 import { CartLineInterface } from "./context";
 
 export const getTotal = (
-  variantList: VariantList,
+  variantList: any,
   lines: CartLineInterface[],
   locale?: string
 ): string => {
@@ -17,9 +17,14 @@ export const getTotal = (
     );
     return sum + node.pricing.price.gross.amount * quantity;
   }, 0);
-  const currency = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? "PKR" : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross.currency;
-
-  return currency === "PKR" ? "PKR" : priceToString({ amount, currency }, locale);
+  if(Object.keys(variantList).length !==0){
+  const { currency } = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
+  return currency === "" ? "" : priceToString({ amount, currency }, locale);
+  }
+  else {
+    const currency = "PKR"
+    return currency
+  }
 };
 
 export const extractCartLines = (

@@ -15,7 +15,7 @@ const ProductList: React.SFC<{
   remove(variantId: string): void;
 }> = ({ lines, remove }) => (
   <ul className="cart__list">
-    {lines.map(line => {
+    {lines && lines.map(line => {
       const productUrl = generateProductUrl(line.product.id, line.product.name);
       const price = line.pricing.price;
       const priceUndiscounted = line.pricing.priceUndiscounted;
