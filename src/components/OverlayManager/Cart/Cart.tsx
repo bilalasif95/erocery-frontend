@@ -35,6 +35,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { data: user } = useUserDetails();
   const tok = window.localStorage.getItem("token");
   const [userAvailable, setUserAvailable] = React.useState(true);
+  let tokenVerifyFunction = true;
   return (
     <Overlay context={overlay}>
       <Online>
@@ -43,12 +44,15 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
             <ShopContext.Consumer>
               {({ defaultCountry, geolocalization }) => (
                 <VerifyTokenAuthMutation
-                  onCompleted={res => setUserAvailable(res.tokenVerify.user.isActive)}
+                  onCompleted={async res => setUserAvailable(res.tokenVerify.user.isActive)}
                 >
                   {(tokenVerify) => {
-                    tokenVerify({
-                      variables: { token: tok },
-                    })
+                    if(tokenVerifyFunction){
+                      tokenVerifyFunction = false;
+                      tokenVerify({
+                        variables: { token: tok },
+                      })
+                    }
                     return(
                       <TypedProductVariantsQuery
                         displayLoader={false}
@@ -99,20 +103,28 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                                     </div>
 
                                     <div className="cart__footer__button">
-                                      <Link
-                                        to={generatePath(cartUrl, {
-                                          token: null,
-                                        })}
-                                      >
-                                        <Button disabled={userAvailable === false}>Go to my cart</Button>
-                                      </Link>
+                                      {userAvailable === false?
+                                        <Button disabled>Go to my cart</Button>
+                                        :
+                                        <Link
+                                          to={generatePath(cartUrl, {
+                                            token: null,
+                                          })}
+                                        >
+                                          <Button>Go to my cart</Button>
+                                        </Link>
+                                      }
                                     </div>
                                     <div className="cart__footer__button">
-                                      <Link
-                                        to={user ? checkoutUrl : checkoutLoginUrl}
-                                      >
-                                        <Button disabled={userAvailable === false}>Checkout</Button>
-                                      </Link>
+                                      {userAvailable === false?
+                                        <Button disabled>Checkout</Button>
+                                        :
+                                        <Link
+                                          to={user ? checkoutUrl : checkoutLoginUrl}
+                                        >
+                                          <Button>Checkout</Button>
+                                        </Link>
+                                      }
                                     </div>
                                   </div>
                           
@@ -160,20 +172,28 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                                     </div>
 
                                     <div className="cart__footer__button">
-                                      <Link
-                                        to={generatePath(cartUrl, {
-                                          token: null,
-                                        })}
-                                      >
-                                        <Button disabled={userAvailable === false}>Go to my cart</Button>
-                                      </Link>
+                                      {userAvailable === false?
+                                        <Button disabled>Go to my cart</Button>
+                                        :
+                                        <Link
+                                          to={generatePath(cartUrl, {
+                                            token: null,
+                                          })}
+                                        >
+                                          <Button>Go to my cart</Button>
+                                        </Link>
+                                      }
                                     </div>
                                     <div className="cart__footer__button">
-                                      <Link
-                                        to={user ? checkoutUrl : checkoutLoginUrl}
-                                      >
-                                        <Button disabled={userAvailable === false}>Checkout</Button>
-                                      </Link>
+                                      {userAvailable === false?
+                                        <Button disabled>Checkout</Button>
+                                        :
+                                        <Link
+                                          to={user ? checkoutUrl : checkoutLoginUrl}
+                                        >
+                                          <Button>Checkout</Button>
+                                        </Link>
+                                      }
                                     </div>
                                   </div>
                                 </>

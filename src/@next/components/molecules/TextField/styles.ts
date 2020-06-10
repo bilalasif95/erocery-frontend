@@ -3,6 +3,7 @@ import { styled } from "@styles";
 export const TextField = styled.div`
   margin-bottom: ${props => props.theme.spacing.spacer};
   position: relative;
+  width: 100%;
 `;
 TextField.displayName = "S.TextField";
 
