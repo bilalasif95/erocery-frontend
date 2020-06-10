@@ -33,13 +33,18 @@ export const PhoneField = styled.div`
   height: 45px;
   background: #fff;
   position: relative;
+  input {
+    padding: 0.8rem 1rem 0.8rem 1.9rem;
+  }
+  label{
+    left: 2rem;
+  }
 `;
 export const StartNum = styled.div`
-  border-top:1px solid #323232;
-  border-left:1px solid #323232;
-  border-bottom:1px solid #323232;
-  border-right: none;
-  background: #fff;
+  // border-top:1px solid #323232;
+  // border-left:1px solid #323232;
+  // border-bottom:1px solid #323232;
+  // border-right: none;
   width: 32px;
   display: flex;
   justify-content: flex-end;
@@ -52,10 +57,10 @@ export const StartNum = styled.div`
 
 export const NumCont = styled.div`
   width: 20px;
-  display: flex;
+  display: none;
   justify-content: flex-end;
   align-items: center;
-  height: 45px;
+  height: 46px;
   color: #fff;
 `;
 
