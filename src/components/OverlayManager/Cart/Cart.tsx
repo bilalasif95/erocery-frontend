@@ -34,7 +34,7 @@ import { VerifyTokenAuthMutation } from "../../User/queries";
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { data: user } = useUserDetails();
   const tok = window.localStorage.getItem("token");
-  const [userAvailable, setUserAvailable] = React.useState(true);
+  const [userAvailable, setUserAvailable] = React.useState(tok ? false : true);
   let tokenVerifyFunction = true;
   return (
     <Overlay context={overlay}>

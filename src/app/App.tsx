@@ -17,11 +17,12 @@ const App: React.FC<RouteComponentProps> = ({
   },
 }) => {
   const orderConfirmationPage = isPath(pathname, orderConfirmationUrl);
+
   return (
     <>
       <MetaConsumer />
       <header>
-        <MainMenu />
+        <MainMenu/>
       </header>
       <Routes />
       <MessengerCustomerChat pageId={pageId} appId={appId} />

@@ -40,17 +40,22 @@ import { ShopContext } from "../ShopProvider/context";
 import { TypedProductVariantsQuery } from "../../views/Product/queries";
 
 import { extractCartLines } from "../CartProvider/utils";
-
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { clear: clearCart } = useContext(CartContext);
-  const { clear: clearCheckout } = useContext(CheckoutContext);
+  const { clear: clearCheckout} = useContext(CheckoutContext);
 
   const handleSignOut = () => {
-    signOut();
-    clearCart();
-    clearCheckout();
+    signOut().then((data) => {
+      clearCheckout();
+      clearCart();
+       window.localStorage.clear();
+      //  location.assign('/');
+       location.replace("/")
+    }).catch((error) => {
+       alert("Error in log out try agian..")
+    })
   };
 
   return (

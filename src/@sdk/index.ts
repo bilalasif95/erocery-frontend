@@ -255,8 +255,8 @@ export class SaleorAPI {
       }
     });
 
-  signOut = () =>
-    new Promise(async (resolve, reject) => {
+  signOut = () => {
+    return new Promise((resolve,reject) => {
       try {
         clearStorage();
         if (
@@ -264,14 +264,16 @@ export class SaleorAPI {
           navigator.credentials.preventSilentAccess
         ) {
           navigator.credentials.preventSilentAccess();
+           resolve();
         }
         this.client.resetStore();
-
         resolve();
       } catch (e) {
         reject(e);
       }
     });
+  }
+
 
   attachAuthListener = (callback: (authenticated: boolean) => void) => {
     const eventHandler = () => {
@@ -467,9 +469,9 @@ const handleDataErrors = <T extends QueryShape, TData>(
   const errors =
     apolloErrors || userInputErrors
       ? new ApolloError({
-          extraInfo: userInputErrors,
-          graphQLErrors: apolloErrors,
-        })
+        extraInfo: userInputErrors,
+        graphQLErrors: apolloErrors,
+      })
       : null;
 
   if (errors && isDataEmpty(data)) {
