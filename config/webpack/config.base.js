@@ -105,9 +105,10 @@ module.exports = ({ sourceDir, distDir }) => ({
       favicons: {
         appName: "Erocery",
         appDescription: "Storefront for the Erocery e-commerce platform",
-        display: "fullscreen",
+        display: "minimal-ui",
         developerURL: null, // prevent retrieving from the nearest package.json
         background: "#ddd",
+        start_url: "/",
         theme_color: "#333",
         orientation: "portrait",
       },
