@@ -71,7 +71,7 @@ const AddToCart: React.FC<{
             disabled={disabled || mutationLoading}>
               Buy Now
             </Button> :
-            <Link to={checkoutUrl} className="btnLink">
+            <Link to={window.localStorage.getItem("token")?   checkoutUrl:"/login"} className="btnLink">
               <Button
               className="buyButton"
               onClick={() => {
