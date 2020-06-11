@@ -47,15 +47,18 @@ const MainMenu: React.FC = () => {
   const { clear: clearCheckout} = useContext(CheckoutContext);
 
   const handleSignOut = () => {
-    signOut().then((data) => {
-      clearCheckout();
+    signOut()
+    clearCheckout();
       clearCart();
-       window.localStorage.clear();
-      //  location.assign('/');
-       location.replace("/")
-    }).catch((error) => {
-       alert("Error in log out try agian..")
-    })
+    // then((data) => {
+    //   clearCheckout();
+    //   clearCart();
+    //   //  window.localStorage.clear();
+    //   //  location.assign('/');
+    //    location.replace("/")
+    // }).catch((error) => {
+    //    alert("Error in log out try agian..")
+    // })
   };
 
   return (
