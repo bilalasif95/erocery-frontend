@@ -2,7 +2,7 @@ module.exports = {
   client: {
     service: {
       name: "erocery",
-      url: "http://localhost:8000/graphql/",
+      url: "https://backend.erocery.com/graphql/",
       includes: ["./**/*.js", "./**/*.ts"],
       excludes: ["**/__tests__/**/*"],
     },

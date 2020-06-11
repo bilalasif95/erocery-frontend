@@ -105,14 +105,16 @@ module.exports = ({ sourceDir, distDir }) => ({
       favicons: {
         appName: "Erocery",
         appDescription: "Storefront for the Erocery e-commerce platform",
-        display: "standalone",
+        display: "minimal-ui",
         developerURL: null, // prevent retrieving from the nearest package.json
         background: "#ddd",
+        start_url: "/",
         theme_color: "#333",
+        orientation: "portrait",
       },
     }),
     new webpack.EnvironmentPlugin({
-      API_URI: "http://localhost:8000/graphql/",
+      API_URI: "https://backend.erocery.com/graphql/",
       SERVICE_WORKER_TIMEOUT: "60000",
     }),
   ],
