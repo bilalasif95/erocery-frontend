@@ -105,10 +105,11 @@ module.exports = ({ sourceDir, distDir }) => ({
       favicons: {
         appName: "Erocery",
         appDescription: "Storefront for the Erocery e-commerce platform",
-        display: "standalone",
+        display: "fullscreen",
         developerURL: null, // prevent retrieving from the nearest package.json
         background: "#ddd",
         theme_color: "#333",
+        orientation: "portrait",
       },
     }),
     new webpack.EnvironmentPlugin({
