@@ -84,23 +84,28 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
     skip: skipUserCheckoutFetch,
   });
 
+
   if (!userCheckoutLoading && !skipUserCheckoutFetch) {
-    if (userCheckout && state.syncUserCheckout) {
-      setState(prevState => ({
-        ...prevState,
-        checkout: userCheckout,
-        loading: false,
-        syncUserCheckout: false,
-        syncWithCart: true,
-      }));
-      setCheckoutToken(userCheckout.token);
-    } else if (!userCheckout && state.syncUserCheckout) {
-      setState(prevState => ({
-        ...prevState,
-        syncUserCheckout: false,
-      }));
-    }
+    setTimeout(() => {
+      if (userCheckout && state.syncUserCheckout) {
+        setState(prevState => ({
+          ...prevState,
+          checkout: userCheckout,
+          loading: false,
+          syncUserCheckout: false,
+          syncWithCart: true,
+        }));
+        setCheckoutToken(userCheckout.token);
+      } else if (!userCheckout && state.syncUserCheckout) {
+        setState(prevState => ({
+          ...prevState,
+          syncUserCheckout: false,
+        }));
+      }
+    }, 600)
   }
+
+
 
   const skipLocalStorageCheckoutFetch = !!(
     userCheckoutLoading ||

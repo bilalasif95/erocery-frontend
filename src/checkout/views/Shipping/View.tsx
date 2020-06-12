@@ -30,6 +30,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           {shop => (
             <CartContext.Consumer>
               {({ lines }) => (
+        
                 <Page
                   checkoutId={maybe(() => checkout.id, null)}
                   checkout={checkout}

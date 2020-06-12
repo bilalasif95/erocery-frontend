@@ -15,6 +15,7 @@ const Cart: React.FC<{
   cart: CartInterface;
   checkout: Checkout | null;
 }> = ({ cart: { lines }, checkout }) => {
+  
   // const locale = maybe(() => "PK", "PK");
   return (
     <div className="cart-summary">
