@@ -24,6 +24,9 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import catNoImg from "../../images/catNoImg.jpg";
 // import bannerimg from "../../images/homeBanner.jpg";
+import appleStoreImage from "../../images/App_store.png";
+import androidStoreImage from "../../images/play_store.png";
+
 import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
@@ -42,7 +45,24 @@ const Page: React.FC<{
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
-
+  const imagesArray = [
+    {
+      name: "banner1",
+      url: banner1,
+    },
+    {
+      name: "banner2",
+      url: banner2,
+    },
+    {
+      name: "banner3",
+      url: banner3,
+    },
+    {
+      name: "banner4",
+      url: banner4,
+    },
+  ]
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">
@@ -77,15 +97,31 @@ const Page: React.FC<{
             );
           }}
         >
-          {[{url: banner1},{url: banner2},{url: banner3},{url: banner4}].map(image => (
-            // <div
-            //   className="home-page__hero"
-            //   style={{ backgroundImage: `url(${image.url})` }}
-            // >
-            // </div>
-            // <CachedImage url={image.url || noPhotoImg}>
+          {imagesArray.map(image => (
+            <>
+            {/* <div
+              className="home-page__hero"
+              style={{ backgroundImage: `url(${image.url})` }}
+            >
+            </div>
+            <CachedImage url={image.url || noPhotoImg}> */}
               <img src={image.url} />
-            // </CachedImage>
+              {image.name === "banner2" ? 
+                <div>
+                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                  <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+                </div>
+                : ""
+              }
+              {image.name === "banner4" ? 
+                <div className="appLinks">
+                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                  <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+                </div>
+                : ""
+              }
+            {/* </CachedImage> */}
+            </>
           ))}
         </Carousel>
       </div>
