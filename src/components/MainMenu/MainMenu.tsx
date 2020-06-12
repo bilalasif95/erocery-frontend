@@ -47,18 +47,16 @@ const MainMenu: React.FC = () => {
   const { clear: clearCheckout} = useContext(CheckoutContext);
 
   const handleSignOut = () => {
-    signOut()
-    clearCheckout();
+    signOut().then((data) => {
+      clearCheckout();
       clearCart();
-    // then((data) => {
-    //   clearCheckout();
-    //   clearCart();
-    //   //  window.localStorage.clear();
-    //   //  location.assign('/');
-    //    location.replace("/")
-    // }).catch((error) => {
-    //    alert("Error in log out try agian..")
-    // })
+      //  window.localStorage.clear();
+      //  location.assign('/');
+       location.replace("/")
+       
+    }).catch((error) => {
+       alert("Error in log out try agian..")
+    })
   };
 
   return (
@@ -192,8 +190,8 @@ const MainMenu: React.FC = () => {
                                   Payment options
                                 </Link>
                               </li> */}
-                            <li
-                              onClick={handleSignOut}
+                            <li 
+                              onClick={handleSignOut }
                               data-testid="logout-link"
                             >
                               Log Out

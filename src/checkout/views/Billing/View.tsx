@@ -27,10 +27,12 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const { update, checkout, shippingAsBilling } = React.useContext(
     CheckoutContext
   );
+ 
   const { lines: cardLines } = React.useContext(CartContext);
   const { data: variantsProducts } = useVariantsProducts({
     ids: cardLines ? cardLines.map(line => line.variantId) : [],
   });
+  
   const isShippingRequired = () => {
     if (checkout && checkout.isShippingRequired) {
       return true;
@@ -51,7 +53,6 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   };
 
   const createCheckout = useCreateCheckout();
-
   return (
     <ShopContext.Consumer>
       {shop => (

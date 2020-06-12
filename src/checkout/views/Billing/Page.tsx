@@ -90,6 +90,8 @@ const View: React.FC<IBillingPageProps> = ({
   updateCheckoutBillingAddress,
   isShippingRequired,
 }) => {
+
+  
   const [saveBillingAddress, { loading, error }] = updateCheckoutBillingAddress;
   const errors = maybe(() => error.extraInfo.userInputErrors, []);
 
