@@ -8,26 +8,28 @@ const PrivacyPolicy: React.FC = () => (
          <div className="mainHeading">
             <h3>Privacy Policy</h3>
          </div><br />
-         <p>At Erocery, we understand your concern about your personal information, we care about it too. As such, we assure we safeguard the information provided and honor your requests for confidentiality when you log in to <a href="https://erocery.com" target="_blank">erocery.com</a> Website and mobile app<br />
-       We sell grocery products online and deliver your order at your doorstep.</p><br />
-         <p>1.1 This privacy policy governs your privacy rights regarding our collection, storage and accumulation of your personally identifiable information (name, contact number, mailing and postal address) concerning your use of our website and mobile app. This information is stored in an electronic database, which is for Erocery website and mobile app use only. This privacy policy applies to the Site and services provided by Erocery.
-<br />
-1.2 We shall therefore only use your name and other information which relates to you in the manner set out in this Privacy Policy. We will only collect information where it is necessary for us to do so and we will only collect information if it is relevant to our dealings with you.
-</p><br />
-         <p>1.3 You can visit the Website and browse without having to provide personal details. During your visit to Erocery.com you remain anonymous and at no time can we identify you unless you have an account on the Website and log in with your username and password.
-<br />
-1.4 We may collect your personal identification details if you seek to place an order through our Website or mobile application.
-<br />
-       Step 3: Click on the cart and review your order and its details.<br />
-       Step 4: Place order.</p><br />
-         <h4><b>2. Without creating an account:</b></h4><br />
-         <p>Step 1: Choose the products you wish to buy by adding them in your shopping cart.<br />
-       Step 2: Click on the cart and review your order and its details.<br />
-       Step 3: Go to checkout.<br />
-       Step 4: Provide the required details on the form.<br />
-       Step 5: Place order.</p><br />
-         <p>After the order has been placed, you will receive a confirmation message and email on your provided contact information.</p><br />
-         <p>For further queries feel free to contact us on: <u>contact@erocery.com</u></p>
+         <p>At Erocery, we acknowledge your concern about your personal information; we also care about the customer information. We provide protection to your data with honor, we are confident about your data safety when you log in to <a href="https://erocery.com" target="_blank"><u>www.erocery.com</u></a> website and mobile app.<br /><br /></p>
+         <p>1. The privacy policy conducts by your privacy rights. We collect, store and accumulate your personal information (name, Contact Number, e-mail and postal address) use in our website and mobile app. This data is stored in our database which is only used in Erocery website and mobile app.<br /><br /></p>
+         <p>2. According to our privacy policy, we collect your personal, necessary and relevant information according to our dealings with you.<br /><br /></p>
+         <p>3. You can visit our website and browse the products without providing personal detail. During your visit to the website, we cannot identify you when you are not login at the website with username and password.<br /><br /></p>
+         <p>4. We get your personal details if you place an order through our website or mobile app.<br /><br /></p>
+         <p>5. Our mobile app gets your permission to access your location, storage, network and phone.<br /><br /></p>
+         <p>6. When you connect our website, we collect and store your personal information in the form of cookies which mostly increase the user experience. Cookies are generally placed on your system hard drive and not in our website database.<br /><br /></p>
+         <p>7. The privacy policy which forms part of our terms of use, will mostly collect your information from you or from someone you’ve authorized it to use. We will also only collect information according to Law and fair means and not in an unreasonably intrusive behavior.<br /><br /></p>
+         <p>8. We get stored and process your information about your purchasing for any possible later claims. We also provide you with discount offers and event offers by using your personal details.<br /><br /></p>
+         <p>9. We required this information to grant you a “go ahead” signal with placing your order. We get payment for the product after delivering the product to you.<br /><br /></p>
+         <p>10. We pass your product according to your basic information (name, contact no and postal address) on to a third party (for an example to a courier service provider or delivery supplier).<br /><br /></p>
+         <p>11. We explore to use information that you provide us if you contact us by mail.<br /><br /></p>
+         <p>12. We also use your data for payment collection from you or in case of any issue and missing product.<br /><br /></p>
+         <p>13. It is important for user to know how we use the gather information i.e.<br /></p>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I. How to improve the website feedback process.<br /></p>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II. To enhance the company and client relation.<br /><br /></p>
+         <p>14. We Erocery, assure that access to client information is limited to employees. All employees are strictly committed to follow the privacy rules. Our objective is to serve you better.<br /><br /></p>
+         <p>15. We are not collecting your information for trading or selling it to the other companies for their marketing purpose.<br /><br /></p>
+         <p>16. We make a justifiable effort to assure your information is protected while you are on our website and mobile app. We have a security plan on the storage and destruction of personal information which are devised to protect from the unauthorized access.<br /><br /></p>
+         <p>17. Erocery is interlinked to social media channels that may collect personal information. But Erocery is not responsible for the loss of your data through any other media.<br /><br /></p>
+         <p>18. We always enhance and update our website by adding more products for shopping. According to the  audience response our policies would be changed by the time.<br /><br /></p>
+         <p>19. To use our website, you are consenting to our privacy policy. We appreciate your trust in us and we promise to protect data. Feel free to contact our customer service team to help you out.! Send us an email at <u>erocery@gmail.com</u> or contact us on (051)-8356551.</p>
       </div>
    </div>
 );
