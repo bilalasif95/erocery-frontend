@@ -53,7 +53,6 @@ const MainMenu: React.FC = () => {
       //  window.localStorage.clear();
       //  location.assign('/');
        location.replace("/")
-       
     }).catch((error) => {
        alert("Error in log out try agian..")
     })

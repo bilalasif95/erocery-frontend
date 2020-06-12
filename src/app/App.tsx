@@ -17,7 +17,6 @@ const App: React.FC<RouteComponentProps> = ({
   },
 }) => {
   const orderConfirmationPage = isPath(pathname, orderConfirmationUrl);
-
   return (
     <>
       <MetaConsumer />
