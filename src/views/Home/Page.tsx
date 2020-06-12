@@ -106,7 +106,7 @@ const Page: React.FC<{
             </div>
             <CachedImage url={image.url || noPhotoImg}> */}
               <img src={image.url} />
-              {image.name === "banner2" ? 
+              {/* {image.name === "banner2" ? 
                 <div>
                   <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
                   <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
@@ -119,7 +119,7 @@ const Page: React.FC<{
                   <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
                 </div>
                 : ""
-              }
+              } */}
             {/* </CachedImage> */}
             </>
           ))}
