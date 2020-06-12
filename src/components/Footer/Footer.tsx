@@ -28,6 +28,7 @@ const Footer: React.FC = () => (
             <li><Link to="/return-and-refunds"><ReactSVG path={listIcon} /><span>Return & Refund</span></Link></li>
             <li><Link to="/delivery"><ReactSVG path={listIcon} /><span>Delivery</span></Link></li>
             <li><Link to="/terms-and-conditions"><ReactSVG path={listIcon} /><span>Terms & Conditions</span></Link></li>
+            <li><Link to="/privacy-policy"><ReactSVG path={listIcon} /><span>Privacy Policy</span></Link></li>
           </ul>
         </div>
         <div className="footer-item">
