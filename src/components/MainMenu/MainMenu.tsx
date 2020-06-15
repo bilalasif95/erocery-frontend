@@ -39,22 +39,29 @@ import { ShopContext } from "../ShopProvider/context";
 
 import { TypedProductVariantsQuery } from "../../views/Product/queries";
 
+import { useAlert } from "react-alert";
+
 import { extractCartLines } from "../CartProvider/utils";
 const MainMenu: React.FC = () => {
+  const alert = useAlert();
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
   const { clear: clearCart } = useContext(CartContext);
-  const { clear: clearCheckout} = useContext(CheckoutContext);
+  const { clear: clearCheckout } = useContext(CheckoutContext);
 
   const handleSignOut = () => {
     signOut().then((data) => {
       clearCheckout();
       clearCart();
-      //  window.localStorage.clear();
-      //  location.assign('/');
-       location.replace("/")
+      window.location.replace("/");
+      // window.history.pushState(null, null, "/")
     }).catch((error) => {
-       alert("Error in log out try agian..")
+      alert.show(
+        {
+          title: "Error in log out. Please try again.",
+        },
+        { type: "error", timeout: 5000 }
+      );
     })
   };
 
@@ -189,8 +196,8 @@ const MainMenu: React.FC = () => {
                                   Payment options
                                 </Link>
                               </li> */}
-                            <li 
-                              onClick={handleSignOut }
+                            <li
+                              onClick={handleSignOut}
                               data-testid="logout-link"
                             >
                               Log Out

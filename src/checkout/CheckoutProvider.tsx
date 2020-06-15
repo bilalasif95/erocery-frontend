@@ -86,6 +86,7 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
 
 
   if (!userCheckoutLoading && !skipUserCheckoutFetch) {
+  
       if (userCheckout && state.syncUserCheckout) {
         setState(prevState => ({
           ...prevState,
@@ -95,13 +96,14 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
           syncWithCart: true,
         }));
         setCheckoutToken(userCheckout.token);
-      } else if (!userCheckout && state.syncUserCheckout) {
-        window.location.reload(true)
+      }
+       else if (!userCheckout && state.syncUserCheckout) {
         setState(prevState => ({
           ...prevState,
           syncUserCheckout: false,
         }));
       }
+   
   }
 
 
