@@ -70,9 +70,9 @@ const Page: React.FC<{
       </script>
       <div className="product-page__product__mainSlider">
         <Carousel
-          autoplay={true}
+          // autoplay={true}
           wrapAround={true}
-          autoplayInterval={2000}
+          // autoplayInterval={2000}
           renderCenterLeftControls={() => null}
           renderCenterRightControls={() => null}
           renderBottomCenterControls={props => {
