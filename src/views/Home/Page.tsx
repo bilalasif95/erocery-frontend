@@ -46,18 +46,18 @@ const Page: React.FC<{
     return categories && categories.edges && categories.edges.length > 0;
   };
   const imagesArray = [
-    {
-      name: "banner1",
-      url: banner1,
-    },
-    {
-      name: "banner2",
-      url: banner2,
-    },
-    {
-      name: "banner3",
-      url: banner3,
-    },
+    // {
+    //   name: "banner1",
+    //   url: banner1,
+    // },
+    // {
+    //   name: "banner2",
+    //   url: banner2,
+    // },
+    // {
+    //   name: "banner3",
+    //   url: banner3,
+    // },
     {
       name: "banner4",
       url: banner4,
