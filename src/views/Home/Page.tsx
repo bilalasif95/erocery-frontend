@@ -85,6 +85,7 @@ const Page: React.FC<{
             // </div>
             // <CachedImage url={image.url || noPhotoImg}>
               <img src={image.url} />
+              
             // </CachedImage>
           ))}
         </Carousel>
