@@ -37,14 +37,32 @@ const Cart: React.FC<{
         </TypedProductVariantsQuery>
       ) : (
         <>
-          {checkout.lines.map(({ variant, quantity, id }) => (
+          {/* {checkout.lines.map(({ variant, quantity, id }) => (
             <Line key={id} {...variant} quantity={quantity} />
-          ))}
+          ))} */}
+          <TypedProductVariantsQuery
+          variables={{ ids: lines.map(line => line.variantId) }}
+        >
+          {({ data }) => (
+            <>
+              {data.productVariants.edges.map(({ node }) => (
+                <Line
+                  key={node.id}
+                  {...node}
+                  quantity={
+                    lines.find(({ variantId }) => variantId === node.id)
+                      .quantity
+                  }
+                />
+              ))}
+              {/* <Subtotal checkout={checkout} variants={data} lines={lines} /> */}
+            </>
+          )}
+        </TypedProductVariantsQuery>
           <Subtotal checkout={checkout} lines={lines} />
           {checkout.discount && !!checkout.discount.amount && (
             <div className="cart-summary__totals">
-            {/* {checkout.discountName} */}
-              <h5>Discount: </h5>
+              <h5>Discount: {checkout.discountName}</h5>
               <h5>
                 - <Money defaultValue="-" money={checkout.discount} />
               </h5>

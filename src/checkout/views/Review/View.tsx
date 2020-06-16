@@ -79,7 +79,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
         </Link>
 
         <div className="checkout__step checkout__step--inactive">
-          <span>{checkout.isShippingRequired ? "5" : "3"}</span>
+          <span>{checkout.isShippingRequired ? "4" : "3"}</span>
           <h4 className="checkout__header">Review your order</h4>
         </div>
 
