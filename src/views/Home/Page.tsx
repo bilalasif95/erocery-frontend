@@ -24,14 +24,14 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import catNoImg from "../../images/catNoImg.jpg";
 // import bannerimg from "../../images/homeBanner.jpg";
+import androidStoreImage from "../../images/playstore.png";
+import appleStoreImage from "../../images/applestore.png";
 import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
 import offerImg from "../../images/offerBanner.jpg";
 
-import androidStoreImage from "../../images/banner3.jpg";
-import appleStoreImage from "../../images/banner4.jpg";
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
