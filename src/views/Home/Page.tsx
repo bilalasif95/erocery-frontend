@@ -25,7 +25,9 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 // import catNoImg from "../../images/catNoImg.jpg";
 // import bannerimg from "../../images/homeBanner.jpg";
 import androidStoreImage from "../../images/playstore.png";
+
 import appleStoreImage from "../../images/applestore.png";
+
 import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
