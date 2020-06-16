@@ -46,18 +46,18 @@ const Page: React.FC<{
     return categories && categories.edges && categories.edges.length > 0;
   };
   const imagesArray = [
-    // {
-    //   name: "banner1",
-    //   url: banner1,
-    // },
-    // {
-    //   name: "banner2",
-    //   url: banner2,
-    // },
-    // {
-    //   name: "banner3",
-    //   url: banner3,
-    // },
+    {
+      name: "banner1",
+      url: banner1,
+    },
+    {
+      name: "banner2",
+      url: banner2,
+    },
+    {
+      name: "banner3",
+      url: banner3,
+    },
     {
       name: "banner4",
       url: banner4,
@@ -70,9 +70,9 @@ const Page: React.FC<{
       </script>
       <div className="product-page__product__mainSlider">
         <Carousel
-          // autoplay={true}
+          autoplay={true}
           wrapAround={true}
-          // autoplayInterval={2000}
+          autoplayInterval={2000}
           renderCenterLeftControls={() => null}
           renderCenterRightControls={() => null}
           renderBottomCenterControls={props => {
@@ -108,14 +108,14 @@ const Page: React.FC<{
               <img src={image.url} />
               {image.name === "banner2" ? 
                 <div className="banner2-links">
-                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
                   <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
                 </div>
                 : ""
               }
               {image.name === "banner4" ? 
                 <div className="appLinks">
-                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
                   <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
                 </div>
                 : ""
