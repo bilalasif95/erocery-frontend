@@ -61,8 +61,10 @@
   @media(max-width: 480px){
        &__price {
         display: flex;
-       justify-content: flex-start;
-      flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        height: 50px;
+        align-items: flex-end;
         width: 100%;
         span{
          width: 100%;

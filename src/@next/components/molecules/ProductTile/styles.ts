@@ -73,6 +73,8 @@ export const Price = styled.p`
     ${media.smallScreen`
      display: flex;
      justify-content: flex-start;
+     align-items: flex-end;
+     height: 40px;
      flex-wrap: wrap;
      span{
        width: 100%;
