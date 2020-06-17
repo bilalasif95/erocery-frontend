@@ -24,14 +24,16 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import catNoImg from "../../images/catNoImg.jpg";
 // import bannerimg from "../../images/homeBanner.jpg";
-import appleStoreImage from "../../images/App_store.png";
-import androidStoreImage from "../../images/play_store.png";
+import androidStoreImage from "../../images/playstore.png";
+
+import appleStoreImage from "../../images/applestore.png";
 
 import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
 import offerImg from "../../images/offerBanner.jpg";
+
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
@@ -70,59 +72,59 @@ const Page: React.FC<{
       </script>
       <div className="product-page__product__mainSlider">
         <Carousel
-          autoplay={true}
-          wrapAround={true}
-          autoplayInterval={2000}
-          renderCenterLeftControls={() => null}
-          renderCenterRightControls={() => null}
-          renderBottomCenterControls={props => {
-            const indexes = [];
+        autoplay={true}
+        wrapAround={true}
+        autoplayInterval={2000}
+        renderCenterLeftControls={() => null}
+        renderCenterRightControls={() => null}
+        renderBottomCenterControls={props => {
+          const indexes = [];
 
-            for (let i = 0; i < props.slideCount; i++) {
-              indexes.push(i);
+          for (let i = 0; i < props.slideCount; i++) {
+            indexes.push(i);
+          }
+
+          return (
+            <ul className="product-page__product__gallery__nav">
+              {indexes.map(index => (
+                <li
+                  key={index}
+                  onClick={props.goToSlide.bind(null, index)}
+                  className={props.currentSlide === index ? "active" : ""}
+                >
+                  <span />
+                </li>
+              ))}
+            </ul>
+          );
+        }}
+      >
+        {imagesArray.map(image => (
+          <>
+          {/* <div
+            className="home-page__hero"
+            style={{ backgroundImage: `url(${image.url})` }}
+          >
+          </div>
+          <CachedImage url={image.url || noPhotoImg}> */}
+            <img src={image.url} />
+            {image.name === "banner2" ? 
+              <div className="banner2-links">
+                <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+              </div>
+              : ""
             }
-
-            return (
-              <ul className="product-page__product__gallery__nav">
-                {indexes.map(index => (
-                  <li
-                    key={index}
-                    onClick={props.goToSlide.bind(null, index)}
-                    className={props.currentSlide === index ? "active" : ""}
-                  >
-                    <span />
-                  </li>
-                ))}
-              </ul>
-            );
-          }}
-        >
-          {imagesArray.map(image => (
-            <>
-            {/* <div
-              className="home-page__hero"
-              style={{ backgroundImage: `url(${image.url})` }}
-            >
-            </div>
-            <CachedImage url={image.url || noPhotoImg}> */}
-              <img src={image.url} />
-              {image.name === "banner2" ? 
-                <div className="banner2-links">
-                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
-                  <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
-                </div>
-                : ""
-              }
-              {image.name === "banner4" ? 
-                <div className="appLinks">
-                  <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
-                  <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
-                </div>
-                : ""
-              }
-            {/* </CachedImage> */}
-            </>
-          ))}
+            {image.name === "banner4" ? 
+              <div className="appLinks">
+                <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
+                <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+              </div>
+              : ""
+            }
+          {/* </CachedImage> */}
+          </>
+        ))}
         </Carousel>
       </div>
       {/* <div

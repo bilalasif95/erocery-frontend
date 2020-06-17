@@ -70,6 +70,14 @@ width: 10%;
 export const Price = styled.p`
   ${textProps};
   padding: 0 0.5rem;
+    ${media.smallScreen`
+     display: flex;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     span{
+       width: 100%;
+     }
+  `}
 `;
 export const AddCartBtn = styled.div`
 display: flex;

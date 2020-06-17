@@ -59,7 +59,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
   // }, [timer]);
   const handleOnCodeSubmit = async (evt, { smsCode }) => {
     evt.preventDefault();
-    const authenticated = await verifyCode({ smsCode, phone: "03" + phone, password });
+    const authenticated = await verifyCode({ smsCode, phone, password });
     setAuthToken(authenticated.data.accountVerify.token);
     if (authenticated && hide) {
       hide();

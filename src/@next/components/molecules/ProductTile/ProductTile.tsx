@@ -31,7 +31,6 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
           <span className="product-list-item__undiscounted_price">
             <TaxedMoney taxedMoney={priceUndiscounted} />
           </span>
-          &nbsp;&nbsp;&nbsp;&nbsp;
           <TaxedMoney taxedMoney={price} />
         </>
       );

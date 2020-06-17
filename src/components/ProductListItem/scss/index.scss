@@ -37,11 +37,11 @@
     margin: 0 1rem 0 0;
   }
   @media(max-width: 480px){
-  &__undiscounted_price {
-    height: 20px;
-    margin: 0;
+      &__undiscounted_price {
+        height: 20px;
+        margin: 0;
+      }
   }
-}
 
   &__category {
     color: $product-item-category-color;
@@ -59,16 +59,16 @@
     width: 50%;
   }
   @media(max-width: 480px){
-    &__price {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-    span{
-      width: 100%;
-    }
-    }
-  }
+       &__price {
+        display: flex;
+       justify-content: flex-start;
+      flex-wrap: wrap;
+        width: 100%;
+        span{
+         width: 100%;
+        }
+        }
+      }
 
   &__image {
     // background-color: $turquoise-light;
@@ -96,10 +96,10 @@
     padding: 1rem 0;
   }
   @media(max-width: 480px){
-    .footerDiv{
-      padding: 1rem 0 0.4rem;
+        .footerDiv{
+         padding: 1rem 0 0.4rem;
+        }
     }
-  }
   .buyBtn{
     background: #F43C3C;
     padding: 0.5rem 1rem;
