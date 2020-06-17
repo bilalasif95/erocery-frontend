@@ -8,6 +8,9 @@ export const Input = styled.div`
 
 export const InputWithButton = styled.div`
   display: flex;
+  button {
+    width: auto;
+  }
 `;
 
 export const InputWrapper = styled.div`
