@@ -33,15 +33,20 @@ export const SOCIAL_MEDIA = [
     path: require("../images/instagram-icon.svg"),
   },
   {
-    ariaLabel: "twitter",
-    href: "https://twitter.com/rnssol",
-    path: require("../images/twitter-icon.svg"),
+    ariaLabel: "whatsapp",
+    href: "https://api.whatsapp.com/send?phone=923302755559&text=",
+    path: require("../images/whatsapp.svg"),
   },
-  {
-    ariaLabel: "youtube",
-    href: "https://www.youtube.com/c/RNSSolutions",
-    path: require("../images/youtube-icon.svg"),
-  },
+  // {
+  //   ariaLabel: "twitter",
+  //   href: "https://twitter.com/rnssol",
+  //   path: require("../images/twitter-icon.svg"),
+  // },
+  // {
+  //   ariaLabel: "youtube",
+  //   href: "https://www.youtube.com/c/RNSSolutions",
+  //   path: require("../images/youtube-icon.svg"),
+  // },
 ];
 export const META_DEFAULTS = {
   custom: [],
