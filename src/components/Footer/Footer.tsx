@@ -17,6 +17,10 @@ import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
 
+import androidStoreImage from "../../images/playstore.png";
+
+import appleStoreImage from "../../images/applestore.png";
+
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
     <div className="container">
@@ -50,6 +54,13 @@ const Footer: React.FC = () => (
             {SOCIAL_MEDIA.map(medium => (
               <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
             ))}
+          </div>
+          <div className="apps">
+            <h4>Download App</h4>
+            <div className="social-media">
+              <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" src={androidStoreImage}></img></a>
+              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+            </div>
           </div>
           {/* <ul className="social-media">
             {SOCIAL_MEDIA.map(medium => (
