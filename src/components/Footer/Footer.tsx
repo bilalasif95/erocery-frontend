@@ -55,6 +55,7 @@ const Footer: React.FC = () => (
               <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
             ))}
           </div>
+          <p className="whatsAppNumber">+92-330-2755559</p>
           <div className="apps">
             <h4>Download App</h4>
             <div className="social-media">

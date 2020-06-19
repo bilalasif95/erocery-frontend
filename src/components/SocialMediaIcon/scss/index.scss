@@ -1,7 +1,8 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .social-icon {
-  padding: $spacer $spacer / 2;
+  // padding: $spacer $spacer / 2;
+  padding: 0rem 2.5rem 0rem 0rem;
 
   svg * {
     transition: 0.3s;

@@ -34,7 +34,7 @@ export const SOCIAL_MEDIA = [
   },
   {
     ariaLabel: "whatsapp",
-    href: "https://api.whatsapp.com/send?phone=923302755559&text=",
+    href: "whatsapp://send?phone=923302755559&text=",
     path: require("../images/whatsapp.svg"),
   },
   // {
