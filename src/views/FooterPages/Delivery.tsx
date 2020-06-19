@@ -26,7 +26,7 @@ const Delivery: React.FC = () => (
       <p>
         Once your order is dispatched you will receive a message and an email with order tracking number and link.<br /><br />
     You can track your order on the website or our application with the tracking number or by simply clicking on the link.<br /><br />
-    If you do not receive any tracking information, please inform us at <u>contact@erocery.com</u>
+    If you do not receive any tracking information, please inform us at <u>erocery@gmail.com</u>
       </p>
     </div>
   </div>
