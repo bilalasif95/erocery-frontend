@@ -44,7 +44,7 @@ function generateSitemap() {
   return new Sitemap(router)
     .applyParams(pathsConfig)
     .build("https://www.erocery.com")
-    .save("./sitemap.xml");
+    .save("./dist/sitemap.xml");
 }
 
 generateSitemap();
