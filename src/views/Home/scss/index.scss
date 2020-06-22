@@ -332,6 +332,43 @@
     }
   }
 
+  &__vipImage {
+    background: #f7f7f7;
+    padding: 2rem 0;
+    .container{
+      position: relative;
+    }
+    img {
+      width: 100%;
+    }
+    .bookbtn {
+      position: absolute;
+      top: 41%;
+      left: 21%;
+      background: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 2rem;
+      color: #3776fc;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
+      -webkit-box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+      -moz-box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+      box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+  }
+   @media (max-width: 767px) {
+    .bookbtn {
+      top: 39%;
+      left: 19%;
+      padding: 0.2rem 0.5rem;
+      font-size: 10px;
+    }
+    }
+    // @media (max-width: $small-screen) {
+    //   display: none;
+    // }
+  }
+
   &__categories {
     margin-bottom: 2rem;
 
