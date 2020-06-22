@@ -23,7 +23,7 @@ const ReturnAndRefunds: React.FC = () => (
        10. The discounted sale products cannot be returned or refunded.</p><br />
       <h4><b>Return and Refund:</b></h4><br />
       <p>
-        For returning or refunding any of your purchased products please email us at <u>contact@erocery.com</u> and we will get back to you within 48 working hours (Monday to Friday).<br /><br />
+        For returning or refunding any of your purchased products please email us at <u>erocery@gmail.com</u> and we will get back to you within 48 working hours (Monday to Friday).<br /><br />
     Our dedicated rider will collect your returning or refunding products from your home. Please note that the courier cost of returning or refunding the product will be borne by the customer.<br /><br />
     In case of refund, the amount will be refunded in the form of cash after the rider collects the product and quality is checked.<br /><br />
     If your return or refund request is not approved, you will be informed about the reason.

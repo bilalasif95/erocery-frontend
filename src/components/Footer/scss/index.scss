@@ -10,6 +10,15 @@
   }
   .footer-item {
     width: 33.33%;
+    .apps{
+      margin-top: 2rem;
+    }
+    .whatsAppNumber{
+      margin-left: 7.5rem;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
   }
   h4 {
     color: white;
@@ -65,9 +74,15 @@
   img{
     width: 70%;
   }
+  .appsIcons{
+    width: 85%;
+  }
 }
 .social-media{
-    display: flex;
+  display: flex;
+  .androidAppStore{
+    margin-right: 0.5rem;
+  }
   li{
     background: #60d852;
     margin: 0 1rem 1rem 0;

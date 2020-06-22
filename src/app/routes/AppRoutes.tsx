@@ -13,7 +13,7 @@ import { CollectionPage } from "../../views/Collection";
 // import Base from "../../views/FooterPages/Base";
 import Delivery from "../../views/FooterPages/Delivery";
 import HowToOrder from "../../views/FooterPages/How-To-Order";
-import PrivacyPolicy from "../../views/FooterPages/Privacy-Policy";
+import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";
 import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
 import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
 import { HomePage } from "../../views/Home";

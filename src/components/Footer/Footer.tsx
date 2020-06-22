@@ -17,6 +17,10 @@ import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
 
+import androidStoreImage from "../../images/playstore.png";
+
+import appleStoreImage from "../../images/applestore.png";
+
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
     <div className="container">
@@ -28,7 +32,7 @@ const Footer: React.FC = () => (
             <li><Link to="/return-and-refunds"><ReactSVG path={listIcon} /><span>Return & Refund</span></Link></li>
             <li><Link to="/delivery"><ReactSVG path={listIcon} /><span>Delivery</span></Link></li>
             <li><Link to="/terms-and-conditions"><ReactSVG path={listIcon} /><span>Terms & Conditions</span></Link></li>
-            <li><Link to="/privacy-policy"><ReactSVG path={listIcon} /><span>Privacy Policy</span></Link></li>
+             <li><Link to="/privacy-policy"><ReactSVG path={listIcon} /><span>Privacy Policy</span></Link></li>
           </ul>
         </div>
         <div className="footer-item">
@@ -50,6 +54,14 @@ const Footer: React.FC = () => (
             {SOCIAL_MEDIA.map(medium => (
               <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
             ))}
+          </div>
+          {/* <p className="whatsAppNumber">+92-330-2755559</p> */}
+          <div className="apps">
+            <h4>Download App</h4>
+            <div className="social-media">
+              <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" src={androidStoreImage}></img></a>
+              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+            </div>
           </div>
           {/* <ul className="social-media">
             {SOCIAL_MEDIA.map(medium => (
