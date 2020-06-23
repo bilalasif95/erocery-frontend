@@ -33,7 +33,8 @@ import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
 import offerImg from "../../images/offerBanner.jpg";
-import vipqurbaniImg from "../../images/vipqurbanioffer.jpg";
+import vipoffermob from "../../images/vipoffermob.png";
+import desktopvipoffer from "../../images/desktopoffer.png";
 
 
 
@@ -131,7 +132,8 @@ const Page: React.FC<{
       </div>
       <div className="home-page__vipImage">
         <div className="container">
-          <img src={vipqurbaniImg} />
+          <img src={desktopvipoffer} className="deskoffer" />
+          <img src={vipoffermob} className="moboffer" />
           <button className="bookbtn">Book Now</button>
         </div>
       </div>
