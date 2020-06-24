@@ -28,17 +28,22 @@ import { Route, Router, Switch } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { App } from "./app";
+import { BakraCheckoutApp } from "./bakracheckout";
+// import { BakraCheckoutProvider } from "./bakracheckout/CheckoutProvider";
+// import { BakraCheckoutContext } from "./bakracheckout/context";
+import { baseUrl as bakracheckoutBaseUrl } from "./bakracheckout/routes";
+
 import { CheckoutApp } from "./checkout";
 import { CheckoutProvider } from "./checkout/CheckoutProvider";
 import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
 import { apiUrl, serviceWorkerTimeout } from "./constants";
 
-import {gtmId} from "../src/config"
+import { gtmId } from "../src/config";
 
-import { history } from "./history"; 
+import { history } from "./history";
 
-import TagManager from 'react-gtm-module'
+import TagManager from "react-gtm-module";
 
 import { OverlayProvider, UserProvider } from "./components";
 
@@ -55,10 +60,10 @@ const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
 );
 
 const tagManagerArgs = {
-    gtmId,
+  gtmId,
 };
- 
-TagManager.initialize(tagManagerArgs)
+
+TagManager.initialize(tagManagerArgs);
 
 const link = ApolloLink.from([
   invalidTokenLink,
@@ -166,6 +171,10 @@ const startApp = async () => {
                               <Route
                                 path={checkoutBaseUrl}
                                 component={CheckoutApp}
+                              />
+                              <Route
+                                path={bakracheckoutBaseUrl}
+                                component={BakraCheckoutApp}
                               />
                               <Route component={App} />
                             </Switch>

@@ -34,7 +34,6 @@ import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 
-
 import { ShopContext } from "../ShopProvider/context";
 
 import { TypedProductVariantsQuery } from "../../views/Product/queries";
@@ -50,19 +49,21 @@ const MainMenu: React.FC = () => {
   const { clear: clearCheckout } = useContext(CheckoutContext);
 
   const handleSignOut = () => {
-    signOut().then((data) => {
-      clearCheckout();
-      clearCart();
-      window.location.replace("/");
-      // window.history.pushState(null, null, "/")
-    }).catch((error) => {
-      alert.show(
-        {
-          title: "Error in log out. Please try again.",
-        },
-        { type: "error", timeout: 5000 }
-      );
-    })
+    signOut()
+      .then(data => {
+        clearCheckout();
+        clearCart();
+        window.location.replace("/");
+        // window.history.pushState(null, null, "/")
+      })
+      .catch(error => {
+        alert.show(
+          {
+            title: "Error in log out. Please try again.",
+          },
+          { type: "error", timeout: 5000 }
+        );
+      });
   };
 
   return (
@@ -135,15 +136,47 @@ const MainMenu: React.FC = () => {
                       <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
-                          items.map(item => (
-                            <li
-                              data-cy="main-menu__item"
-                              className="main-menu__item"
-                              key={item.id}
-                            >
-                              <NavDropdown overlay={overlayContext} {...item} />
-                            </li>
-                          ))
+                          items.map(item =>
+                            item.name === "VIP Qurbani" ? (
+                              <li
+                                data-cy="main-menu__item"
+                                className="main-menu__item"
+                                key={item.id}
+                              >
+                                <NavDropdown
+                                  overlay={overlayContext}
+                                  {...item}
+                                />
+                                <small
+                                  style={{
+                                    background: "red",
+                                    borderRadius: "30px",
+                                    color: "#fff",
+                                    content: "attr(badge)",
+                                    fontSize: "11px",
+                                    marginTop: "-10px",
+                                    minWidth: "20px",
+                                    padding: "2px",
+                                    position: "absolute",
+                                    textAlign: "center",
+                                  }}
+                                >
+                                  New
+                                </small>
+                              </li>
+                            ) : (
+                              <li
+                                data-cy="main-menu__item"
+                                className="main-menu__item"
+                                key={item.id}
+                              >
+                                <NavDropdown
+                                  overlay={overlayContext}
+                                  {...item}
+                                />
+                              </li>
+                            )
+                          )
                         }
                       />
                     </ul>
@@ -206,19 +239,19 @@ const MainMenu: React.FC = () => {
                         }
                       />
                     ) : (
-                        <li
-                          data-testid="login-btn"
-                          className="main-menu__icon"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.login,
-                              OverlayTheme.right
-                            )
-                          }
-                        >
-                          <ReactSVG path={userImg} />
-                        </li>
-                      )}
+                      <li
+                        data-testid="login-btn"
+                        className="main-menu__icon"
+                        onClick={() =>
+                          overlayContext.show(
+                            OverlayType.login,
+                            OverlayTheme.right
+                          )
+                        }
+                      >
+                        <ReactSVG path={userImg} />
+                      </li>
+                    )}
                   </>
                   {/* )}
                 /> */}
@@ -228,7 +261,9 @@ const MainMenu: React.FC = () => {
                         {({ defaultCountry, geolocalization }) => (
                           <TypedProductVariantsQuery
                             displayLoader={false}
-                            variables={{ ids: cart.lines.map(line => line.variantId) }}
+                            variables={{
+                              ids: cart.lines.map(line => line.variantId),
+                            }}
                             skip={!cart.lines.length}
                             alwaysRender
                           >
@@ -248,9 +283,17 @@ const MainMenu: React.FC = () => {
                                   }}
                                 >
                                   <ReactSVG path={cartImg} />
-                                  {extractCartLines(data, cart.lines, locale) && extractCartLines(data, cart.lines, locale).length > 0 ? (
+                                  {extractCartLines(data, cart.lines, locale) &&
+                                  extractCartLines(data, cart.lines, locale)
+                                    .length > 0 ? (
                                     <span className="main-menu__cart__quantity">
-                                      {extractCartLines(data, cart.lines, locale).length}
+                                      {
+                                        extractCartLines(
+                                          data,
+                                          cart.lines,
+                                          locale
+                                        ).length
+                                      }
                                     </span>
                                   ) : null}
                                 </li>
@@ -302,9 +345,8 @@ const MainMenu: React.FC = () => {
             </ul>
           </div> */}
         </nav>
-      )
-      }
-    </OverlayContext.Consumer >
+      )}
+    </OverlayContext.Consumer>
   );
 };
 

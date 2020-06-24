@@ -3,15 +3,13 @@ import "jest-styled-components";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import {
-  useUserDetails
-} from "@sdk/react";
+import { useUserDetails } from "@sdk/react";
 
 import ProductList from "./ProductList";
 
 import { PRODUCTS } from "./fixtures";
 
-const {data: user} = useUserDetails();
+const { data: user } = useUserDetails();
 
 describe("<ProductList />", () => {
   it("exists", () => {

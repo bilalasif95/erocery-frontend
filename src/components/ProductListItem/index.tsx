@@ -72,9 +72,13 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       <h4 className="product-list-item__title">{product.name}</h4>
       <p className="product-list-item__category">{category.name}</p>
       <div className="footerDiv">
-        <p className="product-list-item__price">
-          {getProductPrice()}</p>
+        <p className="product-list-item__price">{getProductPrice()}</p>
       </div>
+      {product.category.name === "VIP Qurbani" && (
+        <span>
+          Booking: {price.gross.currency} {price.gross.amount * 0.2}
+        </span>
+      )}
     </div>
   );
 };

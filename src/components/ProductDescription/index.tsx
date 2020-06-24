@@ -2,6 +2,9 @@ import "./scss/index.scss";
 
 import isEqual from "lodash/isEqual";
 import * as React from "react";
+import { Link } from "react-router-dom";
+
+import { Button } from "@temp/@next/components/atoms";
 
 import { TextField } from "@components/molecules";
 // import { ProductVariantPicker } from "@components/organisms";
@@ -12,6 +15,10 @@ import {
 } from "@sdk/queries/types/ProductDetails";
 import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 
+import { baseUrl as bakracheckoutUrl } from "../../bakracheckout/routes";
+
+import DatePicker from "react-date-picker";
+
 import { TaxedMoney } from "../../@next/components/containers";
 import { CartContext, CartLine } from "../CartProvider/context";
 import AddToCart from "./AddToCart";
@@ -21,13 +28,14 @@ interface ProductDescriptionProps {
   productId: string;
   productVariants: ProductDetails_product_variants[];
   name: string;
+  category: string;
   pricing: ProductDetails_product_pricing;
   addToCart(varinatId: string, quantity?: number): any;
   setVariantId(variantId: string);
 }
 
 interface ProductDescriptionState {
-  error:any;
+  error: any;
   quantity: number;
   variant: string;
   variantStock: number;
@@ -38,6 +46,7 @@ interface ProductDescriptionState {
   };
   price: any;
   priceUndiscounted: any;
+  date: any;
 }
 
 class ProductDescription extends React.Component<
@@ -48,6 +57,7 @@ class ProductDescription extends React.Component<
     super(props);
 
     this.state = {
+      date: new Date(),
       error: undefined,
       price: props.pricing.priceRange.start,
       priceUndiscounted: props.pricing.priceRangeUndiscounted.start,
@@ -122,11 +132,14 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data)=>{
-      this.setState({error:data})
-    }).catch((error)=>{
-       this.setState({error})
-    })
+    this.props
+      .addToCart(this.props.productVariants[0].id, this.state.quantity)
+      .then(data => {
+        this.setState({ error: data });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
   };
 
   canAddToCart = (lines: CartLine[]) => {
@@ -135,9 +148,13 @@ class ProductDescription extends React.Component<
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
-    return quantity !== 0 && (this.props.productVariants && this.props.productVariants[0].stockQuantity !==0);
+    return (
+      quantity !== 0 &&
+      this.props.productVariants &&
+      this.props.productVariants[0].stockQuantity !== 0
+    );
   };
-  
+
   render() {
     const { name } = this.props;
     const { quantity } = this.state;
@@ -145,11 +162,29 @@ class ProductDescription extends React.Component<
       <div className="product-description">
         <h3>{name}</h3>
         <h4>{this.getProductPrice()}</h4>
-        {this.props.productVariants.length === 0 || this.props.productVariants[0].attributes.length === 0 ? "" :
+        {this.props.category === "VIP Qurbani" && (
+          <h4>
+            Book it now in just {this.state.price.gross.currency}{" "}
+            {this.state.price.gross.amount * 0.2} only
+          </h4>
+        )}
+        {this.props.productVariants.length === 0 ||
+        this.props.productVariants[0].attributes.length === 0 ? (
+          ""
+        ) : (
           <div className="product-description__variant-picker">
             <TextField
-              label={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].attribute.name}
-              value={this.props.productVariants && this.props.productVariants[0].attributes[0] && this.props.productVariants[0].attributes[0].values[0] && this.props.productVariants[0].attributes[0].values[0].value}
+              label={
+                this.props.productVariants &&
+                this.props.productVariants[0].attributes[0] &&
+                this.props.productVariants[0].attributes[0].attribute.name
+              }
+              value={
+                this.props.productVariants &&
+                this.props.productVariants[0].attributes[0] &&
+                this.props.productVariants[0].attributes[0].values[0] &&
+                this.props.productVariants[0].attributes[0].values[0].value
+              }
               readOnly
             />
             {/* <ProductVariantPicker
@@ -158,32 +193,70 @@ class ProductDescription extends React.Component<
               // selectSidebar={true}
             /> */}
           </div>
-        }
-        <div className="product-description__quantity-input">
-          <TextField
-            name="quantity"
-            errors={this.state.error}
-            type="number"
-            label="Quantity"
-            min="1"
-            value={quantity || ""}
-            onChange={e =>
-              this.setState({ quantity: Math.max(1, Number(e.target.value)) })
-            }
-          />
-        </div>
-        <CartContext.Consumer>
-          {({ lines }) => (
-            <AddToCart
-              onSubmit={this.handleSubmit}
-              lines={lines}
-              disabled={!this.canAddToCart(lines) || this.props.productVariants.length === 0}
-              error={this.state.error}
-              typeCart={true}
-              
+        )}
+        {this.props.category === "VIP Qurbani" ? (
+          <div className="product-description__quantity-input">
+            <TextField
+              name="quantity"
+              errors={this.state.error}
+              type="number"
+              disabled
+              label="Quantity"
+              min="1"
+              value={quantity || ""}
+              onChange={e =>
+                this.setState({ quantity: Math.max(1, Number(e.target.value)) })
+              }
             />
-          )}
-        </CartContext.Consumer>
+          </div>
+        ) : (
+          <div className="product-description__quantity-input">
+            <TextField
+              name="quantity"
+              errors={this.state.error}
+              type="number"
+              label="Quantity"
+              min="1"
+              value={quantity || ""}
+              onChange={e =>
+                this.setState({ quantity: Math.max(1, Number(e.target.value)) })
+              }
+            />
+          </div>
+        )}
+        {this.props.category === "VIP Qurbani" ? (
+          <div>
+            <DatePicker
+              onChange={value => this.setState({ date: value })}
+              value={this.state.date}
+            />
+            <Link
+              to={
+                window.localStorage.getItem("token")
+                  ? bakracheckoutUrl
+                  : "/login"
+              }
+              className="btnLink"
+            >
+              <Button className="buyButton">Book Now</Button>
+            </Link>
+          </div>
+        ) : (
+          <CartContext.Consumer>
+            {({ lines }) => (
+              <AddToCart
+                onSubmit={this.handleSubmit}
+                lines={lines}
+                disabled={
+                  !this.canAddToCart(lines) ||
+                  this.props.productVariants.length === 0
+                }
+                error={this.state.error}
+                typeCart={true}
+              />
+            )}
+          </CartContext.Consumer>
+        )}
         <div className="product-description__add-to-wishlist">
           <AddToWishlist productId={this.props.productId} />
         </div>

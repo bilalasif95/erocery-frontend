@@ -11,6 +11,7 @@ import { CartPage } from "../../views/Cart";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 // import Base from "../../views/FooterPages/Base";
+
 import Delivery from "../../views/FooterPages/Delivery";
 import HowToOrder from "../../views/FooterPages/How-To-Order";
 import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";

@@ -58,7 +58,6 @@ const CheckoutApp: React.FC<RouteComponentProps> = ({
         <MainMenu />
       </header>
       <div className="checkout">
-
         {/* <div className="checkout__menu">
         <div className="checkout__menu__bar">
           <ReactSVG path={logoImg} />
@@ -79,7 +78,11 @@ const CheckoutApp: React.FC<RouteComponentProps> = ({
               }
 
               if (!cartLines.length) {
+                // if (category === "VIP Qurbani") {
+                //   return <Redirect to={checkoutBaseUrl} />;
+                // } else {
                 return <Redirect to={appBaseUrl} />;
+                // }
               }
 
               if (

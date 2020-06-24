@@ -22,5 +22,6 @@ export const returnAndRefundsUrl = `${baseUrl}return-and-refunds/`;
 export const deliveryUrl = `${baseUrl}delivery/`;
 export const termsAndConditionsUrl = `${baseUrl}terms-and-conditions/`;
 export const privacyPolicyUrl = `${baseUrl}privacy-policy/`;
+export const bakraCheckoutUrl = `${baseUrl}bakracheckout/`;
 
 // export const orderGuideUrl = `/orderguide`;

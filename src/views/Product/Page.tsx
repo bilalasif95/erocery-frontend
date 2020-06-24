@@ -95,6 +95,7 @@ class Page extends React.PureComponent<
             pricing={product.pricing}
             addToCart={cart.add}
             setVariantId={this.setVariantId}
+            category={product.category.name}
           />
         )}
       </CartContext.Consumer>

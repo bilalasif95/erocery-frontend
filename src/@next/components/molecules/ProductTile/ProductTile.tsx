@@ -15,12 +15,17 @@ import { IProps } from "./types";
 export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   const price =
     product.pricing &&
-      product.pricing.priceRange &&
-      product.pricing.priceRange.start
+    product.pricing.priceRange &&
+    product.pricing.priceRange.start
       ? product.pricing.priceRange.start
       : undefined;
-  
-  const priceUndiscounted = product.pricing && product.pricing.priceRangeUndiscounted && product.pricing.priceRangeUndiscounted.start ? product.pricing.priceRangeUndiscounted.start : undefined;
+
+  const priceUndiscounted =
+    product.pricing &&
+    product.pricing.priceRangeUndiscounted &&
+    product.pricing.priceRangeUndiscounted.start
+      ? product.pricing.priceRangeUndiscounted.start
+      : undefined;
 
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
@@ -39,14 +44,22 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   return (
     <S.Wrapper data-cy="product-tile">
       <S.DeskView>
-      <S.Image>
+        <S.Image>
           <Thumbnail source={product} />
         </S.Image>
         <S.Title>{product.name}</S.Title>
         <S.Price>
           {getProductPrice()}
           {/* <TaxedMoney taxedMoney={price} /> */}
-        </S.Price> 
+        </S.Price>
+        {product &&
+          product.category &&
+          product.category.name === "VIP Qurbani" && (
+            <span>
+              Booking: {price && price.gross.currency}{" "}
+              {price && price.gross.amount * 0.2}
+            </span>
+          )}
       </S.DeskView>
       {/* <S.MobView>
         <S.Image>

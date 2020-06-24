@@ -3,6 +3,11 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = ({ sourceDir, distDir }) => ({
+  devServer: {
+    historyApiFallback: true,
+    contentBase: "./",
+    hot: true,
+  },
   output: {
     filename: "js/[name].[contenthash].js",
   },

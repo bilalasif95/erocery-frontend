@@ -12,14 +12,14 @@ import {
 } from "@sdk/queries/types/ProductDetails";
 // import { IProductVariantsAttributesSelectedValues } from "@types";
 
-import { ProductListItem } from "..";
+import { Button, ProductListItem } from "..";
 import { generateProductUrl, maybe } from "../../core/utils";
 import { TypedFeaturedProductsQuery } from "./queries";
 
 import { CheckoutContext } from "../../checkout/context";
 import { TypedCreateCheckoutMutation } from "../../checkout/queries";
 
-import { CartContext,CartLine } from "../CartProvider/context";
+import { CartContext, CartLine } from "../CartProvider/context";
 
 import AddToCartButton from "../ProductDescription/AddToCartButton";
 
@@ -46,10 +46,12 @@ interface ProductDescriptionState {
   // variantPricingRange: {
   //   min: ITaxedMoney;
   //   max: ITaxedMoney;
-};
+}
 
-class ProductsFeatured extends React.Component<ProductDescriptionProps,
-ProductDescriptionState> {
+class ProductsFeatured extends React.Component<
+  ProductDescriptionProps,
+  ProductDescriptionState
+> {
   constructor(props: ProductDescriptionProps) {
     super(props);
 
@@ -81,10 +83,10 @@ ProductDescriptionState> {
   //   }
   // };
   handleSubmit = (id: string) => {
-    this.setState({variant: id})
-    this.props.addToCart(id , this.state.quantity);
+    this.setState({ variant: id });
+    this.props.addToCart(id, this.state.quantity);
   };
-  canAddToCart = (lines: CartLine[],product) => {
+  canAddToCart = (lines: CartLine[], product) => {
     const { quantity } = this.state;
     // Object.values(product)[0] === variant;
     // Object.values(product).forEach((variantId) => {
@@ -94,23 +96,23 @@ ProductDescriptionState> {
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
-    return quantity !== 0 && product.variants[0].stockQuantity !==0;
+    return quantity !== 0 && product.variants[0].stockQuantity !== 0;
   };
   render() {
-  return (
-    <TypedFeaturedProductsQuery displayError={false}>
-      {({ data }) => {
-        const products = maybe(
-          () => data.shop.homepageCollection.products.edges,
-          []
-        );
+    return (
+      <TypedFeaturedProductsQuery displayError={false}>
+        {({ data }) => {
+          const products = maybe(
+            () => data.shop.homepageCollection.products.edges,
+            []
+          );
 
-        if (products.length) {
-          return (
-            <div className="products-featured">
-              <div className="container featuredContainer">
-              <h3>FEATURED</h3>
-                {/* <Carousel>
+          if (products.length) {
+            return (
+              <div className="products-featured">
+                <div className="container featuredContainer">
+                  <h3>FEATURED</h3>
+                  {/* <Carousel>
                   {products.map(({ node: product }) => (
                     <Link
                       to={generateProductUrl(product.id, product.name)}
@@ -120,70 +122,101 @@ ProductDescriptionState> {
                     </Link>
                   ))}
                 </Carousel> */}
-                <div className="products-list">
-                {products.slice(0,8).map(({ node: product }) => (
-                  <div className="proItem">
-                      <Link
-                        to={generateProductUrl(product.id, product.name)}
-                        key={product.id}
-                        className="mb"
-                      >
-                          <ProductListItem product={product}/>
-                      </Link>
-                      {/* <ProductVariantPicker
+                  <div className="products-list">
+                    {products.slice(0, 8).map(({ node: product }) => (
+                      <div className="proItem">
+                        <Link
+                          to={generateProductUrl(product.id, product.name)}
+                          key={product.id}
+                          className="mb"
+                        >
+                          <ProductListItem product={product} />
+                        </Link>
+                        {/* <ProductVariantPicker
                         productVariants={this.props.productVariants}
                         onChange={this.onVariantPickerChange}
                         selectSidebar={true}
                       /> */}
-                      <CartContext.Consumer>
-                        {({ lines }) => (
-                      <CheckoutContext.Consumer>
-                      {({ checkout, update, loading: checkoutLoading }) => (
-                        <TypedCreateCheckoutMutation
-                          onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
-                            if (!errors.length) {
-                              await update({ checkout });
-                            }
-                            this.handleSubmit(product.variants[0].id);
-                          }}
-                        >
-                          {(createCheckout, { loading: mutationLoading }) => (
-                            <AddToCartButton className="buyBtn"
-                              onClick={() => {
-                                this.setState({variant: product.id})
-                                if (this.props.user && !checkout) {
-                                  createCheckout({
-                                    variables: {
-                                      checkoutInput: { phone: this.props.user.phone, lines },
-                                    },
-                                  });
-                                } else {
-                                  this.handleSubmit(product.variants[0].id);
-                                }
-                              }}
-                              disabled={!this.canAddToCart(lines,product) || mutationLoading}
-                            >
-                              {product.variants[0].stockQuantity !==0 ? "Add to Cart" : "Out of Stock"}
-                            </AddToCartButton>
+                        {product.category?.name === "VIP Qurbani" ? (
+                          <Link
+                            to={generateProductUrl(product.id, product.name)}
+                            key={product.id}
+                          >
+                            <Button>Book At 20%</Button>
+                          </Link>
+                        ) : (
+                          <CartContext.Consumer>
+                            {({ lines }) => (
+                              <CheckoutContext.Consumer>
+                                {({
+                                  checkout,
+                                  update,
+                                  loading: checkoutLoading,
+                                }) => (
+                                  <TypedCreateCheckoutMutation
+                                    onCompleted={async ({
+                                      checkoutCreate: { checkout, errors },
+                                    }) => {
+                                      if (!errors.length) {
+                                        await update({ checkout });
+                                      }
+                                      this.handleSubmit(product.variants[0].id);
+                                    }}
+                                  >
+                                    {(
+                                      createCheckout,
+                                      { loading: mutationLoading }
+                                    ) => (
+                                      <AddToCartButton
+                                        className="buyBtn"
+                                        onClick={() => {
+                                          this.setState({
+                                            variant: product.id,
+                                          });
+                                          if (this.props.user && !checkout) {
+                                            createCheckout({
+                                              variables: {
+                                                checkoutInput: {
+                                                  lines,
+                                                  phone: this.props.user.phone,
+                                                },
+                                              },
+                                            });
+                                          } else {
+                                            this.handleSubmit(
+                                              product.variants[0].id
+                                            );
+                                          }
+                                        }}
+                                        disabled={
+                                          !this.canAddToCart(lines, product) ||
+                                          mutationLoading
+                                        }
+                                      >
+                                        {product.variants[0].stockQuantity !== 0
+                                          ? "Add to Cart"
+                                          : "Out of Stock"}
+                                      </AddToCartButton>
+                                    )}
+                                  </TypedCreateCheckoutMutation>
+                                )}
+                              </CheckoutContext.Consumer>
                             )}
-                          </TypedCreateCheckoutMutation>
-                          )}
-                          </CheckoutContext.Consumer>
-                          )}
                           </CartContext.Consumer>
-                          </div>
-                  ))}
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      }}
-    </TypedFeaturedProductsQuery>
-  );
-};
+            );
+          } else {
+            return null;
+          }
+        }}
+      </TypedFeaturedProductsQuery>
+    );
+  }
 }
 // ProductsFeatured.defaultProps = {
 //   title: "Featured",

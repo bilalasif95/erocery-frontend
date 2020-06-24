@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { UserDetails_me } from "@sdk/queries/types/UserDetails";
 
-import { Button ,Loader} from "@components/atoms";
+import { Button, Loader } from "@components/atoms";
 import { ProductTile } from "@components/molecules";
 
 // import {
@@ -15,7 +15,10 @@ import { generateProductUrl } from "../../../../core/utils";
 import { CheckoutContext } from "../../../../checkout/context";
 import { TypedCreateCheckoutMutation } from "../../../../checkout/queries";
 
-import { CartContext,CartLine } from "../../../../components/CartProvider/context";
+import {
+  CartContext,
+  CartLine,
+} from "../../../../components/CartProvider/context";
 
 import { Category_products_edges_node } from "../../../../views/Category/types/Category";
 
@@ -41,10 +44,12 @@ interface ProductDescriptionState {
   // variantPricingRange: {
   //   min: ITaxedMoney;
   //   max: ITaxedMoney;
-};
+}
 
-class ProductList extends React.Component<ProductDescriptionProps,
-ProductDescriptionState> {
+class ProductList extends React.Component<
+  ProductDescriptionProps,
+  ProductDescriptionState
+> {
   constructor(props: ProductDescriptionProps) {
     super(props);
 
@@ -60,68 +65,88 @@ ProductDescriptionState> {
     };
   }
   handleSubmit = (id: string) => {
-    this.setState({variant: id})
-    this.props.addToCart(id , this.state.quantity);
+    this.setState({ variant: id });
+    this.props.addToCart(id, this.state.quantity);
   };
-  canAddToCart = (lines: CartLine[],product: any) => {
+  canAddToCart = (lines: CartLine[], product: any) => {
     const { quantity } = this.state;
-    return quantity !== 0 && product.variants[0].stockQuantity !==0;
+    return quantity !== 0 && product.variants[0].stockQuantity !== 0;
   };
   render() {
-  return (
-    <>
-      <S.List>
-        {this.props.products.length  > 0 && this.props.products.map(product => (
-          <S.Item>
-            <Link
-              to={generateProductUrl(product.id, product.name)}
-              key={product.id}
-            >
-              <ProductTile product={product} />
-            </Link>
-            <CartContext.Consumer>
-              {({ lines }) => (
-                <CheckoutContext.Consumer>
-                  {({ checkout, update, loading: checkoutLoading }) => (
-                    <TypedCreateCheckoutMutation
-                      onCompleted={async ({ checkoutCreate: { checkout, errors } }) => {
-                        if (!errors.length) {
-                          await update({ checkout });
-                        }
-                        this.handleSubmit(product.variants[0].id);
-                      }}
-                    >
-                    {(createCheckout, { loading: mutationLoading }) => (
-                      <S.CartButton>
-                        <AddToCartButton
-                          onClick={() => {
-                            this.setState({variant: product.id})
-                            if (this.props.user && !checkout) {
-                              createCheckout({
-                                variables: {
-                                  checkoutInput: { phone: this.props.user.phone, lines },
-                                },
-                              });
-                            } else {
+    return (
+      <>
+        <S.List>
+          {this.props.products.length > 0 &&
+            this.props.products.map(product => (
+              <S.Item>
+                <Link
+                  to={generateProductUrl(product.id, product.name)}
+                  key={product.id}
+                >
+                  <ProductTile product={product} />
+                </Link>
+                {product.category?.name === "VIP Qurbani" ? (
+                  <Link
+                    to={generateProductUrl(product.id, product.name)}
+                    key={product.id}
+                  >
+                    <Button>Book At 20%</Button>
+                  </Link>
+                ) : (
+                  <CartContext.Consumer>
+                    {({ lines }) => (
+                      <CheckoutContext.Consumer>
+                        {({ checkout, update, loading: checkoutLoading }) => (
+                          <TypedCreateCheckoutMutation
+                            onCompleted={async ({
+                              checkoutCreate: { checkout, errors },
+                            }) => {
+                              if (!errors.length) {
+                                await update({ checkout });
+                              }
                               this.handleSubmit(product.variants[0].id);
-                            }
-                          }}
-                          disabled={!this.canAddToCart(lines,product) || mutationLoading}
-                        >
-                          {product.variants[0].stockQuantity !==0 ? "Add to Cart" : "Out of Stock"}
-                        </AddToCartButton>
-                      </S.CartButton>
+                            }}
+                          >
+                            {(createCheckout, { loading: mutationLoading }) => (
+                              <S.CartButton>
+                                <AddToCartButton
+                                  onClick={() => {
+                                    this.setState({ variant: product.id });
+                                    if (this.props.user && !checkout) {
+                                      createCheckout({
+                                        variables: {
+                                          checkoutInput: {
+                                            lines,
+                                            phone: this.props.user.phone,
+                                          },
+                                        },
+                                      });
+                                    } else {
+                                      this.handleSubmit(product.variants[0].id);
+                                    }
+                                  }}
+                                  disabled={
+                                    !this.canAddToCart(lines, product) ||
+                                    mutationLoading
+                                  }
+                                >
+                                  {product.variants[0].stockQuantity !== 0
+                                    ? "Add to Cart"
+                                    : "Out of Stock"}
+                                </AddToCartButton>
+                              </S.CartButton>
+                            )}
+                          </TypedCreateCheckoutMutation>
+                        )}
+                      </CheckoutContext.Consumer>
                     )}
-                    </TypedCreateCheckoutMutation>
-                  )}
-                </CheckoutContext.Consumer>
-              )}
-            </CartContext.Consumer>
-          </S.Item>
-        ))}
-      </S.List>
-      <S.Loader>
-        {/* {this.props.loading ? (
+                  </CartContext.Consumer>
+                )}
+              </S.Item>
+            ))}
+        </S.List>
+        <S.Loader>
+          {/* {this.props.loading ? (
           <Loader />
         ) : (
           this.props.canLoadMore && (
@@ -135,13 +160,13 @@ ProductDescriptionState> {
           )
         )} */}
 
-
-         { this.props.loading ? (
-          this.props.products.length >0 ? this.props.canLoadMore && <Loader/>:  <h1>No result found.</h1>
-         
-         
-        ) : (
-          this.props.canLoadMore ?  (
+          {this.props.loading ? (
+            this.props.products.length > 0 ? (
+              this.props.canLoadMore && <Loader />
+            ) : (
+              <h1>No result found.</h1>
+            )
+          ) : this.props.canLoadMore ? (
             <Button
               data-cy="load-more_button"
               // color="secondary"
@@ -149,11 +174,12 @@ ProductDescriptionState> {
             >
               More +
             </Button>
-          ): this.props.products.length <=0 && <h1>No result found.</h1>
-        )}
-      </S.Loader>
-    </>
-  );
-};
+          ) : (
+            this.props.products.length <= 0 && <h1>No result found.</h1>
+          )}
+        </S.Loader>
+      </>
+    );
+  }
 }
 export default ProductList;

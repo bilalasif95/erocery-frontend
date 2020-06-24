@@ -31,7 +31,7 @@ export const basicProductFragment = gql`
     thumbnail2x: thumbnail(size: 510) {
       url
     }
-    variants{
+    variants {
       id
       name
       stockQuantity
@@ -131,6 +131,10 @@ export const productDetailsQuery = gql`
             node {
               ...BasicProductFields
               ...ProductPricingField
+              category {
+                id
+                name
+              }
             }
           }
         }

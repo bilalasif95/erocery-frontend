@@ -1,17 +1,17 @@
-import { createBrowserHistory } from "history";
+import { createHashHistory } from "history";
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 history.listen((_location, action) => {
   if (["PUSH"].includes(action)) {
-    if(_location.pathname === "/checkout/shipping-options/"
-    || _location.pathname === "/checkout/billing-address/"
-    || _location.pathname === "/checkout/payment/"
-    ){
+    if (
+      _location.pathname === "/checkout/shipping-options/" ||
+      _location.pathname === "/checkout/billing-address/" ||
+      _location.pathname === "/checkout/payment/"
+    ) {
       window.scroll({
         behavior: "smooth",
       });
-    }
-    else{
+    } else {
       window.scroll({
         behavior: "smooth",
         top: 0,
@@ -19,6 +19,5 @@ history.listen((_location, action) => {
     }
   }
 });
-
 
 export { history };
