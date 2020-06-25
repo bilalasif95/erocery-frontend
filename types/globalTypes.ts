@@ -396,6 +396,7 @@ export interface AttributeInput {
 export interface CheckoutCreateInput {
   lines: (CheckoutLineInput | null)[];
   phone?: string | null;
+  shippingDate?: string | null;
   shippingAddress?: AddressInput | null;
   billingAddress?: AddressInput | null;
 }

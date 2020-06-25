@@ -11,7 +11,7 @@ export enum CheckoutStep {
   Review,
 }
 
-export interface CheckoutContextInterface {
+export interface BakraCheckoutContextInterface {
   syncWithCart?: boolean;
   syncUserCheckout?: boolean;
   dummyStatus?: string | null;
@@ -23,7 +23,7 @@ export interface CheckoutContextInterface {
    * @deprecated Use useCheckoutStepState hook to determine step instead.
    */
   step?: CheckoutStep;
-  update?(checkoutData: CheckoutContextInterface): void;
+  update?(checkoutData: BakraCheckoutContextInterface): void;
   clear?(): void;
 }
 
@@ -40,8 +40,8 @@ export const defaultContext = {
   update: (checkoutData: {}) => null,
 };
 
-export const CheckoutContext = createContext<CheckoutContextInterface>(
-  defaultContext
-);
+export const BakraCheckoutContext = createContext<
+  BakraCheckoutContextInterface
+>(defaultContext);
 
-CheckoutContext.displayName = "CheckoutContext";
+BakraCheckoutContext.displayName = "BakraCheckoutContext";

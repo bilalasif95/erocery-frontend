@@ -10,7 +10,7 @@ import {
 import { CartContext } from "../../../components/CartProvider/context";
 import { ShopContext } from "../../../components/ShopProvider/context";
 import { maybe } from "../../../core/utils";
-import { CheckoutContext } from "../../context";
+import { BakraCheckoutContext } from "../../context";
 import Page from "./Page";
 
 const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
@@ -24,7 +24,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const updateShippingAddress = useUpdateCheckoutShippingAddress();
 
   return (
-    <CheckoutContext.Consumer>
+    <BakraCheckoutContext.Consumer>
       {({ update, checkout }) => (
         <ShopContext.Consumer>
           {shop => (
@@ -50,7 +50,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           )}
         </ShopContext.Consumer>
       )}
-    </CheckoutContext.Consumer>
+    </BakraCheckoutContext.Consumer>
   );
 };
 

@@ -24,6 +24,10 @@ import { CartContext, CartLine } from "../CartProvider/context";
 import AddToCart from "./AddToCart";
 import AddToWishlist from "./AddToWishlist";
 
+import { TypedCreateBakraCheckoutMutation } from "../../bakracheckout/queries";
+
+import { BakraCheckoutContext } from "../../bakracheckout/context";
+
 interface ProductDescriptionProps {
   productId: string;
   productVariants: ProductDetails_product_variants[];
@@ -225,22 +229,59 @@ class ProductDescription extends React.Component<
           </div>
         )}
         {this.props.category === "VIP Qurbani" ? (
-          <div>
-            <DatePicker
-              onChange={value => this.setState({ date: value })}
-              value={this.state.date}
-            />
-            <Link
-              to={
-                window.localStorage.getItem("token")
-                  ? bakracheckoutUrl
-                  : "/login"
-              }
-              className="btnLink"
-            >
-              <Button className="buyButton">Book Now</Button>
-            </Link>
-          </div>
+          <BakraCheckoutContext.Consumer>
+            {({ update }) => (
+              <TypedCreateBakraCheckoutMutation
+                onCompleted={async ({
+                  CheckoutVipCreate: { checkout, errors },
+                }) => {
+                  if (!errors.length) {
+                    await update({ checkout });
+                    localStorage.setItem("checkoutID", checkout.id);
+                  }
+                  //  onSubmit();
+                }}
+              >
+                {(CheckoutVipCreate, { loading: mutationLoading }) => (
+                  <div>
+                    <DatePicker
+                      onChange={value => this.setState({ date: value })}
+                      value={this.state.date}
+                    />
+                    <Link
+                      to={
+                        window.localStorage.getItem("token")
+                          ? bakracheckoutUrl
+                          : "/login"
+                      }
+                      className="btnLink"
+                    >
+                      <Button
+                        className="buyButton"
+                        onClick={() => {
+                          CheckoutVipCreate({
+                            variables: {
+                              checkoutInput: {
+                                lines: [
+                                  {
+                                    quantity: this.state.quantity,
+                                    variantId: this.props.productVariants[0].id,
+                                  },
+                                ],
+                                shippingDate: this.state.date,
+                              },
+                            },
+                          });
+                        }}
+                      >
+                        Book Now
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+              </TypedCreateBakraCheckoutMutation>
+            )}
+          </BakraCheckoutContext.Consumer>
         ) : (
           <CartContext.Consumer>
             {({ lines }) => (

@@ -11,8 +11,11 @@ import { Money } from "@components/containers";
 import { orderConfirmationUrl } from "../../../app/routes";
 import { Button, CartTable } from "../../../components";
 import { CartContext } from "../../../components/CartProvider/context";
-import { extractCartLines,getTotal } from "../../../components/CartProvider/utils";
-import { CheckoutContext } from "../../context";
+import {
+  extractCartLines,
+  getTotal,
+} from "../../../components/CartProvider/utils";
+import { BakraCheckoutContext } from "../../context";
 import { paymentUrl } from "../../routes";
 import { TypedCompleteCheckoutMutation } from "./queries";
 import Summary from "./Summary";
@@ -63,7 +66,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     dummyStatus,
     checkout,
     clear: clearCheckout,
-  } = React.useContext(CheckoutContext);
+  } = React.useContext(BakraCheckoutContext);
   const { clear: clearCart } = React.useContext(CartContext);
 
   const discountExists = checkout.discount && !!checkout.discount.amount;
@@ -84,36 +87,39 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
         </div>
 
         <div className="checkout__content">
-        <CartContext.Consumer>
-                    {cart => (
-        <TypedProductVariantsQuery
-          variables={{
-            ids: cart.lines.map(line => line.variantId),
-          }}
-        >
-          {({ data }) => (
-            <CartTable
-              lines={extractCartLines(data, cart.lines, locale)}
-              // subtotal={<TaxedMoney taxedMoney={checkout.subtotalPrice} />}
-              subtotal={getTotal(data, cart.lines, locale)}
-              deliveryCost={
-                <Money defaultValue="0" money={checkout.shippingMethod?.price} />
-              }
-              // totalCost={getTotal(data, cart.lines, locale)}
-              totalCost={<Money money={checkout.totalPrice.gross} />}
-              discount={
-                discountExists && (
-                  <>
-                    - <Money money={checkout.discount} />
-                  </>
-                )
-              }
-              discountName={checkout.discountName}
-            />
-          )}
-          </TypedProductVariantsQuery>
-           )}
-           </CartContext.Consumer>
+          <CartContext.Consumer>
+            {cart => (
+              <TypedProductVariantsQuery
+                variables={{
+                  ids: cart.lines.map(line => line.variantId),
+                }}
+              >
+                {({ data }) => (
+                  <CartTable
+                    lines={extractCartLines(data, cart.lines, locale)}
+                    // subtotal={<TaxedMoney taxedMoney={checkout.subtotalPrice} />}
+                    subtotal={getTotal(data, cart.lines, locale)}
+                    deliveryCost={
+                      <Money
+                        defaultValue="0"
+                        money={checkout.shippingMethod?.price}
+                      />
+                    }
+                    // totalCost={getTotal(data, cart.lines, locale)}
+                    totalCost={<Money money={checkout.totalPrice.gross} />}
+                    discount={
+                      discountExists && (
+                        <>
+                          - <Money money={checkout.discount} />
+                        </>
+                      )
+                    }
+                    discountName={checkout.discountName}
+                  />
+                )}
+              </TypedProductVariantsQuery>
+            )}
+          </CartContext.Consumer>
           <div className="checkout-review__content">
             <Summary
               checkout={checkout}

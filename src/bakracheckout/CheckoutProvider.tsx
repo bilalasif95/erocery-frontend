@@ -3,7 +3,7 @@ import * as React from "react";
 import { useLocalStorage } from "@hooks";
 import { useAuth, useCheckoutDetails, useUserCheckout } from "@sdk/react";
 
-import { CheckoutContext, CheckoutContextInterface } from "./context";
+import { BakraCheckoutContext, BakraCheckoutContextInterface } from "./context";
 
 interface ProviderProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface ProviderProps {
   };
 }
 
-export const CheckoutProvider: React.FC<ProviderProps> = ({
+export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
   children,
   user,
 }: ProviderProps) => {
@@ -50,7 +50,7 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
     }
   }, [user.data]);
 
-  const update = (checkoutData: CheckoutContextInterface) => {
+  const update = (checkoutData: BakraCheckoutContextInterface) => {
     setState(prevState => ({
       ...prevState,
       ...checkoutData,
@@ -84,29 +84,23 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
     skip: skipUserCheckoutFetch,
   });
 
-
   if (!userCheckoutLoading && !skipUserCheckoutFetch) {
-  
-      if (userCheckout && state.syncUserCheckout) {
-        setState(prevState => ({
-          ...prevState,
-          checkout: userCheckout,
-          loading: false,
-          syncUserCheckout: false,
-          syncWithCart: true,
-        }));
-        setCheckoutToken(userCheckout.token);
-      }
-       else if (!userCheckout && state.syncUserCheckout) {
-        setState(prevState => ({
-          ...prevState,
-          syncUserCheckout: false,
-        }));
-      }
-   
+    if (userCheckout && state.syncUserCheckout) {
+      setState(prevState => ({
+        ...prevState,
+        checkout: userCheckout,
+        loading: false,
+        syncUserCheckout: false,
+        syncWithCart: true,
+      }));
+      setCheckoutToken(userCheckout.token);
+    } else if (!userCheckout && state.syncUserCheckout) {
+      setState(prevState => ({
+        ...prevState,
+        syncUserCheckout: false,
+      }));
+    }
   }
-
-
 
   const skipLocalStorageCheckoutFetch = !!(
     userCheckoutLoading ||
@@ -133,8 +127,8 @@ export const CheckoutProvider: React.FC<ProviderProps> = ({
   }
 
   return (
-    <CheckoutContext.Provider value={getContext()}>
+    <BakraCheckoutContext.Provider value={getContext()}>
       {children}
-    </CheckoutContext.Provider>
+    </BakraCheckoutContext.Provider>
   );
 };

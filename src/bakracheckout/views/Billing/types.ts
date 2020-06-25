@@ -10,7 +10,7 @@ import { CartLineInterface } from "../../../components/CartProvider/context";
 import { getShop_shop } from "../../../components/ShopProvider/types/getShop";
 import { User } from "../../../components/User/types/User";
 import { FormError } from "../../../core/types";
-import { CheckoutContextInterface } from "../../context";
+import { BakraCheckoutContextInterface } from "../../context";
 import { Checkout } from "../../types/Checkout";
 import {
   updateCheckoutBillingAddress_checkoutBillingAddressUpdate,
@@ -20,7 +20,7 @@ import {
 export interface IBillingPageProps {
   checkoutId?: string;
   checkout?: Checkout;
-  update: (checkoutData: CheckoutContextInterface) => void;
+  update: (checkoutData: BakraCheckoutContextInterface) => void;
   createCheckout: [
     MutationFn<
       {
@@ -48,7 +48,7 @@ export interface IBillingPageProps {
   user: User;
   shop: getShop_shop;
   proceedToNextStepData: {
-    update: (checkoutData: CheckoutContextInterface) => void;
+    update: (checkoutData: BakraCheckoutContextInterface) => void;
     history: History;
     token?: string;
   };

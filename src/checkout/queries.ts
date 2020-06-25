@@ -256,9 +256,9 @@ const staffList = gql`
       id
       name
       city
-        orders{
-          totalCount
-        }
+      orders {
+        totalCount
+      }
     }
   }
 `;

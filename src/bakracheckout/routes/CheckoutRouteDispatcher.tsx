@@ -6,7 +6,7 @@ import { useVariantsProducts } from "@sdk/react";
 import * as paths from ".";
 import { Loader } from "../../components";
 import { CartContext } from "../../components/CartProvider/context";
-import { CheckoutContext } from "../context";
+import { BakraCheckoutContext } from "../context";
 import { CheckoutStep, useCheckoutStepState } from "../hooks";
 
 export const BakraCheckoutRouteDispatcher: React.FC<RouteComponentProps<{
@@ -21,7 +21,7 @@ export const BakraCheckoutRouteDispatcher: React.FC<RouteComponentProps<{
     checkout,
     cardData,
     dummyStatus,
-  } = React.useContext(CheckoutContext);
+  } = React.useContext(BakraCheckoutContext);
   const { lines: cartLines } = React.useContext(CartContext);
 
   const {

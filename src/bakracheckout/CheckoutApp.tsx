@@ -18,7 +18,7 @@ import {
 import { CartContext } from "../components/CartProvider/context";
 // import { BASE_URL as appBaseUrl } from "../core/config";
 // import logoImg from "../images/erocery_logo.svg";
-import { CheckoutContext } from "./context";
+import { BakraCheckoutContext } from "./context";
 import { useCheckoutStepFromPath, useCheckoutStepState } from "./hooks";
 import { baseUrl as checkoutBaseUrl, CheckoutRoutes } from "./routes";
 
@@ -32,7 +32,7 @@ const CheckoutApp: React.FC<RouteComponentProps> = ({
     checkout,
     cardData,
     dummyStatus,
-  } = React.useContext(CheckoutContext);
+  } = React.useContext(BakraCheckoutContext);
   const { lines: cartLines, loading: cartLoading } = React.useContext(
     CartContext
   );

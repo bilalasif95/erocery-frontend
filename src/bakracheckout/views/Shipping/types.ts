@@ -14,7 +14,7 @@ import { AddressInput } from "../../../../types/globalTypes";
 import { CartLineInterface } from "../../../components/CartProvider/context";
 import { getShop_shop } from "../../../components/ShopProvider/types/getShop";
 import { User } from "../../../components/User/types/User";
-import { CheckoutContextInterface } from "../../context";
+import { BakraCheckoutContextInterface } from "../../context";
 import { Checkout } from "../../types/Checkout";
 
 export interface ICheckoutData {
@@ -26,7 +26,7 @@ export interface ICheckoutData {
 export interface IShippingPageProps {
   checkoutId?: string;
   checkout?: Checkout;
-  update: (checkoutData: CheckoutContextInterface) => void;
+  update: (checkoutData: BakraCheckoutContextInterface) => void;
   lines?: CartLineInterface[];
   createCheckout: [
     MutationFn<
@@ -53,7 +53,7 @@ export interface IShippingPageProps {
   user: User;
   shop: getShop_shop;
   proceedToNextStepData: {
-    update: (checkoutData: CheckoutContextInterface) => void;
+    update: (checkoutData: BakraCheckoutContextInterface) => void;
     history: History;
     token?: string;
   };

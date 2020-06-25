@@ -6,8 +6,8 @@ import { Money } from "@components/containers";
 import { Button } from "../../../components";
 import { CartSummary, Option, Steps } from "../../components";
 import {
-  CheckoutContext,
-  CheckoutContextInterface,
+  BakraCheckoutContext,
+  BakraCheckoutContextInterface,
   CheckoutStep,
 } from "../../context";
 import { paymentUrl } from "../../routes";
@@ -23,7 +23,7 @@ class View extends React.Component<
 
   proceedToBilling(
     data: updateCheckoutShippingOptions,
-    update: (checkoutData: CheckoutContextInterface) => void,
+    update: (checkoutData: BakraCheckoutContextInterface) => void,
     token?: string
   ) {
     const canProceed = !data.checkoutShippingMethodUpdate.errors.length;
@@ -48,7 +48,7 @@ class View extends React.Component<
     } = this.props.match;
 
     return (
-      <CheckoutContext.Consumer>
+      <BakraCheckoutContext.Consumer>
         {({ checkout, update, step }) => (
           <div className="checkout-shipping-options">
             <CartSummary checkout={checkout}>
@@ -64,7 +64,7 @@ class View extends React.Component<
                 >
                   {(updateCheckoutShippingOptions, { loading }) => {
                     const shippingMethods =
-                      checkout.availableShippingMethods || [];
+                      (checkout && checkout.availableShippingMethods) || [];
                     return (
                       <>
                         <div className="checkout-shipping-options__form">
@@ -101,7 +101,8 @@ class View extends React.Component<
                           }}
                           disabled={
                             loading ||
-                            !checkout.availableShippingMethods.length ||
+                            (checkout &&
+                              !checkout.availableShippingMethods.length) ||
                             !selectedShipping
                           }
                         >
@@ -115,7 +116,7 @@ class View extends React.Component<
             </CartSummary>
           </div>
         )}
-      </CheckoutContext.Consumer>
+      </BakraCheckoutContext.Consumer>
     );
   }
 }

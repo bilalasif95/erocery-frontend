@@ -68,19 +68,19 @@ const Page: React.FC<IShippingPageProps> = ({
   const phone = maybe(() => user.phone, null);
 
   const onSaveShippingAddressHandler = async (formData: FormAddressType) => {
-    if (!checkoutId) {
-      const data = computeCheckoutData(formData, lines);
-      return create({
-        checkoutInput: {
-          lines: data.lines,
-          phone: data.phone,
-          shippingAddress: data.shippingAddress,
-        },
-      });
-    }
+    // if (!checkoutId) {
+    //   const data = computeCheckoutData(formData, lines);
+    //   return create({
+    //     checkoutInput: {
+    //       lines: data.lines,
+    //       phone: data.phone,
+    //       shippingAddress: data.shippingAddress,
+    //     },
+    //   });
+    // }
     const data = computeCheckoutData(formData, null, phone);
     return updateAddress({
-      checkoutId,
+      checkoutId: localStorage.getItem("checkoutID"),
       phone: data.phone,
       shippingAddress: data.shippingAddress,
     });
@@ -133,17 +133,20 @@ const Page: React.FC<IShippingPageProps> = ({
           token={proceedToNextStepData.token}
           checkout={checkout}
         >
-          {user ? (
+          {
+            // user
+            // ? (
             <GuestAddressForm {...shippingProps} shop={shop} />
-          ) : (
+            // ) : (
             // <UserAddressSelector
             //   {...shippingProps}
             //   update={update}
             //   onSubmit={onSubmitHandler}
             //   type="shipping"
             // />
-            <GuestAddressForm {...shippingProps} shop={shop} />
-          )}
+            // <GuestAddressForm {...shippingProps} shop={shop} />
+            // )
+          }
         </Steps>
       </div>
     </CartSummary>

@@ -11,7 +11,7 @@ import {
 import { CartContext } from "../../../components/CartProvider/context";
 import { ShopContext } from "../../../components/ShopProvider/context";
 import { maybe } from "../../../core/utils";
-import { CheckoutContext } from "../../context";
+import { BakraCheckoutContext } from "../../context";
 import Page from "./Page";
 
 const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
@@ -25,14 +25,14 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const { data: user } = useUserDetails();
 
   const { update, checkout, shippingAsBilling } = React.useContext(
-    CheckoutContext
+    BakraCheckoutContext
   );
- 
+
   const { lines: cardLines } = React.useContext(CartContext);
   const { data: variantsProducts } = useVariantsProducts({
     ids: cardLines ? cardLines.map(line => line.variantId) : [],
   });
-  
+
   const isShippingRequired = () => {
     if (checkout && checkout.isShippingRequired) {
       return true;

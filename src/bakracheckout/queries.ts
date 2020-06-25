@@ -212,6 +212,26 @@ export const TypedCreateCheckoutMutation = TypedMutation<
   createCheckoutVariables
 >(createCheckoutMutation);
 
+const createBakraCheckoutMutation = gql`
+  ${checkoutFragment}
+  mutation createCheckout($checkoutInput: CheckoutVipCreateInput!) {
+    CheckoutVipCreate(input: $checkoutInput) {
+      errors {
+        field
+        message
+      }
+      checkout {
+        ...Checkout
+      }
+    }
+  }
+`;
+
+export const TypedCreateBakraCheckoutMutation = TypedMutation<
+  createCheckout,
+  createCheckoutVariables
+>(createBakraCheckoutMutation);
+
 const getUserCheckoutQuery = gql`
   ${checkoutFragment}
   query getUserCheckout {
@@ -256,9 +276,9 @@ const staffList = gql`
       id
       name
       city
-        orders{
-          totalCount
-        }
+      orders {
+        totalCount
+      }
     }
   }
 `;

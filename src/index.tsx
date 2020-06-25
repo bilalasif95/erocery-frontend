@@ -29,8 +29,8 @@ import { QueryParamProvider } from "use-query-params";
 
 import { App } from "./app";
 import { BakraCheckoutApp } from "./bakracheckout";
-// import { BakraCheckoutProvider } from "./bakracheckout/CheckoutProvider";
-// import { BakraCheckoutContext } from "./bakracheckout/context";
+import { BakraCheckoutProvider } from "./bakracheckout/CheckoutProvider";
+import { BakraCheckoutContext } from "./bakracheckout/context";
 import { baseUrl as bakracheckoutBaseUrl } from "./bakracheckout/routes";
 
 import { CheckoutApp } from "./checkout";
@@ -143,6 +143,15 @@ const startApp = async () => {
       return null;
     };
 
+    const BakraCheckout = ({ children }) => {
+      const user = useUserDetails();
+      return (
+        <>
+          <BakraCheckoutProvider user={user}>{children}</BakraCheckoutProvider>
+        </>
+      );
+    };
+
     const Checkout = ({ children }) => {
       const user = useUserDetails();
       return (
@@ -159,6 +168,26 @@ const startApp = async () => {
             <SaleorProvider client={apolloClient}>
               <ShopProvider>
                 <OverlayProvider>
+                  <BakraCheckout>
+                    <BakraCheckoutContext.Consumer>
+                      {checkout => (
+                        // <CartProvider
+                        //   checkout={checkout}
+                        //   apolloClient={apolloClient}
+                        // >
+                        <WishlistProvider>
+                          <Switch>
+                            <Route
+                              path={bakracheckoutBaseUrl}
+                              component={BakraCheckoutApp}
+                            />
+                          </Switch>
+                          <Notifications />
+                        </WishlistProvider>
+                        // </CartProvider>
+                      )}
+                    </BakraCheckoutContext.Consumer>
+                  </BakraCheckout>
                   <Checkout>
                     <CheckoutContext.Consumer>
                       {checkout => (
@@ -171,10 +200,6 @@ const startApp = async () => {
                               <Route
                                 path={checkoutBaseUrl}
                                 component={CheckoutApp}
-                              />
-                              <Route
-                                path={bakracheckoutBaseUrl}
-                                component={BakraCheckoutApp}
                               />
                               <Route component={App} />
                             </Switch>

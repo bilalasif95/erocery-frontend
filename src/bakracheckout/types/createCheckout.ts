@@ -529,7 +529,7 @@ export interface createCheckout {
   /**
    * Create a new checkout.
    */
-  checkoutCreate: createCheckout_checkoutCreate | null;
+  CheckoutVipCreate: createCheckout_checkoutCreate | null;
 }
 
 export interface createCheckoutVariables {

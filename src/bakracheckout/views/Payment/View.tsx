@@ -14,8 +14,8 @@ import { Button } from "../../../components";
 import { PROVIDERS } from "../../../core/config";
 import { CartSummary, Option, Steps } from "../../components";
 import {
-  CheckoutContext,
-  CheckoutContextInterface,
+  BakraCheckoutContext,
+  BakraCheckoutContextInterface,
   CheckoutStep,
 } from "../../context";
 import { reviewUrl } from "../../routes";
@@ -31,7 +31,7 @@ import { createPayment, createPaymentVariables } from "./types/createPayment";
 export interface ProviderProps {
   loading: boolean;
   formRef: React.RefObject<HTMLFormElement>;
-  checkout: CheckoutContextInterface;
+  checkout: BakraCheckoutContextInterface;
   paymentGatewayConfig: Checkout_availablePaymentGateways_config[];
   paymentGatewayHref?: string;
   processPayment(token: string, gateway: string): Promise<void>;
@@ -44,7 +44,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     params: { token },
   },
 }) => {
-  const checkout = React.useContext(CheckoutContext);
+  const checkout = React.useContext(BakraCheckoutContext);
 
   const [loadingPayment, setLoadingPayment] = React.useState(false);
   const [selectedGeteway, setSelectedGeteway] = React.useState(null);
@@ -101,10 +101,10 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
   const makeProcessPayment = (
     createPaymentMethod: MutationFn<createPayment, createPaymentVariables>,
-    checkout: CheckoutContextInterface
+    checkout: BakraCheckoutContextInterface
   ) => async (token: string, gateway: string) => {
     const {
-      checkout: { billingAddress,shippingAddress, totalPrice, id },
+      checkout: { billingAddress, shippingAddress, totalPrice, id },
     } = checkout;
 
     if (token) {
@@ -114,15 +114,36 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           input: {
             amount: totalPrice.gross.amount,
             billingAddress: {
-              city: billingAddress === null ? shippingAddress.city : billingAddress.city,
+              city:
+                billingAddress === null
+                  ? shippingAddress.city
+                  : billingAddress.city,
               // country: billingAddress.country.code as CountryCode,
-              countryArea: billingAddress === null ? shippingAddress.countryArea : billingAddress.countryArea,
-              firstName: billingAddress === null ? shippingAddress.firstName : billingAddress.firstName,
-              lastName: billingAddress === null ? shippingAddress.lastName : billingAddress.lastName,
-              phone: billingAddress === null ? shippingAddress.phone : billingAddress.phone,
+              countryArea:
+                billingAddress === null
+                  ? shippingAddress.countryArea
+                  : billingAddress.countryArea,
+              firstName:
+                billingAddress === null
+                  ? shippingAddress.firstName
+                  : billingAddress.firstName,
+              lastName:
+                billingAddress === null
+                  ? shippingAddress.lastName
+                  : billingAddress.lastName,
+              phone:
+                billingAddress === null
+                  ? shippingAddress.phone
+                  : billingAddress.phone,
               // postalCode: billingAddress.postalCode,
-              streetAddress1: billingAddress === null ? shippingAddress.streetAddress1 : billingAddress.streetAddress1,
-              streetAddress2: billingAddress === null ? shippingAddress.streetAddress2 : billingAddress.streetAddress2,
+              streetAddress1:
+                billingAddress === null
+                  ? shippingAddress.streetAddress1
+                  : billingAddress.streetAddress1,
+              streetAddress2:
+                billingAddress === null
+                  ? shippingAddress.streetAddress2
+                  : billingAddress.streetAddress2,
             },
             gateway,
             token,
@@ -133,7 +154,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   };
 
   const handleApplyDiscount = (
-    checkout: CheckoutContextInterface,
+    checkout: BakraCheckoutContextInterface,
     discountCode: string
   ) => {
     const {
@@ -146,7 +167,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     });
   };
 
-  const handleRemovePromoCode = (checkout: CheckoutContextInterface) => {
+  const handleRemovePromoCode = (checkout: BakraCheckoutContextInterface) => {
     const {
       checkout: { id, voucherCode },
     } = checkout;
@@ -245,7 +266,10 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
                       case PROVIDERS.DUMMY.label:
                         return (
-                          <Option label="Cash on Delivery" {...optionProps(providerName)}>
+                          <Option
+                            label="Cash on Delivery"
+                            {...optionProps(providerName)}
+                          >
                             <Dummy {...paymentGatewayProps} />
                           </Option>
                         );

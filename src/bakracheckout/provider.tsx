@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { UserContextInterface } from "../components/User/context";
 import {
-  CheckoutContext,
-  CheckoutContextInterface,
+  BakraCheckoutContext,
+  BakraCheckoutContextInterface,
   CheckoutStep,
 } from "./context";
 import { TypedGetCheckoutQuery, TypedGetUserCheckoutQuery } from "./queries";
@@ -16,7 +16,7 @@ interface ProviderProps {
   user: UserContextInterface;
 }
 
-type ProviderState = CheckoutContextInterface;
+type ProviderState = BakraCheckoutContextInterface;
 
 class Provider extends React.Component<ProviderProps, ProviderState> {
   providerContext = {};
@@ -45,7 +45,7 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
   getStoredToken = (): null | string =>
     localStorage.getItem(LocalStorageKeys.Token);
 
-  getContext = (): CheckoutContextInterface => ({
+  getContext = (): BakraCheckoutContextInterface => ({
     ...this.state,
     clear: this.clear,
     step: this.getCurrentStep(),
@@ -88,7 +88,7 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
     localStorage.removeItem(LocalStorageKeys.Token);
   };
 
-  update = async (checkoutData: CheckoutContextInterface) => {
+  update = async (checkoutData: BakraCheckoutContextInterface) => {
     await this.setState(
       { ...checkoutData, step: this.getCurrentStep() },
       () => {
@@ -167,9 +167,9 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
               }}
             >
               {() => (
-                <CheckoutContext.Provider value={this.getContext()}>
+                <BakraCheckoutContext.Provider value={this.getContext()}>
                   {this.props.children}
-                </CheckoutContext.Provider>
+                </BakraCheckoutContext.Provider>
               )}
             </TypedGetCheckoutQuery>
           );

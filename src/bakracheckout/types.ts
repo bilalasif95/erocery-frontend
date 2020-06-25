@@ -9,7 +9,7 @@ import { FormError } from "../core/types";
 
 import { CartLineInterface } from "../components/CartProvider/context";
 import { User } from "../components/User/types/User";
-import { CheckoutContextInterface } from "./context";
+import { BakraCheckoutContextInterface } from "./context";
 import { Checkout } from "./types/Checkout";
 
 export type AddressType = Partial<
@@ -49,7 +49,7 @@ export interface UserAddressSelectorProps {
   shippingAsBilling?: boolean;
   type?: CheckoutFormType;
   onSubmit: (selectedAddress: FormAddressType) => Promise<boolean>;
-  update?: (checkoutData: CheckoutContextInterface) => void;
+  update?: (checkoutData: BakraCheckoutContextInterface) => void;
 }
 
 export interface IInitialUserAddressesArgs {
@@ -61,7 +61,7 @@ export interface IInitialUserAddressesArgs {
 export interface ISubmitArgs {
   phone: string;
   checkoutId: string;
-  update: (checkoutData: CheckoutContextInterface) => void;
+  update: (checkoutData: BakraCheckoutContextInterface) => void;
   createCheckout: MutationFn;
   updateCheckout: MutationFn;
   lines: CartLineInterface[];
