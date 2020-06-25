@@ -29,7 +29,7 @@ const PrivacyPolicy: React.FC = () => (
          <p>16. We make a justifiable effort to assure your information is protected while you are on our website and mobile app. We have a security plan on the storage and destruction of personal information which are devised to protect from the unauthorized access.<br /><br /></p>
          <p>17. Erocery is interlinked to social media channels that may collect personal information. But Erocery is not responsible for the loss of your data through any other media.<br /><br /></p>
          <p>18. We always enhance and update our website by adding more products for shopping. According to the  audience response our policies would be changed by the time.<br /><br /></p>
-         <p>19. To use our website, you are consenting to our privacy policy. We appreciate your trust in us and we promise to protect data. Feel free to contact our customer service team to help you out.! Send us an email at <u>erocery@gmail.com</u> or contact us on 0330-2755559</p>
+         <p>19. To use our website, you are consenting to our privacy policy. We appreciate your trust in us and we promise to protect data. Feel free to contact our customer service team to help you out.! Send us an email at <u>contact@erocery.com</u> or contact us on 0330-2755559</p>
       </div>
    </div>
 );
