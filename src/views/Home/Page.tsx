@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useUserDetails } from "@sdk/react";
 // import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
-import { Carousel,ProductsFeatured } from "../../components";
+import { Carousel, ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import { CartContext } from "../../components/CartProvider/context";
@@ -33,6 +33,9 @@ import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
 import offerImg from "../../images/offerBanner.jpg";
+import vipoffermob from "../../images/vipoffermob.png";
+import desktopvipoffer from "../../images/desktopoffer.png";
+
 
 
 // import noPhotoImg from "../../images/no-photo.svg";
@@ -127,12 +130,19 @@ const Page: React.FC<{
         ))}
         </Carousel>
       </div>
+      <div className="home-page__vipImage">
+        <div className="container">
+          <img src={desktopvipoffer} className="deskoffer" />
+          <img src={vipoffermob} className="moboffer" />
+          <button className="bookbtn">Book Now</button>
+        </div>
+      </div>
       {/* <div
         className="home-page__hero"
         style={{ backgroundImage: `url(${bannerimg})` }}
       >
       </div> */}
-        {/* <div className="home-page__hero-text">
+      {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
               <h1>Final reduction</h1>
@@ -144,7 +154,7 @@ const Page: React.FC<{
             </span>
           </div>
         </div> */}
-        {/* <div className="home-page__hero-action">
+      {/* <div className="home-page__hero-action">
           {loading && !categories ? (
             <Loader />
           ) : (
@@ -216,10 +226,10 @@ const Page: React.FC<{
                         {category.backgroundImage ? (
                           <img src={category.backgroundImage.url} />
                         ) : (
-                          <div className="noCatImg">
-                            <p>Photo Unavailable</p>
-                          </div>
-                        )}
+                            <div className="noCatImg">
+                              <p>Photo Unavailable</p>
+                            </div>
+                          )}
                       </div>
                       <div className="cat-detail">
                         <h4>{category.name}</h4>

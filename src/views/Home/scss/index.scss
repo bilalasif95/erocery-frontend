@@ -384,6 +384,77 @@
     }
   }
 
+  &__vipImage {
+    background: #f7f7f7;
+    padding: 2rem 0;
+    .container{
+      position: relative;
+    }
+    .moboffer{
+      display: none;
+    }
+    img {
+      width: 100%;
+    }
+    .bookbtn {
+      position: absolute;
+      top: 41%;
+      left: 21%;
+      background: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 2rem;
+      color: #3776fc;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
+      -webkit-box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+      -moz-box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+      box-shadow: 0px 9px 21px -10px rgba(0,0,0,0.67);
+  }
+   @media (max-width: 991px) {
+    .bookbtn {
+      top: 36%;
+      left: 19%;
+      font-size: 12px;
+    }
+    }
+    @media (max-width: 736px) {
+      .bookbtn {
+        top: 38%;
+        font-size: 12px;
+        padding: 0.3rem 0.5rem;
+      }
+    }
+    @media (max-width:480px) {
+      .deskoffer{
+        display: none;
+      }
+      .moboffer{
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+      }
+      .bookbtn {
+        top: unset;
+        bottom: 0;
+        left: 40%;
+        font-size: 18px;
+        padding: 0.7rem 1rem;
+      }
+    }
+    @media (max-width:375px) {
+      .moboffer{
+        width: 100%;
+        margin: 0 auto;
+      }
+      .bookbtn {
+        left: 40%;
+        // font-size: 12px;
+        // padding: 0.3rem 0.7rem;
+      }
+    }
+  }
+
   &__categories {
     margin-bottom: 2rem;
 
