@@ -28,7 +28,7 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
             errors={errors}
             onSubmit={(evt, data) => {
               evt.preventDefault();
-              data = { ...data, phone: "03"+data.phone };
+              data = { ...data, phone: "03" + data.phone };
               onSubmit(data);
             }}
             data={getFormData(geolocalization, defaultCountry, data)}

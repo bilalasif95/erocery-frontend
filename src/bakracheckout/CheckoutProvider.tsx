@@ -18,7 +18,7 @@ export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
   user,
 }: ProviderProps) => {
   const { storedValue: token, setValue: setCheckoutToken } = useLocalStorage(
-    "checkoutToken"
+    "TocheckoutToken"
   );
   const [state, setState] = React.useState({
     cardData: null,
@@ -56,7 +56,7 @@ export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
       ...checkoutData,
     }));
     if ("checkout" in checkoutData) {
-      setCheckoutToken(checkoutData.checkout.token);
+      // setCheckoutToken(checkoutData.checkout.token);
     }
   };
 
@@ -93,7 +93,7 @@ export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
         syncUserCheckout: false,
         syncWithCart: true,
       }));
-      setCheckoutToken(userCheckout.token);
+      // setCheckoutToken(userCheckout.token);
     } else if (!userCheckout && state.syncUserCheckout) {
       setState(prevState => ({
         ...prevState,
@@ -123,7 +123,7 @@ export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
       checkout: checkoutDetails,
       loading: false,
     }));
-    setCheckoutToken(checkoutDetails.token);
+    // setCheckoutToken(checkoutDetails.token);
   }
 
   return (

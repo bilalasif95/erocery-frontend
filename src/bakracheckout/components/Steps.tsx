@@ -8,7 +8,7 @@ import { ShippingOptionSummary } from ".";
 import { AddressSummary } from "../../components";
 import { CartContext } from "../../components/CartProvider/context";
 import { CheckoutStep } from "../context";
-import {  shippingAddressUrl, shippingOptionsUrl } from "../routes";
+import { shippingAddressUrl, shippingOptionsUrl } from "../routes";
 import { Checkout } from "../types/Checkout";
 
 const steps = [
