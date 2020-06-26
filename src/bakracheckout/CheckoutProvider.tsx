@@ -57,7 +57,7 @@ export const BakraCheckoutProvider: React.FC<ProviderProps> = ({
     }));
     if ("checkout" in checkoutData) {
       // setCheckoutToken(checkoutData.checkout.token);
-      //checkoutToken not used
+      // checkoutToken not used
     }
   };
 
