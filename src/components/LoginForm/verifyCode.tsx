@@ -72,7 +72,7 @@ const VerifyCodeForm: React.FC<IVerifyCodeForm> = ({ hide, phone,password }) => 
           type="tel"
           required
         />
-        <div className="login-form__button displayflex">
+        <div className="login-form__button verify-form displayflex">
           <Button type="submit" {...(loading && { disabled: true })}>
             {loading ? "Loading" : "Verify"}
           </Button>
@@ -88,8 +88,8 @@ const VerifyCodeForm: React.FC<IVerifyCodeForm> = ({ hide, phone,password }) => 
                   },
                 ]}
               >
-                Send Again(<Timer.Minutes />:
-                <Timer.Seconds />)
+                Send Again(<Timer.Minutes formatValue={value => `${'0'+value} `} />:
+                <Timer.Seconds formatValue={value => `${value <10 ? '0'+value:value}`} />)
               </Timer>
               : "Send Code"}
           </Button>

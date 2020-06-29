@@ -24,6 +24,16 @@
   }
 }
 
+.resetBtns{
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  .smsCodebtn{
+    margin: 1rem 0 0;
+    padding: 0.9rem 1rem;
+  }
+}
+
 .passwordInput {
   display: flex;
 
