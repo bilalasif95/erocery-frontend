@@ -2,8 +2,8 @@
   "name": "erocery-site",
   "version": "0.7.0",
   "private": true,
-  "author": "Mirumee",
-  "homepage": "https://getsaleor.com/",
+  "author": "RNS",
+  "homepage": "https://erocery.com/",
   "main": "dist/index.js",
   "browserslist": "last 2 versions",
   "dependencies": {

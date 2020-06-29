@@ -1,6 +1,6 @@
-import { createBrowserHistory } from "history";
+import { createHashHistory } from "history";
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 history.listen((_location, action) => {
   if (["PUSH"].includes(action)) {
     if(_location.pathname === "/checkout/shipping-options/"

@@ -25,7 +25,7 @@ const HowToOrder: React.FC = () => (
        Step 4: Provide the required details on the form.<br />
        Step 5: Place order.</p><br />
          <p>After the order has been placed, you will receive a confirmation message and email on your provided contact information.</p><br />
-         <p>For further queries feel free to contact us on: <u>erocery@gmail.com</u></p>
+         <p>For further queries feel free to contact us on: <u>contact@erocery.com</u></p>
       </div>
    </div>
 );

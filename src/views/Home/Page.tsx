@@ -32,11 +32,9 @@ import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
+// import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
-import vipoffermob from "../../images/vipoffermob.png";
-import desktopvipoffer from "../../images/desktopoffer.png";
-
-
+// import vipoffermob from "../../images/vipoffermob.png";
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
@@ -130,13 +128,13 @@ const Page: React.FC<{
         ))}
         </Carousel>
       </div>
-      <div className="home-page__vipImage">
+      {/* <div className="home-page__vipImage">
         <div className="container">
           <img src={desktopvipoffer} className="deskoffer" />
           <img src={vipoffermob} className="moboffer" />
           <button className="bookbtn">Book Now</button>
         </div>
-      </div>
+      </div> */}
       {/* <div
         className="home-page__hero"
         style={{ backgroundImage: `url(${bannerimg})` }}

@@ -65,7 +65,7 @@ ProductDescriptionState> {
   };
   canAddToCart = (lines: CartLine[],product: any) => {
     const { quantity } = this.state;
-    return quantity !== 0 && product.variants[0].stockQuantity !==0;
+    return quantity !== 0 && product && product.variants && product.variants[0].stockQuantity !==0;
   };
   render() {
   return (
@@ -108,7 +108,7 @@ ProductDescriptionState> {
                           }}
                           disabled={!this.canAddToCart(lines,product) || mutationLoading}
                         >
-                          {product.variants[0].stockQuantity !==0 ? "Add to Cart" : "Out of Stock"}
+                          {product && product.variants && product.variants[0].stockQuantity !==0 ? "Add to Cart" : "Out of Stock"}
                         </AddToCartButton>
                       </S.CartButton>
                     )}

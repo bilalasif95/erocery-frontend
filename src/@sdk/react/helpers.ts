@@ -9,7 +9,7 @@ export function useSaleorClient(): SaleorAPI {
 
   if (!saleor) {
     throw new Error(
-      "Could not find saleor's apollo client in the context. " +
+      "Could not find Erocery's apollo client in the context. " +
         "Did you forget to wrap the root component in a <SaleorProvider>?"
     );
   }
