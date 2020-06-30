@@ -104,7 +104,7 @@ class View extends React.Component<
                             !selectedShipping
                           }
                         >
-                          {loading ? "Loading" : "Continue to billing"}
+                          {loading ? "Loading" : "Continue to payment"}
                         </Button>
                       </>
                     );

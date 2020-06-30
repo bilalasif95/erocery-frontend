@@ -9,7 +9,7 @@ import { Offline, OfflinePlaceholder, Online, OverlayContext, OverlayTheme, Over
 
 import { baseUrl as checkoutUrl } from "../../checkout/routes";
 
-// import CheckoutAsGuest from "./CheckoutAsGuest";
+import CheckoutAsGuest from "./CheckoutAsGuest";
 import ResetPasswordForm from "./ResetPasswordForm";
 import SignInForm from "./SignInForm";
 
@@ -25,7 +25,7 @@ const CheckoutLogin: React.FC<{}> = () => {
       <div className="container">
         <Online>
           <div className="checkout-login">
-            {/* <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} /> */}
+            <CheckoutAsGuest overlay={overlay} checkoutUrl={checkoutUrl} />
             <div className="checkout-login__user">
               {resetPassword ? (
                 <ResetPasswordForm
