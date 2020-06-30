@@ -34,7 +34,7 @@ const Table: React.FC<TableProps> = ({
             {mediumScreen && <th>Price</th>}
             <th>Size</th>
             <th className="cart-table__quantity-header">Quantity</th>
-            <th colSpan={2}>{mediumScreen ? "Total Price" : "Price"}</th>
+            <th colSpan={2}>Total Price</th>
           </tr>
         </thead>
         <tbody>
