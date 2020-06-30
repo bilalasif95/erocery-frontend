@@ -2,7 +2,7 @@
 
 .footer {
   background: #54be42;
-  padding: 2rem 0;
+  padding: 4rem 0;
   margin: 2rem 0 0;
   .footer-list {
     display: flex;
@@ -11,7 +11,10 @@
   .footer-item {
     width: 33.33%;
     .apps{
-      margin-top: 2rem;
+      margin-top: 2.8rem;
+    }
+    .contactUs {
+      margin-bottom: 2rem;
     }
     .whatsAppNumber{
       margin-left: 7.5rem;
@@ -20,22 +23,33 @@
       font-size: 14px;
     }
   }
+  .socialMediaHeading {
+    margin: 0 0 1rem;
+  }
   h4 {
     color: white;
     font-size: 24px;
     text-transform: uppercase;
     font-weight: 600;
     margin: 0 0 2rem;
-}
+  }
 .quick-links{
   ul{
     padding: 0;
   }
   svg{
-    margin: 0 0.5rem 0 0;
+    margin: 0 1rem 0 0;
   }
   path {
     fill: #fff !important;
+  }
+  .contactUsLinks {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   li{
     margin: 0 0 1rem;
@@ -47,7 +61,6 @@
       align-items: center;
       justify-content: flex-start;
     }
-
   }
 }
 .pay-method {
@@ -64,10 +77,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0.5rem;
+    // padding: 0.5rem;
   }
   .cash-delivery {
-
     font-size: 14px;
     font-weight: 600;
   }
@@ -123,15 +135,22 @@
   &__favicons {
     // border-top: 1px solid $gray-light;
     border-top: 1px solid #60d852;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    text-align: center;
     margin: 2rem 0 0;
+    .poweredBy {
+      padding: 0;
+    }
     p {
       padding: 1.5rem 0 0;
       color: white;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
+      a {
+        font-weight: 600;
+      }
     }
     @media(max-width:480px){
       p{

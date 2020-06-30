@@ -75,7 +75,7 @@ const Page: React.FC<{
         <Carousel
         autoplay={true}
         wrapAround={true}
-        autoplayInterval={5000}
+        autoplayInterval={3000}
         renderCenterLeftControls={() => null}
         renderCenterRightControls={() => null}
         renderBottomCenterControls={props => {

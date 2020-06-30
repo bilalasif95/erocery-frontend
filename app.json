@@ -1,6 +1,6 @@
 {
   "name": "erocery-storefront",
-  "description": "A GraphQL-powered, PWA, single-page storefront application for Erocery",
+  "description": "Erocery is an Online Grocery Store in Rawalpindi/Islamabad. Delivering orders same day with free home delivery. Order now to get 3% off.",
   "repository": "https://github.com/mirumee/saleor-storefront",
   "website": "https://erocery.com/",
   "logo": "https://mirumee.com/img/opensource_saleor.jpg",

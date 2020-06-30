@@ -104,7 +104,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       prefix: "images/favicons/",
       favicons: {
         appName: "Erocery",
-        appDescription: "Storefront for the Erocery e-commerce platform",
+        appDescription: "Erocery is an Online Grocery Store in Rawalpindi/Islamabad. Delivering orders same day with free home delivery. Order now to get 3% off.",
         display: "minimal-ui",
         developerURL: null, // prevent retrieving from the nearest package.json
         background: "#ddd",
