@@ -99,7 +99,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               type="tel"
               required
             />
-            <div className="login-form__button displayflex">
+            <div className="login-form__button verify-form displayflex">
               <Button type="submit" {...(loading && { disabled: true })}>
                 {loading ? "Loading" : "Verify"}
               </Button>
@@ -120,8 +120,8 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     ]}
                   >
                     Send Again(
-                    <Timer.Minutes />:
-                    <Timer.Seconds />)
+                   <Timer.Minutes formatValue={value => `${'0'+value} `} />:
+                   <Timer.Seconds formatValue={value => `${value <10 ? '0'+value:value}`} />)
                   </Timer>
                 ) : (
                     "Send Code"

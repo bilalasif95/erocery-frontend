@@ -121,7 +121,7 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                         />
                       </div>
                     )}
-                  <div className="password-reset-form__button displayflex">
+                  <div className="password-reset-form__button resetBtns displayflex">
                     <Button type="submit" {...(loading && { disabled: true })}>
                       {loading ? "Loading" : "Reset password"}
                     </Button>
@@ -142,8 +142,8 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                           ]}
                         >
                           Send Again(
-                          <Timer.Minutes />:
-                          <Timer.Seconds />)
+                         <Timer.Minutes formatValue={value => `${'0'+value} `} />:
+                         <Timer.Seconds formatValue={value => `${value <10 ? '0'+value:value}`} />)
                         </Timer>
                       ) : (
                           "Send Code"
