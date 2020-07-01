@@ -55,9 +55,11 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
         {product &&
           product.category &&
           product.category.name === "VIP Qurbani" && (
-            <span>
-              Booking: {price && price.gross.currency}{" "}
-              {price && price.gross.amount * 0.2}
+            <span
+              style={{ color: "grey", fontSize: "10px", paddingLeft: "10px" }}
+            >
+              Booking: {price && price.gross.currency}
+              {price && price.gross.amount * 0.25}
             </span>
           )}
       </S.DeskView>

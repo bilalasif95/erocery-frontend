@@ -41,6 +41,7 @@ import { TypedProductVariantsQuery } from "../../views/Product/queries";
 import { useAlert } from "react-alert";
 
 import { extractCartLines } from "../CartProvider/utils";
+
 const MainMenu: React.FC = () => {
   const alert = useAlert();
   const { data: user } = useUserDetails();
@@ -154,11 +155,13 @@ const MainMenu: React.FC = () => {
                                     color: "#fff",
                                     content: "attr(badge)",
                                     fontSize: "11px",
-                                    marginTop: "-10px",
                                     minWidth: "20px",
-                                    padding: "2px",
+                                    padding: "1px 3px",
                                     position: "absolute",
+                                    right: "0",
                                     textAlign: "center",
+                                    textTransform: "capitalize",
+                                    top: "5px",
                                   }}
                                 >
                                   New

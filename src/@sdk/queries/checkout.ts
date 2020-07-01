@@ -4,7 +4,7 @@ import { checkoutFragment } from "../fragments/checkout";
 
 export const checkoutDetails = gql`
   ${checkoutFragment}
-  query CheckoutDetails($token: UUID!) {
+  query CheckoutDetails($token: UUID) {
     checkout(token: $token) {
       ...Checkout
     }

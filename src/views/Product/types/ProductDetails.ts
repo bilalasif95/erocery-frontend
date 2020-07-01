@@ -433,7 +433,6 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_va
   stockQuantity: number;
 }
 
-
 export interface ProductDetails_product_category_products_edges_node {
   __typename: "Product";
   /**
@@ -752,4 +751,8 @@ export interface ProductDetails {
 
 export interface ProductDetailsVariables {
   id: string;
+}
+
+export interface BakraProductDetailsVariables {
+  token: string;
 }

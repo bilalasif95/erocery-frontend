@@ -93,7 +93,7 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
       { ...checkoutData, step: this.getCurrentStep() },
       () => {
         if ("checkout" in checkoutData) {
-          // this.setCheckoutToken();
+          this.setCheckoutToken();
         }
       }
     );
@@ -134,8 +134,8 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
                 loading: false,
                 syncUserCheckout: false,
                 syncWithCart: true,
-              }
-              // this.setCheckoutToken
+              },
+              this.setCheckoutToken
             );
           } else if (!checkout && syncUserCheckout) {
             this.setState({ syncUserCheckout: false });
@@ -160,8 +160,8 @@ class Provider extends React.Component<ProviderProps, ProviderState> {
               onCompleted={({ checkout }) => {
                 if (checkout && !stateCheckout) {
                   this.setState(
-                    { checkout, loading: false }
-                    // this.setCheckoutToken
+                    { checkout, loading: false },
+                    this.setCheckoutToken
                   );
                 }
               }}

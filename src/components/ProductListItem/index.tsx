@@ -75,8 +75,8 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
         <p className="product-list-item__price">{getProductPrice()}</p>
       </div>
       {product.category.name === "VIP Qurbani" && (
-        <span>
-          Booking: {price.gross.currency} {price.gross.amount * 0.2}
+        <span style={{ color: "grey", fontSize: "10px", paddingLeft: "10px" }}>
+          Booking: {price.gross.currency} {price.gross.amount * 0.25}
         </span>
       )}
     </div>

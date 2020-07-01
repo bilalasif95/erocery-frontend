@@ -8,7 +8,7 @@ import { Button, NotFound } from "../../../components";
 import { BASE_URL } from "../../../core/config";
 import { userOrderDetailsUrl } from "../../../userAccount/routes";
 
-type TState = {token: any, id: number};
+type TState = { token: any; id: number };
 
 const View: React.FC<RouteComponentProps> = ({
   history: {
@@ -39,10 +39,10 @@ const View: React.FC<RouteComponentProps> = ({
       </p>
       <div className="order-confirmation__actions">
         <Link to={BASE_URL}>
-          <Button>Continue Shopping</Button>
+          <Button onClick={e => e.preventDefault()}>Continue Shopping</Button>
         </Link>
         <Link to={orderDetailsRef}>
-          <Button>Order Details</Button>
+          <Button onClick={e => e.preventDefault()}>Order Details</Button>
         </Link>
       </div>
     </div>

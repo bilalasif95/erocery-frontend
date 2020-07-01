@@ -9,21 +9,79 @@ export const getTotal = (
   lines: CartLineInterface[],
   locale?: string
 ): string => {
-  lines = lines.filter(line=> variantList && variantList.productVariants && variantList.productVariants.edges.find(({ node: { id } }) => id === line.variantId));
-  localStorage.setItem("cart",JSON.stringify(lines));
+  lines = lines.filter(
+    line =>
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.find(
+        ({ node: { id } }) => id === line.variantId
+      )
+  );
+  localStorage.setItem("cart", JSON.stringify(lines));
   const amount = lines.reduce((sum, { variantId, quantity }) => {
-    const { node } = variantList && variantList.productVariants && variantList.productVariants.edges.find(
-      ({ node: { id } }) => id === variantId
-    );
+    const { node } =
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.find(
+        ({ node: { id } }) => id === variantId
+      );
     return sum + node.pricing.price.gross.amount * quantity;
   }, 0);
-  if(Object.keys(variantList).length !==0){
-  const { currency } = variantList && variantList.productVariants && variantList.productVariants.edges.length === 0 ? {currency: ""} : variantList && variantList.productVariants && variantList.productVariants.edges[0] && variantList.productVariants.edges[0].node.pricing.price.gross;
-  return currency === "" ? "" : priceToString({ amount, currency }, locale);
+  if (Object.keys(variantList).length !== 0) {
+    const { currency } =
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.length === 0
+        ? { currency: "" }
+        : variantList &&
+          variantList.productVariants &&
+          variantList.productVariants.edges[0] &&
+          variantList.productVariants.edges[0].node.pricing.price.gross;
+    return currency === "" ? "" : priceToString({ amount, currency }, locale);
+  } else {
+    const currency = "PKR";
+    return currency;
   }
-  else {
-    const currency = "PKR"
-    return currency
+};
+
+export const getBakraTotal = (
+  variantList: any,
+  lines: CartLineInterface[],
+  locale?: string
+): string => {
+  lines = lines.filter(
+    line =>
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.find(
+        ({ node: { id } }) => id === line.variantId
+      )
+  );
+  // localStorage.setItem("cart", JSON.stringify(lines));
+  const amount = lines.reduce((sum, { variantId, quantity }) => {
+    const { node } =
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.find(
+        ({ node: { id } }) => id === variantId
+      );
+    return sum + node.pricing.price.gross.amount * quantity;
+  }, 0);
+
+  if (Object.keys(variantList).length !== 0) {
+    const { currency } =
+      variantList &&
+      variantList.productVariants &&
+      variantList.productVariants.edges.length === 0
+        ? { currency: "" }
+        : variantList &&
+          variantList.productVariants &&
+          variantList.productVariants.edges[0] &&
+          variantList.productVariants.edges[0].node.pricing.price.gross;
+    return currency === "" ? "" : priceToString({ amount, currency }, locale);
+  } else {
+    const currency = "PKR";
+    return currency;
   }
 };
 
@@ -32,7 +90,9 @@ export const extractCartLines = (
   lines: CartLineInterface[],
   locale?: string
 ): LineI[] =>
-  data && data.productVariants && data.productVariants.edges
+  data &&
+  data.productVariants &&
+  data.productVariants.edges
     .map(({ node }) => {
       const line = lines.find(({ variantId }) => variantId === node.id);
       if (!line) {

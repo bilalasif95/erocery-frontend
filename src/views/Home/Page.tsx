@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 import { useUserDetails } from "@sdk/react";
 // import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
-import { Carousel,ProductsFeatured } from "../../components";
+import { Carousel, ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import { CartContext } from "../../components/CartProvider/context";
+
+import { history } from "../../history";
 
 import {
   ProductsList_categories,
@@ -32,8 +34,9 @@ import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import banner4 from "../../images/banner4.jpg";
+import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
-
+import vipoffermob from "../../images/vipoffermob.png";
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
@@ -64,7 +67,9 @@ const Page: React.FC<{
       name: "banner4",
       url: banner4,
     },
-  ]
+  ];
+
+  const qurbaniPath = { id: "", name: "" };
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">
@@ -72,67 +77,110 @@ const Page: React.FC<{
       </script>
       <div className="product-page__product__mainSlider">
         <Carousel
-        autoplay={true}
-        wrapAround={true}
-        autoplayInterval={5000}
-        renderCenterLeftControls={() => null}
-        renderCenterRightControls={() => null}
-        renderBottomCenterControls={props => {
-          const indexes = [];
+          autoplay={true}
+          wrapAround={true}
+          autoplayInterval={5000}
+          renderCenterLeftControls={() => null}
+          renderCenterRightControls={() => null}
+          renderBottomCenterControls={props => {
+            const indexes = [];
 
-          for (let i = 0; i < props.slideCount; i++) {
-            indexes.push(i);
-          }
+            for (let i = 0; i < props.slideCount; i++) {
+              indexes.push(i);
+            }
 
-          return (
-            <ul className="product-page__product__gallery__nav">
-              {indexes.map(index => (
-                <li
-                  key={index}
-                  onClick={props.goToSlide.bind(null, index)}
-                  className={props.currentSlide === index ? "active" : ""}
-                >
-                  <span />
-                </li>
-              ))}
-            </ul>
-          );
-        }}
-      >
-        {imagesArray.map(image => (
-          <>
-          {/* <div
+            return (
+              <ul className="product-page__product__gallery__nav">
+                {indexes.map(index => (
+                  <li
+                    key={index}
+                    onClick={props.goToSlide.bind(null, index)}
+                    className={props.currentSlide === index ? "active" : ""}
+                  >
+                    <span />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        >
+          {imagesArray.map(image => (
+            <>
+              {/* <div
             className="home-page__hero"
             style={{ backgroundImage: `url(${image.url})` }}
           >
           </div>
           <CachedImage url={image.url || noPhotoImg}> */}
-            <img src={image.url} />
-            {image.name === "banner2" ? 
-              <div className="banner2-links">
-                <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
-                <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
-              </div>
-              : ""
-            }
-            {image.name === "banner4" ? 
-              <div className="appLinks">
-                <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img src={androidStoreImage}></img></a>
-                <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
-              </div>
-              : ""
-            }
-          {/* </CachedImage> */}
-          </>
-        ))}
+              <img src={image.url} />
+              {image.name === "banner2" ? (
+                <div className="banner2-links">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.rns.erocery"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={androidStoreImage}></img>
+                  </a>
+                  <a
+                    href="https://www.apple.com/ios/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={appleStoreImage} />
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
+              {image.name === "banner4" ? (
+                <div className="appLinks">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.rns.erocery"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={androidStoreImage}></img>
+                  </a>
+                  <a
+                    href="https://www.apple.com/ios/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={appleStoreImage} />
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
+              {/* </CachedImage> */}
+            </>
+          ))}
         </Carousel>
+      </div>
+      <div className="home-page__vipImage">
+        <div className="container">
+          <img src={desktopvipoffer} className="deskoffer" />
+          <img src={vipoffermob} className="moboffer" />
+
+          <button
+            className="bookbtn"
+            onClick={() =>
+              history.push(
+                generateCategoryUrl(qurbaniPath.id, qurbaniPath.name)
+              )
+            }
+          >
+            Book Now
+          </button>
+        </div>
       </div>
       {/* <div
         className="home-page__hero"
         style={{ backgroundImage: `url(${bannerimg})` }}
       >
       </div> */}
-        {/* <div className="home-page__hero-text">
+      {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
               <h1>Final reduction</h1>
@@ -144,7 +192,7 @@ const Page: React.FC<{
             </span>
           </div>
         </div> */}
-        {/* <div className="home-page__hero-action">
+      {/* <div className="home-page__hero-action">
           {loading && !categories ? (
             <Loader />
           ) : (
@@ -201,40 +249,49 @@ const Page: React.FC<{
               ))}
             </div> */}
             <div className="home-page__categories__list">
-              {categories.edges.map(({ node: category }) => (
-                <div key={category.id} className="categoryBoxes">
-                  <Link
-                    to={generateCategoryUrl(category.id, category.name)}
-                    key={category.id}
-                  >
-                    <div className="cat-item">
-                      <div className="cat-img">
-                        {/* <img src={category.backgroundImage
+              {categories.edges.map(({ node: category }) => {
+                if (category.name === "VIP Qurbani") {
+                  qurbaniPath.id = category.id;
+                  qurbaniPath.name = category.name;
+                }
+                return (
+                  <div key={category.id} className="categoryBoxes">
+                    <Link
+                      to={generateCategoryUrl(category.id, category.name)}
+                      key={category.id}
+                    >
+                      <div className="cat-item">
+                        <div className="cat-img">
+                          {/* <img src={category.backgroundImage
                             ? category.backgroundImage.url
                             : catNoImg}/> */}
-                        {/* <ReactSVG path={catImg} /> */}
-                        {category.backgroundImage ? (
-                          <img src={category.backgroundImage.url} />
-                        ) : (
-                          <div className="noCatImg">
-                            <p>Photo Unavailable</p>
-                          </div>
-                        )}
+                          {/* <ReactSVG path={catImg} /> */}
+                          {category.backgroundImage ? (
+                            <img src={category.backgroundImage.url} />
+                          ) : (
+                            <div className="noCatImg">
+                              <p>Photo Unavailable</p>
+                            </div>
+                          )}
+                        </div>
+                        <div className="cat-detail">
+                          <h4>{category.name}</h4>
+                          <p>
+                            {
+                              JSON.parse(category.descriptionJson).blocks[0]
+                                .text
+                            }
+                          </p>
+                        </div>
+                        <div className="cat-detail-link">
+                          <span className="colored" />
+                          <span className="trans" />
+                        </div>
                       </div>
-                      <div className="cat-detail">
-                        <h4>{category.name}</h4>
-                        <p>
-                          {JSON.parse(category.descriptionJson).blocks[0].text}
-                        </p>
-                      </div>
-                      <div className="cat-detail-link">
-                        <span className="colored" />
-                        <span className="trans" />
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

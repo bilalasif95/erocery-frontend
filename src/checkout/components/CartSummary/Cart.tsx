@@ -12,6 +12,7 @@ const Cart: React.FC<{
   cart: CartInterface;
   checkout: Checkout | null;
 }> = ({ cart: { lines }, checkout }) => {
+  console.log(checkout, "checkoutcheckoutcheckout");
   return (
     <div className="cart-summary">
       <p className="cart-summary__header">Cart summary</p>
@@ -41,24 +42,24 @@ const Cart: React.FC<{
             <Line key={id} {...variant} quantity={quantity} />
           ))} */}
           <TypedProductVariantsQuery
-          variables={{ ids: lines.map(line => line.variantId) }}
-        >
-          {({ data }) => (
-            <>
-              {data.productVariants.edges.map(({ node }) => (
-                <Line
-                  key={node.id}
-                  {...node}
-                  quantity={
-                    lines.find(({ variantId }) => variantId === node.id)
-                      .quantity
-                  }
-                />
-              ))}
-              {/* <Subtotal checkout={checkout} variants={data} lines={lines} /> */}
-            </>
-          )}
-        </TypedProductVariantsQuery>
+            variables={{ ids: lines.map(line => line.variantId) }}
+          >
+            {({ data }) => (
+              <>
+                {data.productVariants.edges.map(({ node }) => (
+                  <Line
+                    key={node.id}
+                    {...node}
+                    quantity={
+                      lines.find(({ variantId }) => variantId === node.id)
+                        .quantity
+                    }
+                  />
+                ))}
+                {/* <Subtotal checkout={checkout} variants={data} lines={lines} /> */}
+              </>
+            )}
+          </TypedProductVariantsQuery>
           <Subtotal checkout={checkout} lines={lines} />
           {checkout.discount && !!checkout.discount.amount && (
             <div className="cart-summary__totals">

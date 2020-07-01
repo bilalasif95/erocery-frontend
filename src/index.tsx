@@ -168,26 +168,6 @@ const startApp = async () => {
             <SaleorProvider client={apolloClient}>
               <ShopProvider>
                 <OverlayProvider>
-                  <BakraCheckout>
-                    <BakraCheckoutContext.Consumer>
-                      {checkout => (
-                        // <CartProvider
-                        //   checkout={checkout}
-                        //   apolloClient={apolloClient}
-                        // >
-                        <WishlistProvider>
-                          <Switch>
-                            <Route
-                              path={bakracheckoutBaseUrl}
-                              component={BakraCheckoutApp}
-                            />
-                          </Switch>
-                          <Notifications />
-                        </WishlistProvider>
-                        // </CartProvider>
-                      )}
-                    </BakraCheckoutContext.Consumer>
-                  </BakraCheckout>
                   <Checkout>
                     <CheckoutContext.Consumer>
                       {checkout => (
@@ -195,16 +175,26 @@ const startApp = async () => {
                           checkout={checkout}
                           apolloClient={apolloClient}
                         >
-                          <WishlistProvider>
-                            <Switch>
-                              <Route
-                                path={checkoutBaseUrl}
-                                component={CheckoutApp}
-                              />
-                              <Route component={App} />
-                            </Switch>
-                            <Notifications />
-                          </WishlistProvider>
+                          <BakraCheckout>
+                            <BakraCheckoutContext.Consumer>
+                              {bakracheckout => (
+                                <WishlistProvider>
+                                  <Switch>
+                                    <Route
+                                      path={checkoutBaseUrl}
+                                      component={CheckoutApp}
+                                    />
+                                    <Route
+                                      path={bakracheckoutBaseUrl}
+                                      component={BakraCheckoutApp}
+                                    />
+                                    <Route component={App} />
+                                  </Switch>
+                                  <Notifications />
+                                </WishlistProvider>
+                              )}
+                            </BakraCheckoutContext.Consumer>
+                          </BakraCheckout>
                         </CartProvider>
                       )}
                     </CheckoutContext.Consumer>

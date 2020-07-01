@@ -24,7 +24,8 @@ export type LineI = ProductVariant & {
 
 interface ReadProductRowProps {
   mediumScreen: boolean;
-  line: LineI;
+  line: any;
+  deliveryDate: string;
 }
 
 export interface EditableProductRowProps {
@@ -40,6 +41,7 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
   invalid,
   add,
   changeQuantity,
+  deliveryDate,
   mediumScreen,
   processing,
   remove,
@@ -87,7 +89,11 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
         </td>
       )}
 
-      <td>{line.name}</td>
+      {line.product.category.name === "VIP Qurbani" ? (
+        <td>{deliveryDate && deliveryDate.slice(0, 10)}</td>
+      ) : (
+        <td>{line.name}</td>
+      )}
 
       <td className="cart-table__quantity-cell">
         {editable ? quantityChangeControls : <p>{line.quantity}</p>}

@@ -8,7 +8,7 @@ import { Button, NotFound } from "../../../components";
 import { BASE_URL } from "../../../core/config";
 import { userOrderDetailsUrl } from "../../../userAccount/routes";
 
-type TState = {token: any, id: number};
+type TState = { token: any; id: number };
 
 const View: React.FC<RouteComponentProps> = ({
   history: {

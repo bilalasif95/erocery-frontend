@@ -7,7 +7,7 @@ import { guestOrderDetailsUrl } from "../../app/routes";
 import { Button, NotFound } from "../../components";
 import { BASE_URL } from "../../core/config";
 
-type TState = { token: any, id: number };
+type TState = { token: any; id: number };
 
 const View: React.FC<RouteComponentProps> = ({
   history: {
@@ -15,17 +15,17 @@ const View: React.FC<RouteComponentProps> = ({
     replace,
   },
 }) => {
-  React.useEffect(() => {
-    /**
-     * Clear router state on leaving the page to ensure view becames unavailable
-     * after leaving.
-     */
-    return () => {
-      if (state) {
-        replace({ ...location, state: undefined });
-      }
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   /**
+  //    * Clear router state on leaving the page to ensure view becames unavailable
+  //    * after leaving.
+  //    */
+  //   return () => {
+  //     if (state) {
+  //       replace({ ...location, state: undefined });
+  //     }
+  //   };
+  // }, []);
 
   /**
    * Token or id is passed from review page via router state. If it is not

@@ -5,7 +5,7 @@ import { NotFound } from "../components";
 import { OrderDetails } from "./views";
 
 export const baseUrl = "/my-account/";
-export const userOrderDetailsUrl = `${baseUrl}order/:id/`;
+export const userOrderDetailsUrl = `order/:id/`;
 export const orderHistoryUrl = `${baseUrl}order/history/`;
 
 const Routes: React.FC = () => (

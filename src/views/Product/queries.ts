@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 import { TypedQuery } from "../../core/queries";
 import {
+  BakraProductDetailsVariables,
   ProductDetails,
   ProductDetailsVariables,
 } from "./types/ProductDetails";
@@ -35,6 +36,10 @@ export const basicProductFragment = gql`
       id
       name
       stockQuantity
+    }
+    category {
+      id
+      name
     }
   }
 `;
@@ -186,3 +191,27 @@ export const TypedProductVariantsQuery = TypedQuery<
   VariantList,
   VariantListVariables
 >(productVariantsQuery);
+
+export const productBakraVariantsQuery = gql`
+  query Checkout($token: UUID) {
+    checkout(token: $token) {
+      lines {
+        id
+        variant {
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const TypedBakraProductDetailsQuery = TypedQuery<
+  ProductDetails,
+  BakraProductDetailsVariables
+>(productBakraVariantsQuery);

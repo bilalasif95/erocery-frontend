@@ -4,7 +4,7 @@ import { Money } from "@components/containers";
 
 import { Checkout } from "../../../checkout/types/Checkout";
 import { CartLineInterface } from "../../../components/CartProvider/context";
-import { getTotal } from "../../../components/CartProvider/utils";
+import { getBakraTotal } from "../../../components/CartProvider/utils";
 import { ShopContext } from "../../../components/ShopProvider/context";
 import { maybe } from "../../../core/utils";
 import { VariantList } from "../../../views/Product/types/VariantList";
@@ -25,9 +25,9 @@ const Subtotal: React.FC<{
           <h5>Subtotal</h5>
           <h5>
             {checkout ? (
-              <Money money={ checkout.subtotalPrice.gross} />
+              <Money money={checkout.subtotalPrice.gross} />
             ) : (
-              getTotal(variants, lines, locale)
+              getBakraTotal(variants, lines, locale)
             )}
           </h5>
         </div>

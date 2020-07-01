@@ -2,13 +2,16 @@ import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
 export const PRODUCTS_PER_PAGE = 16;
-export const SUPPORT_EMAIL = "support@example.com";
+export const SUPPORT_EMAIL = "contact@erocery.com";
 export const PROVIDERS = {
   BRAINTREE: {
     label: "Braintree",
   },
   DUMMY: {
     label: "Cash On Delivery",
+  },
+  RAZORPAY: {
+    label: "WireTransfer",
   },
   STRIPE: {
     href: "https://js.stripe.com/v3/",

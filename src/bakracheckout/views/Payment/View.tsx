@@ -2,12 +2,12 @@ import * as React from "react";
 import { MutationFn } from "react-apollo";
 import { generatePath, RouteComponentProps } from "react-router";
 
-import { Checkbox } from "@components/atoms";
-import { DiscountForm } from "@components/organisms";
-import {
-  useAddCheckoutPromoCode,
-  useRemoveCheckoutPromoCode,
-} from "@sdk/react";
+// import { Checkbox } from "@components/atoms";
+// import { DiscountForm } from "@components/organisms";
+// import {
+//   useAddCheckoutPromoCode,
+//   useRemoveCheckoutPromoCode,
+// } from "@sdk/react";
 
 import { Checkout_availablePaymentGateways_config } from "../../../checkout/types/Checkout";
 import { Button } from "../../../components";
@@ -20,7 +20,8 @@ import {
 } from "../../context";
 import { reviewUrl } from "../../routes";
 import CreditCard from "./Gateways/Braintree/CreditCard";
-import Dummy from "./Gateways/Dummy";
+// import Dummy from "./Gateways/Dummy";
+import Razorpay from "./Gateways/Razorpay";
 import { Stripe } from "./Gateways/Stripe";
 import { TypedPaymentMethodCreateMutation } from "./queries";
 import "./scss/index.scss";
@@ -48,44 +49,44 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
   const [loadingPayment, setLoadingPayment] = React.useState(false);
   const [selectedGeteway, setSelectedGeteway] = React.useState(null);
-  const [promoCodeFormVisible, setPromoCodeFormVisible] = React.useState(
-    !!checkout.checkout.voucherCode
-  );
+  // const [promoCodeFormVisible, setPromoCodeFormVisible] = React.useState(
+  //   !!checkout.checkout.voucherCode
+  // );
 
   const formRef = React.useRef<HTMLFormElement>(null);
 
-  const [
-    addCheckoutPromoCode,
-    { data: addedPromoCode, error: addedPromoCodeErrors },
-  ] = useAddCheckoutPromoCode();
+  // const [
+  //   addCheckoutPromoCode,
+  //   { data: addedPromoCode, error: addedPromoCodeErrors },
+  // ] = useAddCheckoutPromoCode();
 
-  const [
-    removeCheckoutPromoCode,
-    { data: removedPromoCode, error: removedPromoCodeErrors },
-  ] = useRemoveCheckoutPromoCode();
+  // const [
+  //   removeCheckoutPromoCode,
+  //   { data: removedPromoCode, error: removedPromoCodeErrors },
+  // ] = useRemoveCheckoutPromoCode();
 
-  React.useEffect(() => {
-    const updatedCheckout = addedPromoCode && addedPromoCode.checkout;
+  // React.useEffect(() => {
+  //   const updatedCheckout = addedPromoCode && addedPromoCode.checkout;
 
-    if (updatedCheckout) {
-      checkout.update({
-        checkout: updatedCheckout,
-      });
-    }
-  }, [addedPromoCode]);
+  //   if (updatedCheckout) {
+  //     checkout.update({
+  //       checkout: updatedCheckout,
+  //     });
+  //   }
+  // }, [addedPromoCode]);
 
-  React.useEffect(() => {
-    const updatedCheckout = removedPromoCode && removedPromoCode.checkout;
+  // React.useEffect(() => {
+  //   const updatedCheckout = removedPromoCode && removedPromoCode.checkout;
 
-    if (updatedCheckout) {
-      checkout.update({
-        checkout: updatedCheckout,
-      });
-    }
-  }, [removedPromoCode]);
+  //   if (updatedCheckout) {
+  //     checkout.update({
+  //       checkout: updatedCheckout,
+  //     });
+  //   }
+  // }, [removedPromoCode]);
 
-  const setPromoCodeFormVisibleState = (event: React.SyntheticEvent) =>
-    setPromoCodeFormVisible(prevVisibility => !prevVisibility);
+  // const setPromoCodeFormVisibleState = (event: React.SyntheticEvent) =>
+  //   setPromoCodeFormVisible(prevVisibility => !prevVisibility);
 
   const setLoadingState = (loadingPayment: boolean) =>
     setLoadingPayment(loadingPayment);
@@ -153,48 +154,50 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     }
   };
 
-  const handleApplyDiscount = (
-    checkout: BakraCheckoutContextInterface,
-    discountCode: string
-  ) => {
-    const {
-      checkout: { id },
-    } = checkout;
+  // const handleApplyDiscount = (
+  //   checkout: BakraCheckoutContextInterface,
+  //   discountCode: string
+  // ) => {
+  //   const {
+  //     checkout: { id },
+  //   } = checkout;
 
-    addCheckoutPromoCode({
-      checkoutId: id,
-      promoCode: discountCode,
-    });
-  };
+  //   addCheckoutPromoCode({
+  //     checkoutId: id,
+  //     promoCode: discountCode,
+  //   });
+  // };
 
-  const handleRemovePromoCode = (checkout: BakraCheckoutContextInterface) => {
-    const {
-      checkout: { id, voucherCode },
-    } = checkout;
+  // const handleRemovePromoCode = (checkout: BakraCheckoutContextInterface) => {
+  //   const {
+  //     checkout: { id, voucherCode },
+  //   } = checkout;
 
-    removeCheckoutPromoCode({
-      checkoutId: id,
-      promoCode: voucherCode,
-    });
-  };
+  //   removeCheckoutPromoCode({
+  //     checkoutId: id,
+  //     promoCode: voucherCode,
+  //   });
+  // };
 
-  let discountErrors = [];
+  // let discountErrors = [];
 
-  const addPromoErrors =
-    addedPromoCodeErrors &&
-    addedPromoCodeErrors.extraInfo &&
-    addedPromoCodeErrors.extraInfo.userInputErrors;
-  const removePromoErrors =
-    removedPromoCodeErrors &&
-    removedPromoCodeErrors.extraInfo &&
-    removedPromoCodeErrors.extraInfo.userInputErrors;
+  // const addPromoErrors =
+  //   addedPromoCodeErrors &&
+  //   addedPromoCodeErrors.extraInfo &&
+  //   addedPromoCodeErrors.extraInfo.userInputErrors;
+  // const removePromoErrors =
+  //   removedPromoCodeErrors &&
+  //   removedPromoCodeErrors.extraInfo &&
+  //   removedPromoCodeErrors.extraInfo.userInputErrors;
 
-  if (addPromoErrors) {
-    discountErrors = discountErrors.concat(addPromoErrors);
-  }
-  if (removePromoErrors) {
-    discountErrors = discountErrors.concat(removePromoErrors);
-  }
+  // if (addPromoErrors) {
+  //   discountErrors = discountErrors.concat(addPromoErrors);
+  // }
+  // if (removePromoErrors) {
+  //   discountErrors = discountErrors.concat(removePromoErrors);
+  // }
+
+  let statusReviewBtn = true;
 
   return (
     <CartSummary checkout={checkout.checkout}>
@@ -204,7 +207,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           token={token}
           checkout={checkout.checkout}
         >
-          <Checkbox
+          {/* <Checkbox
             name="promo-code"
             checked={promoCodeFormVisible}
             onChange={setPromoCodeFormVisibleState}
@@ -222,7 +225,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 errors={discountErrors}
               />
             </div>
-          )}
+          )} */}
           <TypedPaymentMethodCreateMutation onCompleted={proceedNext}>
             {(createPaymentMethod, { loading: paymentCreateLoading }) => {
               const { availablePaymentGateways } = checkout.checkout;
@@ -248,11 +251,17 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
               return (
                 <div className="checkout-payment__form">
                   {availablePaymentGateways.map(provider => {
+                    console.log(provider, "prooooooooooo");
                     const providerName = provider.name;
                     const paymentGatewayProps = {
                       ...providerProps,
                       paymentGatewayConfig: provider.config,
                     };
+                    {
+                      optionProps(providerName).selected
+                        ? (statusReviewBtn = false)
+                        : (statusReviewBtn = true);
+                    }
                     switch (providerName) {
                       case PROVIDERS.BRAINTREE.label:
                         return (
@@ -264,16 +273,25 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                           </Option>
                         );
 
-                      case PROVIDERS.DUMMY.label:
+                      // case PROVIDERS.DUMMY.label:
+                      //   return (
+                      //     <Option
+                      //       label="Cash on Delivery"
+                      //       {...optionProps(providerName)}
+                      //     >
+                      //       <Dummy {...paymentGatewayProps} />
+                      //     </Option>
+                      //   );
+
+                      case PROVIDERS.RAZORPAY.label:
                         return (
                           <Option
-                            label="Cash on Delivery"
+                            label="Wire Transfer"
                             {...optionProps(providerName)}
                           >
-                            <Dummy {...paymentGatewayProps} />
+                            <Razorpay {...paymentGatewayProps} />
                           </Option>
                         );
-
                       case PROVIDERS.STRIPE.label:
                         return (
                           <Option label="Stripe" {...optionProps(providerName)}>
@@ -289,7 +307,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     <Button
                       type="submit"
-                      disabled={loading}
+                      disabled={loading || statusReviewBtn}
                       onClick={() => {
                         formRef.current.dispatchEvent(
                           new Event("submit", { cancelable: true })

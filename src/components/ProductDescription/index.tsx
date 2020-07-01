@@ -1,13 +1,20 @@
 import "./scss/index.scss";
 
+import { history } from "../../history";
+
 import isEqual from "lodash/isEqual";
 import * as React from "react";
-import { Link } from "react-router-dom";
+// import { withRouter } from "react-router";
+// import { Link } from "react-router-dom";
 
 import { Button } from "@temp/@next/components/atoms";
 
 import { TextField } from "@components/molecules";
+
+import { OverlayContext, OverlayTheme, OverlayType } from "..";
+
 // import { ProductVariantPicker } from "@components/organisms";
+
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
@@ -17,7 +24,8 @@ import { IProductVariantsAttributesSelectedValues, ITaxedMoney } from "@types";
 
 import { baseUrl as bakracheckoutUrl } from "../../bakracheckout/routes";
 
-import DatePicker from "react-date-picker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { TaxedMoney } from "../../@next/components/containers";
 import { CartContext, CartLine } from "../CartProvider/context";
@@ -61,7 +69,7 @@ class ProductDescription extends React.Component<
     super(props);
 
     this.state = {
-      date: new Date(),
+      date: null,
       error: undefined,
       price: props.pricing.priceRange.start,
       priceUndiscounted: props.pricing.priceRangeUndiscounted.start,
@@ -118,6 +126,10 @@ class ProductDescription extends React.Component<
     // }
   };
 
+  addDays = (minDate, maxDate) => {
+    return minDate + maxDate;
+  };
+
   onVariantPickerChange = (
     _selectedAttributesValues?: IProductVariantsAttributesSelectedValues,
     selectedVariant?: ProductDetails_product_variants
@@ -163,145 +175,190 @@ class ProductDescription extends React.Component<
     const { name } = this.props;
     const { quantity } = this.state;
     return (
-      <div className="product-description">
-        <h3>{name}</h3>
-        <h4>{this.getProductPrice()}</h4>
-        {this.props.category === "VIP Qurbani" && (
-          <h4>
-            Book it now in just {this.state.price.gross.currency}{" "}
-            {this.state.price.gross.amount * 0.2} only
-          </h4>
-        )}
-        {this.props.productVariants.length === 0 ||
-        this.props.productVariants[0].attributes.length === 0 ? (
-          ""
-        ) : (
-          <div className="product-description__variant-picker">
-            <TextField
-              label={
-                this.props.productVariants &&
-                this.props.productVariants[0].attributes[0] &&
-                this.props.productVariants[0].attributes[0].attribute.name
-              }
-              value={
-                this.props.productVariants &&
-                this.props.productVariants[0].attributes[0] &&
-                this.props.productVariants[0].attributes[0].values[0] &&
-                this.props.productVariants[0].attributes[0].values[0].value
-              }
-              readOnly
-            />
-            {/* <ProductVariantPicker
+      <OverlayContext.Consumer>
+        {overlayContext => (
+          <div className="product-description">
+            <h3>{name}</h3>
+            <h4>{this.getProductPrice()}</h4>
+            {this.props.category === "VIP Qurbani" && (
+              <h4>
+                Book it now in just {this.state.price.gross.currency}{" "}
+                {this.state.price.gross.amount * 0.25} only
+              </h4>
+            )}
+            {this.props.productVariants.length === 0 ||
+            this.props.productVariants[0].attributes.length === 0 ? (
+              ""
+            ) : (
+              <div className="product-description__variant-picker">
+                <TextField
+                  label={
+                    this.props.productVariants &&
+                    this.props.productVariants[0].attributes[0] &&
+                    this.props.productVariants[0].attributes[0].attribute.name
+                  }
+                  value={
+                    this.props.productVariants &&
+                    this.props.productVariants[0].attributes[0] &&
+                    this.props.productVariants[0].attributes[0].values[0] &&
+                    this.props.productVariants[0].attributes[0].values[0].value
+                  }
+                  readOnly
+                />
+                {/* <ProductVariantPicker
               productVariants={this.props.productVariants}
               onChange={this.onVariantPickerChange}
               // selectSidebar={true}
             /> */}
-          </div>
-        )}
-        {this.props.category === "VIP Qurbani" ? (
-          <div className="product-description__quantity-input">
-            <TextField
-              name="quantity"
-              errors={this.state.error}
-              type="number"
-              disabled
-              label="Quantity"
-              min="1"
-              value={quantity || ""}
-              onChange={e =>
-                this.setState({ quantity: Math.max(1, Number(e.target.value)) })
-              }
-            />
-          </div>
-        ) : (
-          <div className="product-description__quantity-input">
-            <TextField
-              name="quantity"
-              errors={this.state.error}
-              type="number"
-              label="Quantity"
-              min="1"
-              value={quantity || ""}
-              onChange={e =>
-                this.setState({ quantity: Math.max(1, Number(e.target.value)) })
-              }
-            />
-          </div>
-        )}
-        {this.props.category === "VIP Qurbani" ? (
-          <BakraCheckoutContext.Consumer>
-            {({ update }) => (
-              <TypedCreateBakraCheckoutMutation
-                onCompleted={async ({
-                  CheckoutVipCreate: { checkout, errors },
-                }) => {
-                  if (!errors.length) {
-                    await update({ checkout });
-                    localStorage.setItem("checkoutID", checkout.id);
+              </div>
+            )}
+            {this.props.category === "VIP Qurbani" ? (
+              <div className="product-description__quantity-input">
+                <TextField
+                  name="quantity"
+                  errors={this.state.error}
+                  type="number"
+                  disabled
+                  label="Quantity"
+                  min="1"
+                  value={quantity || ""}
+                  onChange={e =>
+                    this.setState({
+                      quantity: Math.max(1, Number(e.target.value)),
+                    })
                   }
-                  //  onSubmit();
-                }}
-              >
-                {(CheckoutVipCreate, { loading: mutationLoading }) => (
-                  <div>
-                    <DatePicker
-                      onChange={value => this.setState({ date: value })}
-                      value={this.state.date}
-                    />
-                    <Link
-                      to={
-                        window.localStorage.getItem("token")
-                          ? bakracheckoutUrl
-                          : "/login"
+                />
+              </div>
+            ) : (
+              <div className="product-description__quantity-input">
+                <TextField
+                  name="quantity"
+                  errors={this.state.error}
+                  type="number"
+                  label="Quantity"
+                  min="1"
+                  value={quantity || ""}
+                  onChange={e =>
+                    this.setState({
+                      quantity: Math.max(1, Number(e.target.value)),
+                    })
+                  }
+                />
+              </div>
+            )}
+            {this.props.category === "VIP Qurbani" ? (
+              <BakraCheckoutContext.Consumer>
+                {({ update }) => (
+                  <TypedCreateBakraCheckoutMutation
+                    onCompleted={async ({
+                      CheckoutVipCreate: { checkout, errors },
+                    }) => {
+                      if (!errors.length) {
+                        await update({ checkout });
+                        const tempObj = [
+                          {
+                            quantity: checkout.lines[0].quantity,
+                            variantId: checkout.lines[0].variant.id,
+                          },
+                        ];
+                        localStorage.setItem(
+                          "bakraLines",
+                          JSON.stringify(tempObj)
+                        );
+                        localStorage.setItem("checkoutID", checkout.id);
+                        localStorage.setItem(
+                          "bakraCheckoutToken",
+                          JSON.stringify(checkout.token)
+                        );
                       }
-                      className="btnLink"
-                    >
-                      <Button
-                        className="buyButton"
-                        onClick={() => {
-                          CheckoutVipCreate({
-                            variables: {
-                              checkoutInput: {
-                                lines: [
-                                  {
-                                    quantity: this.state.quantity,
-                                    variantId: this.props.productVariants[0].id,
-                                  },
-                                ],
-                                shippingDate: this.state.date,
-                              },
-                            },
-                          });
-                        }}
-                      >
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
+                      //  onSubmit();
+                    }}
+                  >
+                    {(CheckoutVipCreate, { loading: mutationLoading }) => (
+                      <div>
+                        <DatePicker
+                          selected={this.state.date}
+                          onChange={date => this.setState({ date })}
+                          className="datepicker"
+                          minDate={new Date("23 July 2020")}
+                          maxDate={new Date("30 July 2020")}
+                          placeholderText="Select Delivery Date"
+                          dateFormat="MMMM d, yyyy"
+                        />
+                        {/* <Link
+                          to={
+                            window.localStorage.getItem("token")
+                              ? bakracheckoutUrl
+                              : "/login"
+                          }
+                          className="btnLink"
+                        > */}
+                        <Button
+                          className="buyButton"
+                          style={{ width: "100%" }}
+                          disabled={this.state.date === null}
+                          onClick={
+                            window.localStorage.getItem("token") === null
+                              ? () => {
+                                  overlayContext.show(
+                                    OverlayType.login,
+                                    OverlayTheme.right
+                                  );
+                                }
+                              : () => {
+                                  CheckoutVipCreate({
+                                    variables: {
+                                      checkoutInput: {
+                                        lines: [
+                                          {
+                                            quantity: this.state.quantity,
+                                            variantId: this.props
+                                              .productVariants[0].id,
+                                          },
+                                        ],
+                                        shippingDate: this.state.date,
+                                      },
+                                    },
+                                  })
+                                    .then(response => {
+                                      history.push(bakracheckoutUrl);
+                                    })
+                                    .catch(error => {
+                                      console.log("");
+                                    });
+                                }
+                          }
+                        >
+                          Book Now
+                        </Button>
+                        {/* </Link> */}
+                      </div>
+                    )}
+                  </TypedCreateBakraCheckoutMutation>
                 )}
-              </TypedCreateBakraCheckoutMutation>
+              </BakraCheckoutContext.Consumer>
+            ) : (
+              <CartContext.Consumer>
+                {({ lines }) => (
+                  <AddToCart
+                    onSubmit={this.handleSubmit}
+                    lines={lines}
+                    disabled={
+                      !this.canAddToCart(lines) ||
+                      this.props.productVariants.length === 0
+                    }
+                    error={this.state.error}
+                    typeCart={true}
+                  />
+                )}
+              </CartContext.Consumer>
             )}
-          </BakraCheckoutContext.Consumer>
-        ) : (
-          <CartContext.Consumer>
-            {({ lines }) => (
-              <AddToCart
-                onSubmit={this.handleSubmit}
-                lines={lines}
-                disabled={
-                  !this.canAddToCart(lines) ||
-                  this.props.productVariants.length === 0
-                }
-                error={this.state.error}
-                typeCart={true}
-              />
-            )}
-          </CartContext.Consumer>
+            <div className="product-description__add-to-wishlist">
+              <AddToWishlist productId={this.props.productId} />
+            </div>
+          </div>
         )}
-        <div className="product-description__add-to-wishlist">
-          <AddToWishlist productId={this.props.productId} />
-        </div>
-      </div>
+      </OverlayContext.Consumer>
     );
   }
 }

@@ -10,12 +10,19 @@
     background-color: #999999;
     width: 150px !important;
   }
-  @media(max-width: $small-screen){
+  @media (max-width: $small-screen) {
     margin-top: 1rem;
   }
 }
 
-.btnLink{
+.datepicker {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  font-size: 18px;
+}
+
+.btnLink {
   width: 150px;
 }
 .product-description {
@@ -30,13 +37,13 @@
     margin-bottom: $spacer;
   }
 
-  @media(max-width: $small-screen){
+  @media (max-width: $small-screen) {
     h3 {
       font-weight: normal;
       margin-bottom: 0;
       font-size: 16px;
     }
-  
+
     h4 {
       font-weight: normal;
       margin-bottom: 0;
@@ -64,8 +71,6 @@
     }
   }
 
-
-
   &__undiscounted_price {
     text-decoration: line-through;
     color: $gray;
@@ -78,12 +83,12 @@
     border-radius: 7px;
     padding: 0.9rem 0.2rem !important;
     width: 50%;
-    background-color: #F43C3C !important;
+    background-color: #f43c3c !important;
 
     &--fade {
       $animation-speed: 200ms;
       background-color: grey !important;
-      
+
       &:active {
         background-color: grey !important;
       }
@@ -149,7 +154,7 @@
   &__quantity-input {
     margin-top: 20px;
     padding-top: 20px;
-    @media(max-width: $small-screen){
+    @media (max-width: $small-screen) {
       margin-top: 10px;
       padding-top: 0;
     }

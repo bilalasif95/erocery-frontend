@@ -115,6 +115,7 @@ export const checkoutFragment = gql`
       }
     }
     token
+    deliveryDate
     id
     totalPrice {
       ...Price

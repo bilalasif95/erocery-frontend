@@ -13,7 +13,8 @@ import { Button, CartTable } from "../../../components";
 import { CartContext } from "../../../components/CartProvider/context";
 import {
   extractCartLines,
-  getTotal,
+  getBakraTotal,
+  // getTotal,
 } from "../../../components/CartProvider/utils";
 import { BakraCheckoutContext } from "../../context";
 import { paymentUrl } from "../../routes";
@@ -71,6 +72,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
   const discountExists = checkout.discount && !!checkout.discount.amount;
   const locale = maybe(() => "PK", "PK");
+  const bakraLines = JSON.parse(localStorage.getItem("bakraLines"));
   return (
     <>
       <div className="checkout-review">
@@ -91,18 +93,38 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
             {cart => (
               <TypedProductVariantsQuery
                 variables={{
-                  ids: cart.lines.map(line => line.variantId),
+                  ids: bakraLines.map(line => line.variantId),
                 }}
               >
                 {({ data }) => (
                   <CartTable
-                    lines={extractCartLines(data, cart.lines, locale)}
+                    lines={extractCartLines(data, bakraLines, locale)}
                     // subtotal={<TaxedMoney taxedMoney={checkout.subtotalPrice} />}
-                    subtotal={getTotal(data, cart.lines, locale)}
+                    subtotal={getBakraTotal(data, bakraLines, locale)}
                     deliveryCost={
                       <Money
                         defaultValue="0"
                         money={checkout.shippingMethod?.price}
+                      />
+                    }
+                    payCost={
+                      <Money
+                        defaultValue="0"
+                        money={{
+                          amount: checkout.totalPrice.gross.amount * 0.25,
+                          currency: checkout.totalPrice.gross.currency,
+                        }}
+                      />
+                    }
+                    balanceCost={
+                      <Money
+                        defaultValue="0"
+                        money={{
+                          amount:
+                            checkout.totalPrice.gross.amount -
+                            checkout.totalPrice.gross.amount * 0.25,
+                          currency: checkout.totalPrice.gross.currency,
+                        }}
                       />
                     }
                     // totalCost={getTotal(data, cart.lines, locale)}
@@ -114,7 +136,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                         </>
                       )
                     }
-                    discountName={checkout.discountName}
+                    discountName={checkout}
                   />
                 )}
               </TypedProductVariantsQuery>

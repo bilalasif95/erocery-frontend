@@ -16,18 +16,18 @@
     @media (max-width: 424px) {
       flex-basis: 15%;
     }
-    .cats{
-      margin-left:0.5rem;
+    .cats {
+      margin-left: 0.5rem;
     }
     .accountcss {
       display: flex;
     }
-.accountpara {
+    .accountpara {
       padding: 5px 0 0 5px;
     }
     @media (max-width: 480px) {
       .accountpara {
-        display:none;
+        display: none;
       }
     }
     ul {
@@ -39,7 +39,7 @@
 
     .menu-dropdown {
       position: relative;
-    
+
       &__body {
         display: none;
         position: absolute;
@@ -49,20 +49,20 @@
         background-color: $white;
         padding: 0;
         width: 15rem;
-    
+
         &--visible {
           display: block;
           z-index: 2;
         }
-    
+
         ul {
           display: flex;
           flex-direction: column;
           font-style: normal;
           font-weight: normal;
-    
+
           align-items: flex-start;
-    
+
           li {
             width: 100%;
             line-height: 2rem;
@@ -71,13 +71,10 @@
         }
       }
     }
-    
-
   }
   &__right {
     flex-basis: calc(50% - 2rem);
-    
-    
+
     .accountcss {
       display: flex;
     }
@@ -86,7 +83,7 @@
     }
     @media (max-width: 480px) {
       .accountpara {
-        display:none;
+        display: none;
       }
     }
 
@@ -107,7 +104,7 @@
 
     .menu-dropdown {
       position: relative;
-    
+
       &__body {
         display: none;
         position: absolute;
@@ -117,20 +114,20 @@
         background-color: $white;
         padding: 0;
         width: 15rem;
-    
+
         &--visible {
           display: block;
           z-index: 2;
         }
-    
+
         ul {
           display: flex;
           flex-direction: column;
           font-style: normal;
           font-weight: normal;
-    
+
           align-items: flex-start;
-    
+
           li {
             width: 100%;
             line-height: 2rem;
@@ -139,8 +136,6 @@
         }
       }
     }
-    
-
   }
 
   &__center {
@@ -148,29 +143,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-      .logoImg{
-        padding: 0.5rem 0.5rem 0.2rem;
-      }
-  }
-  @media(max-width: 767px){
-    &__center {
-    width: 35%;
+    .logoImg {
+      padding: 0.5rem 0.5rem 0.2rem;
     }
   }
-  @media(max-width: 480px){
+  @media (max-width: 767px) {
     &__center {
-    width: 45%;
+      width: 35%;
     }
   }
-  @media(max-width: 424px){
+  @media (max-width: 480px) {
     &__center {
-    width: 50%;
+      width: 45%;
+    }
+  }
+  @media (max-width: 424px) {
+    &__center {
+      width: 50%;
     }
   }
   &__item {
     font-weight: $bold-font-weight;
     height: 100%;
     text-transform: uppercase;
+    position: relative;
 
     a {
       text-decoration: none;
@@ -208,22 +204,22 @@
     svg {
       vertical-align: bottom;
       path {
-        fill: #5fbe43
+        fill: #5fbe43;
       }
     }
   }
-  @media(max-width:424px){
+  @media (max-width: 424px) {
     &__hamburger {
       width: 50px;
     }
   }
 
-  &__item{
+  &__item {
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media(max-width:992px){
+    @media (max-width: 992px) {
       display: none;
     }
   }
@@ -277,7 +273,7 @@
       vertical-align: bottom;
     }
   }
-  @media(max-width:424px){
+  @media (max-width: 424px) {
     &__icon {
       padding: 0 1rem 0 0;
     }
@@ -479,36 +475,33 @@
     border-bottom: 1px solid $gray-light;
   }
 }
-@media(max-width:414px){
+@media (max-width: 414px) {
   .main-menu {
     height: auto !important;
     flex-wrap: wrap;
   }
 }
 
-  header{
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-  }
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
 
-  ::-webkit-scrollbar {
-    width: 4px;
+::-webkit-scrollbar {
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track-piece:vertical {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-    background: #3a444d;
-    min-height: 150px;
-    min-width: 150px;
+  background: #3a444d;
+  min-height: 150px;
+  min-width: 150px;
 }
 
 ::-webkit-scrollbar-thumb:vertical:hover {
-    background: #555555
+  background: #555555;
 }
-
-
-
