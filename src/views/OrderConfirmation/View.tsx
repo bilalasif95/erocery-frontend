@@ -15,17 +15,17 @@ const View: React.FC<RouteComponentProps> = ({
     replace,
   },
 }) => {
-  React.useEffect(() => {
-    /**
-     * Clear router state on leaving the page to ensure view becames unavailable
-     * after leaving.
-     */
-    return () => {
-      if (state) {
-        replace({ ...location, state: undefined });
-      }
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   /**
+  //    * Clear router state on leaving the page to ensure view becames unavailable
+  //    * after leaving.
+  //    */
+  //   return () => {
+  //     if (state) {
+  //       replace({ ...location, state: undefined });
+  //     }
+  //   };
+  // }, []);
 
   /**
    * Token or id is passed from review page via router state. If it is not
