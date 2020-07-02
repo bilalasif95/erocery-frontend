@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Money } from "@components/containers";
 import JazzCash from "../Payment/Gateways/JazzCash";
 
-import { orderConfirmationUrl } from "../../../app/routes";
+// import { orderConfirmationUrl } from "../../../app/routes";
 import { Button, CartTable } from "../../../components";
 import { CartContext } from "../../../components/CartProvider/context";
 import {
@@ -29,6 +29,28 @@ import { maybe } from "../../../core/utils";
 
 import { TypedProductVariantsQuery } from "../../../views/Product/queries";
 
+function formatDate(days = 0) {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return (
+    date.getFullYear() +
+    "" +
+    (date.getMonth() + 1 >= 10
+      ? date.getMonth() + 1
+      : "0" + "" + (date.getMonth() + 1)) +
+    "" +
+    (date.getDate() >= 10 ? date.getDate() : "0" + "" + date.getDate()) +
+    "" +
+    (date.getHours() >= 10 ? date.getHours() : "0" + "" + date.getHours()) +
+    "" +
+    (date.getMinutes() >= 10
+      ? date.getMinutes()
+      : "0" + "" + date.getMinutes()) +
+    "" +
+    date.getSeconds()
+  );
+}
+
 const completeCheckout = (
   data: completeCheckout,
   history: History,
@@ -39,11 +61,11 @@ const completeCheckout = (
   const canProceed = !data.checkoutComplete.errors.length;
 
   if (canProceed) {
-    const { token } = data.checkoutComplete.order;
-    history.push({
-      pathname: orderConfirmationUrl,
-      state: { token },
-    });
+    // const { token } = data.checkoutComplete.order;
+    // history.push({
+    //   pathname: orderConfirmationUrl,
+    //   state: { token },
+    // });
     clearCheckout();
     clearCart();
   } else {
@@ -76,6 +98,61 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const discountExists = checkout.discount && !!checkout.discount.amount;
   const locale = maybe(() => "PK", "PK");
   const bakraLines = JSON.parse(localStorage.getItem("bakraLines"));
+
+  const HashKey = "h50t0u7wex";
+  let SortedArray = HashKey;
+
+  const Amount = checkout.totalPrice.gross.amount * 0.25 * 100;
+  const BillReference = "123";
+  const Description = "Thank you for using Jazz Cash";
+  const DiscountedAmount = "";
+  const DiscountedBank = "";
+  const Language = "EN";
+  const MerchantID = "MC10199";
+  const Password = "0sz36zs8cu";
+  const ReturnURL = "http://192.168.100.132:8000/jazzcash/";
+  const TxnCurrency = "PKR";
+  const TxnDateTime: any = formatDate();
+  const TxnExpiryDateTime: any = formatDate(8);
+  const TxnRefNumber: any = "T".concat(formatDate());
+  const Version = "1.1";
+  const TxnType = "";
+  const PPMPF_1 = checkout.token;
+  const PPMPF_2 = "";
+  const PPMPF_3 = "";
+  const PPMPF_4 = "";
+  const PPMPF_5 = "";
+  const PostURL =
+    "https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform";
+
+  const HashArray = [
+    Amount,
+    BillReference,
+    Description,
+    DiscountedAmount,
+    DiscountedBank,
+    Language,
+    MerchantID,
+    Password,
+    ReturnURL,
+    TxnCurrency,
+    TxnDateTime,
+    TxnExpiryDateTime,
+    TxnRefNumber,
+    TxnType,
+    Version,
+    PPMPF_1,
+    PPMPF_2,
+    PPMPF_3,
+    PPMPF_4,
+    PPMPF_5,
+  ];
+
+  for (const hash of HashArray) {
+    if (hash !== undefined && hash !== null && hash !== "") {
+      SortedArray += "&" + hash;
+    }
+  }
 
   return (
     <>
@@ -169,15 +246,29 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 {(completeCheckout, { loading }) => (
                   <div>
                     {dummyStatus === "JazzCash" ? (
-                      <JazzCash
-                        completeCheckout={() =>
-                          completeCheckout({
-                            variables: {
-                              checkoutId: checkout.id,
-                            },
-                          })
-                        }
-                      />
+                      <div>
+                        <p style={{ color: "red", paddingBottom: "10px" }}>
+                          Note: You will be redirected to JazzCash portal after
+                          placing your order. Please, have your Mobile Account
+                          Number/Card Number and CNIC ready.
+                        </p>
+                        <JazzCash
+                          completeCheckout={() =>
+                            completeCheckout({
+                              variables: {
+                                checkoutId: checkout.id,
+                              },
+                            })
+                          }
+                          paymentAmount={
+                            checkout && checkout.totalPrice.gross.amount
+                          }
+                          hashArr={HashArray}
+                          hashKey={HashKey}
+                          sortedArray={SortedArray}
+                          postUrl={PostURL}
+                        />
+                      </div>
                     ) : (
                       <Button
                         type="submit"

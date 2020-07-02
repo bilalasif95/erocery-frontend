@@ -174,6 +174,28 @@ class ProductDescription extends React.Component<
   render() {
     const { name } = this.props;
     const { quantity } = this.state;
+
+    const ExampleCustomInput = ({ value, onClick }) => (
+      <button className="datepick" onClick={onClick}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="#bdbdbd"
+            d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zm-12 6h-4v4h4v-4zm6 0h-4v4h4v-4zm-6-6h-4v4h4v-4zm16-8v22h-24v-22h3v1c0 1.103.897 2 2 2s2-.897 2-2v-1h10v1c0 1.103.897 2 2 2s2-.897 2-2v-1h3zm-2 6h-20v14h20v-14zm-2-7c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-14 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2z"
+          />
+        </svg>
+        {value === "" ? (
+          <span className="selectdate">Select Delivery Date</span>
+        ) : (
+          <span className="selectedate">{value}</span>
+        )}
+      </button>
+    );
+
     return (
       <OverlayContext.Consumer>
         {overlayContext => (
@@ -275,16 +297,34 @@ class ProductDescription extends React.Component<
                     }}
                   >
                     {(CheckoutVipCreate, { loading: mutationLoading }) => (
-                      <div>
-                        <DatePicker
-                          selected={this.state.date}
-                          onChange={date => this.setState({ date })}
-                          className="datepicker"
-                          minDate={new Date("23 July 2020")}
-                          maxDate={new Date("30 July 2020")}
-                          placeholderText="Select Delivery Date"
-                          dateFormat="MMMM d, yyyy"
-                        />
+                      <div className="bookBtn">
+                        <div className="datepick">
+                          <DatePicker
+                            selected={this.state.date}
+                            onChange={date => this.setState({ date })}
+                            customInput={
+                              <ExampleCustomInput
+                                value={"Select Delivery Date"}
+                                onClick={date => this.setState({ date })}
+                              />
+                            }
+                            // className="datepicker"
+                            minDate={new Date("23 July 2020")}
+                            maxDate={new Date("30 July 2020")}
+                            placeholderText="Select Delivery Date"
+                            dateFormat="MMMM d, yyyy"
+                          />
+                          {/* <DatePicker
+                            selected={this.state.date}
+                            onChange={date => this.setState({ date })}
+                            className="datepicker"
+                            minDate={new Date("23 July 2020")}
+                            maxDate={new Date("30 July 2020")}
+                            placeholderText="Select Delivery Date"
+                            dateFormat="MMMM d, yyyy"
+                          /> */}
+                        </div>
+
                         {/* <Link
                           to={
                             window.localStorage.getItem("token")
@@ -294,7 +334,6 @@ class ProductDescription extends React.Component<
                           className="btnLink"
                         > */}
                         <Button
-                          className="buyButton"
                           style={{ width: "100%" }}
                           disabled={this.state.date === null}
                           onClick={

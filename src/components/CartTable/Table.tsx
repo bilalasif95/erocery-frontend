@@ -29,7 +29,7 @@ const Table: React.FC<TableProps> = ({
   payCost,
   ...rowProps
 }) => {
-  const [VIPQurbaniCategory, setVIPQurbaniCategory] = React.useState("");
+  const [VIPQurbaniCategory, setVIPQurbaniCategory] = React.useState(null);
 
   return (
     <Media query={{ minWidth: smallScreen }}>
@@ -39,10 +39,10 @@ const Table: React.FC<TableProps> = ({
             <tr>
               <th>Products</th>
               {mediumScreen && <th>Price</th>}
-              {VIPQurbaniCategory === "VIP Qurbani" ? (
-                <th>Delivery Date</th>
-              ) : (
+              {VIPQurbaniCategory !== "VIP Qurbani" ? (
                 <th>Size</th>
+              ) : (
+                <th>Delivery Date</th>
               )}
               <th className="cart-table__quantity-header">Quantity</th>
               <th colSpan={2}>{mediumScreen ? "Total Price" : "Price"}</th>
@@ -50,7 +50,7 @@ const Table: React.FC<TableProps> = ({
           </thead>
           <tbody>
             {lines.map(line => {
-              setVIPQurbaniCategory(line.product.name);
+              setVIPQurbaniCategory(line.product.category.name);
               return (
                 <ProductRow
                   key={line.id}

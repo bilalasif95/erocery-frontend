@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { TaxedMoney } from "@components/containers";
+import { Money, TaxedMoney } from "@components/containers";
 
 import { AddressSummary, CartTable, NotFound } from "../../../components";
 import { LineI } from "../../../components/CartTable/ProductRow";
@@ -57,6 +57,27 @@ const Page: React.FC<{
         totalCost={<TaxedMoney taxedMoney={order.total} />}
         deliveryCost={<TaxedMoney taxedMoney={order.shippingPrice} />}
         subtotal={<TaxedMoney taxedMoney={order.subtotal} />}
+        discountName={{ deliveryDate: order.deliveryDate }}
+        payCost={
+          <Money
+            defaultValue="0"
+            money={{
+              amount: order.subtotal.gross.amount * 0.25,
+              currency: order.subtotal.gross.currency,
+            }}
+          />
+        }
+        balanceCost={
+          <Money
+            defaultValue="0"
+            money={{
+              amount:
+                order.subtotal.gross.amount -
+                order.subtotal.gross.amount * 0.25,
+              currency: order.subtotal.gross.currency,
+            }}
+          />
+        }
       />
       <div className="order-details__summary">
         <div>

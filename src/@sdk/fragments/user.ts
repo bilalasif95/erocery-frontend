@@ -24,6 +24,7 @@ export const orderDetailFragment = gql`
   ${checkoutProductVariantFragment}
   fragment OrderDetail on Order {
     userEmail
+    deliveryDate
     paymentStatus
     paymentStatusDisplay
     status

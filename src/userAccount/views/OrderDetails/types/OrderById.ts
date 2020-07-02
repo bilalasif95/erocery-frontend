@@ -2,7 +2,10 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { PaymentChargeStatusEnum, OrderStatus } from "./../../../../../types/globalTypes";
+import {
+  PaymentChargeStatusEnum,
+  OrderStatus,
+} from "./../../../../../types/globalTypes";
 
 // ====================================================
 // GraphQL query operation: OrderById
@@ -348,6 +351,7 @@ export interface OrderById_order {
    * Email address of the customer.
    */
   userEmail: string | null;
+  deliveryDate: string | null;
   /**
    * Internal payment status.
    */

@@ -16,7 +16,7 @@ class JazzCash extends React.PureComponent<
     { token: "not-charged", label: "Not charged" },
   ];
   state = {
-    selectedStatus: this.statuses[0],
+    selectedStatus: this.statuses[2],
   };
 
   render() {

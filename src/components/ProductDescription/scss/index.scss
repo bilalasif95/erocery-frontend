@@ -14,12 +14,53 @@
     margin-top: 1rem;
   }
 }
-
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.datepick {
+  height: 46px;
+  width: 100%;
+  text-align: left;
+  color: #000 !important;
+  background: #fff !important;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 0 0.5rem;
+  .selectdate {
+    color: #bdbdbd !important;
+    background: #fff !important;
+    font-size: 16px;
+    margin: 0 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .selectedate {
+    color: #000 !important;
+    background: #fff !important;
+    font-size: 16px;
+    margin: 0 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
 .datepicker {
   width: 100%;
   padding: 10px 0;
   border: none;
   font-size: 18px;
+  text-transform: uppercase;
+}
+.datepicker:focus {
+  outline: none;
+}
+
+.bookBtn button {
+  background: #eb4c3b;
+  width: 100%;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .btnLink {

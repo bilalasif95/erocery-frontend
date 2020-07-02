@@ -14,6 +14,8 @@ import { CollectionPage } from "../../views/Collection";
 
 import Delivery from "../../views/FooterPages/Delivery";
 import HowToOrder from "../../views/FooterPages/How-To-Order";
+import PaymentError from "../../views/FooterPages/PaymentError";
+import PaymentSuccess from "../../views/FooterPages/PaymentSuccess";
 import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";
 import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
 import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
@@ -52,6 +54,8 @@ export const Routes: React.FC = () => (
     <Route path={paths.deliveryUrl} component={Delivery} />
     <Route path={paths.termsAndConditionsUrl} component={TermsAndConditions} />
     <Route path={paths.privacyPolicyUrl} component={PrivacyPolicy} />
+    <Route path={paths.paymentSuccessUrl} component={PaymentSuccess} />
+    <Route path={paths.paymentErrorUrl} component={PaymentError} />
     <Route component={NotFound} />
     {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
   </Switch>
