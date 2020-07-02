@@ -25,7 +25,9 @@ const AddressBook: React.FC<{
 
     addressToDisplay.onEdit = () => {
       setDisplayEditModal(true);
-      address.phone = address.phone.slice(2)
+      if(address.phone.length > 9){
+        address.phone = address.phone.slice(2)
+      }
       setAddressData({
         address,
         id: address.id,
