@@ -8,10 +8,11 @@ import { generatePath, RouteComponentProps } from "react-router";
 //   useAddCheckoutPromoCode,
 //   useRemoveCheckoutPromoCode,
 // } from "@sdk/react";
-
 import { Checkout_availablePaymentGateways_config } from "../../../checkout/types/Checkout";
+
 import { Button } from "../../../components";
 import { PROVIDERS } from "../../../core/config";
+
 import { CartSummary, Option, Steps } from "../../components";
 import {
   BakraCheckoutContext,
@@ -21,6 +22,7 @@ import {
 import { reviewUrl } from "../../routes";
 import CreditCard from "./Gateways/Braintree/CreditCard";
 // import Dummy from "./Gateways/Dummy";
+import JazzCash from "./Gateways/JazzCashDum";
 import Razorpay from "./Gateways/Razorpay";
 import { Stripe } from "./Gateways/Stripe";
 import { TypedPaymentMethodCreateMutation } from "./queries";
@@ -197,7 +199,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   //   discountErrors = discountErrors.concat(removePromoErrors);
   // }
 
-  let statusReviewBtn = true;
+  // let statusReviewBtn = true;
 
   return (
     <CartSummary checkout={checkout.checkout}>
@@ -251,17 +253,17 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
               return (
                 <div className="checkout-payment__form">
                   {availablePaymentGateways.map(provider => {
-                    console.log(provider, "prooooooooooo");
                     const providerName = provider.name;
+
                     const paymentGatewayProps = {
                       ...providerProps,
                       paymentGatewayConfig: provider.config,
                     };
-                    {
-                      optionProps(providerName).selected
-                        ? (statusReviewBtn = false)
-                        : (statusReviewBtn = true);
-                    }
+                    // {
+                    //   optionProps(providerName).selected
+                    //     ? (statusReviewBtn = false)
+                    //     : (statusReviewBtn = true);
+                    // }
                     switch (providerName) {
                       case PROVIDERS.BRAINTREE.label:
                         return (
@@ -292,6 +294,15 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                             <Razorpay {...paymentGatewayProps} />
                           </Option>
                         );
+                      case PROVIDERS.JAZZCASH.label:
+                        return (
+                          <Option
+                            label="Jazz Cash"
+                            {...optionProps(providerName)}
+                          >
+                            <JazzCash {...paymentGatewayProps} />
+                          </Option>
+                        );
                       case PROVIDERS.STRIPE.label:
                         return (
                           <Option label="Stripe" {...optionProps(providerName)}>
@@ -303,11 +314,13 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                         );
                     }
                   })}
-
                   <div>
                     <Button
                       type="submit"
-                      disabled={loading || statusReviewBtn}
+                      disabled={
+                        loading
+                        // || statusReviewBtn
+                      }
                       onClick={() => {
                         formRef.current.dispatchEvent(
                           new Event("submit", { cancelable: true })

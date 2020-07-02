@@ -12,7 +12,6 @@ const Cart: React.FC<{
   cart: CartInterface;
   checkout: Checkout | null;
 }> = ({ cart: { lines }, checkout }) => {
-  console.log(checkout, "checkoutcheckoutcheckout");
   return (
     <div className="cart-summary">
       <p className="cart-summary__header">Cart summary</p>

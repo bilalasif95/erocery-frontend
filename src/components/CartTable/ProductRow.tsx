@@ -65,7 +65,6 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
       />
     </div>
   );
-
   return (
     <tr
       className={classNames({
@@ -100,7 +99,19 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
       </td>
 
       <td colSpan={editable ? 1 : 2}>
-        <TaxedMoney taxedMoney={line.totalPrice} />
+        {/* {line.pricing.price.gross.currency} {line.pricing.price.gross.amount * line.quantity} */}
+        <TaxedMoney
+          taxedMoney={{
+            gross: {
+              amount: line.pricing.price.gross.amount * line.quantity,
+              currency: line.pricing.price.gross.currency,
+            },
+            net: {
+              amount: line.pricing.price.net.amount,
+              currency: line.pricing.price.net.currency,
+            },
+          }}
+        />
       </td>
 
       {editable && (

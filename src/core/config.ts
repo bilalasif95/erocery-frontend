@@ -10,6 +10,9 @@ export const PROVIDERS = {
   DUMMY: {
     label: "Cash On Delivery",
   },
+  JAZZCASH: {
+    label: "JazzCash",
+  },
   RAZORPAY: {
     label: "WireTransfer",
   },
@@ -18,6 +21,7 @@ export const PROVIDERS = {
     label: "Stripe",
   },
 };
+
 export const STATIC_PAGES = [
   {
     label: "About",
@@ -54,7 +58,7 @@ export const SOCIAL_MEDIA = [
 export const META_DEFAULTS = {
   custom: [],
   description:
-    "Open-source PWA storefront built with Erocery's e-commerce GraphQL API. Written with React and TypeScript.",
+    "Erocery is an Online Grocery Store in Rawalpindi/Islamabad. Delivering orders same day with free home delivery. Order now to get 3% off.",
   image: `${window.location.origin}${require("../images/erocery_logo.svg")}`,
   title: "Products – Erocery Commerce",
   type: "website",

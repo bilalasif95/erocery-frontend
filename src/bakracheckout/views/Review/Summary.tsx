@@ -86,12 +86,20 @@ class Summary extends React.PureComponent<{
               `Ending in ${cardData.lastDigits}`
             ) : (
               <div>
-                <h2>Wire Transfer</h2>
-                <p>Account Title:{dummyStatus.accountTitle}</p>
-                <p>Account No.:{dummyStatus.accountName}</p>
-                <p>Bank Name:{dummyStatus.bankName}</p>
-                <p>IBAN:{dummyStatus.branchCode}</p>
-                <p>Branch Code:{dummyStatus.mobileno}</p>
+                {dummyStatus === "JazzCash" ? (
+                  <div>
+                    <h2>Jazz Cash</h2>
+                  </div>
+                ) : (
+                  <div>
+                    <h2>Wire Transfer</h2>
+                    <p>Account Title:{dummyStatus.accountTitle}</p>
+                    <p>Account No.:{dummyStatus.accountName}</p>
+                    <p>Bank Name:{dummyStatus.bankName}</p>
+                    <p>IBAN:{dummyStatus.branchCode}</p>
+                    <p>Branch Code:{dummyStatus.mobileno}</p>
+                  </div>
+                )}
               </div>
             )}
           </p>

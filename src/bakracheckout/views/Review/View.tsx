@@ -7,6 +7,7 @@ import { generatePath, RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 
 import { Money } from "@components/containers";
+import JazzCash from "../Payment/Gateways/JazzCash";
 
 import { orderConfirmationUrl } from "../../../app/routes";
 import { Button, CartTable } from "../../../components";
@@ -16,9 +17,11 @@ import {
   getBakraTotal,
   // getTotal,
 } from "../../../components/CartProvider/utils";
+// import JazzCash from "../../../bakracheckout/views/Payment/Gateways/JazzCash";
 import { BakraCheckoutContext } from "../../context";
 import { paymentUrl } from "../../routes";
 import { TypedCompleteCheckoutMutation } from "./queries";
+
 import Summary from "./Summary";
 import { completeCheckout } from "./types/completeCheckout";
 
@@ -73,6 +76,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const discountExists = checkout.discount && !!checkout.discount.amount;
   const locale = maybe(() => "PK", "PK");
   const bakraLines = JSON.parse(localStorage.getItem("bakraLines"));
+
   return (
     <>
       <div className="checkout-review">
@@ -163,19 +167,33 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 }
               >
                 {(completeCheckout, { loading }) => (
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    onClick={() =>
-                      completeCheckout({
-                        variables: {
-                          checkoutId: checkout.id,
-                        },
-                      })
-                    }
-                  >
-                    {loading ? "Loading" : "Place your order"}
-                  </Button>
+                  <div>
+                    {dummyStatus === "JazzCash" ? (
+                      <JazzCash
+                        completeCheckout={() =>
+                          completeCheckout({
+                            variables: {
+                              checkoutId: checkout.id,
+                            },
+                          })
+                        }
+                      />
+                    ) : (
+                      <Button
+                        type="submit"
+                        disabled={loading}
+                        onClick={() => {
+                          completeCheckout({
+                            variables: {
+                              checkoutId: checkout.id,
+                            },
+                          });
+                        }}
+                      >
+                        {loading ? "Loading" : "Place your order"}
+                      </Button>
+                    )}
+                  </div>
                 )}
               </TypedCompleteCheckoutMutation>
             </div>

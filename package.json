@@ -2,8 +2,8 @@
   "name": "erocery-site",
   "version": "0.7.0",
   "private": true,
-  "author": "Mirumee",
-  "homepage": "https://getsaleor.com/",
+  "author": "RNS",
+  "homepage": "https://erocery.com/",
   "main": "dist/index.js",
   "browserslist": "last 2 versions",
   "dependencies": {
@@ -30,6 +30,7 @@
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
     "cross-env": "^5.2.0",
+    "crypto": "^1.0.1",
     "cypress": "^4.0.1",
     "dompurify": "^2.0.7",
     "draftjs-to-html": "^0.8.4",

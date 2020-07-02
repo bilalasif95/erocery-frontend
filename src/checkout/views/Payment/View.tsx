@@ -104,7 +104,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     checkout: CheckoutContextInterface
   ) => async (token: string, gateway: string) => {
     const {
-      checkout: { billingAddress,shippingAddress, totalPrice, id },
+      checkout: { billingAddress, shippingAddress, totalPrice, id },
     } = checkout;
 
     if (token) {
@@ -223,7 +223,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 processPayment,
                 setLoadingState,
               };
-
+              let statusReviewBtn = true;
               return (
                 <div className="checkout-payment__form">
                   {availablePaymentGateways.map(provider => {
@@ -232,6 +232,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                       ...providerProps,
                       paymentGatewayConfig: provider.config,
                     };
+                    { optionProps(providerName).selected ? statusReviewBtn = false : statusReviewBtn = true }
                     switch (providerName) {
                       case PROVIDERS.BRAINTREE.label:
                         return (
@@ -265,7 +266,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     <Button
                       type="submit"
-                      disabled={loading}
+                      disabled={loading || statusReviewBtn}
                       onClick={() => {
                         formRef.current.dispatchEvent(
                           new Event("submit", { cancelable: true })

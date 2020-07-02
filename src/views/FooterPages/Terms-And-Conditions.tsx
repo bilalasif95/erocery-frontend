@@ -16,11 +16,11 @@ const TermsAndConditions: React.FC = () => (
       These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at <a href="https://erocery.com" target="_blank">erocery.com</a> (together or individually “Service”) operated by <Link to="/">Erocery</Link>.<br /><br />
       Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.<br /><br />
       Your agreement with us includes these Terms and our Privacy Policy (“Agreements”). You acknowledge that you have read and understood Agreements, and agree to be bound by them.<br /><br />
-      If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at <u>erocery@gmail.com</u> so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.
+      If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at <u>contact@erocery.com</u> so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.
     </p><br /><br />
       <h4><b>2. Communications:</b></h4><br />
       <p>
-        By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at <u>erocery@gmail.com</u>
+        By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at <u>contact@erocery.com</u>
       </p><br /><br />
       <h4><b>3. Purchases:</b></h4><br />
       <p>
@@ -43,7 +43,7 @@ const TermsAndConditions: React.FC = () => (
       <h4><b>7. Copyright Policy:</b></h4><br />
       <p>
         We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on Service infringes on the copyright or other intellectual property rights (“Infringement”) of any person or entity.<br /><br />
-    If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to <u>erocery@gmail.com</u> with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement.<br /><br />
+    If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to <u>contact@erocery.com</u> with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement.<br /><br />
     You may be held accountable for damages (including costs and attorneys’ fees) for misrepresentation or bad-faith claims on the infringement of any Content found on and/or through Service on your copyright.
     </p><br /><br />
       <h4><b>8. Disclaimer Of Warranty:</b></h4><br />
@@ -76,7 +76,7 @@ const TermsAndConditions: React.FC = () => (
       <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p><br /><br />
       <h4><b>14. Contact Us:</b></h4><br />
       <p>Please send your feedback, comments, requests for technical support by email:</p><br />
-      <p><u>erocery@gmail.com</u></p>
+      <p><u>contact@erocery.com</u></p>
     </div>
   </div>
 );

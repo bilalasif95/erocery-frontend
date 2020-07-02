@@ -10,8 +10,13 @@
   }
   .smsCodebtn {
     padding: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
+   @media(max-width: 480px){
+      .smsCodebtn {
+        padding: 0.5rem;
+      }
+   }
 
   .displayflex {
     display: flex;
@@ -20,11 +25,22 @@
 
   &__button {
     margin-top: $spacer * 2;
-    padding: 0 $spacer * 1.5;
+    padding: 0 ;
     text-align: center;
   }
 }
-
+.verify-form {
+   .button:first-child{
+        padding: 0.9rem 1rem;
+        max-width: 120px;
+      }
+    @media(max-width: 480px){
+      .button:first-child{
+        padding: 0.9rem 0.5rem;
+        max-width: 80px;
+      }
+    }
+  }
 .phoneField{
   position: relative;
   .startNum{
