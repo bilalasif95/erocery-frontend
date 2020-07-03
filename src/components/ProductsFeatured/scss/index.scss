@@ -2,8 +2,8 @@
 
 .products-featured {
   padding: 2rem 0 4rem;
-  .featuredContainer{
-    padding: 0
+  .featuredContainer {
+    padding: 0;
   }
   h3 {
     font-weight: $bold-font-weight;
@@ -30,18 +30,19 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    .proItem{
+    .proItem {
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
       padding: 0 0.7rem;
       width: 25%;
-      .buyBtn{
+      .bookBtn,
+      .buyBtn {
         // background: #F43C3C;
         padding: 0.5rem 1rem;
-        // border-radius: 5px;
+        border-radius: 0;
         text-align: center;
-        // width: 215px;
+        width: 100%;
         color: #fff;
         font-weight: 600;
         margin: 0 auto;
@@ -49,13 +50,13 @@
         text-transform: uppercase;
       }
     }
-    @media(max-width: 991px){
-      .proItem{
+    @media (max-width: 991px) {
+      .proItem {
         width: 33.333% !important;
       }
     }
-    @media(max-width: 767px){
-      .proItem{
+    @media (max-width: 767px) {
+      .proItem {
         width: 50% !important;
       }
     }

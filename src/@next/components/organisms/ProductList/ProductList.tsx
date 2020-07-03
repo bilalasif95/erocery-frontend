@@ -90,7 +90,7 @@ class ProductList extends React.Component<
                     to={generateProductUrl(product.id, product.name)}
                     key={product.id}
                   >
-                    <Button style={{ width: "100%" }}>Book At 25%</Button>
+                    <Button>Book At 25%</Button>
                   </Link>
                 ) : (
                   <CartContext.Consumer>

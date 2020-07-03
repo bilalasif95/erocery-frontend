@@ -4,7 +4,7 @@ import { css } from "styled-components";
 const textProps = css`
   font-size: ${props => props.theme.typography.baseFontSize};
   text-align: left;
-  font-weight:600;
+  font-weight: 600;
   margin: 0 0 0.5rem;
 `;
 
@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
 `}
 `;
 export const DeskView = styled.div`
-display: block;
+  display: block;
 `;
 // export const MobView = styled.div`
 // display: none;
@@ -39,18 +39,17 @@ display: block;
 //   `}
 // `;
 export const Details = styled.div`
-width: 80%;
-padding:0 0 0 0.5rem;
+  width: 80%;
+  padding: 0 0 0 0.5rem;
 `;
 export const Content = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const Title = styled.h4`
   font-weight: 500;
-  margin:1rem 0 0;
+  margin: 1rem 0 0;
   min-height: 40px;
   max-height: 40px;
   font-size: 1.1rem;
@@ -64,13 +63,22 @@ export const Title = styled.h4`
 `}
 `;
 export const Link = styled.div`
-width: 10%;
+  width: 10%;
 `;
 
 export const Price = styled.p`
   ${textProps};
   padding: 0 0.5rem;
-    ${media.smallScreen`
+  position: relative;
+  height: 46px;
+  .advancebook {
+    position: absolute;
+    left: 8px;
+    bottom: 0;
+    color: grey;
+    font-size: 12px;
+  }
+  ${media.smallScreen`
      display: flex;
      justify-content: flex-start;
      align-items: flex-end;
@@ -82,17 +90,17 @@ export const Price = styled.p`
   `}
 `;
 export const AddCartBtn = styled.div`
-display: flex;
-justify-content: flex-end;
-background: #f4423c;
-text-align: center;
-align-items: center;
-color: #fff;
-border-radius: 5px;
-font-size: 12px !important;
-font-weight: 600;
-text-transform: uppercase;
-padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  background: #f4423c;
+  text-align: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 12px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem;
 `;
 
 export const Image = styled.div`
