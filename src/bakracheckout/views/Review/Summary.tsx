@@ -32,6 +32,8 @@ class Summary extends React.PureComponent<{
       );
     };
 
+    console.log(dummyStatus, "dummyStatus");
+
     return (
       <div className="checkout-review__content__summary">
         <div>
@@ -86,18 +88,24 @@ class Summary extends React.PureComponent<{
               `Ending in ${cardData.lastDigits}`
             ) : (
               <div>
-                {dummyStatus === "JazzCash" ? (
+                {dummyStatus.type === "JazzCash" ? (
                   <div>
-                    <h2>Jazz Cash</h2>
+                    <h2 style={{ fontWeight: 900 }}>Jazz Cash</h2>
                   </div>
-                ) : (
+                ) : dummyStatus.type === "WireTransfer" ? (
                   <div>
-                    <h2>Wire Transfer</h2>
+                    <h2 style={{ fontWeight: 900 }}>Wire Transfer</h2>
                     <p>Account Title:{dummyStatus.accountTitle}</p>
                     <p>Account No.:{dummyStatus.accountName}</p>
                     <p>Bank Name:{dummyStatus.bankName}</p>
                     <p>IBAN:{dummyStatus.branchCode}</p>
                     <p>Branch Code:{dummyStatus.mobileno}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 style={{ fontWeight: 900 }}>Office Visit</h2>
+                    <p>Office Address: {dummyStatus.officeAddress}</p>
+                    <p>Office Phone.: {dummyStatus.officePhone}</p>
                   </div>
                 )}
               </div>

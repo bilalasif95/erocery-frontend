@@ -34,7 +34,7 @@ class JazzCash extends React.PureComponent<
         ref={formRef}
         onSubmit={async evt => {
           evt.preventDefault();
-          await update({ dummyStatus: "JazzCash" });
+          await update({ dummyStatus: { type: "JazzCash" } });
           processPayment(selectedStatus.token, PROVIDERS.JAZZCASH.label);
         }}
         className="c-option__content"

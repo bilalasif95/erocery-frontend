@@ -13,6 +13,7 @@ class Razorpay extends React.PureComponent<
       bankName: string;
       branchCode: string;
       mobileno: string;
+      type: string;
     };
     selectedStatus: { token: string; label: string };
   }
@@ -29,8 +30,9 @@ class Razorpay extends React.PureComponent<
       bankName: "",
       branchCode: "",
       mobileno: "",
+      type: "WireTransfer",
     },
-    selectedStatus: this.statuses[0],
+    selectedStatus: this.statuses[2],
   };
 
   componentDidMount() {
@@ -41,6 +43,7 @@ class Razorpay extends React.PureComponent<
         bankName: this.props.paymentGatewayConfig[2].value,
         branchCode: this.props.paymentGatewayConfig[3].value,
         mobileno: this.props.paymentGatewayConfig[4].value,
+        type: "WireTransfer",
       },
     });
   }
@@ -65,11 +68,26 @@ class Razorpay extends React.PureComponent<
         className="c-option__content"
       >
         <div>
-          <p>Account Title:{paymentGatewayConfig[0].value}</p>
-          <p>Account No.:{paymentGatewayConfig[1].value}</p>
-          <p>Bank Name:{paymentGatewayConfig[2].value}</p>
-          <p>IBAN:{paymentGatewayConfig[3].value}</p>
-          <p>Branch Code:{paymentGatewayConfig[4].value}</p>
+          <p>
+            <span style={{ fontWeight: 900 }}>Account Title:</span>
+            {paymentGatewayConfig[0].value}
+          </p>
+          <p>
+            <span style={{ fontWeight: 900 }}>Account No.:</span>
+            {paymentGatewayConfig[1].value}
+          </p>
+          <p>
+            <span style={{ fontWeight: 900 }}>Bank Name:</span>
+            {paymentGatewayConfig[2].value}
+          </p>
+          <p>
+            <span style={{ fontWeight: 900 }}>IBAN:</span>
+            {paymentGatewayConfig[3].value}
+          </p>
+          <p>
+            <span style={{ fontWeight: 900 }}>Branch Code:</span>
+            {paymentGatewayConfig[4].value}
+          </p>
         </div>
         {/* {this.statuses.map(({ token, label }) => {
           const selected = selectedStatus.token === token;

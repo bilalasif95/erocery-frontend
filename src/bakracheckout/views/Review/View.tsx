@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Money } from "@components/containers";
 import JazzCash from "../Payment/Gateways/JazzCash";
 
-// import { orderConfirmationUrl } from "../../../app/routes";
+import { orderConfirmationUrl } from "../../../app/routes";
 import { Button, CartTable } from "../../../components";
 import { CartContext } from "../../../components/CartProvider/context";
 import {
@@ -61,11 +61,15 @@ const completeCheckout = (
   const canProceed = !data.checkoutComplete.errors.length;
 
   if (canProceed) {
-    // const { token } = data.checkoutComplete.order;
-    // history.push({
-    //   pathname: orderConfirmationUrl,
-    //   state: { token },
-    // });
+    const { token } = data.checkoutComplete.order;
+
+    // if (data.checkoutComplete.order.payments[0].gateway !== "JazzCash") {
+    history.push({
+      pathname: orderConfirmationUrl,
+      state: { token },
+    });
+    // }
+
     clearCheckout();
     clearCart();
   } else {
@@ -154,7 +158,6 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     }
   }
 
-  console.log(checkout.discount, "oooooooo");
   return (
     <>
       <div className="checkout-review">
@@ -246,7 +249,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
               >
                 {(completeCheckout, { loading }) => (
                   <div>
-                    {dummyStatus === "JazzCash" ? (
+                    {dummyStatus.type === "JazzCash" ? (
                       <div>
                         <p style={{ color: "red", paddingBottom: "10px" }}>
                           Note: You will be redirected to JazzCash portal after

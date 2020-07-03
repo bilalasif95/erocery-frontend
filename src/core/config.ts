@@ -13,6 +13,9 @@ export const PROVIDERS = {
   JAZZCASH: {
     label: "JazzCash",
   },
+  OFFICEVISIT: {
+    label: "OfficeVisit",
+  },
   RAZORPAY: {
     label: "WireTransfer",
   },

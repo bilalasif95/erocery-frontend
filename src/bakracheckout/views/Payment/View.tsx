@@ -23,6 +23,7 @@ import { reviewUrl } from "../../routes";
 import CreditCard from "./Gateways/Braintree/CreditCard";
 // import Dummy from "./Gateways/Dummy";
 import JazzCash from "./Gateways/JazzCashDum";
+import OfficeVisit from "./Gateways/OfficeVisit";
 import Razorpay from "./Gateways/Razorpay";
 import { Stripe } from "./Gateways/Stripe";
 import { TypedPaymentMethodCreateMutation } from "./queries";
@@ -251,8 +252,6 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 setLoadingState,
               };
 
-              console.log(selectedGeteway, "selectedGetewayselectedGeteway");
-
               return (
                 <div className="checkout-payment__form">
                   {availablePaymentGateways.map(provider => {
@@ -295,6 +294,15 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                             {...optionProps(providerName)}
                           >
                             <Razorpay {...paymentGatewayProps} />
+                          </Option>
+                        );
+                      case PROVIDERS.OFFICEVISIT.label:
+                        return (
+                          <Option
+                            label="Office Visit"
+                            {...optionProps(providerName)}
+                          >
+                            <OfficeVisit {...paymentGatewayProps} />
                           </Option>
                         );
                       case PROVIDERS.JAZZCASH.label:

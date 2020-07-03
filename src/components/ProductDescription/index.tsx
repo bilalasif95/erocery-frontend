@@ -335,7 +335,11 @@ class ProductDescription extends React.Component<
                         > */}
                         <Button
                           style={{ width: "100%" }}
-                          disabled={this.state.date === null}
+                          disabled={
+                            this.state.date === null ||
+                            (this.props.productVariants &&
+                              this.props.productVariants[0].stockQuantity === 0)
+                          }
                           onClick={
                             window.localStorage.getItem("token") === null
                               ? () => {
@@ -368,7 +372,10 @@ class ProductDescription extends React.Component<
                                 }
                           }
                         >
-                          Book Now
+                          {this.props.productVariants &&
+                          this.props.productVariants[0].stockQuantity === 0
+                            ? "Out of Stock"
+                            : "Book Now"}
                         </Button>
                         {/* </Link> */}
                       </div>
