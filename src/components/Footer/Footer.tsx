@@ -13,8 +13,9 @@ import payment_methods from "../../images/Group_39.png";
 
 // import instagram from "../../images/instagram.png";
 // import jazzcash from "../../images/jazzcash.png";
-import emailIcon from "../../images/email.svg";
-import phoneIcon from "../../images/phone.svg";
+// import emailIcon from "../../images/email.svg";
+// import locationIcon from "../../images/location.svg";
+// import phoneIcon from "../../images/phone.svg";
 import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
@@ -38,15 +39,16 @@ const Footer: React.FC = () => (
           </ul>
         </div>
         <div className="footer-item">
-          <div className="contactUs">
+          <div>
             <h4>Contact Us</h4>
             <ul className="quick-links">
-              <li className="contactUsLinks"><ReactSVG path={phoneIcon} /><span>+92-330-2755559</span></li>
-              <li className="contactUsLinks"><ReactSVG path={emailIcon} /><span>contact@erocery.com</span></li>
+              <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Phone:</span><span className="contactUsLinksSpanTwo">+92-330-2755559</span></li>
+              <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Email:</span><span className="contactUsLinksSpanTwo">contact@erocery.com</span></li>
+              <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Address:</span><span className="contactUsLinksSpanTwo">3rd Floor, Al-Rahim Arcade, National Market,
+Satellite Town, Rawalpindi, Pakistan.</span></li>
             </ul>
           </div>
-          <h4>Payment Methods</h4>
-          <ul className="pay-method">
+          
             {/* <li>
               <div className="cash-delivery">
                 Cash Delivery
@@ -54,8 +56,6 @@ const Footer: React.FC = () => (
             </li>
             <li><img src={easypaisa} /></li>
             <li><img src={jazzcash} /></li> */}
-            <li><img src={payment_methods} /></li>
-          </ul>
         </div>
         <div className="footer-item">
           <h4 className="socialMediaHeading">Social Media</h4>
@@ -64,14 +64,11 @@ const Footer: React.FC = () => (
               <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
             ))}
           </div>
+          <h4>Payment Methods</h4>
+          <ul className="pay-method">
+            <li><img src={payment_methods} /></li>
+          </ul>
           {/* <p className="whatsAppNumber">+92-330-2755559</p> */}
-          <div className="apps">
-            <h4>Download App</h4>
-            <div className="social-media">
-              <a href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" src={androidStoreImage}></img></a>
-              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
-            </div>
-          </div>
           {/* <ul className="social-media">
             {SOCIAL_MEDIA.map(medium => (
               <li>
@@ -85,6 +82,15 @@ const Footer: React.FC = () => (
             <li><a href="https://www.instagram.com/erocerypk" target="_blank"><img src={instagram} /></a></li>
             <li><a href="https://www.youtube.com/c/RNSSolutions" target="_blank"><img src={youtube} /></a></li>
           </ul> */}
+        </div>
+        <div className="footer-item">
+          <div>
+            <h4>Download App</h4>
+            <div className="playstoreIcons">
+              <a className="googlePlayStoreIcon" href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" src={androidStoreImage}></img></a>
+              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+            </div>
+          </div>
         </div>
       </div>
       <div className="footer__favicons">

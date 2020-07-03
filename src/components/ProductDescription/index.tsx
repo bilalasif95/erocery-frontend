@@ -28,7 +28,7 @@ interface ProductDescriptionProps {
 
 interface ProductDescriptionState {
   error:any;
-  quantity: number;
+  quantity: any;
   variant: string;
   variantStock: number;
   variantPricing: ProductDetails_product_variants_pricing;
@@ -122,20 +122,26 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
+    if(!this.state.quantity){
+      this.setState({error: [{field: "quantity", message: "Please input Quantity"}]})
+    }
+    else {
     this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data)=>{
       this.setState({error:data})
     }).catch((error)=>{
        this.setState({error})
     })
+  }
   };
 
   canAddToCart = (lines: CartLine[]) => {
-    const { quantity } = this.state;
+    // const { quantity } = this.state;
     // const cartLine = lines.find(({ variantId }) => variantId === variant);
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
-    return quantity !== 0 && (this.props.productVariants && this.props.productVariants[0].stockQuantity !==0);
+    // quantity !== 0
+    return (this.props.productVariants && this.props.productVariants[0].stockQuantity !==0);
   };
   
   render() {
@@ -168,7 +174,7 @@ class ProductDescription extends React.Component<
             min="1"
             value={quantity || ""}
             onChange={e =>
-              this.setState({ quantity: Math.max(1, Number(e.target.value)) })
+              this.setState({ quantity: Number(e.target.value) })
             }
           />
         </div>
