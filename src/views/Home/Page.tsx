@@ -12,6 +12,8 @@ import { useUserDetails } from "@sdk/react";
 import { Carousel, ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
+import { TypedBannerImagesQuery } from "./queries";
+
 import { CartContext } from "../../components/CartProvider/context";
 
 import { history } from "../../history";
@@ -26,14 +28,14 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 // import catNoImg from "../../images/catNoImg.jpg";
 // import bannerimg from "../../images/homeBanner.jpg";
-import androidStoreImage from "../../images/playstore.png";
+// import androidStoreImage from "../../images/playstore.png";
 
-import appleStoreImage from "../../images/applestore.png";
+// import appleStoreImage from "../../images/applestore.png";
 
-import banner1 from "../../images/banner1.jpg";
-import banner2 from "../../images/banner2.jpg";
-import banner3 from "../../images/banner3.jpg";
-import banner4 from "../../images/banner4.jpg";
+// import banner1 from "../../images/banner1.jpg";
+// import banner2 from "../../images/banner2.jpg";
+// import banner3 from "../../images/banner3.jpg";
+// import banner4 from "../../images/banner4.jpg";
 import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
 import vipoffermob from "../../images/vipoffermob.png";
@@ -50,24 +52,24 @@ const Page: React.FC<{
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
-  const imagesArray = [
-    {
-      name: "banner1",
-      url: banner1,
-    },
-    {
-      name: "banner2",
-      url: banner2,
-    },
-    {
-      name: "banner3",
-      url: banner3,
-    },
-    {
-      name: "banner4",
-      url: banner4,
-    },
-  ];
+  // const imagesArray = [
+  //   {
+  //     name: "banner1",
+  //     url: banner1,
+  //   },
+  //   {
+  //     name: "banner2",
+  //     url: banner2,
+  //   },
+  //   {
+  //     name: "banner3",
+  //     url: banner3,
+  //   },
+  //   {
+  //     name: "banner4",
+  //     url: banner4,
+  //   },
+  // ];
 
   const qurbaniPath = { id: "", name: "" };
   return (
@@ -76,43 +78,47 @@ const Page: React.FC<{
         {structuredData(shop)}
       </script>
       <div className="product-page__product__mainSlider">
-        <Carousel
-          autoplay={true}
-          wrapAround={true}
-          autoplayInterval={5000}
-          renderCenterLeftControls={() => null}
-          renderCenterRightControls={() => null}
-          renderBottomCenterControls={props => {
-            const indexes = [];
+        <TypedBannerImagesQuery>
+          {({ data }) => (
+            <Carousel
+              autoplay={true}
+              wrapAround={true}
+              autoplayInterval={3000}
+              renderCenterLeftControls={() => null}
+              renderCenterRightControls={() => null}
+              renderBottomCenterControls={props => {
+                const indexes = [];
 
-            for (let i = 0; i < props.slideCount; i++) {
-              indexes.push(i);
-            }
+                for (let i = 0; i < props.slideCount; i++) {
+                  indexes.push(i);
+                }
 
-            return (
-              <ul className="product-page__product__gallery__nav">
-                {indexes.map(index => (
-                  <li
-                    key={index}
-                    onClick={props.goToSlide.bind(null, index)}
-                    className={props.currentSlide === index ? "active" : ""}
-                  >
-                    <span />
-                  </li>
-                ))}
-              </ul>
-            );
-          }}
-        >
-          {imagesArray.map(image => (
-            <>
+                return (
+                  <ul className="product-page__product__gallery__nav">
+                    {indexes.map(index => (
+                      <li
+                        key={index}
+                        onClick={props.goToSlide.bind(null, index)}
+                        className={props.currentSlide === index ? "active" : ""}
+                      >
+                        <span />
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }}
+            >
+              {/* {imagesArray.map(image => (
+            <> */}
+              {data.shop.banners &&
+                data.shop.banners.map(url => <img src={url.image} />)}
               {/* <div
             className="home-page__hero"
             style={{ backgroundImage: `url(${image.url})` }}
           >
           </div>
           <CachedImage url={image.url || noPhotoImg}> */}
-              <img src={image.url} />
+              {/* <img src={image.url} />
               {image.name === "banner2" ? (
                 <div className="banner2-links">
                   <a
@@ -152,11 +158,13 @@ const Page: React.FC<{
                 </div>
               ) : (
                 ""
-              )}
+              )} */}
               {/* </CachedImage> */}
-            </>
-          ))}
-        </Carousel>
+              {/* </>
+          ))} */}
+            </Carousel>
+          )}
+        </TypedBannerImagesQuery>
       </div>
       <div className="home-page__vipImage">
         <div className="container">

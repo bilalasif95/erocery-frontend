@@ -38,7 +38,7 @@ export const Address: React.FC<IAddress> = ({
     <br />
     {phone && (
       <>
-        Phone number: {phone} <br />
+        Phone number: {phone.length > 9 ? phone : "03"+phone} <br />
       </>
     )}
   </div>
