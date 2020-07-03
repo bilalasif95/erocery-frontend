@@ -14,3 +14,25 @@
     }
   }
 }
+a:first-child .social-icon {
+  padding: 1rem 0.5rem 1rem 0rem;
+  &:hover {
+    svg * {
+      fill: #3b5998;
+    }
+  }
+}
+a:nth-child(2) .social-icon {
+  &:hover {
+    svg * {
+      fill: #d54c88;
+    }
+  }
+}
+a:last-child .social-icon {
+  &:hover {
+    svg * {
+      fill: #435A64;
+    }
+  }
+}
