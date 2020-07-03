@@ -242,6 +242,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 selected: selectedGeteway === providerName,
                 value: providerName,
               });
+
               const providerProps = {
                 checkout,
                 formRef,
@@ -249,6 +250,8 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 processPayment,
                 setLoadingState,
               };
+
+              console.log(selectedGeteway, "selectedGetewayselectedGeteway");
 
               return (
                 <div className="checkout-payment__form">
@@ -317,10 +320,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     <Button
                       type="submit"
-                      disabled={
-                        loading
-                        // || statusReviewBtn
-                      }
+                      disabled={loading || selectedGeteway === null}
                       onClick={() => {
                         formRef.current.dispatchEvent(
                           new Event("submit", { cancelable: true })

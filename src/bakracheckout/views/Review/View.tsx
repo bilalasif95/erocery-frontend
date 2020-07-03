@@ -103,7 +103,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   let SortedArray = HashKey;
 
   const Amount = checkout.totalPrice.gross.amount * 0.25 * 100;
-  const BillReference = "123";
+  const BillReference: any = formatDate();
   const Description = "Thank you for using Jazz Cash";
   const DiscountedAmount = "";
   const DiscountedBank = "";
@@ -154,6 +154,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     }
   }
 
+  console.log(checkout.discount, "oooooooo");
   return (
     <>
       <div className="checkout-review">
