@@ -36,7 +36,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         : [{ message }];
     });
   }
-
   return (
     <S.AddressForm id={formId} ref={formRef} onSubmit={handleSubmit}>
       <S.Wrapper>
@@ -120,20 +119,23 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             errors={fieldErrors!.city}
             {...basicInputProps()}
           /> */}
-          <InputSelect
-            label="City"
-            name="city"
-            options={cities.map(value => ({
-                city: value.city,
-              }))}
-            value={
-              values!.city &&
-              options &&
-              options!.find(option => option.city === values!.city!)
-            }
-            onChange={(value: any, name: any) => setFieldValue(name, value)}
-            optionLabelKey="city"
-          />
+          <S.CityInput>
+            <InputSelect
+              label="City"
+              name="city"
+              options={cities.map(value => ({
+                  city: value.city,
+                }))}
+              value={
+                values!.city &&
+                options &&
+                options!.find(option => option.city === values!.city!)
+              }
+              onChange={(value: any, name: any) => setFieldValue(name, value)}
+              optionLabelKey="city"
+            />
+            <S.CityError>{fieldErrors && fieldErrors!.city && fieldErrors!.city[0].message}</S.CityError>
+          </S.CityInput>
           <TextField
             name="countryArea"
             label="State/Province"

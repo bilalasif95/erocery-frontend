@@ -9,6 +9,13 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+export const CityInput = styled.div`
+`;
+
+export const CityError = styled.div`
+  color: red;
+`;
+
 export const RowWithTwoCells = styled.div`
   width: 100%;
   display: flex;

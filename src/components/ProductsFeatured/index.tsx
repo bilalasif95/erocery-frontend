@@ -138,12 +138,19 @@ class ProductsFeatured extends React.Component<
                         selectSidebar={true}
                       /> */}
                         {product.category?.name === "VIP Qurbani" ? (
-                          <Link
-                            to={generateProductUrl(product.id, product.name)}
-                            key={product.id}
-                          >
-                            <Button className="bookBtn">Book At 25%</Button>
-                          </Link>
+                          <>
+                            {product.variants[0].stockQuantity === 0
+                            ?
+                              <Button className="bookBtn" disabled>Booked</Button>
+                            :
+                            <Link
+                              to={generateProductUrl(product.id, product.name)}
+                              key={product.id}
+                            >
+                              <Button className="bookBtn">Book At 25%</Button>
+                            </Link>
+                            }
+                          </>
                         ) : (
                           <CartContext.Consumer>
                             {({ lines }) => (

@@ -86,12 +86,19 @@ class ProductList extends React.Component<
                   <ProductTile product={product} />
                 </Link>
                 {product.category?.name === "VIP Qurbani" ? (
-                  <Link
-                    to={generateProductUrl(product.id, product.name)}
-                    key={product.id}
-                  >
-                    <Button>Book At 25%</Button>
-                  </Link>
+                  <>
+                    {product.variants[0].stockQuantity === 0
+                    ?
+                      <Button disabled>Booked</Button>
+                    :
+                    <Link
+                      to={generateProductUrl(product.id, product.name)}
+                      key={product.id}
+                    >
+                      <Button>Book At 25%</Button>
+                    </Link>
+                    }
+                  </>
                 ) : (
                   <CartContext.Consumer>
                     {({ lines }) => (

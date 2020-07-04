@@ -70,8 +70,8 @@ const completeCheckout = (
     });
     // }
 
-    clearCheckout();
-    clearCart();
+    // clearCheckout();
+    // clearCart();
   } else {
     data.checkoutComplete.errors.map(error => {
       alert.show(
