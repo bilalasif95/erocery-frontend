@@ -28,7 +28,6 @@ class JazzCash extends React.PureComponent<
       paymentGatewayConfig,
     } = this.props;
 
-    console.log(paymentGatewayConfig, "paymentGatewayConfig");
     const { selectedStatus } = this.state;
     return (
       <form

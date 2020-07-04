@@ -87,8 +87,6 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
-  console.log(products, "ppppppppp");
-
   return (
     <div className="category">
       <div className="container">
