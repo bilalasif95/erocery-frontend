@@ -70,8 +70,8 @@ const completeCheckout = (
     });
     // }
 
-    clearCheckout();
-    clearCart();
+    // clearCheckout();
+    // clearCart();
   } else {
     data.checkoutComplete.errors.map(error => {
       alert.show(
@@ -296,10 +296,11 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                             style={{
                               color: "red",
                               paddingBottom: "10px",
+                              textAlign: "center",
                             }}
                           >
-                            Note: Please save bank information for future
-                            reference
+                            Note: Before placing order please save bank
+                            information for future reference
                           </p>
                         )}
 
