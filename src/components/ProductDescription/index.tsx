@@ -27,7 +27,7 @@ interface ProductDescriptionProps {
 }
 
 interface ProductDescriptionState {
-  error:any;
+  error: any;
   quantity: any;
   variant: string;
   variantStock: number;
@@ -43,7 +43,7 @@ interface ProductDescriptionState {
 class ProductDescription extends React.Component<
   ProductDescriptionProps,
   ProductDescriptionState
-> {
+  > {
   constructor(props: ProductDescriptionProps) {
     super(props);
 
@@ -122,16 +122,24 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    if(!this.state.quantity){
-      this.setState({error: [{field: "quantity", message: "Please input Quantity"}]})
+    if (!this.state.quantity) {
+      this.setState({ error: [{ field: "quantity", message: "Please input Quantity" }] })
     }
     else {
-    this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data)=>{
-      this.setState({error:data})
-    }).catch((error)=>{
-       this.setState({error})
-    })
-  }
+
+      if (this.props.productVariants && this.props.productVariants[0].stockQuantity < this.state.quantity) {
+        this.setState({ error: [{ field: "quantity", message: `Cannot add more than ${this.props.productVariants[0].stockQuantity} times this item` }] })
+      }
+      else {
+        this.props.addToCart(this.props.productVariants[0].id, this.state.quantity).then((data) => {
+          this.setState({ error: data })
+        }).catch((error) => {
+          this.setState({ error })
+        })
+      }
+
+
+    }
   };
 
   canAddToCart = (lines: CartLine[]) => {
@@ -141,9 +149,9 @@ class ProductDescription extends React.Component<
     //   ? quantity + cartLine.quantity
     //   : quantity;
     // quantity !== 0
-    return (this.props.productVariants && this.props.productVariants[0].stockQuantity !==0);
+    return (this.props.productVariants && this.props.productVariants[0].stockQuantity !== 0);
   };
-  
+
   render() {
     const { name } = this.props;
     const { quantity } = this.state;
@@ -186,7 +194,7 @@ class ProductDescription extends React.Component<
               disabled={!this.canAddToCart(lines) || this.props.productVariants.length === 0}
               error={this.state.error}
               typeCart={true}
-              
+
             />
           )}
         </CartContext.Consumer>
