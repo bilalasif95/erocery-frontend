@@ -36,7 +36,7 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 // import banner2 from "../../images/banner2.jpg";
 // import banner3 from "../../images/banner3.jpg";
 // import banner4 from "../../images/banner4.jpg";
-import desktopvipoffer from "../../images/desktopoffer.jpg";
+import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
 import vipoffermob from "../../images/vipoffermob.png";
 
