@@ -39,7 +39,7 @@ const Table: React.FC<TableProps> = ({
             <tr>
               <th>Products</th>
               {mediumScreen && <th>Price</th>}
-              {VIPQurbaniCategory !== "VIP Qurbani" ? (
+              {VIPQurbaniCategory !== "Qurbani" ? (
                 <th>Size</th>
               ) : (
                 <th>Delivery Date</th>
@@ -76,7 +76,7 @@ const Table: React.FC<TableProps> = ({
                 cost={discount}
               />
             )}
-            {VIPQurbaniCategory === "VIP Qurbani" && (
+            {VIPQurbaniCategory === "Qurbani" && (
               <CostRow
                 mediumScreen={mediumScreen}
                 heading="Pay"
@@ -90,7 +90,7 @@ const Table: React.FC<TableProps> = ({
                 cost={deliveryCost}
               />
             )}
-            {VIPQurbaniCategory === "VIP Qurbani" && (
+            {VIPQurbaniCategory === "Qurbani" && (
               <CostRow
                 mediumScreen={mediumScreen}
                 heading="Balance"

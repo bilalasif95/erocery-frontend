@@ -6,7 +6,6 @@ import {
 import "./scss/index.scss";
 
 import { useSignOut, useUserDetails } from "@sdk/react";
-
 import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
@@ -33,6 +32,8 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
+
+import { history } from "../../history";
 
 import { ShopContext } from "../ShopProvider/context";
 
@@ -65,6 +66,13 @@ const MainMenu: React.FC = () => {
           { type: "error", timeout: 5000 }
         );
       });
+  };
+
+  const scrollToTeam = () => {
+    history.push("/");
+    setTimeout(() => {
+      document.getElementById("categorysection").scrollIntoView();
+    }, 200);
   };
 
   return (
@@ -133,12 +141,18 @@ const MainMenu: React.FC = () => {
                           />
                         }
                       /> */}
-
+                      <li
+                        className="main-menu__item"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => scrollToTeam()}
+                      >
+                        All Categories
+                      </li>
                       <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
                           items.map(item =>
-                            item.name === "VIP Qurbani" ? (
+                            item.name === "Qurbani" ? (
                               <li
                                 data-cy="main-menu__item"
                                 className="main-menu__item"

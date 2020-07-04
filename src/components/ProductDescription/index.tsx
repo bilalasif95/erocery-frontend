@@ -59,6 +59,7 @@ interface ProductDescriptionState {
   price: any;
   priceUndiscounted: any;
   date: any;
+  dateError: string;
 }
 
 class ProductDescription extends React.Component<
@@ -70,6 +71,7 @@ class ProductDescription extends React.Component<
 
     this.state = {
       date: null,
+      dateError: null,
       error: undefined,
       price: props.pricing.priceRange.start,
       priceUndiscounted: props.pricing.priceRangeUndiscounted.start,
@@ -173,10 +175,15 @@ class ProductDescription extends React.Component<
 
   render() {
     const { name } = this.props;
-    const { quantity } = this.state;
+    const { quantity, dateError } = this.state;
 
     const ExampleCustomInput = ({ value, onClick }) => (
       <button className="datepick" onClick={onClick}>
+        {value === "" ? (
+          <span className="selectdate">Select Delivery Date</span>
+        ) : (
+          <span className="selectedate">{value}</span>
+        )}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -184,15 +191,10 @@ class ProductDescription extends React.Component<
           viewBox="0 0 24 24"
         >
           <path
-            fill="#bdbdbd"
+            fill="#968989"
             d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zm-12 6h-4v4h4v-4zm6 0h-4v4h4v-4zm-6-6h-4v4h4v-4zm16-8v22h-24v-22h3v1c0 1.103.897 2 2 2s2-.897 2-2v-1h10v1c0 1.103.897 2 2 2s2-.897 2-2v-1h3zm-2 6h-20v14h20v-14zm-2-7c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-14 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2z"
           />
         </svg>
-        {value === "" ? (
-          <span className="selectdate">Select Delivery Date</span>
-        ) : (
-          <span className="selectedate">{value}</span>
-        )}
       </button>
     );
 
@@ -202,7 +204,7 @@ class ProductDescription extends React.Component<
           <div className="product-description">
             <h3>{name}</h3>
             <h4>{this.getProductPrice()}</h4>
-            {this.props.category === "VIP Qurbani" && (
+            {this.props.category === "Qurbani" && (
               <h4>
                 Book it now in just {this.state.price.gross.currency}{" "}
                 {this.state.price.gross.amount * 0.25} only
@@ -234,7 +236,7 @@ class ProductDescription extends React.Component<
             /> */}
               </div>
             )}
-            {this.props.category === "VIP Qurbani" ? (
+            {this.props.category === "Qurbani" ? (
               <div className="product-description__quantity-input">
                 <TextField
                   name="quantity"
@@ -268,7 +270,7 @@ class ProductDescription extends React.Component<
                 />
               </div>
             )}
-            {this.props.category === "VIP Qurbani" ? (
+            {this.props.category === "Qurbani" ? (
               <BakraCheckoutContext.Consumer>
                 {({ update }) => (
                   <TypedCreateBakraCheckoutMutation
@@ -301,7 +303,9 @@ class ProductDescription extends React.Component<
                         <div className="datepick">
                           <DatePicker
                             selected={this.state.date}
-                            onChange={date => this.setState({ date })}
+                            onChange={date =>
+                              this.setState({ date, dateError: null })
+                            }
                             customInput={
                               <ExampleCustomInput
                                 value={"Select Delivery Date"}
@@ -333,15 +337,20 @@ class ProductDescription extends React.Component<
                           }
                           className="btnLink"
                         > */}
+
                         <Button
                           style={{ width: "100%" }}
                           disabled={
-                            this.state.date === null ||
-                            (this.props.productVariants &&
-                              this.props.productVariants[0].stockQuantity === 0)
+                            this.props.productVariants &&
+                            this.props.productVariants[0].stockQuantity === 0
                           }
                           onClick={
-                            window.localStorage.getItem("token") === null
+                            this.state.date === null
+                              ? () =>
+                                  this.setState({
+                                    dateError: "Select Delivery Date",
+                                  })
+                              : window.localStorage.getItem("token") === null
                               ? () => {
                                   overlayContext.show(
                                     OverlayType.login,
@@ -377,6 +386,9 @@ class ProductDescription extends React.Component<
                             ? "Out of Stock"
                             : "Book Now"}
                         </Button>
+                        <span className="errMsg">
+                          {dateError !== null && dateError}
+                        </span>
                         {/* </Link> */}
                       </div>
                     )}
@@ -399,9 +411,11 @@ class ProductDescription extends React.Component<
                 )}
               </CartContext.Consumer>
             )}
-            <div className="product-description__add-to-wishlist">
-              <AddToWishlist productId={this.props.productId} />
-            </div>
+            {this.props.category !== "Qurbani" && (
+              <div className="product-description__add-to-wishlist">
+                <AddToWishlist productId={this.props.productId} />
+              </div>
+            )}
           </div>
         )}
       </OverlayContext.Consumer>

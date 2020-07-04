@@ -137,7 +137,7 @@ class ProductsFeatured extends React.Component<
                         onChange={this.onVariantPickerChange}
                         selectSidebar={true}
                       /> */}
-                        {product.category?.name === "VIP Qurbani" ? (
+                        {product.category?.name === "Qurbani" ? (
                           <Link
                             to={generateProductUrl(product.id, product.name)}
                             key={product.id}

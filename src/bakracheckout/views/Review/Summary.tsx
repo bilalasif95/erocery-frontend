@@ -32,8 +32,6 @@ class Summary extends React.PureComponent<{
       );
     };
 
-    console.log(dummyStatus, "dummyStatus");
-
     return (
       <div className="checkout-review__content__summary">
         <div>
