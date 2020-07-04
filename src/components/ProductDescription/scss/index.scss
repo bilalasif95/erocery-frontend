@@ -10,8 +10,8 @@
     background-color: #999999;
     width: 150px !important;
   }
-  @media (max-width: $small-screen) {
-    margin-top: 1rem;
+  @media(max-width: $small-screen){
+    margin-top: 1.5rem;
   }
 }
 .react-datepicker-wrapper {
