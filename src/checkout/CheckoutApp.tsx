@@ -78,7 +78,7 @@ const CheckoutApp: React.FC<RouteComponentProps> = ({
               }
 
               if (!cartLines.length) {
-                // if (category === "VIP Qurbani") {
+                // if (category === "Qurbani") {
                 //   return <Redirect to={checkoutBaseUrl} />;
                 // } else {
                 return <Redirect to={appBaseUrl} />;

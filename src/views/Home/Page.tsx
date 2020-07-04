@@ -36,7 +36,7 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 // import banner2 from "../../images/banner2.jpg";
 // import banner3 from "../../images/banner3.jpg";
 // import banner4 from "../../images/banner4.jpg";
-import desktopvipoffer from "../../images/desktopoffer.png";
+import desktopvipoffer from "../../images/desktopoffer.jpg";
 import offerImg from "../../images/offerBanner.jpg";
 import vipoffermob from "../../images/vipoffermob.png";
 
@@ -223,7 +223,7 @@ const Page: React.FC<{
         <img src={offerImg} />
       </div>
       {categoriesExist() && (
-        <div className="home-page__categories">
+        <div className="home-page__categories" id={"categorysection"}>
           <div className="container categoriesContainer">
             <h3>Categories</h3>
             {/* <div className="home-page__categories__list">
@@ -258,7 +258,7 @@ const Page: React.FC<{
             </div> */}
             <div className="home-page__categories__list">
               {categories.edges.map(({ node: category }) => {
-                if (category.name === "VIP Qurbani") {
+                if (category.name === "Qurbani") {
                   qurbaniPath.id = category.id;
                   qurbaniPath.name = category.name;
                 }

@@ -5,9 +5,12 @@
   max-width: calc(100vw - 5rem);
   width: 30rem;
 
-  .menu-list{
+  .menu-list {
     max-height: 100vh;
     overflow-y: scroll;
+  }
+  .qurbanivip {
+    position: relative;
   }
   &__menu-item {
     border-bottom: 1px solid $gray-light;
@@ -24,7 +27,7 @@
       text-decoration: none;
       text-transform: uppercase;
       transition: 0.3s;
-
+      position: relative;
       svg * {
         fill: currentColor;
       }
@@ -85,13 +88,12 @@
         width: 24px;
         position: absolute;
       }
-      .line1{
+      .line1 {
         transform: rotate(45deg);
       }
-      .line2{
+      .line2 {
         transform: rotate(-45deg);
       }
-
 
       &:hover {
         color: #5fbe43;

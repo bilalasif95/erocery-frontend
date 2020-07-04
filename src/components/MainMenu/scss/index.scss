@@ -10,6 +10,7 @@
   position: relative;
   &__left {
     flex-basis: 25%;
+
     @media (min-width: 767px) {
       flex-basis: calc(50% - 1rem);
     }
@@ -167,12 +168,24 @@
     height: 100%;
     text-transform: uppercase;
     position: relative;
+    padding: 0 0 0 1rem;
 
     a {
       text-decoration: none;
       color: $base-font-color;
       position: relative;
       transition: 0.3s;
+
+      &:hover {
+        color: #5fbe43;
+      }
+    }
+    .allcat {
+      text-decoration: none;
+      color: $base-font-color;
+      position: relative;
+      transition: 0.3s;
+      cursor: pointer;
 
       &:hover {
         color: #5fbe43;

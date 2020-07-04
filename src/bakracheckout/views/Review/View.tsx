@@ -103,59 +103,69 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   const locale = maybe(() => "PK", "PK");
   const bakraLines = JSON.parse(localStorage.getItem("bakraLines"));
 
-  const HashKey = "h50t0u7wex";
-  let SortedArray = HashKey;
+  let HashKey = "";
+  let SortedArray = "";
 
-  const Amount = checkout.totalPrice.gross.amount * 0.25 * 100;
-  const BillReference: any = formatDate();
-  const Description = "Thank you for using Jazz Cash";
-  const DiscountedAmount = "";
-  const DiscountedBank = "";
-  const Language = "EN";
-  const MerchantID = "MC10199";
-  const Password = "0sz36zs8cu";
-  const ReturnURL = "http://192.168.100.114:8000/jazzcash/";
-  const TxnCurrency = "PKR";
-  const TxnDateTime: any = formatDate();
-  const TxnExpiryDateTime: any = formatDate(8);
-  const TxnRefNumber: any = "T".concat(formatDate());
-  const Version = "1.1";
-  const TxnType = "";
-  const PPMPF_1 = checkout.token;
-  const PPMPF_2 = "";
-  const PPMPF_3 = "";
-  const PPMPF_4 = "";
-  const PPMPF_5 = "";
-  const PostURL =
-    "https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform";
+  let HashArrayActual = [];
+  let PostURLActual = "";
 
-  const HashArray = [
-    Amount,
-    BillReference,
-    Description,
-    DiscountedAmount,
-    DiscountedBank,
-    Language,
-    MerchantID,
-    Password,
-    ReturnURL,
-    TxnCurrency,
-    TxnDateTime,
-    TxnExpiryDateTime,
-    TxnRefNumber,
-    TxnType,
-    Version,
-    PPMPF_1,
-    PPMPF_2,
-    PPMPF_3,
-    PPMPF_4,
-    PPMPF_5,
-  ];
+  if (dummyStatus.jazzCashDetails) {
+    HashKey = dummyStatus.jazzCashDetails.hashKey;
+    SortedArray = HashKey;
 
-  for (const hash of HashArray) {
-    if (hash !== undefined && hash !== null && hash !== "") {
-      SortedArray += "&" + hash;
+    const Amount = checkout.totalPrice.gross.amount * 0.25 * 100;
+    const BillReference: any = formatDate();
+    const Description = "Thank you for using Jazz Cash";
+    const DiscountedAmount = "";
+    const DiscountedBank = "";
+    const Language = "EN";
+    const MerchantID = dummyStatus.jazzCashDetails.merchantId;
+    const Password = dummyStatus.jazzCashDetails.password;
+    const ReturnURL = dummyStatus.jazzCashDetails.returnUrl;
+    const TxnCurrency = "PKR";
+    const TxnDateTime: any = formatDate();
+    const TxnExpiryDateTime: any = formatDate(8);
+    const TxnRefNumber: any = "T".concat(formatDate());
+    const Version = dummyStatus.jazzCashDetails.version;
+    const TxnType = "";
+    const PPMPF_1 = checkout.token;
+    const PPMPF_2 = "";
+    const PPMPF_3 = "";
+    const PPMPF_4 = "";
+    const PPMPF_5 = "";
+    const PostURL = dummyStatus.jazzCashDetails.postUrl;
+
+    const HashArray = [
+      Amount,
+      BillReference,
+      Description,
+      DiscountedAmount,
+      DiscountedBank,
+      Language,
+      MerchantID,
+      Password,
+      ReturnURL,
+      TxnCurrency,
+      TxnDateTime,
+      TxnExpiryDateTime,
+      TxnRefNumber,
+      TxnType,
+      Version,
+      PPMPF_1,
+      PPMPF_2,
+      PPMPF_3,
+      PPMPF_4,
+      PPMPF_5,
+    ];
+
+    for (const hash of HashArray) {
+      if (hash !== undefined && hash !== null && hash !== "") {
+        SortedArray += "&" + hash;
+      }
     }
+
+    HashArrayActual = HashArray;
+    PostURLActual = PostURL;
   }
 
   return (
@@ -251,7 +261,13 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     {dummyStatus.type === "JazzCash" ? (
                       <div>
-                        <p style={{ color: "red", paddingBottom: "10px" }}>
+                        <p
+                          style={{
+                            color: "red",
+                            fontSize: "12px",
+                            paddingBottom: "10px",
+                          }}
+                        >
                           Note: You will be redirected to JazzCash portal after
                           placing your order. Please, have your Mobile Account
                           Number/Card Number and CNIC ready.
@@ -267,26 +283,40 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                           paymentAmount={
                             checkout && checkout.totalPrice.gross.amount
                           }
-                          hashArr={HashArray}
+                          hashArr={HashArrayActual}
                           hashKey={HashKey}
                           sortedArray={SortedArray}
-                          postUrl={PostURL}
+                          postUrl={PostURLActual}
                         />
                       </div>
                     ) : (
-                      <Button
-                        type="submit"
-                        disabled={loading}
-                        onClick={() => {
-                          completeCheckout({
-                            variables: {
-                              checkoutId: checkout.id,
-                            },
-                          });
-                        }}
-                      >
-                        {loading ? "Loading" : "Place your order"}
-                      </Button>
+                      <div>
+                        {dummyStatus.type === "WireTransfer" && (
+                          <p
+                            style={{
+                              color: "red",
+                              paddingBottom: "10px",
+                            }}
+                          >
+                            Note: Please save bank information for future
+                            reference
+                          </p>
+                        )}
+
+                        <Button
+                          type="submit"
+                          disabled={loading}
+                          onClick={() => {
+                            completeCheckout({
+                              variables: {
+                                checkoutId: checkout.id,
+                              },
+                            });
+                          }}
+                        >
+                          {loading ? "Loading" : "Place your order"}
+                        </Button>
+                      </div>
                     )}
                   </div>
                 )}

@@ -51,14 +51,12 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
         <S.Price>
           {getProductPrice()}
           {/* <TaxedMoney taxedMoney={price} /> */}
-          {product &&
-            product.category &&
-            product.category.name === "VIP Qurbani" && (
-              <span className="advancebook">
-                Booking: {price && price.gross.currency}
-                {price && price.gross.amount * 0.25}
-              </span>
-            )}
+          {product && product.category && product.category.name === "Qurbani" && (
+            <span className="advancebook">
+              Booking: {price && price.gross.currency}
+              {price && price.gross.amount * 0.25}
+            </span>
+          )}
         </S.Price>
       </S.DeskView>
       {/* <S.MobView>

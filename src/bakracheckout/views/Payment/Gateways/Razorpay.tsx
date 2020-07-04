@@ -69,23 +69,23 @@ class Razorpay extends React.PureComponent<
       >
         <div>
           <p>
-            <span style={{ fontWeight: 900 }}>Account Title:</span>
+            <span style={{ fontWeight: 900 }}>Account Title:&nbsp;</span>
             {paymentGatewayConfig[0].value}
           </p>
           <p>
-            <span style={{ fontWeight: 900 }}>Account No.:</span>
+            <span style={{ fontWeight: 900 }}>Account No.:&nbsp;</span>
             {paymentGatewayConfig[1].value}
           </p>
           <p>
-            <span style={{ fontWeight: 900 }}>Bank Name:</span>
+            <span style={{ fontWeight: 900 }}>Bank Name:&nbsp;</span>
             {paymentGatewayConfig[2].value}
           </p>
           <p>
-            <span style={{ fontWeight: 900 }}>IBAN:</span>
+            <span style={{ fontWeight: 900 }}>IBAN:&nbsp;</span>
             {paymentGatewayConfig[3].value}
           </p>
           <p>
-            <span style={{ fontWeight: 900 }}>Branch Code:</span>
+            <span style={{ fontWeight: 900 }}>Branch Code:&nbsp;</span>
             {paymentGatewayConfig[4].value}
           </p>
         </div>

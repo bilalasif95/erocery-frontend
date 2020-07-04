@@ -25,16 +25,29 @@ class JazzCash extends React.PureComponent<
       formRef,
       processPayment,
       checkout: { update },
-      //   paymentGatewayConfig,
+      paymentGatewayConfig,
     } = this.props;
 
+    console.log(paymentGatewayConfig, "paymentGatewayConfig");
     const { selectedStatus } = this.state;
     return (
       <form
         ref={formRef}
         onSubmit={async evt => {
           evt.preventDefault();
-          await update({ dummyStatus: { type: "JazzCash" } });
+          await update({
+            dummyStatus: {
+              jazzCashDetails: {
+                hashKey: paymentGatewayConfig[2].value,
+                merchantId: paymentGatewayConfig[0].value,
+                password: paymentGatewayConfig[1].value,
+                postUrl: paymentGatewayConfig[4].value,
+                returnUrl: paymentGatewayConfig[5].value,
+                version: paymentGatewayConfig[3].value,
+              },
+              type: "JazzCash",
+            },
+          });
           processPayment(selectedStatus.token, PROVIDERS.JAZZCASH.label);
         }}
         className="c-option__content"
