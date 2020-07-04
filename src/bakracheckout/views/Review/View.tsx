@@ -261,7 +261,13 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     {dummyStatus.type === "JazzCash" ? (
                       <div>
-                        <p style={{ color: "red", paddingBottom: "10px" }}>
+                        <p
+                          style={{
+                            color: "red",
+                            fontSize: "12px",
+                            paddingBottom: "10px",
+                          }}
+                        >
                           Note: You will be redirected to JazzCash portal after
                           placing your order. Please, have your Mobile Account
                           Number/Card Number and CNIC ready.
@@ -286,7 +292,12 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                     ) : (
                       <div>
                         {dummyStatus.type === "WireTransfer" && (
-                          <p style={{ color: "red", paddingBottom: "10px" }}>
+                          <p
+                            style={{
+                              color: "red",
+                              paddingBottom: "10px",
+                            }}
+                          >
                             Note: Please save bank information for future
                             reference
                           </p>

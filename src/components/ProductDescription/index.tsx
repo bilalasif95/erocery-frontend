@@ -48,7 +48,7 @@ interface ProductDescriptionProps {
 
 interface ProductDescriptionState {
   error: any;
-  quantity: number;
+  quantity: any;
   variant: string;
   variantStock: number;
   variantPricing: ProductDetails_product_variants_pricing;
@@ -150,24 +150,44 @@ class ProductDescription extends React.Component<
   };
 
   handleSubmit = () => {
-    this.props
-      .addToCart(this.props.productVariants[0].id, this.state.quantity)
-      .then(data => {
-        this.setState({ error: data });
-      })
-      .catch(error => {
-        this.setState({ error });
+    if (!this.state.quantity) {
+      this.setState({
+        error: [{ field: "quantity", message: "Please input Quantity" }],
       });
+    } else {
+      if (
+        this.props.productVariants &&
+        this.props.productVariants[0].stockQuantity < this.state.quantity
+      ) {
+        this.setState({
+          error: [
+            {
+              field: "quantity",
+              message: `Cannot add more than ${this.props.productVariants[0].stockQuantity} times this item`,
+            },
+          ],
+        });
+      } else {
+        this.props
+          .addToCart(this.props.productVariants[0].id, this.state.quantity)
+          .then(data => {
+            this.setState({ error: data });
+          })
+          .catch(error => {
+            this.setState({ error });
+          });
+      }
+    }
   };
 
   canAddToCart = (lines: CartLine[]) => {
-    const { quantity } = this.state;
+    // const { quantity } = this.state;
     // const cartLine = lines.find(({ variantId }) => variantId === variant);
     // const syncedQuantityWithCart = cartLine
     //   ? quantity + cartLine.quantity
     //   : quantity;
+    // quantity !== 0
     return (
-      quantity !== 0 &&
       this.props.productVariants &&
       this.props.productVariants[0].stockQuantity !== 0
     );
@@ -205,10 +225,10 @@ class ProductDescription extends React.Component<
             <h3>{name}</h3>
             <h4>{this.getProductPrice()}</h4>
             {this.props.category === "Qurbani" && (
-              <h4>
+              <p>
                 Book it now in just {this.state.price.gross.currency}{" "}
                 {this.state.price.gross.amount * 0.25} only
-              </h4>
+              </p>
             )}
             {this.props.productVariants.length === 0 ||
             this.props.productVariants[0].attributes.length === 0 ? (
@@ -263,9 +283,7 @@ class ProductDescription extends React.Component<
                   min="1"
                   value={quantity || ""}
                   onChange={e =>
-                    this.setState({
-                      quantity: Math.max(1, Number(e.target.value)),
-                    })
+                    this.setState({ quantity: Number(e.target.value) })
                   }
                 />
               </div>

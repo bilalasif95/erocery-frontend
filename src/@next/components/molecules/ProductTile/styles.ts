@@ -71,10 +71,16 @@ export const Price = styled.p`
   padding: 0 0.5rem;
   position: relative;
   height: 46px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  span {
+    width: 100%;
+  }
   .advancebook {
-    position: absolute;
-    left: 8px;
-    bottom: 0;
+    // position: absolute;
+    // left: 8px;
+    // bottom: 0;
     color: grey;
     font-size: 12px;
   }

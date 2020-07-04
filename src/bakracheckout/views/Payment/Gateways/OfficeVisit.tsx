@@ -60,11 +60,11 @@ class OfficeVisit extends React.PureComponent<
       >
         <div>
           <p>
-            <span style={{ fontWeight: 900 }}>Office Address:</span>
+            <span style={{ fontWeight: 900 }}>Office Address:&nbsp;</span>
             {paymentGatewayConfig[0].value}
           </p>
           <p>
-            <span style={{ fontWeight: 900 }}>Office Phone.:</span>
+            <span style={{ fontWeight: 900 }}>Office Phone.:&nbsp;</span>
             {paymentGatewayConfig[1].value}
           </p>
         </div>

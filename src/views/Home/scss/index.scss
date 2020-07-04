@@ -444,11 +444,12 @@
     }
     @media (max-width: 375px) {
       .moboffer {
-        width: 100%;
+        width: 250px;
         margin: 0 auto;
       }
       .bookbtn {
         left: 40%;
+        bottom: -15px;
         // font-size: 12px;
         // padding: 0.3rem 0.7rem;
       }

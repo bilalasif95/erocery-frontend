@@ -68,7 +68,7 @@ const MainMenu: React.FC = () => {
       });
   };
 
-  const scrollToTeam = () => {
+  const scrollToCategory = () => {
     history.push("/");
     setTimeout(() => {
       document.getElementById("categorysection").scrollIntoView();
@@ -143,10 +143,9 @@ const MainMenu: React.FC = () => {
                       /> */}
                       <li
                         className="main-menu__item"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => scrollToTeam()}
+                        onClick={() => scrollToCategory()}
                       >
-                        All Categories
+                        <span className="allcat">All Categories</span>
                       </li>
                       <Media
                         query={{ minWidth: mediumScreen }}

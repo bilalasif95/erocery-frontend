@@ -6,10 +6,10 @@ const padding = {
   sm: "0.1rem 1rem",
 };
 
-const fontSize = (fontSize: string, smallFontSize: string) => ({
-  md: fontSize,
-  sm: smallFontSize,
-});
+// const fontSize = (fontSize: string, smallFontSize: string) => ({
+//   md: fontSize,
+//   sm: smallFontSize,
+// });
 
 export const Primary = styled.button<{
   color: "primary" | "secondary";
@@ -48,7 +48,7 @@ export const Primary = styled.button<{
   }
 
   ${media.smallScreen`
-    padding:  0.9rem 1rem;
+    padding:  0.5rem 1rem;
     width: ${(props: { fullWidth: boolean }) =>
       props.fullWidth ? "100%" : "88%"};
   `}
@@ -61,15 +61,14 @@ export const Secondary = styled(Primary)`
   border-right: 1px solid ${props => props.theme.button.colors.secondary.color};
 `;
 
-export const Text = styled.span<{ size: Size }>`
+export const Text = styled.span`
   display: inline-block;
-  font-size: ${({
-    size,
-    theme: {
-      button: { typography },
-    },
-  }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
+  font-size: 1.125rem;
   text-transform: uppercase;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   line-height: ${props => props.theme.typography.baseLineHeight};
+
+  ${media.smallScreen`
+  font-size: 0.9rem !important;
+`}
 `;

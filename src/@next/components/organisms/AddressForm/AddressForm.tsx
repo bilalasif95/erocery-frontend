@@ -2,8 +2,6 @@ import { Formik } from "formik";
 import pick from "lodash/pick";
 import React from "react";
 
-import {useUserDetails} from "@sdk/react";
-
 import { IAddress } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
@@ -29,7 +27,6 @@ export const AddressForm: React.FC<IProps> = ({
   cities,
   ...props
 }: IProps) => {
-  const { data: user } = useUserDetails();
   let addressWithPickedFields: Partial<IAddress> = {
     // phone: "03",
   };
@@ -44,6 +41,7 @@ export const AddressForm: React.FC<IProps> = ({
       initialValues={addressWithPickedFields}
       onSubmit={(values: any, { setSubmitting }) => {
         if (handleSubmit) {
+          props.errors = []
           if(!values.city.city){
             props.errors.push({
               field: "city",
@@ -51,7 +49,7 @@ export const AddressForm: React.FC<IProps> = ({
             })
           }
           else {
-            values = { ...values, phone: values.phone.length >= 11 ? values.phone : "03"+values.phone };
+            values = { ...values, phone: values.phone.length >= 11 ? values.phone : "03"+values.phone};
             handleSubmit(values);
           }
         }
@@ -66,7 +64,6 @@ export const AddressForm: React.FC<IProps> = ({
         setFieldValue,
         setFieldTouched,
       }) => {
-        values.phone = user && user.phone.slice(2)
         return (
           <AddressFormContent
             {...{

@@ -7,6 +7,8 @@ import ReactSVG from "react-svg";
 import { homeUrl } from "../../app/routes";
 import NavItem, { INavItem } from "./NavItem";
 
+import { history } from "../../history";
+
 import backImg from "../../images/arrow-back.svg";
 import logoImg from "../../images/erocery_logo.svg";
 
@@ -19,6 +21,13 @@ interface NavListState {
   parent: INavItem | null;
   displayedItems: INavItem[];
 }
+
+const scrollToCategory = () => {
+  history.push("/");
+  setTimeout(() => {
+    document.getElementById("categorysection").scrollIntoView();
+  }, 200);
+};
 
 class NavList extends React.PureComponent<NavListProps, NavListState> {
   state: NavListState = {
@@ -63,30 +72,33 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
 
     return (
       <div>
-      <ul>
-        {parent ? (
-          <li className="side-nav__menu-item side-nav__menu-item-back">
-            <span onClick={this.handleGoBack}>
-              <ReactSVG path={backImg} /> {parent.name}
-            </span>
-          </li>
-        ) : (
-          <>
-            <li className="side-nav__menu-item side-nav__menu-item--parent">
-              <Link
-                to={homeUrl}
-                className="side-nav__menu-item-logo"
-                onClick={hideOverlay}
-              >
-                 {/* <img src={logoImg}/> */}
-                <ReactSVG path={logoImg} className="logoImg" />
-              </Link>
-              <span className="side-nav__menu-item-close" onClick={hideOverlay}>
-                <span className="line1" />
-                <span className="line2" />
+        <ul>
+          {parent ? (
+            <li className="side-nav__menu-item side-nav__menu-item-back">
+              <span onClick={this.handleGoBack}>
+                <ReactSVG path={backImg} /> {parent.name}
               </span>
             </li>
-            {/* <li className="side-nav__menu-item">
+          ) : (
+            <>
+              <li className="side-nav__menu-item side-nav__menu-item--parent">
+                <Link
+                  to={homeUrl}
+                  className="side-nav__menu-item-logo"
+                  onClick={hideOverlay}
+                >
+                  {/* <img src={logoImg}/> */}
+                  <ReactSVG path={logoImg} className="logoImg" />
+                </Link>
+                <span
+                  className="side-nav__menu-item-close"
+                  onClick={hideOverlay}
+                >
+                  <span className="line1" />
+                  <span className="line2" />
+                </span>
+              </li>
+              {/* <li className="side-nav__menu-item">
             </li>
             <li className="side-nav__menu-item">
               <Link
@@ -97,28 +109,65 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
                 Home
               </Link>
             </li> */}
-          </>
-        )}
+            </>
+          )}
         </ul>
         <ul className="menu-list">
-            <li className="side-nav__menu-item">
-              <Link
-                to={homeUrl}
-                className="side-nav__menu-item-link"
-                onClick={hideOverlay}
-              >
-                Home
-              </Link>
-            </li>
-        {displayedItems.map(item => (
-          <NavItem
-            key={item.id}
-            hideOverlay={hideOverlay}
-            showSubItems={this.handleShowSubItems}
-            {...item}
-          />
-        ))}
-      </ul>
+          <li
+            className="side-nav__menu-item"
+            onClick={() => scrollToCategory()}
+          >
+            <span onClick={hideOverlay} className="side-nav__menu-item-link">
+              All Categories
+            </span>
+          </li>
+          <li className="side-nav__menu-item">
+            <Link
+              to={homeUrl}
+              className="side-nav__menu-item-link"
+              onClick={hideOverlay}
+            >
+              Home
+            </Link>
+          </li>
+          {displayedItems.map(item =>
+            item.name === "Qurbani" ? (
+              <div className="qurbanivip">
+                <NavItem
+                  key={item.id}
+                  hideOverlay={hideOverlay}
+                  showSubItems={this.handleShowSubItems}
+                  {...item}
+                />
+                <small
+                  style={{
+                    background: "red",
+                    borderRadius: "30px",
+                    color: "#fff",
+                    content: "attr(badge)",
+                    fontSize: "11px",
+                    left: "90px",
+                    minWidth: "20px",
+                    padding: "1px 3px",
+                    position: "absolute",
+                    textAlign: "center",
+                    textTransform: "capitalize",
+                    top: "5px",
+                  }}
+                >
+                  New
+                </small>
+              </div>
+            ) : (
+              <NavItem
+                key={item.id}
+                hideOverlay={hideOverlay}
+                showSubItems={this.handleShowSubItems}
+                {...item}
+              />
+            )
+          )}
+        </ul>
       </div>
     );
   }

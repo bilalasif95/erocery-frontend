@@ -88,6 +88,7 @@ export const Select = (props: ISelectProps) => {
         <div className="select__title">
           <input
             ref={inputRef}
+            required
             className="input__field"
             value={searchPhrase}
             onChange={e => {

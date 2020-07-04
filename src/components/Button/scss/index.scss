@@ -15,7 +15,7 @@ button.button {
   @media (max-width: $small-screen) {
     padding: $button-padding-small-screen;
     width: 88%;
-    max-width: 88%;
+    max-width: 100%;
   }
 
   > span {
@@ -26,6 +26,9 @@ button.button {
     font-weight: $button-font-weight;
     line-height: $button-line-height;
     transform: $button-content-transform;
+    @media (max-width: $small-screen) {
+      font-size: 0.9rem;
+    }
   }
 
   &:hover {

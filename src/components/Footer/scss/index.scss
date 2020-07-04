@@ -9,12 +9,18 @@
     justify-content: space-between;
   }
   .footer-item {
-    width: 33.33%;
-    .apps{
-      margin-top: 2.8rem;
-    }
-    .contactUs {
-      margin-bottom: 2rem;
+    width: 25%;
+    .playstoreIcons{
+      display: grid;
+      .googlePlayStoreIcon{
+        margin-bottom: 1rem;
+        @media(max-width:520px){
+          margin-right: 1rem;
+        }
+      }
+      @media(max-width:520px){
+        display: flex;
+      }
     }
     .whatsAppNumber{
       margin-left: 7.5rem;
@@ -28,35 +34,41 @@
   }
   h4 {
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
   }
 .quick-links{
   ul{
     padding: 0;
   }
   svg{
-    margin: 0 1rem 0 0;
+    margin: 0 0.5rem 0 0;
   }
   path {
     fill: #fff !important;
   }
   .contactUsLinks {
     color: white;
-    font-size: 20px;
-    font-weight: 600;
-    display: flex;
+    font-size: 15px;
+    font-weight: 500;
+    display: grid;
     align-items: center;
     justify-content: flex-start;
+    .contactUsLinksSpanOne {
+      font-weight: 600;
+    }
+    .contactUsLinksSpanTwo {
+      margin-bottom: 0.5rem;
+    }
   }
   li{
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
     a{
       color: white;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -68,7 +80,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   li{
-    margin: 0 1rem 1rem 0;
+    // margin: 0 1rem 1rem 0;
     border-radius: 3px;
     overflow: hidden;
     // background: #fff;
@@ -92,6 +104,7 @@
 }
 .social-media{
   display: flex;
+  margin-bottom: 1rem;
   .androidAppStore{
     margin-right: 0.5rem;
   }
