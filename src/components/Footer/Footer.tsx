@@ -44,7 +44,7 @@ const Footer: React.FC = () => (
             <ul className="quick-links">
               <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Phone:</span><span className="contactUsLinksSpanTwo">+92-330-2755559</span></li>
               <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Email:</span><span className="contactUsLinksSpanTwo">contact@erocery.com</span></li>
-              <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Address:</span><span className="contactUsLinksSpanTwo">3rd Floor, Al-Rahim Arcade, National Market,
+              <li className="contactUsLinks"><span className="contactUsLinksSpanOne">Address:</span><span className="contactUsLinksSpanTwo">Office #1b, 3rd Floor, Al-Rahim Arcade, National Market,
 Satellite Town, Rawalpindi, Pakistan.</span></li>
             </ul>
           </div>
