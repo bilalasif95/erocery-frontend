@@ -75,7 +75,16 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
         <p className="product-list-item__price">{getProductPrice()}</p>
         {product.category.name === "Qurbani" && (
           <span className="advancebook">
-            Booking: {price.gross.currency} {price.gross.amount * 0.25}
+            Booking: <TaxedMoney taxedMoney={{
+                gross: {
+                  amount: price && price.gross.amount * 0.25,
+                  currency: price && price.gross.currency,
+                },
+                net: {
+                  amount: price && price.gross.amount * 0.25,
+                  currency: price && price.gross.currency,
+                },
+              }}/>
           </span>
         )}
       </div>

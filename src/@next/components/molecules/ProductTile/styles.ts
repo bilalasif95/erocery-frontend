@@ -130,3 +130,11 @@ export const Image = styled.div`
 //     height: 150px;
 //  `}
 `;
+
+export const MagnifiedImage = styled.div`
+  > img {
+    :hover {
+      opacity: 0
+    }
+  }
+`;

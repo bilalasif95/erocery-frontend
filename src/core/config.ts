@@ -61,7 +61,7 @@ export const SOCIAL_MEDIA = [
 export const META_DEFAULTS = {
   custom: [],
   description:
-    "Erocery is an Online Grocery Store in Rawalpindi/Islamabad. Delivering orders same day with free home delivery. Order now to get 3% off.",
+    "Erocery is an Online Supermarket providing Same Day Delivery in Rawalpindi & Islamabad with an interactive online grocery shopping experience.",
   image: `${window.location.origin}${require("../images/erocery_logo.svg")}`,
   title: "Products – Erocery Commerce",
   type: "website",

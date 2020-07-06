@@ -198,7 +198,15 @@ class ProductDescription extends React.Component<
     const { quantity, dateError } = this.state;
 
     const ExampleCustomInput = ({ value, onClick }) => (
-      <button className="datepick" onClick={onClick}>
+      <button className="datepick" onClick={onClick} style={
+        dateError === null
+          ? { border: "none" }
+          : {
+              border: "1px solid red",
+              borderRadius: "0px",
+              padding: "10px",
+            }
+      }>
         {value === "" ? (
           <span className="selectdate">Select Delivery Date</span>
         ) : (
@@ -332,7 +340,7 @@ class ProductDescription extends React.Component<
                             }
                             // className="datepicker"
                             minDate={new Date("23 July 2020")}
-                            maxDate={new Date("30 July 2020")}
+                            maxDate={new Date("31 July 2020")}
                             placeholderText="Select Delivery Date"
                             dateFormat="MMMM d, yyyy"
                           />

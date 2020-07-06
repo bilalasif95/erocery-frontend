@@ -103,7 +103,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                       onMouseEnter={() => setImageIndex(index)}
                       activeThumbnail={Boolean(index === imageIndex)}
                     >
-                      <CachedImage alt={image.alt} url={image.url} />
+                      <CachedImage alt={image.alt} url={image.url} zoom={false} />
                     </S.Thumbnail>
                   </li>
                 );
@@ -115,6 +115,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
       <S.Preview>
         {images && images.length > 0 && imageIndex < images.length && (
           <CachedImage
+            zoom={true}
             alt={images[imageIndex].alt}
             url={images[imageIndex].url}
           />
