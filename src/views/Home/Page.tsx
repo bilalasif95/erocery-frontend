@@ -184,7 +184,7 @@ const Page: React.FC<{
         <img src={offerImg} />
       </div>
       {categoriesExist() && (
-        <div className="home-page__categories">
+        <div className="home-page__categories" id={"categorysection"}>
           <div className="container categoriesContainer">
             <h3>Categories</h3>
             {/* <div className="home-page__categories__list">

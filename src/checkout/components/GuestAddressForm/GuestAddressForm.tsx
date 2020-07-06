@@ -28,7 +28,7 @@ const extractShippingData = (checkout: Checkout | null, shop: getShop_shop) => {
   const checkoutData = checkout && {
     ...checkout.shippingAddress,
     email: checkout.email,
-    phone: checkout.shippingAddress.phone.slice(2),
+    phone: checkout.shippingAddress && checkout.shippingAddress.phone.slice(2),
   };
 
   const hasShippingCountry = !!maybe(() => checkout.shippingAddress.country);

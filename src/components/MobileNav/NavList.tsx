@@ -7,6 +7,8 @@ import ReactSVG from "react-svg";
 import { homeUrl } from "../../app/routes";
 import NavItem, { INavItem } from "./NavItem";
 
+import { history } from "../../history";
+
 import backImg from "../../images/arrow-back.svg";
 import logoImg from "../../images/erocery_logo.svg";
 
@@ -19,6 +21,13 @@ interface NavListState {
   parent: INavItem | null;
   displayedItems: INavItem[];
 }
+
+const scrollToCategory = () => {
+  history.push("/");
+  setTimeout(() => {
+    document.getElementById("categorysection").scrollIntoView();
+  }, 200);
+};
 
 class NavList extends React.PureComponent<NavListProps, NavListState> {
   state: NavListState = {
@@ -101,6 +110,14 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
         )}
         </ul>
         <ul className="menu-list">
+            <li
+              className="side-nav__menu-item"
+              onClick={() => scrollToCategory()}
+            >
+              <span onClick={hideOverlay} className="side-nav__menu-item-link">
+                All Categories
+              </span>
+            </li>
             <li className="side-nav__menu-item">
               <Link
                 to={homeUrl}

@@ -171,6 +171,8 @@
     font-weight: $bold-font-weight;
     height: 100%;
     text-transform: uppercase;
+    position: relative;
+    padding: 0 0 0 1rem;
 
     a {
       text-decoration: none;
@@ -178,6 +180,18 @@
       position: relative;
       transition: 0.3s;
 
+      &:hover {
+        color: #5fbe43;
+      }
+    }
+    .allcat {
+      text-decoration: none;
+      color: $base-font-color;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+      cursor: pointer;
+      
       &:hover {
         color: #5fbe43;
       }
