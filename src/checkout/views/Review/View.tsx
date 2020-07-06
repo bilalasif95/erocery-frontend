@@ -25,6 +25,10 @@ import { maybe } from "../../../core/utils";
 
 import { TypedProductVariantsQuery } from "../../../views/Product/queries";
 
+ import { gtmId } from "../../../../src/config";
+
+import TagManager from 'react-gtm-module'
+
 const completeCheckout = (
   data: completeCheckout,
   history: History,
@@ -35,6 +39,36 @@ const completeCheckout = (
   const canProceed = !data.checkoutComplete.errors.length;
 
   if (canProceed) {
+
+    const tagManagerArgs = {
+
+      dataLayer: {
+        'event': 'purchase',
+        'transactionAffiliation': 'Acme Clothing',
+        'transactionId': '1234',
+        'transactionTax': 1.29,
+        'transactionTotal': 38.26,
+
+        'transactionProducts': [{
+          'category': 'Apparel',
+          'name': 'T-Shirt',
+          'price': 11.99,
+          'quantity': 1,
+          'sku': 'DD44',
+        }, {
+          'category': 'Apparel',
+          'name': 'Socks',
+          'price': 9.99,
+          'quantity': 2,
+          'sku': 'AA1243544',
+        }],
+        'transactionShipping': 5,
+      },
+      gtmId,
+    };
+
+    TagManager.initialize(tagManagerArgs)
+    
     const { token } = data.checkoutComplete.order;
     history.push({
       pathname: orderConfirmationUrl,
