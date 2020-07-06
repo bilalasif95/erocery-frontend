@@ -34,6 +34,7 @@ import hamburgerImg from "../../images/hamburger.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 
+import { history } from "../../history";
 
 import { ShopContext } from "../ShopProvider/context";
 
@@ -64,6 +65,13 @@ const MainMenu: React.FC = () => {
       );
     })
   };
+
+  const scrollToCategory = () => {
+    history.push("/");
+    setTimeout(() => {
+      document.getElementById("categorysection").scrollIntoView();
+    }, 200);
+  }
 
   return (
     <OverlayContext.Consumer>
@@ -131,7 +139,12 @@ const MainMenu: React.FC = () => {
                           />
                         }
                       /> */}
-
+                      <li
+                        className="main-menu__item"
+                        onClick={() => scrollToCategory()}
+                      >
+                        <span className="allcat">All Categories</span>
+                      </li>
                       <Media
                         query={{ minWidth: mediumScreen }}
                         render={() =>
