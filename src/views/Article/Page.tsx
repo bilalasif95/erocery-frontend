@@ -1,6 +1,6 @@
-import classNames from "classnames";
+// import classNames from "classnames";
 import * as React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { RichTextContent } from "@components/atoms";
 import { Breadcrumb, Breadcrumbs } from "../../components";
@@ -29,7 +29,7 @@ export const Page: React.FC<PageProps> = ({
   <div className="article-page">
     <div
       className="article-page__header"
-      style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
+      // style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
     >
       <span className="article-page__header__title">
         <h1>{page.title}</h1>
@@ -37,8 +37,8 @@ export const Page: React.FC<PageProps> = ({
     </div>
     <div className="container">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <div className="article-page__container">
-        <div className="article-page__navigation">
+      <div>
+        {/* <div className="article-page__navigation">
           <ul>
             {navigation.map(menuElement => (
               <li
@@ -53,8 +53,8 @@ export const Page: React.FC<PageProps> = ({
               </li>
             ))}
           </ul>
-        </div>
-        <div className="article-page__content">
+        </div> */}
+        <div>
         <RichTextContent
           descriptionJson={page.contentJson}
         />
