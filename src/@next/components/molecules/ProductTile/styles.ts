@@ -93,6 +93,10 @@ export const Price = styled.p`
      span{
        width: 100%;
      }
+     .advancebook {
+      font-size: 10px;
+      font-weight: 300;
+    }
   `}
 `;
 export const AddCartBtn = styled.div`
