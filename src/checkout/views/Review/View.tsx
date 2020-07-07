@@ -22,7 +22,7 @@ import { maybe } from "../../../core/utils";
 
 import { TypedProductVariantsQuery } from "../../../views/Product/queries";
 
- import { gtmId } from "../../../../src/config";
+import { gtmId } from "../../../../src/config";
 
 import TagManager from 'react-gtm-module'
 
@@ -37,35 +37,30 @@ const completeCheckout = (
 
   if (canProceed) {
 
+    const orderInfo = data.checkoutComplete.order;
+    const totalItemsSale = [];
+
+    orderInfo.lines.map((item) => {
+      totalItemsSale.push({ name: item.productName, quantity: item.quantity, price: item.unitPrice.gross.amount, category: item.variant.product.category.name })
+    })
+
     const tagManagerArgs = {
 
       dataLayer: {
         'event': 'purchase',
-        'transactionAffiliation': 'Acme Clothing',
-        'transactionId': '1234',
-        'transactionTax': 1.29,
-        'transactionTotal': 38.26,
+        // 'transactionAffiliation': 'Acme Clothing',
+        'transactionId': orderInfo.id,
+        'transactionProducts': totalItemsSale,
+        // 'transactionShipping': 5,
+        // 'transactionTax': 1.29,
+        'transactionTotal': orderInfo.total.gross.amount,
 
-        'transactionProducts': [{
-          'category': 'Apparel',
-          'name': 'T-Shirt',
-          'price': 11.99,
-          'quantity': 1,
-          'sku': 'DD44',
-        }, {
-          'category': 'Apparel',
-          'name': 'Socks',
-          'price': 9.99,
-          'quantity': 2,
-          'sku': 'AA1243544',
-        }],
-        'transactionShipping': 5,
       },
       gtmId,
     };
 
     TagManager.initialize(tagManagerArgs)
-    
+
     const { token } = data.checkoutComplete.order;
     history.push({
       pathname: orderConfirmationUrl,
@@ -99,7 +94,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     clear: clearCheckout,
   } = React.useContext(CheckoutContext);
   const { clear: clearCart } = React.useContext(CartContext);
-
+  console.log("checkoutiiiiiiiiiiiiiiiiiii", checkout.id)
   const discountExists = checkout.discount && !!checkout.discount.amount;
   const locale = maybe(() => "PK", "PK");
   return (

@@ -34,11 +34,11 @@ import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
 import { apiUrl, serviceWorkerTimeout } from "./constants";
 
-// import { gtmId } from "../src/config"
+import { gtmId } from "../src/config"
 
 import { history } from "./history";
 
-// import TagManager from 'react-gtm-module'
+import TagManager from 'react-gtm-module'
 
 import { OverlayProvider, UserProvider } from "./components";
 
@@ -54,34 +54,11 @@ const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
   UserProvider
 );
 
-// const tagManagerArgs = {
+const tagManagerArgs = {
+  gtmId,
+};
 
-//   dataLayer: {
-//     'event': 'purchase',
-//     'transactionAffiliation': 'Acme Clothing',
-//     'transactionId': '1234',
-//     'transactionTax': 1.29,
-//     'transactionTotal': 38.26,
-
-//     'transactionProducts': [{
-//       'category': 'Apparel',
-//       'name': 'T-Shirt',
-//       'price': 11.99,
-//       'quantity': 1,
-//       'sku': 'DD44',
-//     }, {
-//       'category': 'Apparel',
-//       'name': 'Socks',
-//       'price': 9.99,
-//       'quantity': 2,
-//       'sku': 'AA1243544',
-//     }],
-//     'transactionShipping': 5,
-//   },
-//   gtmId,
-// };
-
-// TagManager.initialize(tagManagerArgs)
+TagManager.initialize(tagManagerArgs)
 
 const link = ApolloLink.from([
   invalidTokenLink,
