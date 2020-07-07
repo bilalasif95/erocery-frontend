@@ -132,6 +132,9 @@ export const Image = styled.div`
 `;
 
 export const MagnifiedImage = styled.div`
+  height: 338px;
+  width: 450px;
+  
   > img {
     :hover {
       opacity: 0

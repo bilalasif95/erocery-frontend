@@ -9,7 +9,7 @@ import { IProps } from "./types";
 
 const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 4;
 
-export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
+export const ProductGallery: React.FC<IProps> = ({ category,images }: IProps) => {
   const [imageIndex, setImageIndex] = React.useState<number>(0);
 
   const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
@@ -112,7 +112,8 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
         </S.ThumbnailList>
       </S.ThumbnailsContainer>
 
-      <S.Preview>
+      {category === "Qurbani" ? (
+      <S.BakraPreview>
         {images && images.length > 0 && imageIndex < images.length && (
           <CachedImage
             zoom={true}
@@ -121,7 +122,19 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
           />
         )}
         {images.length === 0 && <CachedImage />}
+      </S.BakraPreview>
+      ) : (
+      <S.Preview>
+        {images && images.length > 0 && imageIndex < images.length && (
+          <CachedImage
+            zoom={false}
+            alt={images[imageIndex].alt}
+            url={images[imageIndex].url}
+          />
+        )}
+        {images.length === 0 && <CachedImage />}
       </S.Preview>
+      )}
     </S.Wrapper>
   );
 };

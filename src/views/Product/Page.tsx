@@ -128,7 +128,7 @@ class Page extends React.PureComponent<
                       className="product-page__product__gallery"
                       ref={this.productGallery}
                     >
-                      <ProductGallery images={this.getImages()} />
+                      <ProductGallery category={product.category.name} images={this.getImages()} />
                     </div>
                     <div className="product-page__product__info">
                       <div

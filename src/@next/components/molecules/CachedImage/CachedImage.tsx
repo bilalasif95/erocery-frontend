@@ -55,11 +55,10 @@ export const CachedImage: React.FC<IImage> = ({
     const y = (e.pageY - top) / height * 100
     setBackgroundPosition(`${x}% ${y}%`)
   };
-
   return (
     <>
     {zoom ?
-    <figure onMouseMove={handleMouseMove} style={{backgroundPosition,backgroundImage: `url(${url})`}}>
+    <figure onMouseMove={handleMouseMove} style={{backgroundPosition,backgroundImage: `url(${url})`,backgroundRepeat: 'no-repeat'}}>
     <S.MagnifiedImage>
       <img
         {...props}

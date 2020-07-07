@@ -83,9 +83,9 @@
           height: 250px !important;
         }
         .slider-slide > img{
-          width: 185px;
           margin: 0 auto;
           height: 100%;
+          max-width: fit-content;
         }
       }
 
