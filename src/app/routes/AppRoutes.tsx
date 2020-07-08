@@ -16,6 +16,8 @@ import Delivery from "../../views/FooterPages/Delivery";
 import HowToOrder from "../../views/FooterPages/How-To-Order";
 import PaymentError from "../../views/FooterPages/PaymentError";
 import PaymentSuccess from "../../views/FooterPages/PaymentSuccess";
+import JazzCashPaymentError from "../../views/FooterPages/JazzCashPaymentError";
+import JazzCashPaymentSuccess from "../../views/FooterPages/JazzCashPaymentSuccess";
 import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";
 import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
 import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
@@ -56,6 +58,8 @@ export const Routes: React.FC = () => (
     <Route path={paths.privacyPolicyUrl} component={PrivacyPolicy} />
     <Route path={paths.paymentSuccessUrl} component={PaymentSuccess} />
     <Route path={paths.paymentErrorUrl} component={PaymentError} />
+    <Route path={paths.jazzCashPaymentSuccessUrl} component={JazzCashPaymentSuccess} />
+    <Route path={paths.jazzCashPaymentErrorUrl} component={JazzCashPaymentError} />
     <Route component={NotFound} />
     {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
   </Switch>
