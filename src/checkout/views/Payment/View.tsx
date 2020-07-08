@@ -21,6 +21,7 @@ import {
 import { reviewUrl } from "../../routes";
 import CreditCard from "./Gateways/Braintree/CreditCard";
 import Dummy from "./Gateways/Dummy";
+import JazzCash from "./Gateways/JazzCashDum";
 import { Stripe } from "./Gateways/Stripe";
 import { TypedPaymentMethodCreateMutation } from "./queries";
 import "./scss/index.scss";
@@ -250,7 +251,15 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                             <Dummy {...paymentGatewayProps} />
                           </Option>
                         );
-
+                      case PROVIDERS.JAZZCASH.label:
+                        return (
+                          <Option
+                            label="Jazz Cash"
+                            {...optionProps(providerName)}
+                          >
+                            <JazzCash {...paymentGatewayProps} />
+                          </Option>
+                        );
                       case PROVIDERS.STRIPE.label:
                         return (
                           <Option label="Stripe" {...optionProps(providerName)}>

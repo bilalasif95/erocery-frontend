@@ -10,6 +10,9 @@ export const PROVIDERS = {
   DUMMY: {
     label: "Cash On Delivery",
   },
+  JAZZCASH: {
+    label: "JazzCash",
+  },
   STRIPE: {
     href: "https://js.stripe.com/v3/",
     label: "Stripe",

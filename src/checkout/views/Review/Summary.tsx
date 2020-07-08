@@ -17,13 +17,12 @@ import {
 class Summary extends React.PureComponent<{
   checkout: Checkout;
   cardData: CardData;
-  dummyStatus: string;
+  dummyStatus: any;
   history: History;
   token: string;
 }> {
   render() {
-    // const { checkout, cardData, dummyStatus, history, token } = this.props;
-    const { checkout, cardData, history, token } = this.props;
+    const { checkout, cardData, dummyStatus, history, token } = this.props;
 
     const handleEdit = (editUrl: string) => {
       history.push(
@@ -83,10 +82,21 @@ class Summary extends React.PureComponent<{
             />
           </h4>
           <p>
-            {!!cardData
-              ? `Ending in ${cardData.lastDigits}`
-              // : `Cash on Delivery: ${dummyStatus}`}
-              : `Cash on Delivery`}
+            {!!cardData ? (
+              `Ending in ${cardData.lastDigits}`
+            ) : (
+              <div>
+                {dummyStatus.type === "JazzCash" ? (
+                  <div>
+                    <h2 style={{ fontWeight: 900 }}>Jazz Cash</h2>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 style={{ fontWeight: 900 }}>Cash on Delivery</h2>
+                  </div>
+                )}
+              </div>
+            )}
           </p>
         </div>
       </div>
