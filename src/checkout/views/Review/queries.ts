@@ -15,6 +15,27 @@ const completeCheckoutMutation = gql`
       }
       order {
         id
+        total {
+          gross {
+            amount
+          }
+        }
+        lines {
+           productName
+           unitPrice {
+             gross {
+               amount
+             }
+           }
+           variant {
+             product {
+               category {
+                 name
+               }
+             }
+           }
+           quantity
+        }
         token
       }
     }

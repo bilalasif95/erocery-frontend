@@ -1,12 +1,14 @@
 import "./scss/index.scss";
 
 import * as React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
-import { SocialMediaIcon } from "..";
+import { NavLink,SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
 // import Nav from "./Nav";
 import payment_methods from "../../images/Group_39.png";
+
+import { TypedSecondaryMenuQuery } from "./queries";
 
 // import easypaisa from "../../images/easypaisa.png";
 // import facebook from "../../images/facebook.png";
@@ -31,11 +33,21 @@ const Footer: React.FC = () => (
         <div className="footer-item">
           <h4>Help</h4>
           <ul className="quick-links">
-            <li><Link to="/how-to-order"><ReactSVG path={listIcon} /><span>How to order?</span></Link></li>
-            <li><Link to="/return-and-refunds"><ReactSVG path={listIcon} /><span>Return & Refund</span></Link></li>
-            <li><Link to="/delivery"><ReactSVG path={listIcon} /><span>Delivery</span></Link></li>
-            <li><Link to="/terms-and-conditions"><ReactSVG path={listIcon} /><span>Terms & Conditions</span></Link></li>
-            <li><Link to="/privacy-policy"><ReactSVG path={listIcon} /><span>Privacy Policy</span></Link></li>
+            <TypedSecondaryMenuQuery>
+              {({ data }) => {
+                return data.shop.navigation.secondary.items.map(item => (
+                  <>
+                  {/* {item.children.map(subItem => ( */}
+                    <li key={item.id}><ReactSVG path={listIcon} /><NavLink item={item}></NavLink></li>
+                  {/* <li><Link to="/return-and-refunds"><ReactSVG path={listIcon} /><span>Return & Refund</span></Link></li>
+                  <li><Link to="/delivery"><ReactSVG path={listIcon} /><span>Delivery</span></Link></li>
+                  <li><Link to="/terms-and-conditions"><ReactSVG path={listIcon} /><span>Terms & Conditions</span></Link></li>
+                  <li><Link to="/privacy-policy"><ReactSVG path={listIcon} /><span>Privacy Policy</span></Link></li>
+                  ))} */}
+                  </>
+                ));
+              }}
+            </TypedSecondaryMenuQuery>
           </ul>
         </div>
         <div className="footer-item">
