@@ -21,6 +21,7 @@ import { Breadcrumb, Breadcrumbs } from "../../components";
 
 import LinkEntity from "./LinkEntity";
 
+
 interface PageNavigationElement {
   active: boolean;
   label: string;
@@ -70,20 +71,21 @@ export const Page: React.FC<PageProps> = ({
             ))}
           </ul>
         </div> */}
+       
           <div className="hideLinkIcon">
             <DraftailEditor
-              // key={JSON.stringify(page.contentJson)}
+              key={JSON.stringify(page.contentJson)}
               rawContentState={JSON.parse(page.contentJson) || null}
               entityTypes={[
-            {
-              // attributes: ["url"],
-               decorator: LinkEntity,
-              // icon: <LinkIcon className={classes.linkIcon} />,
-              // source: LinkSource,
-                type: ENTITY_TYPE.LINK,
-            },
-            
-          ]}
+                {
+                  // attributes: ["url"],
+                  decorator: LinkEntity,
+                  // icon: <LinkIcon className={classes.linkIcon} />,
+                  // source: LinkSource,
+                  type: ENTITY_TYPE.LINK,
+                },
+
+              ]}
               readOnly={true}
             />
             {/* <RichTextContent
