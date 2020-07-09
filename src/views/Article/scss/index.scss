@@ -11,7 +11,11 @@
       display: block;
     }
   }
-
+  .hideLinkIcon {
+    .Draftail-Toolbar {
+      display: none;
+    }
+  }
   &__header {
     text-align: center;
     margin-top: 2rem;

@@ -1,9 +1,25 @@
 // import classNames from "classnames";
 import * as React from "react";
 // import { Link } from "react-router-dom";
+// import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from "draftail"
+// import { convertFromRaw ,convertToRaw} from "draft-js"
 
-import { RichTextContent } from "@components/atoms";
+// import { RichTextContent } from "@components/atoms";
+import {
+
+  DraftailEditor,
+  ENTITY_TYPE
+
+} from "draftail";
+
+import "draft-js/dist/Draft.css"
+
+// import "draftail/dist/draftail.css"
+
 import { Breadcrumb, Breadcrumbs } from "../../components";
+// import draftToHtml from "draftjs-to-html";
+
+import LinkEntity from "./LinkEntity";
 
 interface PageNavigationElement {
   active: boolean;
@@ -26,19 +42,19 @@ export const Page: React.FC<PageProps> = ({
   navigation,
   page,
 }) => (
-  <div className="article-page">
-    <div
-      className="article-page__header"
+    <div className="article-page">
+      <div
+        className="article-page__header"
       // style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
-    >
-      <span className="article-page__header__title">
-        <h1>{page.title}</h1>
-      </span>
-    </div>
-    <div className="container">
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <div>
-        {/* <div className="article-page__navigation">
+      >
+        <span className="article-page__header__title">
+          <h1>{page.title}</h1>
+        </span>
+      </div>
+      <div className="container">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <div>
+          {/* <div className="article-page__navigation">
           <ul>
             {navigation.map(menuElement => (
               <li
@@ -54,13 +70,28 @@ export const Page: React.FC<PageProps> = ({
             ))}
           </ul>
         </div> */}
-        <div>
-        <RichTextContent
-          descriptionJson={page.contentJson}
-        />
+          <div className="hideLinkIcon">
+            <DraftailEditor
+              // key={JSON.stringify(page.contentJson)}
+              rawContentState={JSON.parse(page.contentJson) || null}
+              entityTypes={[
+            {
+              // attributes: ["url"],
+               decorator: LinkEntity,
+              // icon: <LinkIcon className={classes.linkIcon} />,
+              // source: LinkSource,
+                type: ENTITY_TYPE.LINK,
+            },
+            
+          ]}
+              readOnly={true}
+            />
+            {/* <RichTextContent
+              descriptionJson={page.contentJson}
+            /> */}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 export default Page;
