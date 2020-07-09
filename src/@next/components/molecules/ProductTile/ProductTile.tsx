@@ -45,6 +45,7 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
     <S.Wrapper data-cy="product-tile">
       <S.DeskView>
         <S.Image>
+          {product.pricing && product.pricing.onSale && <S.Discount>Sale</S.Discount>}
           <Thumbnail source={product} />
         </S.Image>
         <S.Title>{product.name}</S.Title>

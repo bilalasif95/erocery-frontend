@@ -136,3 +136,16 @@ body {
 .form-error {
   color: $rose;
 }
+
+.messenger {
+  background: none;
+  border-radius: 50%;
+  bottom: 18pt;
+  height: 45pt;
+  padding: 0px;
+  position: fixed;
+  right: 18pt;
+  top: auto;
+  width: 45pt;
+  z-index: 2147483646;
+}
