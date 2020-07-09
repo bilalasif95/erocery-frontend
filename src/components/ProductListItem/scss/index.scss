@@ -77,7 +77,19 @@
     display: flex;
     height: 250px;
     justify-content: center;
-
+    overflow: hidden;
+    position: relative;
+    .saleDiscount {
+      padding: 4.2rem 1.5rem 0.2rem 1.5rem;
+      position: absolute;
+      right: -43px;
+      top: -48px;
+      background: red;
+      font-weight: 600;
+      transform: rotate(45deg);
+      color: #fff;
+      width: 80px;
+    }
     img {
       object-fit: contain;
       max-width: 100%;

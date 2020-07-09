@@ -22,5 +22,7 @@ export const returnAndRefundsUrl = `${baseUrl}return-and-refunds/`;
 export const deliveryUrl = `${baseUrl}delivery/`;
 export const termsAndConditionsUrl = `${baseUrl}terms-and-conditions/`;
 export const privacyPolicyUrl = `${baseUrl}privacy-policy/`;
+export const jazzCashPaymentSuccessUrl = `${baseUrl}payment-successful/`;
+export const jazzCashPaymentErrorUrl = `${baseUrl}payment-errors/`;
 
 // export const orderGuideUrl = `/orderguide`;

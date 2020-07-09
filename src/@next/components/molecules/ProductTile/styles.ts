@@ -95,6 +95,18 @@ text-transform: uppercase;
 padding: 0.5rem;
 `;
 
+export const Discount = styled.span`
+    padding: 4.2rem 0.5rem 0.2rem 1.5rem;
+    position: absolute;
+    right: -43px;
+    top: -48px;
+    background: red;
+    font-weight: 600;
+    transform: rotate(45deg);
+    color: #fff;
+    width: 80px;
+`;
+
 export const Image = styled.div`
   width: auto;
   height:250px;
@@ -103,6 +115,7 @@ export const Image = styled.div`
   justify-content:center;
   max-width: 100%;
   overflow: hidden;
+  position: relative;
   > img {
     width: auto;
     height: auto;
