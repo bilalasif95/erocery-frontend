@@ -18,6 +18,10 @@ import { defaultDataIdFromObject, InMemoryCache } from "apollo-cache-inmemory";
 import { persistCache } from "apollo-cache-persist";
 import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
+
+import Bugsnag from "@bugsnag/js";
+import BugsnagPluginReact from "@bugsnag/plugin-react";
+
 import { BatchHttpLink } from "apollo-link-batch-http";
 import { RetryLink } from "apollo-link-retry";
 import * as React from "react";
@@ -34,11 +38,11 @@ import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
 import { apiUrl, serviceWorkerTimeout } from "./constants";
 
-import { gtmId } from "../src/config"
+import { gtmId } from "../src/config";
 
 import { history } from "./history";
 
-import TagManager from 'react-gtm-module'
+import TagManager from "react-gtm-module";
 
 import { OverlayProvider, UserProvider } from "./components";
 
@@ -50,6 +54,11 @@ import {
   invalidTokenLinkWithTokenHandlerComponent,
 } from "./core/auth";
 
+Bugsnag.start({
+  apiKey: "e166e1d65552b0b013b02a57b255d071",
+  plugins: [new BugsnagPluginReact()],
+});
+
 const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
   UserProvider
 );
@@ -58,7 +67,7 @@ const tagManagerArgs = {
   gtmId,
 };
 
-TagManager.initialize(tagManagerArgs)
+TagManager.initialize(tagManagerArgs);
 
 const link = ApolloLink.from([
   invalidTokenLink,
@@ -184,18 +193,22 @@ const startApp = async () => {
     );
   });
 
+  const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
+
   render(
-    <ThemeProvider theme={defaultTheme}>
-      <AlertProvider
-        template={NotificationTemplate as any}
-        {...notificationOptions}
-      >
-        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-          <GlobalStyle />
-          <Root />
-        </ServiceWorkerProvider>
-      </AlertProvider>
-    </ThemeProvider>,
+    <ErrorBoundary>
+      <ThemeProvider theme={defaultTheme}>
+        <AlertProvider
+          template={NotificationTemplate as any}
+          {...notificationOptions}
+        >
+          <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
+            <GlobalStyle />
+            <Root />
+          </ServiceWorkerProvider>
+        </AlertProvider>
+      </ThemeProvider>
+    </ErrorBoundary>,
     document.getElementById("root")
   );
 
