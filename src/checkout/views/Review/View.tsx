@@ -94,7 +94,6 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     clear: clearCheckout,
   } = React.useContext(CheckoutContext);
   const { clear: clearCart } = React.useContext(CartContext);
-  console.log("checkoutiiiiiiiiiiiiiiiiiii", checkout.id)
   const discountExists = checkout.discount && !!checkout.discount.amount;
   const locale = maybe(() => "PK", "PK");
   return (
