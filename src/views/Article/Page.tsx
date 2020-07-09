@@ -1,15 +1,11 @@
 // import classNames from "classnames";
 import * as React from "react";
 // import { Link } from "react-router-dom";
-// import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from "draftail"
-// import { convertFromRaw ,convertToRaw} from "draft-js"
 
 // import { RichTextContent } from "@components/atoms";
 import {
-
   DraftailEditor,
   ENTITY_TYPE
-
 } from "draftail";
 
 import "draft-js/dist/Draft.css"
@@ -17,7 +13,6 @@ import "draft-js/dist/Draft.css"
 // import "draftail/dist/draftail.css"
 
 import { Breadcrumb, Breadcrumbs } from "../../components";
-// import draftToHtml from "draftjs-to-html";
 
 import LinkEntity from "./LinkEntity";
 
