@@ -14,6 +14,7 @@ export interface Product extends BasicProductFields {
     name: string;
   };
   pricing: {
+    onSale: boolean;
     priceRange: {
       start: {
         gross: {
@@ -67,6 +68,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   return (
     <div className="product-list-item">
       <div className="product-list-item__image">
+        {product.pricing && product.pricing.onSale && <span className="saleDiscount">Sale</span>}
         <Thumbnail source={product} />
       </div>
       <h4 className="product-list-item__title">{product.name}</h4>
