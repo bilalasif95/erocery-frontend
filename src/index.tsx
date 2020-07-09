@@ -18,6 +18,10 @@ import { defaultDataIdFromObject, InMemoryCache } from "apollo-cache-inmemory";
 import { persistCache } from "apollo-cache-persist";
 import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
+
+import Bugsnag from "@bugsnag/js";
+import BugsnagPluginReact from "@bugsnag/plugin-react";
+
 import { BatchHttpLink } from "apollo-link-batch-http";
 import { RetryLink } from "apollo-link-retry";
 import * as React from "react";
@@ -54,6 +58,11 @@ import {
   authLink,
   invalidTokenLinkWithTokenHandlerComponent,
 } from "./core/auth";
+
+Bugsnag.start({
+  apiKey: "e166e1d65552b0b013b02a57b255d071",
+  plugins: [new BugsnagPluginReact()],
+});
 
 const { link: invalidTokenLink } = invalidTokenLinkWithTokenHandlerComponent(
   UserProvider
@@ -208,18 +217,22 @@ const startApp = async () => {
     );
   });
 
+  const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
+
   render(
-    <ThemeProvider theme={defaultTheme}>
-      <AlertProvider
-        template={NotificationTemplate as any}
-        {...notificationOptions}
-      >
-        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-          <GlobalStyle />
-          <Root />
-        </ServiceWorkerProvider>
-      </AlertProvider>
-    </ThemeProvider>,
+    <ErrorBoundary>
+      <ThemeProvider theme={defaultTheme}>
+        <AlertProvider
+          template={NotificationTemplate as any}
+          {...notificationOptions}
+        >
+          <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
+            <GlobalStyle />
+            <Root />
+          </ServiceWorkerProvider>
+        </AlertProvider>
+      </ThemeProvider>
+    </ErrorBoundary>,
     document.getElementById("root")
   );
 
