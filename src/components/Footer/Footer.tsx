@@ -12,12 +12,8 @@ import { TypedSecondaryMenuQuery } from "./queries";
 
 // import easypaisa from "../../images/easypaisa.png";
 // import facebook from "../../images/facebook.png";
-
 // import instagram from "../../images/instagram.png";
 // import jazzcash from "../../images/jazzcash.png";
-// import emailIcon from "../../images/email.svg";
-// import locationIcon from "../../images/location.svg";
-// import phoneIcon from "../../images/phone.svg";
 import listIcon from "../../images/subcategories.svg";
 // import twitter from "../../images/twitter.png";
 // import youtube from "../../images/youtube.png";
