@@ -50,7 +50,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const { category } = product;
   const price = product.pricing.priceRange.start;
   const priceUndiscounted = product.pricing.priceRangeUndiscounted.start;
-console.log("+++++++++++++",price.gross.amount/priceUndiscounted.gross.amount)
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
       return <TaxedMoney taxedMoney={price} />;
