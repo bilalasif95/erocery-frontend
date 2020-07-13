@@ -40,7 +40,7 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
     <S.Wrapper data-cy="product-tile">
       <S.DeskView>
         <S.Image>
-          {product.pricing && product.pricing.onSale && <S.Discount>Sale</S.Discount>}
+          {product.pricing && product.pricing.onSale && <S.Discount>{(100-((price.gross.amount/priceUndiscounted.gross.amount)*100)).toFixed(0)}% OFF</S.Discount>}
           <Thumbnail source={product} />
         </S.Image>
         <S.Title>{product.name}</S.Title>
