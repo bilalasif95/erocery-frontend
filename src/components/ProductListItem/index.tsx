@@ -50,7 +50,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const { category } = product;
   const price = product.pricing.priceRange.start;
   const priceUndiscounted = product.pricing.priceRangeUndiscounted.start;
-
+console.log("+++++++++++++",price.gross.amount/priceUndiscounted.gross.amount)
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
       return <TaxedMoney taxedMoney={price} />;
@@ -67,7 +67,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   };
   return (
     <div className="product-list-item">
-      {product.pricing && product.pricing.onSale && <span className="saleDiscount">Sale</span>}
+      {product.pricing && product.pricing.onSale && <span className="saleDiscount">{(100-((price.gross.amount/priceUndiscounted.gross.amount)*100)).toFixed(0)}% OFF</span>}
       <div className="product-list-item__image">
         <Thumbnail source={product} />
       </div>

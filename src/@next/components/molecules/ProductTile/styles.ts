@@ -114,15 +114,18 @@ export const AddCartBtn = styled.div`
 `;
 
 export const Discount = styled.span`
-    padding: 4.2rem 0.5rem 0.2rem 1.5rem;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     position: absolute;
-    right: -43px;
-    top: -48px;
+    right: -25px;
+    top: 15px;
     background: red;
     font-weight: 600;
     transform: rotate(45deg);
     color: #fff;
-    width: 80px;
+    line-height: 1;
+    font-size: 12px;
+    width: 100px;
+    text-align:center;
 `;
 
 export const Image = styled.div`
