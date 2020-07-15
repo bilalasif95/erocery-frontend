@@ -46,6 +46,7 @@ export interface ProductsList_categories_edges_node_backgroundImage {
    * The URL of the image.
    */
   url: string;
+  alt: string;
 }
 
 export interface ProductsList_categories_edges_node {

@@ -8,11 +8,11 @@ import { Footer, MainMenu, MetaConsumer, OverlayManager } from "../components";
 import { isPath } from "../core/utils";
 import { orderConfirmationUrl, Routes } from "./routes";
 
-import MessengerCustomerChat from "react-messenger-customer-chat";
+// import MessengerCustomerChat from "react-messenger-customer-chat";
 
 import messengerImage from "../images/facebook-messenger-icon.svg";
 
-import { appId,pageId } from "../config/index";
+// import { appId,pageId } from "../config/index";
 
 const App: React.FC<RouteComponentProps> = ({
   history: {
@@ -28,8 +28,9 @@ const App: React.FC<RouteComponentProps> = ({
         <MainMenu/>
       </header>
       <Routes />
-      {window.innerWidth < 768 ? <a target="_blank" className="messenger" href="https://www.m.me/109977713975774?source=customer_chat_plugin"><ReactSVG path={messengerImage} /></a>
-      : <MessengerCustomerChat pageId={pageId} appId={appId} /> }
+      {/* {window.innerWidth < 768 ?  */}
+      <a target="_blank" rel="noopener noreferrer" className="messenger" href="https://www.m.me/109977713975774?source=customer_chat_plugin"><ReactSVG path={messengerImage} /></a>
+      {/* : <MessengerCustomerChat pageId={pageId} appId={appId} /> } */}
       {!orderConfirmationPage && <Footer />}
       <OverlayManager />
     </>

@@ -168,8 +168,8 @@ const Page: React.FC<{
       </div>
       <div className="home-page__vipImage">
         <div className="container">
-          <img src={desktopvipoffer} className="deskoffer" />
-          <img src={vipoffermob} className="moboffer" />
+          <img src={desktopvipoffer} alt="Online Qurbani Service" className="deskoffer" />
+          <img src={vipoffermob} alt="Online Qurbani Service" className="moboffer" />
 
           <button
             className="bookbtn"
@@ -220,7 +220,7 @@ const Page: React.FC<{
         {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
       <div className="home-page__heroImage">
-        <img src={offerImg} />
+        <img src={offerImg} alt="buy grocery online" />
       </div>
       {categoriesExist() && (
         <div className="home-page__categories" id={"categorysection"}>
@@ -273,10 +273,10 @@ const Page: React.FC<{
                           {/* <img src={category.backgroundImage
                             ? category.backgroundImage.url
                             : catNoImg}/> */}
-                          {/* <ReactSVG path={catImg} /> */}
-                          {category.backgroundImage ? (
-                            <img src={category.backgroundImage.url} />
-                          ) : (
+                        {/* <ReactSVG path={catImg} /> */}
+                        {category.backgroundImage ? (
+                          <img alt={category.backgroundImage.alt} src={category.backgroundImage.url} />
+                        ) : (
                             <div className="noCatImg">
                               <p>Photo Unavailable</p>
                             </div>

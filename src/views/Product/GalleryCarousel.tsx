@@ -37,8 +37,8 @@ const GalleryCarousel: React.FC<{
       }}
     >
       {images.map(image => (
-        <CachedImage url={image.url || noPhotoImg} key={image.id}>
-          <img src={noPhotoImg} />
+        <CachedImage alt={image.alt} url={image.url || noPhotoImg} key={image.id}>
+          <img src={noPhotoImg} alt="image not found" />
         </CachedImage>
       ))}
     </Carousel>

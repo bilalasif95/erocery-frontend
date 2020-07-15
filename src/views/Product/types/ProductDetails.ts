@@ -492,6 +492,7 @@ export interface ProductDetails_product_images {
    * The URL of the image.
    */
   url: string;
+  alt: string;
 }
 
 export interface ProductDetails_product_attributes_attribute {

@@ -8,7 +8,7 @@ const PrivacyPolicy: React.FC = () => (
          <div className="mainHeading">
             <h3>Privacy Policy</h3>
          </div><br />
-         <p>At Erocery, we acknowledge your concern about your personal information; we also care about the customer information. We provide protection to your data with honor, we are confident about your data safety when you log in to <a href="https://erocery.com" target="_blank"><u>www.erocery.com</u></a> website and mobile app.<br /><br /></p>
+         <p>At Erocery, we acknowledge your concern about your personal information; we also care about the customer information. We provide protection to your data with honor, we are confident about your data safety when you log in to <a href="https://erocery.com" rel="noopener noreferrer" target="_blank"><u>www.erocery.com</u></a> website and mobile app.<br /><br /></p>
          <p>1. The privacy policy conducts by your privacy rights. We collect, store and accumulate your personal information (name, Contact Number, e-mail and postal address) use in our website and mobile app. This data is stored in our database which is only used in Erocery website and mobile app.<br /><br /></p>
          <p>2. According to our privacy policy, we collect your personal, necessary and relevant information according to our dealings with you.<br /><br /></p>
          <p>3. You can visit our website and browse the products without providing personal detail. During your visit to the website, we cannot identify you when you are not login at the website with username and password.<br /><br /></p>

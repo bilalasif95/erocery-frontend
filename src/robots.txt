@@ -1,4 +1,12 @@
-User Agent:*
- 
+User-Agent: *
+Disallow: /order-history/
+Disallow: /cart/
+Disallow: /shipping-address/
+Disallow: /shipping-options/
+Disallow: /payment/
+Disallow: /review/
+Disallow: /order-confirmation/
+
+Allow:
 # Sitemap files
 Sitemap:https://erocery.com/sitemap.xml
