@@ -1,0 +1,4 @@
+User Agent:*
+ 
+# Sitemap files
+Sitemap:https://erocery.com/sitemap.xml
