@@ -3,32 +3,124 @@ import { Route, Switch } from "react-router-dom";
 
 import { CheckoutLogin, NotFound } from "../../components";
 import UserAccount, * as accountPaths from "../../userAccount/routes";
-import { OrderDetails } from "../../userAccount/views";
-import { Account, AccountConfirm } from "../../views/Account";
-import { ArticlePage } from "../../views/Article";
+// import { OrderDetails } from "../../userAccount/views";
+const OrderDetails = React.lazy(() =>
+  import("../../userAccount/views").then(({ OrderDetails }) => ({
+    default: OrderDetails,
+  }))
+);
+// import { Account, AccountConfirm } from "../../views/Account";
+const Account = React.lazy(() =>
+  import("../../views/Account").then(({ Account }) => ({
+    default: Account,
+  }))
+);
+
+const AccountConfirm = React.lazy(() =>
+  import("../../views/Account").then(({ AccountConfirm }) => ({
+    default: AccountConfirm,
+  }))
+);
+// import { ArticlePage } from "../../views/Article";
+const ArticlePage = React.lazy(() =>
+  import("../../views/Article").then(({ ArticlePage }) => ({
+    default: ArticlePage,
+  }))
+);
 // import OrderGuide from "../../views/OrderGuide";
-import { CartPage } from "../../views/Cart";
-import { CategoryPage } from "../../views/Category";
-import { CollectionPage } from "../../views/Collection";
+// import { CartPage } from "../../views/Cart";
+const CartPage = React.lazy(() =>
+  import("../../views/Cart").then(({ CartPage }) => ({
+    default: CartPage,
+  }))
+);
+// import { CategoryPage } from "../../views/Category";
+
+const CategoryPage = React.lazy(() =>
+  import("../../views/Category").then(({ CategoryPage }) => ({
+    default: CategoryPage,
+  }))
+);
+
+// import { CollectionPage } from "../../views/Collection";
+const CollectionPage = React.lazy(() =>
+  import("../../views/Collection").then(({ CollectionPage }) => ({
+    default: CollectionPage,
+  }))
+);
 // import Base from "../../views/FooterPages/Base";
 
-import Delivery from "../../views/FooterPages/Delivery";
-import HowToOrder from "../../views/FooterPages/How-To-Order";
-import JazzCashPaymentError from "../../views/FooterPages/JazzCashPaymentError";
-import JazzCashPaymentSuccess from "../../views/FooterPages/JazzCashPaymentSuccess";
-import PaymentError from "../../views/FooterPages/PaymentError";
-import PaymentSuccess from "../../views/FooterPages/PaymentSuccess";
-import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";
-import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
-import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
-import { HomePage } from "../../views/Home";
-import OrderConfirmation from "../../views/OrderConfirmation/View";
-import { ProductPage } from "../../views/Product";
-import { SearchPage } from "../../views/Search";
+// import Delivery from "../../views/FooterPages/Delivery";
+const Delivery = React.lazy(() => import("../../views/FooterPages/Delivery"));
+// import HowToOrder from "../../views/FooterPages/How-To-Order";
+const HowToOrder = React.lazy(() =>
+  import("../../views/FooterPages/How-To-Order")
+);
+
+// import JazzCashPaymentError from "../../views/FooterPages/JazzCashPaymentError";
+const JazzCashPaymentError = React.lazy(() =>
+  import("../../views/FooterPages/JazzCashPaymentError")
+);
+
+// import JazzCashPaymentSuccess from "../../views/FooterPages/JazzCashPaymentSuccess";
+
+const JazzCashPaymentSuccess = React.lazy(() =>
+  import("../../views/FooterPages/JazzCashPaymentSuccess")
+);
+
+// import PaymentError from "../../views/FooterPages/PaymentError";
+
+const PaymentError = React.lazy(() =>
+  import("../../views/FooterPages/PaymentError")
+);
+
+// import PaymentSuccess from "../../views/FooterPages/PaymentSuccess";
+
+const PaymentSuccess = React.lazy(() =>
+  import("../../views/FooterPages/PaymentSuccess")
+);
+
+// import PrivacyPolicy from "../../views/FooterPages/PrivacyPolicy";
+const PrivacyPolicy = React.lazy(() =>
+  import("../../views/FooterPages/PrivacyPolicy")
+);
+
+// import ReturnAndRefunds from "../../views/FooterPages/Return-And-Refunds";
+
+const ReturnAndRefunds = React.lazy(() =>
+  import("../../views/FooterPages/Return-And-Refunds")
+);
+
+// import TermsAndConditions from "../../views/FooterPages/Terms-And-Conditions";
+const TermsAndConditions = React.lazy(() =>
+  import("../../views/FooterPages/Terms-And-Conditions")
+);
+
+// import { HomePage } from "../../views/Home";
+const HomePage = React.lazy(() =>
+  import("../../views/Home").then(({ HomePage }) => ({ default: HomePage }))
+);
+// import OrderConfirmation from "../../views/OrderConfirmation/View";
+const OrderConfirmation = React.lazy(() =>
+  import("../../views/OrderConfirmation/View")
+);
+// import { ProductPage } from "../../views/Product";
+const ProductPage = React.lazy(() =>
+  import("../../views/Product").then(({ ProductPage }) => ({
+    default: ProductPage,
+  }))
+);
+// import { SearchPage } from "../../views/Search";
+const SearchPage = React.lazy(() =>
+  import("../../views/Search").then(({ SearchPage }) => ({
+    default: SearchPage,
+  }))
+);
 
 import { PasswordReset } from "@pages";
 
 import * as paths from "./paths";
+
 export const Routes: React.FC = () => (
   <Switch>
     {/* <Route exact path={paths.baseUrl} component={Base} /> */}
@@ -58,8 +150,14 @@ export const Routes: React.FC = () => (
     <Route path={paths.privacyPolicyUrl} component={PrivacyPolicy} />
     <Route path={paths.paymentSuccessUrl} component={PaymentSuccess} />
     <Route path={paths.paymentErrorUrl} component={PaymentError} />
-    <Route path={paths.jazzCashPaymentSuccessUrl} component={JazzCashPaymentSuccess} />
-    <Route path={paths.jazzCashPaymentErrorUrl} component={JazzCashPaymentError} />
+    <Route
+      path={paths.jazzCashPaymentSuccessUrl}
+      component={JazzCashPaymentSuccess}
+    />
+    <Route
+      path={paths.jazzCashPaymentErrorUrl}
+      component={JazzCashPaymentError}
+    />
     <Route component={NotFound} />
     {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
   </Switch>
