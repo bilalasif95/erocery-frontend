@@ -181,7 +181,7 @@ const Page: React.FC<{
         {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
       <div className="home-page__heroImage">
-        <img src={offerImg} />
+        <img src={offerImg} alt="buy grocery online" />
       </div>
       {categoriesExist() && (
         <div className="home-page__categories" id={"categorysection"}>
@@ -231,7 +231,7 @@ const Page: React.FC<{
                             : catNoImg}/> */}
                         {/* <ReactSVG path={catImg} /> */}
                         {category.backgroundImage ? (
-                          <img src={category.backgroundImage.url} />
+                          <img alt={category.backgroundImage.alt} src={category.backgroundImage.url} />
                         ) : (
                             <div className="noCatImg">
                               <p>Photo Unavailable</p>

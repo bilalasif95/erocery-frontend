@@ -100,7 +100,7 @@ module.exports = ({ sourceDir, distDir }) => ({
     }),
     // PWA plugins
     new WebappWebpackPlugin({
-      logo: `${sourceDir}/images/ic_launcher.png`,
+      logo: `${sourceDir}/images/android-chrome.png`,
       prefix: "images/favicons/",
       favicons: {
         appName: "Erocery",

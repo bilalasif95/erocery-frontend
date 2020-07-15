@@ -24,6 +24,7 @@ export const homePageQuery = gql`
           name
           descriptionJson
           backgroundImage {
+            alt
             url
           }
         }

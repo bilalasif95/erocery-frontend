@@ -74,7 +74,7 @@ Satellite Town, Rawalpindi, Pakistan.</span></li>
           </div>
           <h4>Payment Methods</h4>
           <ul className="pay-method">
-            <li><img src={payment_methods} /></li>
+            <li><img src={payment_methods} alt="Jazz cash, Jazz cash account" /></li>
           </ul>
           {/* <p className="whatsAppNumber">+92-330-2755559</p> */}
           {/* <ul className="social-media">
@@ -95,8 +95,8 @@ Satellite Town, Rawalpindi, Pakistan.</span></li>
           <div>
             <h4>Download App</h4>
             <div className="playstoreIcons">
-              <a className="googlePlayStoreIcon" href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" src={androidStoreImage}></img></a>
-              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img src={appleStoreImage}/></a>
+              <a className="googlePlayStoreIcon" href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" alt="android store" src={androidStoreImage}></img></a>
+              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img alt="apple store" src={appleStoreImage}/></a>
             </div>
           </div>
         </div>
