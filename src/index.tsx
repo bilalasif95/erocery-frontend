@@ -31,13 +31,33 @@ import { render } from "react-dom";
 import { Route, Router, Switch } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
-import { App } from "./app";
-import { BakraCheckoutApp } from "./bakracheckout";
+// import { App } from "./app";
+
+const App = React.lazy(() =>
+  import("./app").then(({ App }) => ({
+    default: App,
+  }))
+);
+// import { BakraCheckoutApp } from "./bakracheckout";
+
+const BakraCheckoutApp = React.lazy(() =>
+  import("./bakracheckout").then(({ BakraCheckoutApp }) => ({
+    default: BakraCheckoutApp,
+  }))
+);
+
 import { BakraCheckoutProvider } from "./bakracheckout/CheckoutProvider";
 import { BakraCheckoutContext } from "./bakracheckout/context";
 import { baseUrl as bakracheckoutBaseUrl } from "./bakracheckout/routes";
 
-import { CheckoutApp } from "./checkout";
+// import { CheckoutApp } from "./checkout";
+
+const CheckoutApp = React.lazy(() =>
+  import("./checkout").then(({ CheckoutApp }) => ({
+    default: CheckoutApp,
+  }))
+);
+
 import { CheckoutProvider } from "./checkout/CheckoutProvider";
 import { CheckoutContext } from "./checkout/context";
 import { baseUrl as checkoutBaseUrl } from "./checkout/routes";
@@ -171,49 +191,51 @@ const startApp = async () => {
     };
 
     return (
-      <Router history={history}>
-        <QueryParamProvider ReactRouterRoute={Route}>
-          <ApolloProvider client={apolloClient}>
-            <SaleorProvider client={apolloClient}>
-              <ShopProvider>
-                <OverlayProvider>
-                  <Checkout>
-                    <CheckoutContext.Consumer>
-                      {checkout => (
-                        <CartProvider
-                          checkout={checkout}
-                          apolloClient={apolloClient}
-                        >
-                          <BakraCheckout>
-                            <BakraCheckoutContext.Consumer>
-                              {bakracheckout => (
-                                <WishlistProvider>
-                                  <Switch>
-                                    <Route
-                                      path={checkoutBaseUrl}
-                                      component={CheckoutApp}
-                                    />
-                                    <Route
-                                      path={bakracheckoutBaseUrl}
-                                      component={BakraCheckoutApp}
-                                    />
-                                    <Route component={App} />
-                                  </Switch>
-                                  <Notifications />
-                                </WishlistProvider>
-                              )}
-                            </BakraCheckoutContext.Consumer>
-                          </BakraCheckout>
-                        </CartProvider>
-                      )}
-                    </CheckoutContext.Consumer>
-                  </Checkout>
-                </OverlayProvider>
-              </ShopProvider>
-            </SaleorProvider>
-          </ApolloProvider>
-        </QueryParamProvider>
-      </Router>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Router history={history}>
+          <QueryParamProvider ReactRouterRoute={Route}>
+            <ApolloProvider client={apolloClient}>
+              <SaleorProvider client={apolloClient}>
+                <ShopProvider>
+                  <OverlayProvider>
+                    <Checkout>
+                      <CheckoutContext.Consumer>
+                        {checkout => (
+                          <CartProvider
+                            checkout={checkout}
+                            apolloClient={apolloClient}
+                          >
+                            <BakraCheckout>
+                              <BakraCheckoutContext.Consumer>
+                                {bakracheckout => (
+                                  <WishlistProvider>
+                                    <Switch>
+                                      <Route
+                                        path={checkoutBaseUrl}
+                                        component={CheckoutApp}
+                                      />
+                                      <Route
+                                        path={bakracheckoutBaseUrl}
+                                        component={BakraCheckoutApp}
+                                      />
+                                      <Route component={App} />
+                                    </Switch>
+                                    <Notifications />
+                                  </WishlistProvider>
+                                )}
+                              </BakraCheckoutContext.Consumer>
+                            </BakraCheckout>
+                          </CartProvider>
+                        )}
+                      </CheckoutContext.Consumer>
+                    </Checkout>
+                  </OverlayProvider>
+                </ShopProvider>
+              </SaleorProvider>
+            </ApolloProvider>
+          </QueryParamProvider>
+        </Router>
+      </React.Suspense>
     );
   });
 
