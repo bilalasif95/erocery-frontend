@@ -122,45 +122,50 @@ import { PasswordReset } from "@pages";
 import * as paths from "./paths";
 
 export const Routes: React.FC = () => (
-  <Switch>
-    {/* <Route exact path={paths.baseUrl} component={Base} /> */}
-    <Route exact path={paths.homeUrl} component={HomePage} />
-    <Route path={paths.searchUrl} component={SearchPage} />
-    <Route path={paths.categoryUrl} component={CategoryPage} />
-    <Route path={paths.collectionUrl} component={CollectionPage} />
-    <Route path={paths.productUrl} component={ProductPage} />
-    <Route path={paths.cartUrl} component={CartPage} />
-    <Route path={paths.checkoutLoginUrl} component={CheckoutLogin} />
-    <Route path={paths.pageUrl} component={ArticlePage} />
-    <Route path={accountPaths.baseUrl} component={UserAccount} />
-    <Route path={accountPaths.userOrderDetailsUrl} component={OrderDetails} />
-    <Route path={paths.guestOrderDetailsUrl} component={OrderDetails} />
-    <Route path={paths.orderConfirmationUrl} component={OrderConfirmation} />
-    <Route path={paths.accountUrl} component={Account} />
-    <Route path={paths.accountConfirmUrl} component={AccountConfirm} />
-    <Route path={paths.orderHistoryUrl} component={Account} />
-    <Route path={paths.addressBookUrl} component={Account} />
-    <Route path={paths.paymentOptionsUrl} component={Account} />
-    <Route path={paths.wishlistUrl} component={Account} />
-    <Route path={paths.passwordResetUrl} component={PasswordReset} />
-    <Route path={paths.howToOrderUrl} component={HowToOrder} />
-    <Route path={paths.returnAndRefundsUrl} component={ReturnAndRefunds} />
-    <Route path={paths.deliveryUrl} component={Delivery} />
-    <Route path={paths.termsAndConditionsUrl} component={TermsAndConditions} />
-    <Route path={paths.privacyPolicyUrl} component={PrivacyPolicy} />
-    <Route path={paths.paymentSuccessUrl} component={PaymentSuccess} />
-    <Route path={paths.paymentErrorUrl} component={PaymentError} />
-    <Route
-      path={paths.jazzCashPaymentSuccessUrl}
-      component={JazzCashPaymentSuccess}
-    />
-    <Route
-      path={paths.jazzCashPaymentErrorUrl}
-      component={JazzCashPaymentError}
-    />
-    <Route component={NotFound} />
-    {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
-  </Switch>
+  <React.Suspense fallback={<div>Loading...</div>}>
+    <Switch>
+      {/* <Route exact path={paths.baseUrl} component={Base} /> */}
+      <Route exact path={paths.homeUrl} component={HomePage} />
+      <Route path={paths.searchUrl} component={SearchPage} />
+      <Route path={paths.categoryUrl} component={CategoryPage} />
+      <Route path={paths.collectionUrl} component={CollectionPage} />
+      <Route path={paths.productUrl} component={ProductPage} />
+      <Route path={paths.cartUrl} component={CartPage} />
+      <Route path={paths.checkoutLoginUrl} component={CheckoutLogin} />
+      <Route path={paths.pageUrl} component={ArticlePage} />
+      <Route path={accountPaths.baseUrl} component={UserAccount} />
+      <Route path={accountPaths.userOrderDetailsUrl} component={OrderDetails} />
+      <Route path={paths.guestOrderDetailsUrl} component={OrderDetails} />
+      <Route path={paths.orderConfirmationUrl} component={OrderConfirmation} />
+      <Route path={paths.accountUrl} component={Account} />
+      <Route path={paths.accountConfirmUrl} component={AccountConfirm} />
+      <Route path={paths.orderHistoryUrl} component={Account} />
+      <Route path={paths.addressBookUrl} component={Account} />
+      <Route path={paths.paymentOptionsUrl} component={Account} />
+      <Route path={paths.wishlistUrl} component={Account} />
+      <Route path={paths.passwordResetUrl} component={PasswordReset} />
+      <Route path={paths.howToOrderUrl} component={HowToOrder} />
+      <Route path={paths.returnAndRefundsUrl} component={ReturnAndRefunds} />
+      <Route path={paths.deliveryUrl} component={Delivery} />
+      <Route
+        path={paths.termsAndConditionsUrl}
+        component={TermsAndConditions}
+      />
+      <Route path={paths.privacyPolicyUrl} component={PrivacyPolicy} />
+      <Route path={paths.paymentSuccessUrl} component={PaymentSuccess} />
+      <Route path={paths.paymentErrorUrl} component={PaymentError} />
+      <Route
+        path={paths.jazzCashPaymentSuccessUrl}
+        component={JazzCashPaymentSuccess}
+      />
+      <Route
+        path={paths.jazzCashPaymentErrorUrl}
+        component={JazzCashPaymentError}
+      />
+      <Route component={NotFound} />
+      {/* <Route path={paths.orderGuideUrl} component={OrderGuide} /> */}
+    </Switch>
+  </React.Suspense>
 );
 
 export default Routes;
