@@ -47,16 +47,21 @@ export const SOCIAL_MEDIA = [
     href: "https://api.whatsapp.com/send?phone=923302755559&text=",
     path: require("../images/whatsapp.svg"),
   },
-  // {
-  //   ariaLabel: "twitter",
-  //   href: "https://twitter.com/rnssol",
-  //   path: require("../images/twitter-icon.svg"),
-  // },
-  // {
-  //   ariaLabel: "youtube",
-  //   href: "https://www.youtube.com/c/RNSSolutions",
-  //   path: require("../images/youtube-icon.svg"),
-  // },
+  {
+    ariaLabel: "twitter",
+    href: "https://twitter.com/erocery",
+    path: require("../images/twitter-icon.svg"),
+  },
+  {
+    ariaLabel: "youtube",
+    href: "https://www.youtube.com/channel/UCikK5KWDrIH3MlgYirFatWg",
+    path: require("../images/youtube-icon.svg"),
+  },
+  {
+    ariaLabel: "linkedin",
+    href: "https://www.linkedin.com/company/erocery",
+    path: require("../images/linkedin.svg"),
+  },
 ];
 export const META_DEFAULTS = {
   custom: [],

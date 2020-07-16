@@ -22,9 +22,34 @@ import androidStoreImage from "../../images/playstore.png";
 
 import appleStoreImage from "../../images/applestore.png";
 
-const Footer: React.FC = () => (
+const Footer: React.FC = () => {
+  const [readMore,setReadMore] = React.useState(false);
+  return (
   <div className="footer" id="footer">
     <div className="container">
+      <div className="seoTagLine">
+        Erocery Online Grocery Store: We deliver best quality grocery online in Rawalpindi and Islamabad. In future, we will be serving in Sargodha,&nbsp;{!readMore && <button className="showButton" onClick={()=>setReadMore(true)}>Show More</button>}{readMore && "Karachi and Lahore."}<br/><br/>
+      </div>
+      {readMore && (
+        <div className="seoTagLine">
+          <p>We provide Safe and Secure Payment methods and competitive prices from the market. We also offer open box delivery.<br /><br />
+          We offer the ease of cash on delivery and also offer Jazz Cash and Easy Paisa payment methods. Combine this with the best rates directly from the market, you save yourself from transportation charges, the need to bargain and a scorching sun. Don't like an item or two (you think they aren't in good quality, the box seems to be damaged, expiry or any other issue), you can return and get a refund of your money at your doorstep without any hassles. Our officer on service will open all the boxes for you so you can check and verify each item before receiving.<br /><br />
+          We offer the following products:<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Kitchen, Laundry and Cleaning Products: We offer 100% safe grocery services, this also includes items required to clean your house and do other chores.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Baby Care Products and Baby Food: Mothers don't need to travel for food, lotions and diapers anymore; we provide you with the ease of taking care of your kids with just a few click.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Pulses, Rice, Edible Oils and Masalas: Daals (Pulses and Lentils), Beans (Channa and Lobia), Rice, Edible Oils, you name it, we have it. We also have a wide range of National and Shan masalas to provide you with the best quality items so you can cook with great ease.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Beverages and Mineral Water: Related products available at Erocery.com, you just order them and we deliver your needed items at your door step within few hours’ delivery.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Biscuits, Snacks, Bread and Eggs: These products are available at our warehouse, best quality products and competitive prices from the market.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Body Soap, Hand Wash and Sanitizer:  We have all kind of soaps and sanitizers that help you to protect yourself from germs. We have the best quality products at lowest prices from the market.<br />
+          &nbsp;&nbsp;-&nbsp;&nbsp;Canned Food, Ketchup and Sauces: We have different kinds of canned foods, such as Del Monte Cocktail, Del Monte Pineapple Slice and Mitchel’s Sweet Corn available at best quality and prices.<br/><br/>
+          One stop shop for all your daily needs.<br /><br/>
+          Erocery is the best online supermarket that allows you to order products across categories like grocery, hygiene & wellness, household care; baby care etc. and gets them delivered to your doorstep.<br /><br/>
+          Erocery is the best online supermarket that allows you to order products across categories like grocery, hygiene & wellness, household care; baby care etc. and gets them delivered to your doorstep.<br /><br/>
+          The delivery service is operational in more than 150 areas of Rawalpindi and Islamabad.&nbsp;
+          {readMore && <button className="showButton" onClick={()=>setReadMore(false)}>Show Less</button>}
+          </p>
+        </div>
+      )}
       <div className="footer-list">
         <div className="footer-item">
           <h4>Help</h4>
@@ -108,6 +133,7 @@ Satellite Town, Rawalpindi, Pakistan.</span></li>
     </div>
     {/* <Nav /> */}
   </div>
-);
+  )
+};
 
 export default Footer;

@@ -4,6 +4,21 @@
   background: #54be42;
   padding: 4rem 0;
   margin: 2rem 0 0;
+
+  .showButton {
+    margin-bottom: 3rem;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+
+  .seoTagLine {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
   .footer-list {
     display: flex;
     justify-content: space-between;
@@ -105,7 +120,15 @@
 }
 .social-media{
   display: flex;
+  flex-wrap: wrap;
+  width: 55%;
   margin-bottom: 1rem;
+  @media(max-width:1110px){
+    width: 75%;
+  }
+  @media(max-width:823px){
+    width: 100%;
+  }
   .androidAppStore{
     margin-right: 0.5rem;
   }
