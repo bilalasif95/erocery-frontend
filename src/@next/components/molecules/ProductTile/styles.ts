@@ -118,7 +118,7 @@ export const Discount = styled.span`
     position: absolute;
     right: -25px;
     top: 15px;
-    background: red;
+    background: #ea4235;
     font-weight: 600;
     transform: rotate(45deg);
     color: #fff;

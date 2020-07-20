@@ -163,7 +163,7 @@ const MainMenu: React.FC = () => {
                                 />
                                 <small
                                   style={{
-                                    background: "red",
+                                    background: "#ea4235",
                                     borderRadius: "30px",
                                     color: "#fff",
                                     content: "attr(badge)",
