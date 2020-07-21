@@ -284,6 +284,7 @@ class ProductDescription extends React.Component<
             ) : (
               <div className="product-description__quantity-input">
                 <TextField
+                  onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
                   name="quantity"
                   errors={this.state.error}
                   type="number"
