@@ -50,7 +50,7 @@ const Table: React.FC<TableProps> = ({
           </thead>
           <tbody>
             {lines.map(line => {
-              setVIPQurbaniCategory(line.product.category.name);
+              setVIPQurbaniCategory(line.product && line.product.category && line.product.category.name);
               return (
                 <ProductRow
                   key={line.id}

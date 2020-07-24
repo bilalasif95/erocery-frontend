@@ -88,7 +88,7 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
         </td>
       )}
 
-      {line.product.category.name === "Qurbani" ? (
+      {line.product.category && line.product.category.name === "Qurbani" ? (
         <td>{deliveryDate && deliveryDate.slice(0, 10)}</td>
       ) : (
         <td>{line.name}</td>
