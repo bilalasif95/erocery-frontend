@@ -16,7 +16,7 @@ import { TypedBannerImagesQuery } from "./queries";
 
 import { CartContext } from "../../components/CartProvider/context";
 
-import { history } from "../../history";
+// import { history } from "../../history";
 
 import {
   ProductsList_categories,
@@ -36,9 +36,9 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 // import banner2 from "../../images/banner2.jpg";
 // import banner3 from "../../images/banner3.jpg";
 // import banner4 from "../../images/banner4.jpg";
-import desktopvipoffer from "../../images/desktopoffer.png";
+// import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
-import vipoffermob from "../../images/vipoffermob.png";
+// import vipoffermob from "../../images/vipoffermob.png";
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
@@ -49,6 +49,9 @@ const Page: React.FC<{
   shop: ProductsList_shop;
 }> = ({ loading, categories, backgroundImage, shop }) => {
   const { data: user } = useUserDetails();
+  const allcategoriesWithoutQurbani = categories && categories.edges && categories.edges.filter(({node:category}) => {
+    return category.name !== "Qurbani"
+  });
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
@@ -123,9 +126,7 @@ const Page: React.FC<{
                 <div className="banner2-links">
                   <a
                     href="https://play.google.com/store/apps/details?id=com.rns.erocery"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    target="_blank"categories
                     <img src={androidStoreImage}></img>
                   </a>
                   <a
@@ -166,7 +167,7 @@ const Page: React.FC<{
           )}
         </TypedBannerImagesQuery>
       </div>
-      <div className="home-page__vipImage">
+      {/* <div className="home-page__vipImage">
         <div className="container">
           <img src={desktopvipoffer} alt="Online Qurbani Service" className="deskoffer" />
           <img src={vipoffermob} alt="Online Qurbani Service" className="moboffer" />
@@ -182,7 +183,7 @@ const Page: React.FC<{
             Book Now
           </button>
         </div>
-      </div>
+      </div> */}
       {/* <div
         className="home-page__hero"
         style={{ backgroundImage: `url(${bannerimg})` }}
@@ -257,7 +258,7 @@ const Page: React.FC<{
               ))}
             </div> */}
             <div className="home-page__categories__list">
-              {categories.edges.map(({ node: category }) => {
+              {allcategoriesWithoutQurbani.map(({ node: category }) => {
                 if (category.name === "Qurbani") {
                   qurbaniPath.id = category.id;
                   qurbaniPath.name = category.name;
