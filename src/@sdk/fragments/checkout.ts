@@ -62,6 +62,7 @@ export const checkoutProductVariantFragment = gql`
         id
         name
       }
+      isPublished
     }
   }
 `;

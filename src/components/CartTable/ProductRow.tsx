@@ -74,11 +74,16 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
       <td className="cart-table__thumbnail">
         <div>
           {mediumScreen && (
+            <>
+            {line.product.isPublished ?
             <Link to={productUrl}>
               <Thumbnail source={line.product} />
             </Link>
+            : <Thumbnail source={line.product} />}
+            </>
           )}
-          <Link to={productUrl}>{line.product.name}</Link>
+          {line.product.isPublished ? <Link to={productUrl}>{line.product.name}</Link>
+          : <p>{line.product.name}</p>}
         </div>
       </td>
 

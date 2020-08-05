@@ -48,7 +48,7 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                         key={product.variant && product.variant.product.id}
                         onClick={evt => {
                           evt.stopPropagation();
-                          product.variant
+                          product.variant && product.variant.product.isPublished
                             ? history.push(
                                 generateProductUrl(
                                   product.variant && product.variant.product.id,
