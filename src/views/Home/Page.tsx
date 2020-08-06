@@ -130,7 +130,7 @@ const Page: React.FC<{
                     <img src={androidStoreImage}></img>
                   </a>
                   <a
-                    href="https://www.apple.com/ios/app-store/"
+                    href="https://apps.apple.com/us/app/id1524601380"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -150,7 +150,7 @@ const Page: React.FC<{
                     <img src={androidStoreImage}></img>
                   </a>
                   <a
-                    href="https://www.apple.com/ios/app-store/"
+                    href="https://apps.apple.com/us/app/id1524601380"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

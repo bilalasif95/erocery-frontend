@@ -121,7 +121,7 @@ Satellite Town, Rawalpindi, Pakistan.</span></li>
             <h4>Download App</h4>
             <div className="playstoreIcons">
               <a className="googlePlayStoreIcon" href="https://play.google.com/store/apps/details?id=com.rns.erocery" target="_blank" rel="noopener noreferrer"><img className="androidAppStore" alt="android store" src={androidStoreImage}></img></a>
-              <a href="https://www.apple.com/ios/app-store/" target="_blank" rel="noopener noreferrer"><img alt="apple store" src={appleStoreImage}/></a>
+              <a href="https://apps.apple.com/us/app/id1524601380" target="_blank" rel="noopener noreferrer"><img alt="apple store" src={appleStoreImage}/></a>
             </div>
           </div>
         </div>
