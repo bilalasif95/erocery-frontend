@@ -88,6 +88,9 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                     autoComplete="tel"
                     label="Enter SMS Code"
                     type="tel"
+                    onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+                    onCopy={(e)=>{e.preventDefault(); return false}}
+                    onPaste={(e)=>{e.preventDefault(); return false}}
                     required
                   />
                   {passwordType ? (
@@ -188,6 +191,9 @@ const PasswordResetForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                         autoComplete="tel"
                         label="Phone Number"
                         type="tel"
+                        onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+                        onCopy={(e)=>{e.preventDefault(); return false}}
+                        onPaste={(e)=>{e.preventDefault(); return false}}
                         required
                       />
                     </div>

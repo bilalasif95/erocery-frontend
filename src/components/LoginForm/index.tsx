@@ -53,7 +53,10 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
               <div className="startNum">03</div>
             <TextField
               name="phone"
+              onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
               autoComplete="tel"
+              onCopy={(e)=>{e.preventDefault(); return false}}
+              onPaste={(e)=>{e.preventDefault(); return false}}
               label="Enter Phone Number"
               type="tel"
               required

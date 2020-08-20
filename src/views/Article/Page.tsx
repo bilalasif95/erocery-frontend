@@ -16,6 +16,7 @@ import { Breadcrumb, Breadcrumbs } from "../../components";
 
 import LinkEntity from "./LinkEntity";
 
+import ImageEntity from "./ImageEntity";
 
 interface PageNavigationElement {
   active: boolean;
@@ -79,7 +80,10 @@ export const Page: React.FC<PageProps> = ({
                   // source: LinkSource,
                   type: ENTITY_TYPE.LINK,
                 },
-
+                {
+                  decorator: ImageEntity,
+                  type: ENTITY_TYPE.IMAGE,
+                },
               ]}
               readOnly={true}
             />

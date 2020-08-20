@@ -84,6 +84,10 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
               label="Phone Number"
               value={values!.phone}
               autoComplete="tel"
+              type="tel"
+              onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+              onCopy={(e)=>{e.preventDefault(); return false}}
+              onPaste={(e)=>{e.preventDefault(); return false}}
               errors={fieldErrors!.phone}
               {...basicInputProps()}
               required

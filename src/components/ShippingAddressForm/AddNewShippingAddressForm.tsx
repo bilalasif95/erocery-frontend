@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import React from "react";
 
-import { Form, Select, TextField  } from "..";
+import { Form, Select, TextField } from "..";
 
 import { ShopContext } from "../ShopProvider/context";
 import { FormAddressType, IShippingNewAddressFormProps } from "./types";
@@ -27,7 +27,7 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
             errors={errors}
             onSubmit={(evt, data) => {
               evt.preventDefault();
-              data = { ...data, city: data.city, phone: "03"+data.phone };
+              data = { ...data, city: data.city, phone: "03" + data.phone };
               onSubmit(data);
             }}
             data={getFormData(geolocalization, defaultCountry, data)}
@@ -96,16 +96,19 @@ export const AddNewShippingAddressForm: React.FC<IShippingNewAddressFormProps> =
                 name="countryArea"
                 autoComplete="address-level1"
               />
-               <div className="phoneField">
-                      <div className="startNum">03</div>
-                      <TextField
-                        name="phone"
-                        autoComplete="tel"
-                        label="Phone Number"
-                        type="tel"
-                        required
-                      />
-                    </div>
+              <div className="phoneField">
+                <div className="startNum">03</div>
+                <TextField
+                  name="phone"
+                  autoComplete="tel"
+                  label="Phone Number"
+                  type="tel"
+                  onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+                  onCopy={(e) => { e.preventDefault(); return false }}
+                  onPaste={(e) => { e.preventDefault(); return false }}
+                  required
+                />
+              </div>
               {/* <Select
               label="Country"
               name="country"

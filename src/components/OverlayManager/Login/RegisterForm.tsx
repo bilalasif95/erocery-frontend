@@ -97,6 +97,9 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               autoComplete="tel"
               label="Enter Verification Code"
               type="tel"
+              onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+              onCopy={(e)=>{e.preventDefault(); return false}}
+              onPaste={(e)=>{e.preventDefault(); return false}}
               required
             />
             <div className="login-form__button verify-form displayflex">
@@ -158,6 +161,9 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
                       autoComplete="tel"
                       label="Enter Phone Number"
                       type="tel"
+                      onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+                      onCopy={(e)=>{e.preventDefault(); return false}}
+                      onPaste={(e)=>{e.preventDefault(); return false}}
                       required
                     />
                   </div>

@@ -105,6 +105,9 @@ const ShippingAddressForm: React.FC<IShippingAddressFormProps> = ({
                     autoComplete="tel"
                     label="Phone Number"
                     type="tel"
+                    onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
+                    onCopy={(e) => { e.preventDefault(); return false }}
+                    onPaste={(e) => { e.preventDefault(); return false }}
                     required
                   />
                 </div>

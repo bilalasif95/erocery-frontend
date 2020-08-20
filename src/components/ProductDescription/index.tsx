@@ -287,7 +287,9 @@ class ProductDescription extends React.Component<
                   onKeyDown={(evt) => evt.key === '.' && evt.preventDefault()}
                   name="quantity"
                   errors={this.state.error}
-                  type="number"
+                  type="tel"
+                  onCopy={(e)=>{e.preventDefault(); return false}}
+                  onPaste={(e)=>{e.preventDefault(); return false}}
                   label="Quantity"
                   min="1"
                   value={quantity || ""}
