@@ -4,14 +4,18 @@
 <url> <loc>https://www.erocery.com/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/atta-and-other-flour/49/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/baby-care/52/</loc> </url>
-<url> <loc>https://www.erocery.com/#/category/beverages-and-mineral-water/32/</loc> </url>
+<!-- <url> <loc>https://www.erocery.com/#/category/beverages-and-mineral-water/32/</loc> </url> -->
 <url> <loc>https://www.erocery.com/#/category/biscuits-and-snacks/27/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/body-soap-hand-wash-and-sanitizer/28/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/bread-and-eggs/29/</loc> </url>
+<url> <loc>https://www.erocery.com/#/category/bundle-deals/95/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/canned-food/40/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/detergent-and-laundry-additives/36/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/dishwash-and-cleaners/31/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/edible-oil-and-ghee/33/</loc> </url>
+<url> <loc>https://www.erocery.com/#/category/fresh-fruits/98/</loc> </url>
+<url> <loc>https://www.erocery.com/#/category/fresh-meat/101/</loc> </url>
+<url> <loc>https://www.erocery.com/#/category/fresh-vegetables/100/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/hair-care/41/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/hygiene-and-tissues/42/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/jam-honey-and-spreads/35/</loc> </url>
@@ -20,10 +24,11 @@
 <url> <loc>https://www.erocery.com/#/category/noodles-and-spaghetti/38/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/oral-care/39/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/pulses-and-rice/50/</loc> </url>
-<url> <loc>https://www.erocery.com/#/category/qurbani/56/</loc> </url>
+<!-- <url> <loc>https://www.erocery.com/#/category/qurbani/56/</loc> </url> -->
 <url> <loc>https://www.erocery.com/#/category/repellent-and-shoe-care/47/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/salt-and-sugar/45/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/skin-care/53/</loc> </url>
+<url> <loc>https://www.erocery.com/#/category/softdrinks-and-mineral-water/68/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/spices-and-dry-fruits/46/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/sweets-and-deserts/30/</loc> </url>
 <url> <loc>https://www.erocery.com/#/category/tea-and-coffee/44/</loc> </url>
@@ -33,5 +38,11 @@
 <url> <loc>https://www.erocery.com/#/page/Terms-and-Conditions/</loc> </url>
 <url> <loc>https://www.erocery.com/#/page/Privacy-Policy/</loc> </url>
 <url> <loc>https://www.erocery.com/#/page/About-Us/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/Blogs/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/OnlineGrocery-Stores-in-Islamabad-and-Rawalpindi/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/healthy-eating-habits/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/is-grocery-delivery-safe-during-covid-19-pandemic/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/Impacts-of-Online-Grocery-Store-Apps-on-Traditional-Shopping/</loc> </url>
+<url> <loc>https://www.erocery.com/#/page/Money-Saving-Hacks-For-Online-Shopping/</loc> </url>
 <url> <loc>https://www.erocery.com/#/search?q={q}</loc> </url>
 </urlset>
