@@ -29,6 +29,12 @@ const ArticlePage = React.lazy(() =>
 );
 // import OrderGuide from "../../views/OrderGuide";
 // import { CartPage } from "../../views/Cart";
+const BlogsPage = React.lazy(() =>
+  import("../../views/Blogs").then(({ BlogsPage }) => ({
+    default: BlogsPage,
+  }))
+);
+
 const CartPage = React.lazy(() =>
   import("../../views/Cart").then(({ CartPage }) => ({
     default: CartPage,
@@ -57,6 +63,11 @@ const HowToOrder = React.lazy(() =>
   import("../../views/FooterPages/How-To-Order")
 );
 
+const IndividualBlogsPage = React.lazy(()=>
+  import("../../views/Blogs/IndividualView").then(({ IndividualView }) => ({
+    default: IndividualView,
+  }))
+);
 // import JazzCashPaymentError from "../../views/FooterPages/JazzCashPaymentError";
 const JazzCashPaymentError = React.lazy(() =>
   import("../../views/FooterPages/JazzCashPaymentError")
@@ -133,6 +144,8 @@ export const Routes: React.FC = () => (
       <Route path={paths.cartUrl} component={CartPage} />
       <Route path={paths.checkoutLoginUrl} component={CheckoutLogin} />
       <Route path={paths.pageUrl} component={ArticlePage} />
+      <Route path={paths.allBlogsUrl} component={BlogsPage} />
+      <Route path={paths.individualBlogUrl} component={IndividualBlogsPage} />
       <Route path={accountPaths.baseUrl} component={UserAccount} />
       <Route path={accountPaths.userOrderDetailsUrl} component={OrderDetails} />
       <Route path={paths.guestOrderDetailsUrl} component={OrderDetails} />

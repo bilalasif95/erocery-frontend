@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import * as React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 import { NavLink,SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
@@ -69,6 +69,7 @@ const Footer: React.FC = () => {
                 ));
               }}
             </TypedSecondaryMenuQuery>
+            <li><ReactSVG path={listIcon} /><Link to={"/blogs"}>Blogs</Link></li>
           </ul>
         </div>
         <div className="footer-item">
