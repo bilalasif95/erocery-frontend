@@ -126,6 +126,10 @@
         font-size: 14px;
         text-align: left;
         width: 100%;
+        max-height: 45px;
+        min-height: 45px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .readmore {
         color: #2a7ebe;
@@ -152,6 +156,11 @@
         font-size: 14px;
         text-align: left;
         width: 100%;
+        max-height: 45px;
+        min-height: 45px;
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .readmore {
         color: #2a7ebe;
@@ -330,7 +339,7 @@
           color: #323232;
           font-size: 16px;
           font-weight: 500;
-          line-height: 20px;
+          line-height: 1.5rem;
           max-height: 50px;
           min-height: 50px;
           max-width: 300px;
@@ -364,6 +373,12 @@
           width: 100%;
           p {
             font-size: 14px;
+            max-height: 70px;
+            min-height: 70px;
+            max-width: 300px;
+            overflow: hidden;
+            width: 100%;
+            text-overflow: ellipsis;
           }
           .readmore {
             color: #2a7ebe;
@@ -446,9 +461,14 @@
       width: 30%;
       .likes {
         display: flex;
+        align-items: center;
+        svg {
+          cursor: pointer;
+        }
       }
       .shares {
         display: flex;
+        align-items: center;
         p {
           font-weight: 600;
           margin: 0 0.5rem;
@@ -469,6 +489,7 @@
         margin: 0.5rem 0 0;
         position: static;
         width: 100%;
+        flex-wrap: wrap;
       }
     }
   }
@@ -503,5 +524,37 @@
       font-size: 20px;
       line-height: 28px;
     }
+  }
+}
+
+.noCatImg {
+  background: #f4f4f4;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  p {
+    color: #3a306a;
+    line-height: normal;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.noFullCatImg {
+  background: #f4f4f4;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  p {
+    color: #3a306a;
+    line-height: normal;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 }

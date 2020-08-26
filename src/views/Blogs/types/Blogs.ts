@@ -44,16 +44,16 @@ export interface Article_shop {
   homepageCollection: Article_shop_homepageCollection | null;
 }
 
-export interface Article {
+export interface Blogs {
   /**
    * Look up a page by ID or slug.
    */
-  blog: any | null;
+  blogs: any | null;
   /**
    * Return information about the shop.
    */
 }
 
-export interface ArticleVariables {
+export interface BlogsVariables {
   slug: string;
 }

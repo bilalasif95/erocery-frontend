@@ -8,12 +8,12 @@ import { STATIC_PAGES } from "../../core/config";
 import { generatePageUrl, maybe } from "../../core/utils";
 import Page from "./Page";
 import { TypedArticleQuery } from "./query";
-import { Article_shop } from "./types/Article";
+// import { Article_shop } from "./types/Article";
 
 const canDisplay = page =>
   maybe(() => !!page && !!page.title && !!page.contentJson);
-const getHeaderImage = (shop: Article_shop) =>
-  maybe(() => shop.homepageCollection.backgroundImage.url);
+// const getHeaderImage = (shop: Article_shop) =>
+//   maybe(() => shop.homepageCollection.backgroundImage.url);
 
 type ViewProps = RouteComponentProps<{ slug: string }>;
 
@@ -28,33 +28,33 @@ export const IndividualView: React.FC<ViewProps> = ({
           ...page,
           active: page.url === window.location.pathname,
         }));
-        const { page, shop } = data;
+        const { blog } = data;
 
-        if (canDisplay(page)) {
+        if (canDisplay(blog)) {
           const breadcrumbs = [
             {
               link: generatePageUrl(slug),
-              value: page.title,
+              value: blog.title,
             },
           ];
           return (
             <MetaWrapper
               meta={{
-                description: page.seoDescription,
-                title: page.seoTitle,
+                description: blog.seoDescription,
+                title: blog.seoTitle,
               }}
             >
               <Page
                 breadcrumbs={breadcrumbs}
-                headerImage={getHeaderImage(shop)}
+                // headerImage={getHeaderImage(shop)}
                 navigation={navigation}
-                page={data.page}
+                page={data.blog}
               />
             </MetaWrapper>
           );
         }
 
-        if (page === null) {
+        if (blog === null) {
           return <NotFound />;
         }
       }}
