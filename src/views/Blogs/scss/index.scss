@@ -558,3 +558,10 @@
     text-transform: uppercase;
   }
 }
+
+.disabledHeart{
+  cursor: not-allowed;
+  svg {
+    cursor: not-allowed !important;
+  }
+}

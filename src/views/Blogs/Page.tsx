@@ -97,45 +97,78 @@ export const Page: React.FC<PageProps> = ({
               <div className="share-link">
                 <div className="likes">
                   <TypedBlogLikeUnlikeMutation>
-                    {(blogLikeDislike, { data }) => {
+                    {(blogLikeDislike, { data, loading }) => {
                       return (
                         <>
                           {data === undefined ? page.userLiked ?
                             <>
-                              <ReactSVG path={heart} onClick={() => {
-                                if (!user) {
-                                  setShowNotLoggedMessage(true);
-                                  return;
-                                } else {
-                                  blogLikeDislike({ variables: { id: page.id } })
-                                }
-                              }} /><p>&nbsp;{page.likes.totalCount} Likes</p>
+                              {loading ?
+                                <><ReactSVG className="disabledHeart" path={heart} /><p>&nbsp;{page.likes.totalCount} Likes</p></>
+                                :
+                                <>
+                                  <ReactSVG path={heart} onClick={() => {
+                                    if (loading) {
+                                      return
+                                    }
+                                    if (!user) {
+                                      setShowNotLoggedMessage(true);
+                                      return;
+                                    } else {
+                                      blogLikeDislike({ variables: { id: page.id } })
+                                    }
+                                  }} /><p>&nbsp;{page.likes.totalCount} Likes</p>
+                                </>
+                              }
                             </>
                             :
                             <>
-                              <ReactSVG path={unfilledHeart} onClick={() => {
-                                if (!user) {
-                                  setShowNotLoggedMessage(true);
-                                  return;
-                                } else { blogLikeDislike({ variables: { id: page.id } }) }
-                              }} /><p>&nbsp;{page.likes.totalCount} Likes</p>
+                              {loading ?
+                                <><ReactSVG className="disabledHeart" path={unfilledHeart} /><p>&nbsp;{page.likes.totalCount} Likes</p></>
+                                :
+                                <>
+                                  <ReactSVG path={unfilledHeart} onClick={() => {
+                                    if (loading) {
+                                      return
+                                    }
+                                    if (!user) {
+                                      setShowNotLoggedMessage(true);
+                                      return;
+                                    } else { blogLikeDislike({ variables: { id: page.id } }) }
+                                  }} /><p>&nbsp;{page.likes.totalCount} Likes</p>
+                                </>}
                             </> : data.blogLikeDislike.blog.userLiked ?
                               <>
-                                <ReactSVG path={heart} onClick={() => {
-                                  if (!user) {
-                                    setShowNotLoggedMessage(true);
-                                    return;
-                                  } else { blogLikeDislike({ variables: { id: page.id } }) }
-                                }} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p>
+                                {loading ?
+                                  <><ReactSVG className="disabledHeart" path={heart} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p></>
+                                  :
+                                  <>
+                                    <ReactSVG path={heart} onClick={() => {
+                                      if (loading) {
+                                        return
+                                      }
+                                      if (!user) {
+                                        setShowNotLoggedMessage(true);
+                                        return;
+                                      } else { blogLikeDislike({ variables: { id: page.id } }) }
+                                    }} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p>
+                                  </>}
                               </>
                               :
                               <>
-                                <ReactSVG path={unfilledHeart} onClick={() => {
-                                  if (!user) {
-                                    setShowNotLoggedMessage(true);
-                                    return;
-                                  } else { blogLikeDislike({ variables: { id: page.id } }) }
-                                }} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p>
+                                {loading ?
+                                  <><ReactSVG className="disabledHeart" path={unfilledHeart} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p></>
+                                  :
+                                  <>
+                                    <ReactSVG path={unfilledHeart} onClick={() => {
+                                      if (loading) {
+                                        return
+                                      }
+                                      if (!user) {
+                                        setShowNotLoggedMessage(true);
+                                        return;
+                                      } else { blogLikeDislike({ variables: { id: page.id } }) }
+                                    }} /><p>&nbsp;{data.blogLikeDislike.blog.likes.totalCount} Likes</p>
+                                  </>}
                               </>
                           }
                           {showNotLoggedMessage && (
