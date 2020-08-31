@@ -2,8 +2,8 @@
 import * as React from "react";
 // import { Link } from "react-router-dom";
 import {
-  FacebookIcon,
-  FacebookShareButton,
+  // FacebookIcon,
+  // FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
@@ -34,6 +34,8 @@ import { Breadcrumb } from "../../components";
 import LinkEntity from "./LinkEntity";
 
 import ImageEntity from "./ImageEntity";
+
+import { structuredData } from "../../core/SEO/Blog/structuredData";
 
 interface PageNavigationElement {
   active: boolean;
@@ -71,6 +73,9 @@ export const Page: React.FC<PageProps> = ({
       <div className="container">
         {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
         <div>
+          <script className="structured-data-list" type="application/ld+json">
+            {structuredData(page)}
+          </script>
           {/* <div className="article-page__navigation">
           <ul>
             {navigation.map(menuElement => (
@@ -189,7 +194,10 @@ export const Page: React.FC<PageProps> = ({
                 <div className="shares">
                   <p>Share on:</p>
                   <ul>
-                    <li><FacebookShareButton url={window.location.href}><FacebookIcon path={window.location.href} size={32} round={true} /></FacebookShareButton></li>
+                    <li className="fb-share-button" data-size="small" data-href={window.location.href} data-layout="button_count">
+                      {/* <FacebookShareButton className="fb-xfbml-parse-ignore" url={window.location.href}><FacebookIcon path={window.location.href} size={32} round={true} /></FacebookShareButton> */}
+                      <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">Share</a>
+                    </li>
                     <li><WhatsappShareButton url={window.location.href} title="Erocery" separator=":: "><WhatsappIcon path={window.location.href} size={32} round={true} /></WhatsappShareButton></li>
                     <li><LinkedinShareButton url={window.location.href}><LinkedinIcon path={window.location.href} size={32} round={true} /></LinkedinShareButton></li>
                     <li><TwitterShareButton url={window.location.href} title="Erocery"><TwitterIcon path={window.location.href} size={32} round={true} /></TwitterShareButton></li>
