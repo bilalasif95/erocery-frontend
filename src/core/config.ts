@@ -68,7 +68,7 @@ export const META_DEFAULTS = {
   description:
     "Erocery is an Online Supermarket providing Same Day Delivery in Rawalpindi & Islamabad with an interactive online grocery shopping experience.",
   image: `${window.location.origin}${require("../images/erocery_logo.svg")}`,
-  title: "Products – Erocery Commerce",
+  title: "Erocery | Online Grocery Store | Fast delivery",
   type: "website",
   url: window.location.origin,
 };
