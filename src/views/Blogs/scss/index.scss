@@ -1,5 +1,9 @@
 @import "../../../globalStyles/scss/variables.scss";
 
+.mr-3 {
+  margin-right: 1rem;
+}
+
 .article-page {
   &__container {
     column-gap: $spacer * 1.5;
@@ -227,16 +231,23 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0.96) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#000000', GradientType=0 );
   }
+  .listItems {
+    display: flex;
+    justify-content: space-between;
+  }
+  .innerContent {
+    width: 100%;
+  }
   .socialList {
     list-style-type: none;
     display: flex;
-    width: 100%;
-    li:first-child {
-      margin-right: 1.5rem;
-    }
+    // width: 100%;
+    // li:first-child {
+    //   margin-right: 1.5rem;
+    // }
     li {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 1.5rem;
       display: flex;
       justify-content: flex-start;
       color: #fff;
@@ -256,6 +267,26 @@
     }
   }
   @media (max-width: 768px) {
+    .socialList {
+      // li:first-child {
+      //   margin-right: 0rem;
+      //   width: 80%;
+      // }
+      // li:last-child {
+      //   width: 30%;
+      //   // padding-left: 2rem;
+      // }
+      // li:nth-child(2){
+      //   width: 70%;
+      // }
+      li {
+        font-size: 12px;
+        padding-left: 1.5rem;
+      }
+    }
+    .innerContent h1 {
+      font-size: 27px;
+    }
     .leftBox {
       margin: 0 0 1rem;
       width: 100%;
@@ -322,7 +353,7 @@
         }
       }
       .blogImg {
-        width: 55%;
+        // width: 55%;
         height: 150px;
         overflow: hidden;
         img {
@@ -347,18 +378,31 @@
           width: 100%;
           text-overflow: ellipsis;
         }
+        .listItems {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+        }
         .socialList {
           display: flex;
           margin: 0 0 1.5rem;
-          width: 100%;
-          li:first-child {
-            list-style: none;
-            margin-right: 1.5rem;
-          }
+          // width: 100%;
+          // li:first-child {
+          //   list-style: none;
+          //   // margin-right: 1rem;
+          //   width: 70%;
+          // }
+          // li:last-child {
+          //   // padding-left: 4.2rem;
+          //   width: 30%;
+          // }
+          // li:nth-child(2){
+          //   width: 70%;
+          // }
           li {
             font-size: 12px;
             position: relative;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
             display: flex;
             justify-content: flex-start;
             color: #323232;

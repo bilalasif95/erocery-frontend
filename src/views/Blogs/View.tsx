@@ -10,6 +10,8 @@ import { generateBlogUrl } from "../../core/utils";
 import eye from "../../images/Eye_icon.svg";
 import eyeb from "../../images/Eye_iconB.svg";
 import heart from "../../images/Like_icon.svg";
+import unfilledWhiteHeart from "../../images/Like_White_icon.svg";
+import unfilledHeart from "../../images/WhiteLike_icon.svg";
 // import { MetaWrapper, NotFound } from "../../components";
 // import { STATIC_PAGES } from "../../core/config";
 // import { generatePageUrl, maybe } from "../../core/utils";
@@ -60,16 +62,23 @@ export const View: React.FC<ViewProps> = ({
                       <div className="content">
                         <div className="innerContent">
                           <h1>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.title}</h1>
-                          <ul className="socialList">
-                            <li>
-                              <ReactSVG path={eye} />
-                              <span>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.views} views</span>
-                            </li>
-                            <li>
-                              <ReactSVG path={heart} />
-                              <span>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.likes.totalCount} Likes</span>
-                            </li>
-                          </ul>
+                          <div className="listItems">
+                            <ul className="socialList">
+                              <li className="mr-3">
+                                <ReactSVG path={eye} />
+                                <span>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.views} views</span>
+                              </li>
+                              <li>
+                                {data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.userLiked ? <ReactSVG path={heart} /> : <ReactSVG path={unfilledWhiteHeart} />}
+                                <span>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.likes.totalCount} Likes</span>
+                              </li>
+                            </ul>
+                            <ul className="socialList">
+                              <li>
+                                <span>{new Date(data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.created).toLocaleDateString()}</span>
+                              </li>
+                            </ul>
+                          </div>
                           <div className="desc">
                             <p>{data.blogs.edges && data.blogs.edges[0] && data.blogs.edges[0].node.description}</p>
                             <Link
@@ -104,16 +113,24 @@ export const View: React.FC<ViewProps> = ({
                         <div className="content">
                           <div className="innerContent">
                             <h1>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.title}</h1>
-                            <ul className="socialList">
-                              <li>
-                                <ReactSVG path={eye} />
-                                <span>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.views} views</span>
-                              </li>
-                              <li>
-                                <ReactSVG path={heart} />
-                                <span>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.likes.totalCount} Likes</span>
-                              </li>
-                            </ul>
+                            <div className="listItems">
+                              <ul className="socialList">
+                                <li className="mr-3">
+                                  <ReactSVG path={eye} />
+                                  <span>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.views} views</span>
+                                </li>
+                                <li>
+                                  {data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.userLiked ? <ReactSVG path={heart} /> : <ReactSVG path={unfilledWhiteHeart} />}
+                                  <span>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.likes.totalCount} Likes</span>
+                                </li>
+
+                              </ul>
+                              <ul className="socialList" >
+                                <li>
+                                  <span>{new Date(data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.created).toLocaleDateString()}</span>
+                                </li>
+                              </ul>
+                            </div>
                             <div className="desc">
                               <p>{data.blogs.edges && data.blogs.edges[1] && data.blogs.edges[1].node.description}</p>
                               <Link
@@ -146,16 +163,24 @@ export const View: React.FC<ViewProps> = ({
                         <div className="content">
                           <div className="innerContent">
                             <h1>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.title}</h1>
-                            <ul className="socialList">
-                              <li>
-                                <ReactSVG path={eye} />
-                                <span>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.views} views</span>
-                              </li>
-                              <li>
-                                <ReactSVG path={heart} />
-                                <span>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.likes.totalCount} Likes</span>
-                              </li>
-                            </ul>
+                            <div className="listItems">
+                              <ul className="socialList">
+                                <li className="mr-3">
+                                  <ReactSVG path={eye} />
+                                  <span>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.views} views</span>
+                                </li>
+                                <li>
+                                  {data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.userLiked ? <ReactSVG path={heart} /> : <ReactSVG path={unfilledWhiteHeart} />}
+                                  <span>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.likes.totalCount} Likes</span>
+                                </li>
+
+                              </ul>
+                              <ul className="socialList">
+                                <li>
+                                  <span>{new Date(data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.created).toLocaleDateString()}</span>
+                                </li>
+                              </ul>
+                            </div>
                             <div className="desc">
                               <p>{data.blogs.edges && data.blogs.edges[2] && data.blogs.edges[2].node.description}</p>
                               <Link
@@ -186,12 +211,12 @@ export const View: React.FC<ViewProps> = ({
                             to={generateBlogUrl(blog.node.slug)}
                           >
                             <div className="topPart">
-                              <div className="blogNum">
+                              {/* <div className="blogNum">
                                 <div className="num">
-                                  {index + 1}
-                                  {/* <span className="expo">st</span> */}
-                                </div>
-                              </div>
+                                  {index + 1} */}
+                              {/* <span className="expo">st</span> */}
+                              {/* </div> */}
+                              {/* </div> */}
                               <div className="blogImg img-hover-zoom">
                                 {blog.node.image ?
                                   <img
@@ -205,16 +230,23 @@ export const View: React.FC<ViewProps> = ({
                             </div>
                             <div className="bottomPart">
                               <h1>{blog.node.title}</h1>
-                              <ul className="socialList">
-                                <li>
-                                  <ReactSVG path={eyeb} />
-                                  <span>{blog.node.views} views</span>
-                                </li>
-                                <li>
-                                  <ReactSVG path={heart} />
-                                  <span>{blog.node.likes.totalCount} Likes</span>
-                                </li>
-                              </ul>
+                              <div className="listItems">
+                                <ul className="socialList">
+                                  <li className="mr-3">
+                                    <ReactSVG path={eyeb} />
+                                    <span>{blog.node.views} views</span>
+                                  </li>
+                                  <li>
+                                    {blog.node.userLiked ? <ReactSVG path={heart} /> : <ReactSVG path={unfilledHeart} />}
+                                    <span>{blog.node.likes.totalCount} Likes</span>
+                                  </li>
+                                </ul>
+                                <ul className="socialList">
+                                  <li>
+                                    <span>{new Date(blog.node.created).toLocaleDateString()}</span>
+                                  </li>
+                                </ul>
+                              </div>
                               <div className="desc">
                                 <p>{blog.node.description}</p>
                                 <Link
