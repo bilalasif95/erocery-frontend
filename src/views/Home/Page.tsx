@@ -114,7 +114,7 @@ const Page: React.FC<{
               {/* {imagesArray.map(image => (
             <> */}
               {data.shop.banners &&
-                data.shop.banners.map(url => <img src={url.image} />)}
+                data.shop.banners.map(url => <img src={url.image} alt={url.alt} />)}
               {/* <div
             className="home-page__hero"
             style={{ backgroundImage: `url(${image.url})` }}

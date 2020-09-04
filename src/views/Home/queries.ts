@@ -38,6 +38,7 @@ export const bannerImagesGet = gql`
   shop{
     banners{
       image
+      alt
     }
   }
 }`;

@@ -8,6 +8,7 @@
 
 export interface BannerImagesArray {
   image: string;
+  alt: string;
 }
 
 export interface BannerImagesGet {
