@@ -18,10 +18,10 @@ export const structuredData = blog => {
       "@type": "Organization",
       logo: {
         "@type": "ImageObject",
-        url: "https://i.imgur.com/16IaGNG.png",
+        url: "https://i.imgur.com/16IaGNG.png"
       },
-      name: "Erocery",
+      name: "Erocery"
     },
-    url: location.href,
+    url: location.href
   });
 };

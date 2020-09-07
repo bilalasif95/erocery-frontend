@@ -7,7 +7,7 @@ const getVariantsStructuredData = variants => {
     itemCondition: "https://schema.org/NewCondition",
     price: variant.pricing.price.gross.amount.toFixed(2),
     priceCurrency: variant.pricing.price.gross.currency,
-    sku: variant.sku,
+    sku: variant.sku
   }));
 };
 
@@ -24,6 +24,6 @@ export const structuredData = product => {
     image: images,
     name: !product.seoTitle ? `${product.name}` : `${product.seoTitle}`,
     offers: getVariantsStructuredData(variants),
-    url: location.href,
+    url: location.href
   });
 };
