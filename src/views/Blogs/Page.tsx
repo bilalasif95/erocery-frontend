@@ -206,7 +206,7 @@ export const Page: React.FC<PageProps> = ({
               {page.image ?
                 <img
                   src={page.image && page.image.url}
-                  alt={page.image && page.image.url}
+                  alt={page.image && page.image.alt}
                 /> :
                 <div className="noFullCatImg">
                   <p>Photo Unavailable</p>

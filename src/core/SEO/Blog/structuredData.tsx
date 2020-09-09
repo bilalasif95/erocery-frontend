@@ -11,7 +11,7 @@ export const structuredData = blog => {
     headline: !blog.seoDescription
       ? `${blog.description}`
       : `${blog.seoDescription}`,
-    image: new URL(blog.image.url).pathname,
+    image: blog.image && new URL(blog.image.url).pathname,
     mainEntityOfPage: location.href,
     name: !blog.seoTitle ? `${blog.title}` : `${blog.seoTitle}`,
     publisher: {
