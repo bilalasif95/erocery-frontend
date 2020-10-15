@@ -20,7 +20,7 @@ export const structuredData = blog => {
         "@type": "ImageObject",
         url: "https://i.imgur.com/16IaGNG.png"
       },
-      name: "Erocery"
+      name: "Erocery | Best Online grocery Store(Rawalpindi & Islamabad)"
     },
     url: location.href
   });
