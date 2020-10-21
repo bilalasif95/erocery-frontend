@@ -103,7 +103,7 @@ module.exports = ({ sourceDir, distDir }) => ({
       logo: `${sourceDir}/images/android-chrome.png`,
       prefix: "images/favicons/",
       favicons: {
-        appName: "Erocery | Best Online grocery Store(Rawalpindi & Islamabad)",
+        appName: "Erocery-Best Online Grocery Store (Pakistan)",
         appDescription: "Erocery is Online Grocery Store in Islamabad & Rawalpindi, Pakistan. We Cover More Than 150 Areas in Rawalpindi and Islamabad. Same Day Delivery Within 3 Hours. Free Delivery on Orders Above Rs 1000.",
         display: "minimal-ui",
         developerURL: null, // prevent retrieving from the nearest package.json

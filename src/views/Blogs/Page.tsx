@@ -195,9 +195,9 @@ export const Page: React.FC<PageProps> = ({
                   <p>Share on:</p>
                   <ul>
                     <li><FacebookShareButton url={window.location.href}><FacebookIcon path={window.location.href} size={32} round={true} /></FacebookShareButton></li>
-                    <li><WhatsappShareButton url={window.location.href} title="Erocery | Best Online grocery Store(Rawalpindi & Islamabad)" separator=":: "><WhatsappIcon path={window.location.href} size={32} round={true} /></WhatsappShareButton></li>
+                    <li><WhatsappShareButton url={window.location.href} title="Erocery-Best Online Grocery Store (Pakistan)" separator=":: "><WhatsappIcon path={window.location.href} size={32} round={true} /></WhatsappShareButton></li>
                     <li><LinkedinShareButton url={window.location.href}><LinkedinIcon path={window.location.href} size={32} round={true} /></LinkedinShareButton></li>
-                    <li><TwitterShareButton url={window.location.href} title="Erocery | Best Online grocery Store(Rawalpindi & Islamabad)"><TwitterIcon path={window.location.href} size={32} round={true} /></TwitterShareButton></li>
+                    <li><TwitterShareButton url={window.location.href} title="Erocery-Best Online Grocery Store (Pakistan)"><TwitterIcon path={window.location.href} size={32} round={true} /></TwitterShareButton></li>
                   </ul>
                 </div>
               </div>
