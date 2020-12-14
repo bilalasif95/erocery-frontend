@@ -27,6 +27,23 @@
     @media (max-width: $small-screen) {
       width: 100%;
       padding: 0 0 $spacer * 4;
+      button {
+        margin: 2rem 0 2rem 1.5rem !important
+      }
+    }
+    @media (max-width: 375px) {
+      .recaptcha {
+        margin: 2rem 0px 0rem 3.5rem !important
+      }
+    }
+    @media (max-width: 320px) {
+      .recaptcha {
+        margin: 2rem 0px 0rem 2rem !important
+      }
+    }
+    
+    .recaptcha {
+      margin: 2rem 0px 0rem 5rem
     }
 
     p {
