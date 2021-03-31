@@ -49,7 +49,7 @@ const Sitemap = require("react-router-sitemap").default;
 function generateSitemap() {
   return new Sitemap(router)
     .applyParams(pathsConfig)
-    .build("https://www.erocery.com/#/")
+    .build("https://www.erocery.com/")
     .save("./sitemap.xml");
 }
 
