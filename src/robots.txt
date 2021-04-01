@@ -19,6 +19,6 @@ Disallow: /product/olpers-milk/15/
 Disallow: /product/tostitos-oven-baked-scoops/16/
 Disallow: /product/popchips-barbeque-potato/20/
 
-Allow:
+Allow: /
 # Sitemap files
 Sitemap:https://erocery.com/sitemap.xml
