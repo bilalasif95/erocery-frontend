@@ -57,6 +57,7 @@ let slugs = {
     "succeeding-in-online-grocery/",
     "things-to-start-a-successful-online-grocery-store/",
     "traditional-vs-online-grocery-shopping-we-did-the-math-for-you/",
+    "covid-19-third-wave-and-online-grocery-shopping/",
   ],
 };
 const pathsConfig = {
