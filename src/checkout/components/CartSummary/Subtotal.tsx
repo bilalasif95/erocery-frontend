@@ -25,7 +25,7 @@ const Subtotal: React.FC<{
           <h5>Subtotal</h5>
           <h5>
             {checkout ? (
-              <Money money={checkout.subtotalPrice.gross} />
+              <Money money={ checkout.subtotalPrice.gross} />
             ) : (
               getTotal(variants, lines, locale)
             )}

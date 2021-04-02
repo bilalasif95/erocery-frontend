@@ -6,6 +6,7 @@ export * from "./ErrorMessage";
 export * from "./Icon";
 export * from "./IconButton";
 export * from "./Input";
+export * from "./NumberInput";
 export * from "./TileGrid";
 export * from "./Loader";
 export * from "./Message";

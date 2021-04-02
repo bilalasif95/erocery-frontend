@@ -19,22 +19,36 @@ export interface ResetPassword_requestPasswordReset_errors {
   message: string | null;
 }
 
+export interface ResetPassword_accountRegister_user {
+  __typename: "User";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  // email: string;
+  phone: string;
+  firstName: string;
+  lastName: string;
+  isStaff: boolean;
+}
+
 export interface ResetPassword_requestPasswordReset {
   __typename: "RequestPasswordReset";
   /**
    * List of errors that occurred executing the mutation.
    */
   errors: ResetPassword_requestPasswordReset_errors[] | null;
+  user: ResetPassword_accountRegister_user | null;
 }
 
 export interface ResetPassword {
   /**
    * Sends an email with the account password modification link.
    */
-  requestPasswordReset: ResetPassword_requestPasswordReset | null;
+  accountForgotPassword: ResetPassword_requestPasswordReset | null;
 }
 
 export interface ResetPasswordVariables {
-  email: string;
-  redirectUrl: string;
+  phone: string;
+  // redirectUrl: string;
 }

@@ -1,7 +1,8 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .social-icon {
-  padding: $spacer $spacer / 2;
+  // padding: $spacer $spacer / 2;
+  padding: 0rem 0.5rem 1rem 0.5rem;
 
   svg * {
     transition: 0.3s;
@@ -9,7 +10,54 @@
 
   &:hover {
     svg * {
-      fill: $turquoise;
+      fill: #5fbe43;
+    }
+  }
+}
+a:first-child .social-icon {
+  padding: 0rem 0.5rem 1rem 0rem;
+  &:hover {
+    svg * {
+      fill: #3b5998;
+    }
+  }
+}
+a:nth-child(2) .social-icon {
+  &:hover {
+    svg * {
+      fill: #d54c88;
+    }
+  }
+}
+a:nth-child(3) .social-icon {
+  &:hover {
+    svg * {
+      fill: #435A64;
+    }
+  }
+}
+a:nth-child(4) .social-icon {
+  padding: 0rem 0.5rem 1rem 0rem;
+  @media(max-width:823px){
+    padding: 0rem 0.5rem 1rem 0.5rem;
+  }
+  &:hover {
+    svg * {
+      fill: #00acee;
+    }
+  }
+}
+a:nth-child(5) .social-icon {
+  &:hover {
+    svg * {
+      fill: #c4302b;
+    }
+  }
+}
+a:last-child .social-icon {
+  &:hover {
+    svg * {
+      fill: #0e76a8;
     }
   }
 }

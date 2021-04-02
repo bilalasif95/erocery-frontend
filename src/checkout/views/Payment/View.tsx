@@ -21,12 +21,13 @@ import {
 import { reviewUrl } from "../../routes";
 import CreditCard from "./Gateways/Braintree/CreditCard";
 import Dummy from "./Gateways/Dummy";
+import JazzCash from "./Gateways/JazzCashDum";
 import { Stripe } from "./Gateways/Stripe";
 import { TypedPaymentMethodCreateMutation } from "./queries";
 import "./scss/index.scss";
 import { createPayment, createPaymentVariables } from "./types/createPayment";
 
-import { CountryCode } from "types/globalTypes";
+// import { CountryCode } from "types/globalTypes";
 
 export interface ProviderProps {
   loading: boolean;
@@ -104,7 +105,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     checkout: CheckoutContextInterface
   ) => async (token: string, gateway: string) => {
     const {
-      checkout: { billingAddress, totalPrice, id },
+      checkout: { billingAddress, shippingAddress, totalPrice, id },
     } = checkout;
 
     if (token) {
@@ -114,14 +115,36 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
           input: {
             amount: totalPrice.gross.amount,
             billingAddress: {
-              city: billingAddress.city,
-              country: billingAddress.country.code as CountryCode,
-              countryArea: billingAddress.countryArea,
-              firstName: billingAddress.firstName,
-              lastName: billingAddress.lastName,
-              postalCode: billingAddress.postalCode,
-              streetAddress1: billingAddress.streetAddress1,
-              streetAddress2: billingAddress.streetAddress2,
+              city:
+                billingAddress === null
+                  ? shippingAddress.city
+                  : billingAddress.city,
+              // country: billingAddress.country.code as CountryCode,
+              countryArea:
+                billingAddress === null
+                  ? shippingAddress.countryArea
+                  : billingAddress.countryArea,
+              firstName:
+                billingAddress === null
+                  ? shippingAddress.firstName
+                  : billingAddress.firstName,
+              lastName:
+                billingAddress === null
+                  ? shippingAddress.lastName
+                  : billingAddress.lastName,
+              phone:
+                billingAddress === null
+                  ? shippingAddress.phone
+                  : billingAddress.phone,
+              // postalCode: billingAddress.postalCode,
+              streetAddress1:
+                billingAddress === null
+                  ? shippingAddress.streetAddress1
+                  : billingAddress.streetAddress1,
+              streetAddress2:
+                billingAddress === null
+                  ? shippingAddress.streetAddress2
+                  : billingAddress.streetAddress2,
             },
             gateway,
             token,
@@ -222,7 +245,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                 processPayment,
                 setLoadingState,
               };
-
+              // let statusReviewBtn = true;
               return (
                 <div className="checkout-payment__form">
                   {availablePaymentGateways.map(provider => {
@@ -231,6 +254,11 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                       ...providerProps,
                       paymentGatewayConfig: provider.config,
                     };
+                    // {
+                    //   optionProps(providerName).selected
+                    //     ? (statusReviewBtn = false)
+                    //     : (statusReviewBtn = true);
+                    // }
                     switch (providerName) {
                       case PROVIDERS.BRAINTREE.label:
                         return (
@@ -244,11 +272,22 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
 
                       case PROVIDERS.DUMMY.label:
                         return (
-                          <Option label="Dummy" {...optionProps(providerName)}>
+                          <Option
+                            label="Cash on Delivery"
+                            {...optionProps(providerName)}
+                          >
                             <Dummy {...paymentGatewayProps} />
                           </Option>
                         );
-
+                      case PROVIDERS.JAZZCASH.label:
+                        return (
+                          <Option
+                            label="Jazz Cash"
+                            {...optionProps(providerName)}
+                          >
+                            <JazzCash {...paymentGatewayProps} />
+                          </Option>
+                        );
                       case PROVIDERS.STRIPE.label:
                         return (
                           <Option label="Stripe" {...optionProps(providerName)}>
@@ -264,7 +303,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
                   <div>
                     <Button
                       type="submit"
-                      disabled={loading}
+                      disabled={loading || selectedGeteway === null}
                       onClick={() => {
                         formRef.current.dispatchEvent(
                           new Event("submit", { cancelable: true })

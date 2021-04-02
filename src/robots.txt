@@ -1,0 +1,24 @@
+User-Agent: *
+Disallow: /order-history/
+Disallow: /cart/
+Disallow: /shipping-address/
+Disallow: /shipping-options/
+Disallow: /payment/
+Disallow: /review/
+Disallow: /order-confirmation/
+Disallow: /product/ruffles-oven-baked-cheddar-and-sour-cream/19/
+Disallow: /product/terra-chips-blues/21/
+Disallow: /category/grocery/2/
+Disallow: /product/sunchips-multigrain-chips-sweet-and-spicy-bbq/22/
+Disallow: /product/popchips-potato-chips-sea-salt/17/
+Disallow: /category/households-needs/4/
+Disallow: /category/pharmacy/5/
+Disallow: /category/juices/3/
+Disallow: /product/popchips-potato-chips-cheddar-and-sour-cream/18/
+Disallow: /product/olpers-milk/15/
+Disallow: /product/tostitos-oven-baked-scoops/16/
+Disallow: /product/popchips-barbeque-potato/20/
+
+Allow: /
+# Sitemap files
+Sitemap:https://erocery.com/sitemap.xml

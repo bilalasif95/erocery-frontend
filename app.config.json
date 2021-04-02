@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "erocery-web",
+      "script": "npx",
+      "interpreter": "none",
+      "args": "serve -s dist -l 3050"
+    }
+  ]
+}

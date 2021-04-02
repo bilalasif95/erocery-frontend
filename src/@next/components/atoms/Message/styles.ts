@@ -15,10 +15,14 @@ export const Wrapper = styled.div<{ status: IProps["status"] }>`
   background-color: ${props => props.theme.message.backgroundColor};
   box-shadow: 0px 6px 15px 3px rgba(0, 0, 0, 0.25);
   position: fixed;
-  bottom: ${props => props.theme.spacing.spacer};
+  top: 4rem;
   right: ${props => props.theme.spacing.spacer};
   border-left: 0.4rem solid;
   border-color: ${props => borderColors(props.theme)[props.status!]};
+
+  @media(max-width: 424px){
+    width: 18rem;
+  }
 `;
 
 export const TopWrapper = styled.div`

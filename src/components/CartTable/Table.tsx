@@ -5,79 +5,110 @@ import * as React from "react";
 import Media from "react-media";
 
 import CostRow from "./CostRow";
-import ProductRow, { EditableProductRowProps, LineI } from "./ProductRow";
+import ProductRow, { EditableProductRowProps } from "./ProductRow";
 
 interface TableProps extends EditableProductRowProps {
-  lines: LineI[];
+  lines: any[];
   subtotal: React.ReactNode;
   deliveryCost?: React.ReactNode;
   totalCost?: React.ReactNode;
   discount?: React.ReactNode;
-  discountName?: string;
+  discountName?: any;
+  payCost?: React.ReactNode;
+  balanceCost?: React.ReactNode;
 }
 
 const Table: React.FC<TableProps> = ({
   subtotal,
   deliveryCost,
+  balanceCost,
   totalCost,
   discount,
   discountName,
   lines,
+  payCost,
   ...rowProps
-}) => (
-  <Media query={{ minWidth: smallScreen }}>
-    {mediumScreen => (
-      <table className="cart-table">
-        <thead>
-          <tr>
-            <th>Products</th>
-            {mediumScreen && <th>Price</th>}
-            <th>Size</th>
-            <th className="cart-table__quantity-header">Quantity</th>
-            <th colSpan={2}>{mediumScreen ? "Total Price" : "Price"}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lines.map(line => (
-            <ProductRow
-              key={line.id}
-              line={line}
-              mediumScreen={mediumScreen}
-              {...rowProps}
-            />
-          ))}
-        </tbody>
-        <tfoot>
-          <CostRow
-            mediumScreen={mediumScreen}
-            heading="Subtotal"
-            cost={subtotal}
-          />
-          {discount && (
+}) => {
+  const [VIPQurbaniCategory, setVIPQurbaniCategory] = React.useState(null);
+
+  return (
+    <Media query={{ minWidth: smallScreen }}>
+      {mediumScreen => (
+        <table className="cart-table">
+          <thead>
+            <tr>
+              <th>Products</th>
+              {mediumScreen && <th>Price</th>}
+              {VIPQurbaniCategory !== "Qurbani" ? (
+                <th>Size</th>
+              ) : (
+                <th>Delivery Date</th>
+              )}
+              <th className="cart-table__quantity-header">Quantity</th>
+              <th colSpan={2}>{mediumScreen ? "Total Price" : "Price"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lines.map(line => {
+              setVIPQurbaniCategory(line.product && line.product.category && line.product.category.name);
+              return (
+                <ProductRow
+                  key={line.id}
+                  line={line}
+                  mediumScreen={mediumScreen}
+                  deliveryDate={discountName && discountName.deliveryDate}
+                  {...rowProps}
+                />
+              );
+            })}
+          </tbody>
+          <tfoot>
             <CostRow
               mediumScreen={mediumScreen}
-              heading={`Discount: ${discountName}`}
-              cost={discount}
+              heading="Subtotal"
+              cost={subtotal}
             />
-          )}
-          {deliveryCost && (
-            <CostRow
-              mediumScreen={mediumScreen}
-              heading="Delivery Cost"
-              cost={deliveryCost}
-            />
-          )}
-          {totalCost && (
-            <CostRow
-              mediumScreen={mediumScreen}
-              heading="Total Cost"
-              cost={totalCost}
-            />
-          )}
-        </tfoot>
-      </table>
-    )}
-  </Media>
-);
+            {discount && (
+              <CostRow
+                mediumScreen={mediumScreen}
+                // heading={`Discount: ${discountName}`}
+                heading="Discount"
+                cost={discount}
+              />
+            )}
+            {VIPQurbaniCategory === "Qurbani" && (
+              <CostRow
+                mediumScreen={mediumScreen}
+                heading="Pay"
+                cost={payCost}
+              />
+            )}
+            {deliveryCost && (
+              <CostRow
+                mediumScreen={mediumScreen}
+                heading="Delivery Cost"
+                cost={deliveryCost}
+              />
+            )}
+            {VIPQurbaniCategory === "Qurbani" && (
+              <CostRow
+                mediumScreen={mediumScreen}
+                heading="Balance"
+                cost={balanceCost}
+              />
+            )}
+            {totalCost && (
+              <CostRow
+                mediumScreen={mediumScreen}
+                heading="Total Cost"
+                cost={totalCost}
+              />
+            )}
+          </tfoot>
+        </table>
+      )}
+    </Media>
+  );
+};
 
 export default Table;

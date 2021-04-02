@@ -9,7 +9,6 @@ import { Checkout } from "../../types/Checkout";
 
 import copyImg from "../../../images/copy.svg";
 import {
-  billingUrl,
   paymentUrl,
   shippingAddressUrl,
   shippingOptionsUrl,
@@ -18,7 +17,7 @@ import {
 class Summary extends React.PureComponent<{
   checkout: Checkout;
   cardData: CardData;
-  dummyStatus: string;
+  dummyStatus: any;
   history: History;
   token: string;
 }> {
@@ -36,20 +35,20 @@ class Summary extends React.PureComponent<{
     return (
       <div className="checkout-review__content__summary">
         <div>
-          <h4>
-            Shipping address
-            <ReactSVG
+        <h4>
+        Shipping address
+        <ReactSVG
               className="checkout-review__summary-copy"
               path={copyImg}
               onClick={() => handleEdit(shippingAddressUrl)}
             />
-          </h4>
+            </h4>
           <AddressSummary
             address={checkout.isShippingRequired && checkout.shippingAddress}
             email={checkout.email}
           />
         </div>
-        <div>
+        {/* <div>
           <h4>
             Billing address
             <ReactSVG
@@ -59,7 +58,7 @@ class Summary extends React.PureComponent<{
             />
           </h4>
           <AddressSummary address={checkout.billingAddress} />
-        </div>
+        </div> */}
         {checkout.isShippingRequired && (
           <div>
             <h4>
@@ -83,9 +82,21 @@ class Summary extends React.PureComponent<{
             />
           </h4>
           <p>
-            {!!cardData
-              ? `Ending in ${cardData.lastDigits}`
-              : `Dummy: ${dummyStatus}`}
+            {!!cardData ? (
+              `Ending in ${cardData.lastDigits}`
+            ) : (
+              <div>
+                {dummyStatus.type === "JazzCash" ? (
+                  <div>
+                    <h2 style={{ fontWeight: 900 }}>Jazz Cash</h2>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 style={{ fontWeight: 900 }}>Cash on Delivery</h2>
+                  </div>
+                )}
+              </div>
+            )}
           </p>
         </div>
       </div>

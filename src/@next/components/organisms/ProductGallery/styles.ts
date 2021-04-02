@@ -43,7 +43,6 @@ export const Button = styled.div`
 
 export const TopButton = styled(Button)`
   top: 0%;
-
   transform: rotate(180deg);
 `;
 
@@ -73,13 +72,36 @@ export const ThumbnailList = styled.div`
   }
 `;
 
+export const BakraPreview = styled.div`
+  grid-area: preview;
+  width: auto;
+  // height:300px;
+  // max-height: 300px;
+  overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  img {
+    width: 100%;
+    // max-width:185px;
+    object-fit: contain;
+    height: 100%;
+  }
+`;
+
 export const Preview = styled.div`
   grid-area: preview;
   width: auto;
-  max-height: 560px;
+  height:300px;
+  max-height: 300px;
   overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
   img {
     width: 100%;
+    max-width:185px;
     object-fit: contain;
+    height: 100%;
   }
 `;

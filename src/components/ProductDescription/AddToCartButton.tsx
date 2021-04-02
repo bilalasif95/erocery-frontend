@@ -15,23 +15,43 @@ class AddToCartButton extends React.PureComponent<
   AddToCartButtonState
 > {
   state = { animate: false, disabled: false };
-  animationTimeout = 800;
+  animationTimeout = 2000;
   timeout;
 
   handleAnimation = (evt: React.MouseEvent<HTMLButtonElement>) => {
     if (!this.state.disabled) {
       this.props.onClick(evt);
+      if(this.props.typeCart){
+        setTimeout(()=>{
+     if(!this.props.error){
+    this.setState({ animate: true, disabled: true }, () => {
+      this.timeout = setTimeout(() => {
+        this.setState({ animate: false }, () => {
+          this.timeout = setTimeout(
+            () => this.setState({ disabled: false }),
+            this.animationTimeout
+          );
+        });
+      }, this.animationTimeout);
+    });
+  }
+  
+},1500)}
+      else{
 
-      this.setState({ animate: true, disabled: true }, () => {
-        this.timeout = setTimeout(() => {
-          this.setState({ animate: false }, () => {
-            this.timeout = setTimeout(
-              () => this.setState({ disabled: false }),
-              this.animationTimeout
-            );
-          });
-        }, this.animationTimeout);
-      });
+    this.setState({ animate: true, disabled: true }, () => {
+      this.timeout = setTimeout(() => {
+        this.setState({ animate: false }, () => {
+          this.timeout = setTimeout(
+            () => this.setState({ disabled: false }),
+            this.animationTimeout
+          );
+        });
+      }, this.animationTimeout);
+    });
+ 
+      }
+      
     }
   };
 

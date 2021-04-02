@@ -9,11 +9,16 @@ import {
   ProductsFeatured,
 } from "../../components";
 
+import { useUserDetails } from "@sdk/react";
+
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
+
 import { maybe } from "../../core/utils";
+
+import { CartContext } from "../../components/CartProvider/context";
 
 import { Category_category, Category_products } from "./types/Category";
 
@@ -60,7 +65,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-
+  const { data: user } = useUserDetails();
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
       attributeSlug,
@@ -105,16 +110,26 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-          />
+          <CartContext.Consumer>
+            {cart => (
+              <ProductList
+                products={products.edges.map(edge => edge.node)}
+                canLoadMore={hasNextPage}
+                loading={displayLoader}
+                onLoadMore={onLoadMore}
+                addToCart={cart.add}
+                user={user}
+              />
+            )}
+          </CartContext.Consumer>
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured title="You might like" />}
+      {!hasProducts && (
+        <CartContext.Consumer>
+          {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
+        </CartContext.Consumer>
+      )}
     </div>
   );
 };

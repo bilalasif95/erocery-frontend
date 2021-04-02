@@ -1,5 +1,5 @@
 import fs from "fs";
-import { chunk } from "lodash";
+import chunk from "lodash/chunk";
 import path from "path";
 import { buildSitemapIndex, createSitemap } from "sitemap";
 

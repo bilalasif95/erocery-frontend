@@ -2,6 +2,13 @@ import gql from "graphql-tag";
 
 import { wishlistItemFragment } from "../fragments/wishlist";
 
+import { TypedMutation } from "../../core/mutations";
+
+import {
+  AddRemoveBlogLike,
+  AddRemoveBlogLikeVariables,
+} from "./types/AddRemoveBlogLike";
+
 export const addWhishlistProduct = gql`
   ${wishlistItemFragment}
   mutation AddWishlistProduct($productId: ID!) {
@@ -81,3 +88,26 @@ export const removeWhishlistProductVariant = gql`
     }
   }
 `;
+
+const addRemoveBlogLike = gql`
+  mutation AddRemoveBlogLike($id: ID!) {
+    blogLikeDislike(id: $id) {
+      blog{
+        likes(first: 1) {
+          totalCount
+        }
+        userLiked
+      }
+      blogErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+`;
+
+export const TypedBlogLikeUnlikeMutation = TypedMutation<
+  AddRemoveBlogLike,
+  AddRemoveBlogLikeVariables
+>(addRemoveBlogLike);

@@ -47,7 +47,7 @@ export const AddressFormModal: React.FC<IProps> = ({
       hideModal();
     }
   }, [createData, updateData, addressCreateErrors, addressUpdateErrors]);
-
+  
   return (
     <Modal
       title={title}
@@ -71,7 +71,8 @@ export const AddressFormModal: React.FC<IProps> = ({
             setCreatUserAddress({
               input: {
                 ...data,
-                country: data!.country!.code as CountryCode,
+                city: data!.city!.city!,
+                country: "PK" as CountryCode,
               },
             });
           } else {
@@ -79,7 +80,8 @@ export const AddressFormModal: React.FC<IProps> = ({
               id: address!.id,
               input: {
                 ...data,
-                country: data!.country!.code as CountryCode,
+                city: data!.city!.city!,
+                country: "PK" as CountryCode,
               },
             });
           }

@@ -17,4 +17,6 @@ export const Label = styled.label<{
   transform: translateY(-50%);
   transition: all 0.3s ease, color 0s;
   pointer-events: none;
+  z-index: ${props => (props.active ? 1 : 0)};
 `;
+

@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media,styled } from "@styles";
 
 export const Modal = styled.div`
   display: flex;
@@ -10,4 +10,7 @@ export const Modal = styled.div`
 export const Content = styled.div`
   padding: ${({ theme: { spacing } }) =>
     `4rem ${spacing.gutter} 1.8rem ${spacing.gutter}`};
+  ${media.smallScreen`
+    padding: 0 1.5rem;
+  `}
 `;

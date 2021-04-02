@@ -1,6 +1,6 @@
 import { History, LocationState } from "history";
 import { Base64 } from "js-base64";
-import { each } from "lodash";
+import each from "lodash/each";
 import { parse as parseQs, stringify as stringifyQs } from "query-string";
 import { FetchResult } from "react-apollo";
 import { generatePath } from "react-router";
@@ -62,6 +62,8 @@ export const generateCollectionUrl = (id: string, name: string) =>
   `/collection/${slugify(name)}/${getDBIdFromGraphqlId(id, "Collection")}/`;
 
 export const generatePageUrl = (slug: string) => `/page/${slug}/`;
+
+export const generateBlogUrl = (slug: string) => `/blog/${slug}/`;
 
 interface AttributeDict {
   [attributeSlug: string]: string[];

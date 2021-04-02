@@ -72,8 +72,8 @@ class Page extends React.PureComponent<
     const images = this.getImages();
     if (images && images.length) {
       return images.map(image => (
-        <a href={image.url} target="_blank">
-          <CachedImage url={image.url} key={image.id}>
+        <a href={image.url} target="_blank" rel="noopener noreferrer">
+          <CachedImage alt={image.alt} url={image.url} key={image.id}>
             <Thumbnail source={product} />
           </CachedImage>
         </a>
@@ -95,6 +95,7 @@ class Page extends React.PureComponent<
             pricing={product.pricing}
             addToCart={cart.add}
             setVariantId={this.setVariantId}
+            category={product.category.name}
           />
         )}
       </CartContext.Consumer>
@@ -127,7 +128,7 @@ class Page extends React.PureComponent<
                       className="product-page__product__gallery"
                       ref={this.productGallery}
                     >
-                      <ProductGallery images={this.getImages()} />
+                      <ProductGallery category={product.category.name} images={this.getImages()} />
                     </div>
                     <div className="product-page__product__info">
                       <div

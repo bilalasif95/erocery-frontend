@@ -14,9 +14,12 @@ $drawer-width: 25rem;
   }
 
   &__input {
+    .input {
+      margin-bottom: 0;
+    }
     .input__icon-right {
       svg * {
-        fill: $turquoise;
+        fill: #5fbe43;
       }
     }
 

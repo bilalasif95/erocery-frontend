@@ -1,12 +1,22 @@
 import "./scss/index.scss";
 
-import classNames from "classnames";
+// import classNames from "classnames";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+// import { CachedImage } from "@components/molecules";
+
+import { useUserDetails } from "@sdk/react";
+// import ReactSVG from "react-svg";
 // import { Button, Loader, ProductsFeatured } from "../../components";
-import { ProductsFeatured } from "../../components";
+import { Carousel, ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
+
+import { TypedBannerImagesQuery } from "./queries";
+
+import { CartContext } from "../../components/CartProvider/context";
+
+// import { history } from "../../history";
 
 import {
   ProductsList_categories,
@@ -16,7 +26,21 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-import noPhotoImg from "../../images/no-photo.svg";
+// import catNoImg from "../../images/catNoImg.jpg";
+// import bannerimg from "../../images/homeBanner.jpg";
+// import androidStoreImage from "../../images/playstore.png";
+
+// import appleStoreImage from "../../images/applestore.png";
+
+// import banner1 from "../../images/banner1.jpg";
+// import banner2 from "../../images/banner2.jpg";
+// import banner3 from "../../images/banner3.jpg";
+// import banner4 from "../../images/banner4.jpg";
+// import desktopvipoffer from "../../images/desktopoffer.png";
+import offerImg from "../../images/offerBanner.jpg";
+// import vipoffermob from "../../images/vipoffermob.png";
+
+// import noPhotoImg from "../../images/no-photo.svg";
 
 const Page: React.FC<{
   loading: boolean;
@@ -24,24 +48,148 @@ const Page: React.FC<{
   backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
   shop: ProductsList_shop;
 }> = ({ loading, categories, backgroundImage, shop }) => {
+  const { data: user } = useUserDetails();
+  const allcategoriesWithoutQurbani = categories && categories.edges && categories.edges.filter(({node:category}) => {
+    return category.name !== "Qurbani"
+  });
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
+  // const imagesArray = [
+  //   {
+  //     name: "banner1",
+  //     url: banner1,
+  //   },
+  //   {
+  //     name: "banner2",
+  //     url: banner2,
+  //   },
+  //   {
+  //     name: "banner3",
+  //     url: banner3,
+  //   },
+  //   {
+  //     name: "banner4",
+  //     url: banner4,
+  //   },
+  // ];
 
+  const qurbaniPath = { id: "", name: "" };
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>
-      <div
+      <div className="product-page__product__mainSlider">
+        <TypedBannerImagesQuery>
+          {({ data }) => (
+            <Carousel
+              autoplay={true}
+              wrapAround={true}
+              autoplayInterval={3000}
+              renderCenterLeftControls={() => null}
+              renderCenterRightControls={() => null}
+              renderBottomCenterControls={props => {
+                const indexes = [];
+
+                for (let i = 0; i < props.slideCount; i++) {
+                  indexes.push(i);
+                }
+
+                return (
+                  <ul className="product-page__product__gallery__nav">
+                    {indexes.map(index => (
+                      <li
+                        key={index}
+                        onClick={props.goToSlide.bind(null, index)}
+                        className={props.currentSlide === index ? "active" : ""}
+                      >
+                        <span />
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }}
+            >
+              {/* {imagesArray.map(image => (
+            <> */}
+              {data.shop.banners &&
+                data.shop.banners.map(url => <img src={url.image} alt={url.alt} />)}
+              {/* <div
+            className="home-page__hero"
+            style={{ backgroundImage: `url(${image.url})` }}
+          >
+          </div>
+          <CachedImage url={image.url || noPhotoImg}> */}
+              {/* <img src={image.url} />
+              {image.name === "banner2" ? (
+                <div className="banner2-links">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.rns.erocery"
+                    target="_blank"categories
+                    <img src={androidStoreImage}></img>
+                  </a>
+                  <a
+                    href="https://apps.apple.com/us/app/id1524601380"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={appleStoreImage} />
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
+              {image.name === "banner4" ? (
+                <div className="appLinks">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.rns.erocery"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={androidStoreImage}></img>
+                  </a>
+                  <a
+                    href="https://apps.apple.com/us/app/id1524601380"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={appleStoreImage} />
+                  </a>
+                </div>
+              ) : (
+                ""
+              )} */}
+              {/* </CachedImage> */}
+              {/* </>
+          ))} */}
+            </Carousel>
+          )}
+        </TypedBannerImagesQuery>
+      </div>
+      {/* <div className="home-page__vipImage">
+        <div className="container">
+          <img src={desktopvipoffer} alt="Online Qurbani Service" className="deskoffer" />
+          <img src={vipoffermob} alt="Online Qurbani Service" className="moboffer" />
+
+          <button
+            className="bookbtn"
+            onClick={() =>
+              history.push(
+                generateCategoryUrl(qurbaniPath.id, qurbaniPath.name)
+              )
+            }
+          >
+            Book Now
+          </button>
+        </div>
+      </div> */}
+      {/* <div
         className="home-page__hero"
-        style={
-          backgroundImage
-            ? { backgroundImage: `url(${backgroundImage.url})` }
-            : null
-        }
+        style={{ backgroundImage: `url(${bannerimg})` }}
       >
-        {/* <div className="home-page__hero-text">
+      </div> */}
+      {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
               <h1>Final reduction</h1>
@@ -53,7 +201,7 @@ const Page: React.FC<{
             </span>
           </div>
         </div> */}
-        {/* <div className="home-page__hero-action">
+      {/* <div className="home-page__hero-action">
           {loading && !categories ? (
             <Loader />
           ) : (
@@ -69,17 +217,17 @@ const Page: React.FC<{
             )
           )}
         </div> */}
-      </div>
-      <ProductsFeatured />
-      <div
-        className="home-page__heroImage"
-      >
+      <CartContext.Consumer>
+        {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
+      </CartContext.Consumer>
+      <div className="home-page__heroImage">
+        <img src={offerImg} alt="buy grocery online" />
       </div>
       {categoriesExist() && (
-        <div className="home-page__categories">
+        <div className="home-page__categories" id={"categorysection"}>
           <div className="container categoriesContainer">
-            <h3>Shop by category</h3>
-            <div className="home-page__categories__list">
+            <h3>Categories</h3>
+            {/* <div className="home-page__categories__list">
               {categories.edges.map(({ node: category }) => (
                 <div key={category.id} className="categoryBoxes">
                   <Link
@@ -98,14 +246,61 @@ const Page: React.FC<{
                           category.backgroundImage
                             ? category.backgroundImage.url
                             : noPhotoImg
-                        })`,
+                          })`,
                       }}
                     >
-                      <h4>{category.name}</h4>
+                      <div className="catBg">
+                        <h4>{category.name}</h4>
+                      </div>
                     </div>
                   </Link>
                 </div>
               ))}
+            </div> */}
+            <div className="home-page__categories__list">
+              {allcategoriesWithoutQurbani.map(({ node: category }) => {
+                if (category.name === "Qurbani") {
+                  qurbaniPath.id = category.id;
+                  qurbaniPath.name = category.name;
+                }
+                return (
+                  <div key={category.id} className="categoryBoxes">
+                    <Link
+                      to={generateCategoryUrl(category.id, category.name)}
+                      key={category.id}
+                    >
+                      <div className="cat-item">
+                        <div className="cat-img">
+                          {/* <img src={category.backgroundImage
+                            ? category.backgroundImage.url
+                            : catNoImg}/> */}
+                        {/* <ReactSVG path={catImg} /> */}
+                        {category.backgroundImage ? (
+                          <img alt={category.backgroundImage.alt} src={category.backgroundImage.url} />
+                        ) : (
+                            <div className="noCatImg">
+                              <p>Photo Unavailable</p>
+                            </div>
+                          )}
+                        </div>
+                        <div className="cat-detail">
+                          <h4>{category.name}</h4>
+                          <p>
+                            {
+                              JSON.parse(category.descriptionJson).blocks[0]
+                                .text
+                            }
+                          </p>
+                        </div>
+                        <div className="cat-detail-link">
+                          <span className="colored" />
+                          <span className="trans" />
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

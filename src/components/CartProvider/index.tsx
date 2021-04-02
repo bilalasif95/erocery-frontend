@@ -1,4 +1,5 @@
-import { isEqual, pullAllBy } from "lodash";
+import isEqual from "lodash/isEqual";
+import pullAllBy from "lodash/pullAllBy";
 import * as React from "react";
 
 import { ApolloClient } from "apollo-client";
@@ -119,6 +120,7 @@ export default class CartProvider extends React.Component<
           errors: [...errors],
           loading: false,
         });
+        return errors
       } else {
         checkout.update({
           checkout: {
@@ -145,9 +147,21 @@ export default class CartProvider extends React.Component<
   };
 
   add = (variantId, quantity = 1) => {
-    const line = this.getLine(variantId);
-    const newQuantity = line ? line.quantity + quantity : quantity;
-    this.changeQuantity([{ variantId, quantity: newQuantity }]);
+    return new Promise((resolve,reject)=>{
+      const line = this.getLine(variantId);
+      const newQuantity = line ? line.quantity + quantity : quantity;
+    this.changeQuantity([{ variantId, quantity: newQuantity }]).then((data)=>{
+      if(data){
+        reject(data)
+      }
+      resolve()
+      
+    })
+
+    })
+    
+ 
+
   };
 
   subtract = (variantId, quantity = 1) => {

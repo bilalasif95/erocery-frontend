@@ -2,14 +2,22 @@ import "./scss/index.scss";
 
 import * as React from "react";
 
+import {
+  useUserDetails
+} from "@sdk/react";
+
 import { IFilterAttributes, IFilters } from "@types";
-import { DebounceChange, ProductsFeatured, TextField } from "../../components";
+// ProductsFeatured
+import { DebounceChange,  TextField } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
+
 import { maybe } from "../../core/utils";
+
+import { CartContext } from "../../components/CartProvider/context";
 
 import { SearchProducts_products } from "./types/SearchProducts";
 
@@ -59,9 +67,9 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  const hasProducts = canDisplayProducts && !!products.totalCount;
+  // const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-
+  const {data: user} = useUserDetails();
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
       attributeSlug,
@@ -129,16 +137,28 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-          />
+          <CartContext.Consumer>
+            {cart => (
+              <ProductList
+                products={products.edges.map(edge => edge.node)}
+                canLoadMore={hasNextPage}
+                loading={displayLoader}
+                onLoadMore={onLoadMore}
+                addToCart={cart.add}
+                user={user}
+              />
+            )}
+          </CartContext.Consumer>
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured title="You might like" />}
+      {/* {!hasProducts && 
+      <CartContext.Consumer>
+      {cart => (
+        <ProductsFeatured addToCart={cart.add} user={user} />
+        )}
+      </CartContext.Consumer> */}
+      
     </div>
   );
 };

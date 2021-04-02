@@ -177,7 +177,15 @@ class Form<Values> extends React.Component<
             label: this.state.data[child.props.name].country,
             value: this.state.data[child.props.name].code,
           };
-        } else {
+        } else if (
+          child.props.name === "city" &&
+          this.state.data[child.props.name]
+        ) {
+          defaultValue = {
+            label: this.state.data[child.props.name],
+            value: this.state.data[child.props.name],
+          };
+        }else {
           defaultValue = this.state.data[child.props.name];
         }
 

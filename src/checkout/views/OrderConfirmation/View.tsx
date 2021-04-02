@@ -8,7 +8,7 @@ import { Button, NotFound } from "../../../components";
 import { BASE_URL } from "../../../core/config";
 import { userOrderDetailsUrl } from "../../../userAccount/routes";
 
-type TState = {token: any, id: number};
+type TState = { token: any; id: number };
 
 const View: React.FC<RouteComponentProps> = ({
   history: {
@@ -31,18 +31,18 @@ const View: React.FC<RouteComponentProps> = ({
         Thank you for <br /> your order
       </h3>
       <p className="order-confirmation__info">
-        We’ve emailed you a order confirmation
+        We’ll call you on provided phone number for order confirmation
         <br />
-        and we’ll notify you when order has
+        and we’ll notify you when order has been
         <br />
         shipped.
       </p>
       <div className="order-confirmation__actions">
         <Link to={BASE_URL}>
-          <Button secondary>Continue Shopping</Button>
+          <Button onClick={e => e.preventDefault()}>Continue Shopping</Button>
         </Link>
         <Link to={orderDetailsRef}>
-          <Button>Order Details</Button>
+          <Button onClick={e => e.preventDefault()}>Order Details</Button>
         </Link>
       </div>
     </div>

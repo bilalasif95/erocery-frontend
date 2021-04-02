@@ -33,6 +33,9 @@ export const Tabs = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.tabsBorder};
   margin-bottom: 70px;
   overflow: hidden;
+  ${media.mediumScreen`
+  margin-bottom: 20px;
+`};
 `;
 
 export const TabTitle = styled.div<{ active?: boolean }>`

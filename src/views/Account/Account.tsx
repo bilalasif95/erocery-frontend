@@ -5,20 +5,25 @@ import { RouteComponentProps, withRouter } from "react-router";
 import { useUserDetails } from "@sdk/react";
 import { smallScreen } from "@styles/constants";
 import AddressBook from "../../account/AddressBook/AddressBook";
+import WishList from "../../wishlist/WishList/WishList";
 
 import "./scss/index.scss";
 
 import {
   accountUrl,
   addressBookUrl,
-  baseUrl,
+  homeUrl,
   orderHistoryUrl,
   paymentOptionsUrl,
+  wishlistUrl,
 } from "../../app/routes";
 
-import { AccountMenu, AccountMenuMobile } from "@components/molecules";
+// import { AccountMenu, AccountMenuMobile } from "@components/molecules";
+import { AccountMenu } from "@components/molecules";
 import { AccountTab, OrdersHistory } from "@pages";
 import { Breadcrumbs, Loader } from "../../components";
+
+import { UserAllAddressesQuery } from "./queries";
 
 const returnTab: any = (path: string, userDetails, history) => {
   let tabContent = <></>;
@@ -28,11 +33,20 @@ const returnTab: any = (path: string, userDetails, history) => {
       break;
     }
     case addressBookUrl: {
-      tabContent = <AddressBook user={userDetails} />;
+      tabContent = 
+      <UserAllAddressesQuery>
+        {({ data }) => (
+        <AddressBook user={userDetails} />
+        )}
+      </UserAllAddressesQuery>;
       break;
     }
     case orderHistoryUrl: {
       tabContent = <OrdersHistory {...{ history }} />;
+      break;
+    }
+    case wishlistUrl: {
+      tabContent = <WishList />;
       break;
     }
   }
@@ -47,6 +61,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
     orderHistoryUrl,
     addressBookUrl,
     paymentOptionsUrl,
+    wishlistUrl,
   ];
 
   if (loading) {
@@ -54,10 +69,11 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   }
 
   if (!user) {
-    history.push(baseUrl);
+    history.push(homeUrl);
   }
 
   return (
+    <div>
     <div className="container">
       <Breadcrumbs breadcrumbs={[{ link: match.path, value: "My Account" }]} />
       <div className="account">
@@ -66,15 +82,16 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
             <AccountMenu links={links} active={match.path} />
           </div>
         </Media>
-        <Media maxWidth={smallScreen - 1}>
+        {/* <Media maxWidth={smallScreen - 1}>
           <div className="account__menu_mobile">
             <AccountMenuMobile links={links} active={match.path} />
           </div>
-        </Media>
+        </Media> */}
         <div className="account__content">
           {user && returnTab(match.path, user, history)}
         </div>
       </div>
+    </div>
     </div>
   );
 };

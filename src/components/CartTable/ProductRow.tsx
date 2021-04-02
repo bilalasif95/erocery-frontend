@@ -24,7 +24,8 @@ export type LineI = ProductVariant & {
 
 interface ReadProductRowProps {
   mediumScreen: boolean;
-  line: LineI;
+  line: any;
+  deliveryDate: string;
 }
 
 export interface EditableProductRowProps {
@@ -40,6 +41,7 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
   invalid,
   add,
   changeQuantity,
+  deliveryDate,
   mediumScreen,
   processing,
   remove,
@@ -63,7 +65,6 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
       />
     </div>
   );
-
   return (
     <tr
       className={classNames({
@@ -73,11 +74,16 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
       <td className="cart-table__thumbnail">
         <div>
           {mediumScreen && (
+            <>
+            {line.product.isPublished ?
             <Link to={productUrl}>
               <Thumbnail source={line.product} />
             </Link>
+            : <Thumbnail source={line.product} />}
+            </>
           )}
-          <Link to={productUrl}>{line.product.name}</Link>
+          {line.product.isPublished ? <Link to={productUrl}>{line.product.name}</Link>
+          : <p>{line.product.name}</p>}
         </div>
       </td>
 
@@ -87,14 +93,30 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
         </td>
       )}
 
-      <td>{line.name}</td>
+      {line.product.category && line.product.category.name === "Qurbani" ? (
+        <td>{deliveryDate && deliveryDate.slice(0, 10)}</td>
+      ) : (
+        <td>{line.name}</td>
+      )}
 
       <td className="cart-table__quantity-cell">
         {editable ? quantityChangeControls : <p>{line.quantity}</p>}
       </td>
 
       <td colSpan={editable ? 1 : 2}>
-        <TaxedMoney taxedMoney={line.totalPrice} />
+        {/* {line.pricing.price.gross.currency} {line.pricing.price.gross.amount * line.quantity} */}
+        <TaxedMoney
+          taxedMoney={{
+            gross: {
+              amount: line.pricing.price.gross.amount * line.quantity,
+              currency: line.pricing.price.gross.currency,
+            },
+            net: {
+              amount: line.pricing.price.net.amount,
+              currency: line.pricing.price.net.currency,
+            },
+          }}
+        />
       </td>
 
       {editable && (

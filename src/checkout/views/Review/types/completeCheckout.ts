@@ -26,6 +26,8 @@ export interface completeCheckout_checkoutComplete_order {
    */
   id: string;
   token: string;
+  lines: any;
+  total:any;
 }
 
 export interface completeCheckout_checkoutComplete {

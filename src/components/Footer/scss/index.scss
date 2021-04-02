@@ -1,12 +1,199 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .footer {
-  &__favicons {
-    border-top: 1px solid $gray-light;
+  background: #54be42;
+  padding: 4rem 0;
+  margin: 2rem 0 0;
+
+  .showButton {
+    margin-bottom: 3rem;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+
+  .seoTagLine {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .footer-list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+  }
+  .footer-item {
+    width: 25%;
+    .playstoreIcons{
+      display: grid;
+      .googlePlayStoreIcon{
+        margin-bottom: 1rem;
+        @media(max-width:520px){
+          margin-right: 1rem;
+        }
+      }
+      @media(max-width:520px){
+        display: flex;
+      }
+    }
+    .whatsAppNumber{
+      margin-left: 7.5rem;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+  .socialMediaHeading {
+    margin: 0 0 1rem;
+  }
+  h4 {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+.quick-links{
+  ul{
+    padding: 0;
+  }
+  svg{
+    margin: 0 0.5rem 0 0;
+  }
+  path {
+    fill: #fff !important;
+  }
+  .contactUsLinks {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    display: grid;
+    align-items: center;
+    justify-content: flex-start;
+    .contactUsLinksSpanOne {
+      font-weight: 600;
+    }
+    .contactUsLinksSpanTwo {
+      margin-bottom: 0.5rem;
+    }
+  }
+  li{
+    margin: 0 0 0.5rem;
+    display: flex;
+    a{
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+}
+.pay-method {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  li{
+    // margin: 0 1rem 1rem 0;
+    border-radius: 3px;
+    overflow: hidden;
+    // background: #fff;
+    // width: 115px;
+    // height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // padding: 0.5rem;
+  }
+  .cash-delivery {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  img{
+    width: 70%;
+  }
+  .appsIcons{
+    width: 85%;
+  }
+}
+.social-media{
+  display: flex;
+  flex-wrap: wrap;
+  width: 55%;
+  margin-bottom: 1rem;
+  @media(max-width:1110px){
+    width: 75%;
+  }
+  @media(max-width:823px){
+    width: 100%;
+  }
+  .androidAppStore{
+    margin-right: 0.5rem;
+  }
+  li{
+    background: #60d852;
+    margin: 0 1rem 1rem 0;
+    width: 40px;
+    height: 40px;
+    a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    img{
+      width: 20px;
+    }
+  }
+}
+.social-icon svg *{
+  fill: #fff;
+}
+
+@media(max-width:800px){
+  .footer-list {
+    flex-wrap: wrap;
+  }
+  .footer-item {
+    width: 50%;
+  }
+}
+@media(max-width:536px){
+  .footer-item {
+    width: 100%;
+    margin: 0 0 2rem;
+  }
+  .footer-item:last-child {
+    margin: 0;
+  }
+}
+  &__favicons {
+    // border-top: 1px solid $gray-light;
+    border-top: 1px solid #60d852;
+    // display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    text-align: center;
+    margin: 2rem 0 0;
+    .poweredBy {
+      padding: 0;
+    }
     p {
-      padding: 1.5rem 0.5rem;
+      padding: 1.5rem 0 0;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      a {
+        font-weight: 600;
+      }
+    }
+    @media(max-width:480px){
+      p{
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 

@@ -111,7 +111,7 @@ export interface VerifyToken_tokenVerify_user {
    * The ID of the object.
    */
   id: string;
-  email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;

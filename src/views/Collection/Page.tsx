@@ -2,11 +2,17 @@ import "../Category/scss/index.scss";
 
 import * as React from "react";
 
+import {
+  useUserDetails
+} from "@sdk/react";
+
 import { IFilterAttributes, IFilters } from "@types";
 import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
+import ProductList from "../../@next/components/organisms/ProductList/ProductList";
 import { Breadcrumbs, ProductsFeatured } from "../../components";
 import { getDBIdFromGraphqlId, maybe } from "../../core/utils";
+
+import { CartContext } from "../../components/CartProvider/context";
 
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { Collection_collection, Collection_products } from "./types/Collection";
@@ -54,7 +60,7 @@ const Page: React.FC<PageProps> = ({
   );
   const hasProducts = canDisplayProducts && !!products.totalCount;
   const [showFilters, setShowFilters] = React.useState(false);
-
+  const {data: user} = useUserDetails();
   const breadcrumbs = [
     {
       link: [
@@ -110,16 +116,28 @@ const Page: React.FC<PageProps> = ({
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
         {canDisplayProducts && (
-          <ProductList
-            products={products.edges.map(edge => edge.node)}
-            canLoadMore={hasNextPage}
-            loading={displayLoader}
-            onLoadMore={onLoadMore}
-          />
+           <CartContext.Consumer>
+            {cart => (
+              <ProductList
+                products={products.edges.map(edge => edge.node)}
+                canLoadMore={hasNextPage}
+                loading={displayLoader}
+                onLoadMore={onLoadMore}
+                addToCart={cart.add}
+                user={user}
+              />
+            )}
+          </CartContext.Consumer>
         )}
       </div>
 
-      {!hasProducts && <ProductsFeatured title="You might like" />}
+      {!hasProducts && 
+      <CartContext.Consumer>
+      {cart => (
+        <ProductsFeatured addToCart={cart.add} user={user} />
+        )}
+      </CartContext.Consumer>
+      }
     </div>
   );
 };

@@ -3,8 +3,13 @@ import "jest-styled-components";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { ProductList } from ".";
+import { useUserDetails } from "@sdk/react";
+
+import ProductList from "./ProductList";
+
 import { PRODUCTS } from "./fixtures";
+
+const { data: user } = useUserDetails();
 
 describe("<ProductList />", () => {
   it("exists", () => {
@@ -15,6 +20,8 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={false}
           onLoadMore={jest.fn()}
+          addToCart={jest.fn()}
+          user={user}
         />
       </BrowserRouter>
     );
@@ -29,6 +36,8 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={true}
           onLoadMore={jest.fn()}
+          addToCart={jest.fn()}
+          user={user}
         />
       </BrowserRouter>
     );
@@ -45,6 +54,8 @@ describe("<ProductList />", () => {
           canLoadMore={true}
           loading={false}
           onLoadMore={handleLoadMore}
+          addToCart={jest.fn()}
+          user={user}
         />
       </BrowserRouter>
     );

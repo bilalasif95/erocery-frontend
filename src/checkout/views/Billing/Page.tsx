@@ -17,7 +17,7 @@ import { CheckoutFormType } from "../../types";
 import { Checkout } from "../../types/Checkout";
 import { IBillingPageProps } from "./types";
 
-import { CountryCode } from "types/globalTypes";
+// import { CountryCode } from "types/globalTypes";
 import { CartLineInterface } from "../../../components/CartProvider/context";
 
 const computeMutationVariables = (
@@ -33,40 +33,40 @@ const computeMutationVariables = (
   return {
     billingAddress: {
       city: data.city,
-      country: maybe(
-        () => data.country.value,
-        data.country.code
-      ) as CountryCode,
+      // country: maybe(
+      //   () => data.country.value,
+      //   data.country.code
+      // ) as CountryCode,
       countryArea: data.countryArea,
       firstName: data.firstName,
       lastName: data.lastName,
       phone: data.phone,
-      postalCode: data.postalCode,
+      // postalCode: data.postalCode,
       streetAddress1: data.streetAddress1,
       streetAddress2: data.streetAddress2,
     },
     checkoutId: checkout ? checkout.id : null,
-    email: data.email,
+    phone: data.phone,
   };
 };
 
 const computeCheckoutData = (
   data: FormAddressType,
   lines: CartLineInterface[],
-  email?: string
+  phone?: string
 ) => ({
   billingAddress: {
     city: data.city,
-    country: maybe(() => data.country.value, data.country.code) as CountryCode,
+    // country: maybe(() => data.country.value, data.country.code) as CountryCode,
     countryArea: data.countryArea,
     firstName: data.firstName,
     lastName: data.lastName,
     phone: data.phone,
-    postalCode: data.postalCode,
+    // postalCode: data.postalCode,
     streetAddress1: data.streetAddress1,
     streetAddress2: data.streetAddress2,
   },
-  email: data.email || email,
+  phone: data.phone || phone,
   ...(lines && {
     lines: lines.map(({ quantity, variantId }) => ({
       quantity,
@@ -90,6 +90,8 @@ const View: React.FC<IBillingPageProps> = ({
   updateCheckoutBillingAddress,
   isShippingRequired,
 }) => {
+
+  
   const [saveBillingAddress, { loading, error }] = updateCheckoutBillingAddress;
   const errors = maybe(() => error.extraInfo.userInputErrors, []);
 
@@ -103,8 +105,8 @@ const View: React.FC<IBillingPageProps> = ({
     return create({
       checkoutInput: {
         billingAddress: data.billingAddress,
-        email: data.email,
         lines: data.lines,
+        phone: data.phone,
       },
     });
   };

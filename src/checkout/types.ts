@@ -24,7 +24,7 @@ export type AddressType = Partial<
 export type CheckoutFormType = "billing" | "shipping";
 export interface ICheckoutData {
   shippingAddress: AddressInput;
-  email?: string;
+  phone?: string;
   lines?: CartLineInterface[];
 }
 export interface IGuestAddressProps {
@@ -59,7 +59,7 @@ export interface IInitialUserAddressesArgs {
 }
 
 export interface ISubmitArgs {
-  email: string;
+  phone: string;
   checkoutId: string;
   update: (checkoutData: CheckoutContextInterface) => void;
   createCheckout: MutationFn;
@@ -68,7 +68,7 @@ export interface ISubmitArgs {
 }
 
 export interface IAddressPickerProps {
-  addresses: FormAddressType[];
+  addresses: any[];
   type: CheckoutFormType;
   errors: FormError[];
   isVisibleModalForm: boolean;

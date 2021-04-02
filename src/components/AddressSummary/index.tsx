@@ -14,11 +14,11 @@ const AddressSummary: React.FC<{
       <p className="address-summary" ref={paragraphRef}>
         <strong>{`${address.firstName} ${address.lastName}`}</strong>
         <br />
-        {address.companyName && (
+        {/* {address.companyName && (
           <>
             {address.companyName} <br />
           </>
-        )}
+        )} */}
         {address.streetAddress1}
         <br />
         {address.streetAddress2 && (
@@ -26,25 +26,26 @@ const AddressSummary: React.FC<{
             {address.streetAddress2} <br />
           </>
         )}
-        {address.city}, {address.postalCode}
+        {address.city}
+        {/* {address.postalCode} */}
         <br />
         {address.countryArea && (
           <>
             {address.countryArea} <br />
           </>
         )}
-        {address.country.country}
+        {/* {address && address.country && address.country.country} */}
         <br />
         {address.phone && (
           <>
-            Phone number: {address.phone} <br />
+            Phone number: {address.phone.length>9? address.phone: "03"+address.phone} <br />
           </>
         )}
-        {email && (
+        {/* {email && (
           <>
             {email} <br />
           </>
-        )}
+        )} */}
       </p>
     );
   } else if (email) {

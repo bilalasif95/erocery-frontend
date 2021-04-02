@@ -13,6 +13,7 @@ export interface MainMenu_shop_navigation_main_items_category {
    */
   id: string;
   name: string;
+  number:number
 }
 
 export interface MainMenu_shop_navigation_main_items_collection {

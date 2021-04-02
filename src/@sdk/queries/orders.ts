@@ -33,6 +33,7 @@ export const ordersByUser = gql`
                 product {
                   name
                   id
+                  isPublished
                 }
               }
               thumbnail {

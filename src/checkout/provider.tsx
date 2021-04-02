@@ -4,7 +4,7 @@ import { UserContextInterface } from "../components/User/context";
 import {
   CheckoutContext,
   CheckoutContextInterface,
-  CheckoutStep
+  CheckoutStep,
 } from "./context";
 import { TypedGetCheckoutQuery, TypedGetUserCheckoutQuery } from "./queries";
 

@@ -1,5 +1,82 @@
 @import "../../../globalStyles/scss/variables.scss";
 
+.buttonsFlex {
+  display: flex;
+  margin-top: 3rem;
+  .buyButton {
+    border-radius: 7px;
+    margin-left: 0.5rem;
+    padding: 0.9rem 0.2rem;
+    background-color: #999999;
+    width: 150px !important;
+  }
+  @media(max-width: $small-screen){
+    margin-top: 1.5rem;
+  }
+}
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.datepick {
+  height: 46px;
+  width: 100%;
+  text-align: left;
+  color: #000 !important;
+  background: #fff !important;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 0.5rem;
+  .selectdate {
+    color: #bdbdbd !important;
+    background: #fff !important;
+    font-size: 16px;
+    margin: 0 1rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .selectedate {
+    color: #000 !important;
+    background: #fff !important;
+    font-size: 16px;
+    margin: 0 1rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+.datepicker {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.datepicker:focus {
+  outline: none;
+}
+
+.bookBtn button {
+  background: #eb4c3b;
+  width: 100%;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.bookBtn button:hover {
+  background: #e03928;
+}
+.errMsg {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  display: block;
+}
+
+.btnLink {
+  width: 150px;
+}
 .product-description {
   h3 {
     text-transform: uppercase;
@@ -10,6 +87,20 @@
   h4 {
     font-weight: $bold-font-weight;
     margin-bottom: $spacer;
+  }
+
+  @media (max-width: $small-screen) {
+    h3 {
+      font-weight: normal;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+
+    h4 {
+      font-weight: normal;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
   }
 
   &__about {
@@ -41,10 +132,22 @@
 
   &__action {
     min-height: 49px;
+    border-radius: 7px;
+    padding: 0.9rem 0.2rem !important;
+    width: 50%;
+    background-color: #f43c3c !important;
 
     &--fade {
       $animation-speed: 200ms;
-      background-color: $turquoise-dark;
+      background-color: grey !important;
+
+      &:active {
+        background-color: grey !important;
+      }
+
+      &:hover {
+        background-color: grey !important;
+      }
 
       &-enter {
         opacity: 0;
@@ -103,6 +206,10 @@
   &__quantity-input {
     margin-top: 20px;
     padding-top: 20px;
+    @media (max-width: $small-screen) {
+      margin-top: 10px;
+      padding-top: 0;
+    }
   }
 
   &__add-to-wishlist {

@@ -5,9 +5,9 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const webpack = require("webpack");
 
-// if (!process.env.API_URI) {
-//   throw new Error("Environment variable API_URI not set");
-// }
+if (!process.env.API_URI) {
+  throw new Error("Environment variable API_URI not set");
+}
 
 module.exports = ({ sourceDir, distDir }) => ({
   resolve: {
@@ -28,7 +28,7 @@ module.exports = ({ sourceDir, distDir }) => ({
     path: distDir,
     publicPath: "/",
   },
-  devtool: "source-map",
+  devtool: "",
   module: {
     rules: [
       {
@@ -100,19 +100,21 @@ module.exports = ({ sourceDir, distDir }) => ({
     }),
     // PWA plugins
     new WebappWebpackPlugin({
-      logo: `${sourceDir}/images/favicon.png`,
+      logo: `${sourceDir}/images/android-chrome.png`,
       prefix: "images/favicons/",
       favicons: {
-        appName: "Erocery",
-        appDescription: "Storefront for the Erocery e-commerce platform",
-        display: "standalone",
+        appName: "Erocery-Best Online Grocery Store (Pakistan)",
+        appDescription: "Erocery is Online Grocery Store in Islamabad & Rawalpindi, Pakistan. We Cover More Than 150 Areas in Rawalpindi and Islamabad. Same Day Delivery Within 3 Hours. Free Delivery on Orders Above Rs 1000.",
+        display: "minimal-ui",
         developerURL: null, // prevent retrieving from the nearest package.json
         background: "#ddd",
+        start_url: "/",
         theme_color: "#333",
+        orientation: "portrait",
       },
     }),
     new webpack.EnvironmentPlugin({
-      API_URI: "http://localhost:8000/graphql/",
+      API_URI: "https://backend.erocery.com/graphql/",
       SERVICE_WORKER_TIMEOUT: "60000",
     }),
   ],

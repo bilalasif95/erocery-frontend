@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 import { TypedQuery } from "../../core/queries";
 import {
+  BakraProductDetailsVariables,
   ProductDetails,
   ProductDetailsVariables,
 } from "./types/ProductDetails";
@@ -30,6 +31,15 @@ export const basicProductFragment = gql`
     }
     thumbnail2x: thumbnail(size: 510) {
       url
+    }
+    variants {
+      id
+      name
+      stockQuantity
+    }
+    category {
+      id
+      name
     }
   }
 `;
@@ -121,11 +131,15 @@ export const productDetailsQuery = gql`
       category {
         id
         name
-        products(first: 3) {
+        products(first: 4) {
           edges {
             node {
               ...BasicProductFields
               ...ProductPricingField
+              category {
+                id
+                name
+              }
             }
           }
         }
@@ -138,6 +152,7 @@ export const productDetailsQuery = gql`
         ...SelectedAttributeFields
       }
       variants {
+        stockQuantity
         ...ProductVariantFields
       }
       seoDescription
@@ -176,3 +191,27 @@ export const TypedProductVariantsQuery = TypedQuery<
   VariantList,
   VariantListVariables
 >(productVariantsQuery);
+
+export const productBakraVariantsQuery = gql`
+  query Checkout($token: UUID) {
+    checkout(token: $token) {
+      lines {
+        id
+        variant {
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const TypedBakraProductDetailsQuery = TypedQuery<
+  ProductDetails,
+  BakraProductDetailsVariables
+>(productBakraVariantsQuery);

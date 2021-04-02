@@ -53,8 +53,15 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
+export const StartNumber = styled.div`
+  position:absolute;
+  left: 1.1rem;
+  top: 0.7rem;
+  z-index: 1;
+`;
+
 export const Input = styled.input`
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1rem 0.8rem 1rem;
   margin: 0;
   border: none;
   width: 100%;

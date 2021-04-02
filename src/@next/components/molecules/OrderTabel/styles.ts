@@ -1,6 +1,42 @@
 import { media, styled } from "@styles";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+${media.mediumScreen`
+  width: 100%;
+  `}
+  table{
+    width: 100%;
+    overflow-x: scroll;
+    margin: 0;
+    @media (max-width: 992px) {
+      display: block;
+    }
+    thead{
+      width: 100%;
+    }
+    tr{
+      display: flex;
+      cursor: pointer;
+    }
+    th, td{
+      width: 20%;
+      min-width: 150px  !important;
+    }
+    tbody{
+      overflow-y: auto;
+      height: 500px;
+    }
+    .proImg{
+      width: 100%;
+      img{
+        width: 30px;
+        margin: 0 auto;
+        display: inline-block;
+      }
+    }
+   
+    }
+`;
 
 export const Row = styled.div`
   display: flex;
@@ -18,6 +54,10 @@ export const Row = styled.div`
 export const HeaderRow = styled(Row)`
   color: ${props => props.theme.colors.lightFont};
   cursor: default;
+  ${media.smallScreen`
+  width: 1000px;
+  overflow-x: scroll;
+`}
 `;
 
 export const IndexNumber = styled.div`

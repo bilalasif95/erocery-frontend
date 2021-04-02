@@ -1,7 +1,8 @@
 import "./scss/index.scss";
 
 import classNames from "classnames";
-import { filter, find } from "lodash";
+import filter from "lodash/filter";
+import find from "lodash/find";
 import * as React from "react";
 
 import { useClickedOutside } from "../../hooks";
@@ -9,14 +10,14 @@ import {
   IFilteredListArgs,
   ISelectChange,
   ISelectItem,
-  ISelectProps
+  ISelectProps,
 } from "./customTypes";
 import SelectOptionsList from "./SelectOptionsList";
 
 const updateOptions = (
   { label, value }: ISelectItem,
   onChange: ISelectChange
-) => onChange({ country: label, code: value });
+) => onChange(value);
 
 const filterList = ({ searchPhrase, options }: IFilteredListArgs) =>
   filter(options, ({ label }) =>
@@ -87,6 +88,7 @@ export const Select = (props: ISelectProps) => {
         <div className="select__title">
           <input
             ref={inputRef}
+            required
             className="input__field"
             value={searchPhrase}
             onChange={e => {

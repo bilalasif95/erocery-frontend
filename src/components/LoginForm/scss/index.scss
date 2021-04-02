@@ -4,10 +4,87 @@
   .input {
     margin-bottom: $spacer;
   }
+  .form-error{
+    display: block;
+    margin: 0 0 1.5rem;
+  }
+  .smsCodebtn {
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+  }
+   @media(max-width: 480px){
+      .smsCodebtn {
+        padding: 0.5rem;
+      }
+   }
+
+  .displayflex {
+    display: flex;
+  }
+
 
   &__button {
     margin-top: $spacer * 2;
-    padding: 0 $spacer * 1.5;
+    padding: 0 ;
     text-align: center;
+  }
+}
+.verify-form {
+   .button:first-child{
+        padding: 0.9rem 1rem;
+        max-width: 120px;
+      }
+    @media(max-width: 480px){
+      .button:first-child{
+        padding: 0.9rem 0.5rem;
+        max-width: 80px;
+      }
+    }
+  }
+.phoneField{
+  position: relative;
+  .startNum{
+    position: absolute;
+    left: 0.9rem;
+    top: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    // width: 40px;
+    // height: 46px;
+    margin-bottom: 1rem;
+    // border: 1px solid #21125e;
+    background: $white;
+    z-index: 1;
+  }
+  .input{
+    width: 100%;
+    .input__field:focus + .input__label {
+      left: 17px;
+    }
+   .input__label{
+      left: 34px;
+      padding: 0 6px;
+    }
+    input{
+      padding: 0.8rem 1rem 0.8rem 2.1rem;
+    }
+
+  }
+}
+
+.passwordInput {
+  display: flex;
+
+  .passwordEye {
+    height: 46px;
+    border: 1px solid black;
+    width: 40px;
+    cursor: pointer;
+    padding: 0.7rem 0.3rem;
+  }
+
+  .input {
+    width: 100%;
   }
 }

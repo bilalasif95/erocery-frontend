@@ -54,10 +54,10 @@ const Carousel: React.FC<CarouselType> = ({ children, ...rest }) => {
     <Media query={{ maxWidth: smallScreen }}>
       {matches =>
         matches ? (
-          carousel(1)
+          carousel(matches ? 1 : 2)
         ) : (
           <Media query={{ maxWidth: mediumScreen }}>
-            {matches => carousel(matches ? 2 : 4)}
+            {matches => carousel(matches ? 1 : 1)}
           </Media>
         )
       }

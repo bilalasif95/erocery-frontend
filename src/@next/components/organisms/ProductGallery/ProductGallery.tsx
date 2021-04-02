@@ -9,7 +9,7 @@ import { IProps } from "./types";
 
 const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 4;
 
-export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
+export const ProductGallery: React.FC<IProps> = ({ category,images }: IProps) => {
   const [imageIndex, setImageIndex] = React.useState<number>(0);
 
   const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
@@ -103,7 +103,7 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
                       onMouseEnter={() => setImageIndex(index)}
                       activeThumbnail={Boolean(index === imageIndex)}
                     >
-                      <CachedImage alt={image.alt} url={image.url} />
+                      <CachedImage alt={image.alt} url={image.url} zoom={false} />
                     </S.Thumbnail>
                   </li>
                 );
@@ -112,15 +112,29 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
         </S.ThumbnailList>
       </S.ThumbnailsContainer>
 
+      {category === "Qurbani" ? (
+      <S.BakraPreview>
+        {images && images.length > 0 && imageIndex < images.length && (
+          <CachedImage
+            zoom={true}
+            alt={images[imageIndex].alt}
+            url={images[imageIndex].url}
+          />
+        )}
+        {images.length === 0 && <CachedImage />}
+      </S.BakraPreview>
+      ) : (
       <S.Preview>
         {images && images.length > 0 && imageIndex < images.length && (
           <CachedImage
+            zoom={false}
             alt={images[imageIndex].alt}
             url={images[imageIndex].url}
           />
         )}
         {images.length === 0 && <CachedImage />}
       </S.Preview>
+      )}
     </S.Wrapper>
   );
 };

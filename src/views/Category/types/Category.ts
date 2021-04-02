@@ -221,6 +221,16 @@ export interface Category_products_edges_node_category {
   name: string;
 }
 
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_variants {
+  __typename: "ProductVariant";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  stockQuantity: number;
+}
+
 export interface Category_products_edges_node {
   __typename: "Product";
   /**
@@ -241,6 +251,7 @@ export interface Category_products_edges_node {
    */
   pricing: Category_products_edges_node_pricing | null;
   category: Category_products_edges_node_category | null;
+  variants: FeaturedProducts_shop_homepageCollection_products_edges_node_variants[];
 }
 
 export interface Category_products_edges {

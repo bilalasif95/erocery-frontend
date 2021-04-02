@@ -83,6 +83,13 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
   {
     __typename: "Product",
@@ -166,6 +173,13 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
   {
     __typename: "Product",
@@ -249,6 +263,13 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
   {
     __typename: "Product",
@@ -332,6 +353,13 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
   {
     __typename: "Product",
@@ -415,6 +443,13 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
   {
     __typename: "Product",
@@ -498,5 +533,12 @@ export const PRODUCTS: ProductList_products_edges_node[] = [
       url:
         "http://localhost:8000/media/__sized__/products/saleordemoproduct_fd_juice_06_102xcfi-thumbnail-510x510.png",
     },
+    variants: [{
+      __typename: "ProductVariant",
+      id: "",
+      name: "",
+      stockQuantity: 0,
+      },
+    ],
   },
 ];

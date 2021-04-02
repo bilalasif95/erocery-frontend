@@ -1,4 +1,4 @@
-export type ISelectChange = (value: { country: string; code: string }) => void;
+export type ISelectChange = (value: string) => void;
 
 export interface ISelectItem {
   label: string;

@@ -39,6 +39,11 @@ export const searchProductsQuery = gql`
             id
             name
           }
+          variants{
+            id
+            name
+            stockQuantity
+          }
         }
       }
       pageInfo {

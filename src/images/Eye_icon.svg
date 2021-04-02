@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Eye_icon" data-name="Eye icon" transform="translate(-160 -499)">
+    <g id="eye" transform="translate(160.975 421.164)">
+      <g id="Group_8" data-name="Group 8" transform="translate(6.13 85.085)">
+        <g id="Group_7" data-name="Group 7" transform="translate(0 0)">
+          <path id="Path_4" data-name="Path 4" d="M159.325,156.416a2.909,2.909,0,1,0,2.909,2.909A2.911,2.911,0,0,0,159.325,156.416Zm-.221,2.047a.668.668,0,0,0-.662.662h-.963A1.644,1.644,0,0,1,159.1,157.5Z" transform="translate(-156.416 -156.416)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_10" data-name="Group 10" transform="translate(0 82.176)">
+        <g id="Group_9" data-name="Group 9" transform="translate(0 0)">
+          <path id="Path_5" data-name="Path 5" d="M17.867,87.393c-.983-1.224-4.494-5.217-8.828-5.217S1.194,86.169.211,87.393a.965.965,0,0,0,0,1.2c.983,1.224,4.494,5.217,8.828,5.217s7.845-3.993,8.828-5.217A.965.965,0,0,0,17.867,87.393ZM9.039,92.208a4.213,4.213,0,1,1,4.213-4.213A4.213,4.213,0,0,1,9.039,92.208Z" transform="translate(0 -82.176)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="20" height="20" transform="translate(160 499)" fill="none"/>
+  </g>
+</svg>

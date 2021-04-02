@@ -15,30 +15,32 @@ const View: React.SFC<RouteComponentProps<{ token?: string }>> = ({
   },
 }) => {
   return (
-    <div className="container cart-page">
-      <h1 className="checkout__header cart-page__header">Shopping bag</h1>
-      <CheckoutContext.Consumer>
-        {checkout => (
-          <CartContext.Consumer>
-            {cart => (
-              <OverlayContext.Consumer>
-                {overlay => (
-                  <ShopContext.Consumer>
-                    {shop => (
-                      <Page
-                        overlay={overlay}
-                        checkout={checkout}
-                        cart={cart}
-                        shop={shop}
-                      />
-                    )}
-                  </ShopContext.Consumer>
-                )}
-              </OverlayContext.Consumer>
-            )}
-          </CartContext.Consumer>
-        )}
-      </CheckoutContext.Consumer>
+    <div>
+      <div className="container cart-page">
+        <h1 className="checkout__header cart-page__header">Shopping bag</h1>
+        <CheckoutContext.Consumer>
+          {checkout => (
+            <CartContext.Consumer>
+              {cart => (
+                <OverlayContext.Consumer>
+                  {overlay => (
+                    <ShopContext.Consumer>
+                      {shop => (
+                        <Page
+                          overlay={overlay}
+                          checkout={checkout}
+                          cart={cart}
+                          shop={shop}
+                        />
+                      )}
+                    </ShopContext.Consumer>
+                  )}
+                </OverlayContext.Consumer>
+              )}
+            </CartContext.Consumer>
+          )}
+        </CheckoutContext.Consumer>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,8 @@
+<svg id="Like_icon" data-name="Like icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="heart" transform="translate(1 2)">
+    <g id="Group_11" data-name="Group 11">
+      <path id="Path_6" data-name="Path 6" d="M13.389,30a4.316,4.316,0,0,0-2.7.932,6.141,6.141,0,0,0-1.577,1.9,6.14,6.14,0,0,0-1.577-1.9A4.316,4.316,0,0,0,4.843,30,4.949,4.949,0,0,0,0,35.253c0,3.235,2.6,5.449,6.53,8.8.668.569,1.425,1.214,2.211,1.9a.57.57,0,0,0,.75,0c.787-.688,1.544-1.333,2.212-1.9,3.932-3.351,6.529-5.564,6.529-8.8A4.949,4.949,0,0,0,13.389,30Z" transform="translate(0 -30)" fill="none" stroke="#323232" stroke-width="1"/>
+    </g>
+  </g>
+  <rect id="Rectangle_7" data-name="Rectangle 7" width="20" height="20" fill="none"/>
+</svg>

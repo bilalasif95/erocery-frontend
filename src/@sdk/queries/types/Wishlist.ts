@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// import { ITaxedMoney } from "@temp/@next/types";
+
 // ====================================================
 // GraphQL query operation: Wishlist
 // ====================================================
@@ -18,6 +20,26 @@ export interface Wishlist_me_wishlist_pageInfo {
   endCursor: string | null;
 }
 
+export interface ProductVariant_product_thumbnail {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+  /**
+   * Alt text for an image.
+   */
+  alt: string | null;
+}
+
+export interface ProductVariant_product_thumbnail2x {
+  __typename: "Image";
+  /**
+   * The URL of the image.
+   */
+  url: string;
+}
+
 export interface Wishlist_me_wishlist_edges_node_product {
   __typename: "Product";
   /**
@@ -25,6 +47,18 @@ export interface Wishlist_me_wishlist_edges_node_product {
    */
   id: string;
   name: string;
+  variants: {
+    pricing: {
+      price: {
+        gross: {
+          currency: string;
+          amount: string;
+        }
+      }
+    }
+  }
+  thumbnail: ProductVariant_product_thumbnail | null;
+  thumbnail2x: ProductVariant_product_thumbnail2x | null;
 }
 
 export interface Wishlist_me_wishlist_edges_node {

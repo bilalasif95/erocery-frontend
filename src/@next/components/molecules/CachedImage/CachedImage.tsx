@@ -4,6 +4,8 @@ import { PlaceholderImage } from "@components/atoms";
 import { useNetworkStatus } from "@hooks";
 import NoPhoto from "images/no-photo.svg";
 
+import * as S from "../ProductTile/styles";
+
 import { IImage } from "@types";
 
 export const CachedImage: React.FC<IImage> = ({
@@ -11,11 +13,13 @@ export const CachedImage: React.FC<IImage> = ({
   url2x,
   alt,
   children,
+  zoom,
   defaultImage = NoPhoto,
   ...props
 }: IImage) => {
   const [isUnavailable, setUnavailable] = React.useState(false);
   const { online } = useNetworkStatus();
+  const [backgroundPosition, setBackgroundPosition] = React.useState('0% 0%');
 
   React.useEffect(() => {
     updateAvailability();
@@ -45,14 +49,35 @@ export const CachedImage: React.FC<IImage> = ({
     return children || <PlaceholderImage alt={alt} />;
   }
 
+  const handleMouseMove = (e: any) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect()
+    const x = (e.pageX - left) / width * 100
+    const y = (e.pageY - top) / height * 100
+    setBackgroundPosition(`${x}% ${y}%`)
+  };
   return (
-    <img
+    <>
+    {zoom ?
+    <figure onMouseMove={handleMouseMove} style={{backgroundPosition,backgroundImage: `url(${url})`,backgroundRepeat: 'no-repeat'}}>
+    <S.MagnifiedImage>
+      <img
+        {...props}
+        src={url}
+        srcSet={url2x ? `${url} 1x, ${url2x} 2x` : `${url} 1x`}
+        alt={alt}
+        // navigator.onLine is not always accurate
+        onError={() => setUnavailable(true)}
+      />
+    </S.MagnifiedImage>
+    </figure>
+    : <img
       {...props}
       src={url}
       srcSet={url2x ? `${url} 1x, ${url2x} 2x` : `${url} 1x`}
       alt={alt}
       // navigator.onLine is not always accurate
       onError={() => setUnavailable(true)}
-    />
+    />}
+    </>
   );
 };

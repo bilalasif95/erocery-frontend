@@ -5,8 +5,48 @@
     margin: $spacer 0 $spacer * 2;
   }
 
+  p {
+    text-align: left;;
+  }
+
+  .displayflex {
+    display: flex;
+  }
+  
+  .smsCodebtn {
+    padding: 0.5rem;
+    margin-left: 1rem;
+  }
+  
   &__button {
     text-align: center;
-    margin: $spacer * 2 0 $spacer * 2 $spacer * 2;
+    // margin: $spacer * 2 0 $spacer * 2 $spacer * 2;
+  }
+}
+
+.resetBtns{
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  .smsCodebtn{
+    margin: 1rem 0 0;
+    padding: 0.9rem 1rem;
+  }
+}
+
+.passwordInput {
+  display: flex;
+
+  .passwordEye {
+    height: 46px;
+    border: 1px solid black;
+    width: 40px;
+    cursor: pointer;
+    padding: 0.7rem 0.3rem;
+  }
+
+  .input {
+    width: 100%;
+    margin-top: 0;
   }
 }

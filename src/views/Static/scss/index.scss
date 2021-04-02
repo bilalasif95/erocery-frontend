@@ -1,0 +1,281 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.home-page {
+  &__hero {
+    // background-color: $blue-overlay;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    // background-image: url("../../../images/Home_slider_banner.jpg");
+    // padding: 12rem 0;
+    height: 500px;
+    &-text {
+      overflow: hidden;
+    }
+    @media (min-width: 1440px) {
+      height: 590px;
+      min-height: 50vh;
+    }
+    @media (max-width: 1366px) {
+      height: 390px;
+    }
+
+    @media (max-width: 991px) {
+      height: 230px;
+    }
+
+    @media (max-width: 575px) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 170px;
+      justify-content: space-between;
+      padding: $spacer;
+
+      &-text {
+        margin-top: $spacer * 5;
+        width: 100%;
+      }
+
+      &-action {
+        margin-bottom: $spacer * 3;
+        width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      height: 130px;
+    }
+
+    &__title {
+      background-color: $white;
+      display: inline-block;
+      transform: skew(45deg);
+      padding: $spacer $spacer * 3;
+      margin-bottom: $spacer / 2;
+
+      @media (max-width: $small-screen) {
+        padding: 0.6rem $spacer;
+        width: calc(100% - 4rem);
+      }
+
+      h1 {
+        display: inline-block;
+        transform: skew(-45deg);
+        font-weight: $bold-font-weight;
+        text-transform: uppercase;
+        color: $blue;
+        font-size: $h1-font-size;
+        font-weight: 900;
+
+        @media (max-width: $small-screen) {
+          font-size: $h4-font-size;
+        }
+
+        @media (min-width: $small-screen) and (max-width: $medium-screen) {
+          font-size: 48px;
+        }
+      }
+    }
+  }
+
+  &__heroImage {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__categories {
+    margin-bottom: 2rem;
+
+    h3 {
+      text-transform: uppercase;
+      font-weight: $bold-font-weight;
+      margin: 2rem 0; 
+      padding: 0.5rem;
+    }
+
+    h4 {
+      text-transform: capitalize;
+      font-weight: $bold-font-weight;
+      color: black;
+      text-align: left;
+      // padding: 100px;
+     
+    }
+
+    .categoriesContainer {
+      padding: 0 3rem;
+    }
+    @media(max-width:575px){
+      .categoriesContainer {
+        padding: 0 1rem;
+      }
+    }
+
+    &__list {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      .categoryBoxes {
+        padding: 0.5rem;
+        width: 50%;
+      }
+      @media(max-width:767px){
+        .categoryBoxes {
+          width: 50%;
+          padding: 0.5rem 1rem;
+        }
+      }
+      @media(max-width:575px){
+        .categoryBoxes {
+          width: 100%;
+          padding: 0.5rem 0;
+        }
+      }
+
+      @media (min-width: $small-screen) {
+        grid-template-columns: 1fr 1fr;
+
+        // > div {
+        //   &:nth-child(3) {
+        //     grid-column: 3 / 1;
+        //   }
+
+        //   &:nth-child(n + 4) {
+        //     display: none;
+        //   }
+        // }
+      }
+
+      a {
+        text-decoration: none;
+        color: $base-font-color;
+
+        h3 {
+          text-transform: uppercase;
+          font-weight: $bold-font-weight;
+
+          &:after {
+            content: url("../../../images/carousel-arrow.svg");
+            display: inline-block;
+            transform: rotate(180deg);
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      &__image {
+        width: 100%;
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 1rem;
+
+        &--no-photo {
+          background-color: $turquoise-light;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      @media(max-width:575px){
+        &__image {
+          margin-bottom: 0;
+        }
+      }
+      .catBg{
+        background: #00000057;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .cat-item {
+        border: 1px solid #80808024;
+        padding: 1rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        .cat-img {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+          .noCatImg{
+            background: #f4f4f4;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            p{
+              color: #3a306a;
+              line-height:normal;
+              font-size: 12px;
+              font-weight: 600;
+              text-transform: uppercase;
+            }
+          }
+        }
+        .cat-detail {
+          width: 70%;
+          padding: 0 0.5rem 0 1rem;
+          p{
+            color: #8e8e8e;
+
+          }
+      }
+      .cat-detail-link {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .colored{
+          width: 15px;
+          height: 15px;
+          background: #999;
+          transform: rotate(45deg);
+          position: absolute;
+          right: 0;
+        }
+        .trans{
+          width: 15px;
+          height: 15px;
+          background: #fff;
+          transform: rotate(45deg);
+          position: absolute;
+          right: 5px;
+        }
+      }
+    }
+    @media(max-width: 375px){
+      .cat-item {
+        padding: 0.5rem;
+        .cat-img {
+          width: 30%;
+        }
+        .cat-detail {
+          width: 60%;
+          p{
+            font-size: 11px;
+            line-height: 18px;
+            overflow: hidden;
+            max-height: 38px;
+           }
+          }
+        }
+      }
+    }
+    @media(max-width:767px){
+      &__list  {
+        justify-content: center;
+      }
+    }
+  }
+}
+

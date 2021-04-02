@@ -20,7 +20,7 @@ const NotFound: React.FC<NotFoundProps> = () => (
     </div>
     <div className="not-found-page__button">
       <Link to={BASE_URL}>
-        <Button secondary>Back to home</Button>
+        <Button>Back to home</Button>
       </Link>
     </div>
   </div>

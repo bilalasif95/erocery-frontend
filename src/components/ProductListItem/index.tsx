@@ -14,6 +14,7 @@ export interface Product extends BasicProductFields {
     name: string;
   };
   pricing: {
+    onSale: boolean;
     priceRange: {
       start: {
         gross: {
@@ -49,7 +50,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const { category } = product;
   const price = product.pricing.priceRange.start;
   const priceUndiscounted = product.pricing.priceRangeUndiscounted.start;
-
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
       return <TaxedMoney taxedMoney={price} />;
@@ -59,7 +59,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
           <span className="product-list-item__undiscounted_price">
             <TaxedMoney taxedMoney={priceUndiscounted} />
           </span>
-          &nbsp;&nbsp;&nbsp;&nbsp;
           <TaxedMoney taxedMoney={price} />
         </>
       );
@@ -67,12 +66,29 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   };
   return (
     <div className="product-list-item">
+      {product.pricing && product.pricing.onSale && <span className="saleDiscount">{(100-((price.gross.amount/priceUndiscounted.gross.amount)*100)).toFixed(0)}% OFF</span>}
       <div className="product-list-item__image">
         <Thumbnail source={product} />
       </div>
       <h4 className="product-list-item__title">{product.name}</h4>
       <p className="product-list-item__category">{category.name}</p>
-      <p className="product-list-item__price">{getProductPrice()}</p>
+      <div className="footerDiv">
+        <p className="product-list-item__price">{getProductPrice()}</p>
+        {product.category.name === "Qurbani" && (
+          <span className="advancebook">
+            Booking: <TaxedMoney taxedMoney={{
+                gross: {
+                  amount: price && price.gross.amount * 0.25,
+                  currency: price && price.gross.currency,
+                },
+                net: {
+                  amount: price && price.gross.amount * 0.25,
+                  currency: price && price.gross.currency,
+                },
+              }}/>
+          </span>
+        )}
+      </div>
     </div>
   );
 };

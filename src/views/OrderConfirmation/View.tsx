@@ -7,7 +7,7 @@ import { guestOrderDetailsUrl } from "../../app/routes";
 import { Button, NotFound } from "../../components";
 import { BASE_URL } from "../../core/config";
 
-type TState = { token: any, id: number };
+type TState = { token: any; id: number };
 
 const View: React.FC<RouteComponentProps> = ({
   history: {
@@ -15,17 +15,17 @@ const View: React.FC<RouteComponentProps> = ({
     replace,
   },
 }) => {
-  React.useEffect(() => {
-    /**
-     * Clear router state on leaving the page to ensure view becames unavailable
-     * after leaving.
-     */
-    return () => {
-      if (state) {
-        replace({ ...location, state: undefined });
-      }
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   /**
+  //    * Clear router state on leaving the page to ensure view becames unavailable
+  //    * after leaving.
+  //    */
+  //   return () => {
+  //     if (state) {
+  //       replace({ ...location, state: undefined });
+  //     }
+  //   };
+  // }, []);
 
   /**
    * Token or id is passed from review page via router state. If it is not
@@ -44,15 +44,15 @@ const View: React.FC<RouteComponentProps> = ({
         Thank you for <br /> your order!
       </h3>
       <p className="order-confirmation__info">
-        We’ve emailed you an order confirmation.
+        We’ll call you on provided phone number for order confirmation
         <br />
-        We’ll notify you when the order has been
+        and we’ll notify you when the order has been
         <br />
         shipped.
       </p>
       <div className="order-confirmation__actions">
         <Link to={BASE_URL}>
-          <Button secondary>Continue Shopping</Button>
+          <Button>Continue Shopping</Button>
         </Link>
         <Link to={orderDetailsRef}>
           <Button>Order Details</Button>

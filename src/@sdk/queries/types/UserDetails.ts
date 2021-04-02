@@ -135,7 +135,7 @@ export interface UserDetails_me {
    * The ID of the object.
    */
   id: string;
-  email: string;
+  phone: string;
   firstName: string;
   lastName: string;
   isStaff: boolean;
