@@ -180,7 +180,7 @@
     "test": "jest --runInBand --config .jest/config.json",
     "start": "cross-env NODE_ENV=develop webpack-dev-server --history-api-fallback --watch --port 3000 --mode development --hotOnly --host 0.0.0.0",
     "start:worker": "npm run start -- --service-worker",
-    "build": "webpack -p --mode=production",
+    "build": "webpack -p --mode=production && cp ./src/robots.txt dist && npm run sitemap",
     "watch": "webpack -d --watch",
     "storybook": "start-storybook -p 9002",
     "@storybook": "start-storybook -p 9002",

@@ -5,10 +5,9 @@ import * as paths from "./paths.ts";
 export default (
   <Route>
     <Route path={"/category/:slug"} />
-    <Route path={paths.howToOrderUrl} />
-    <Route path={paths.returnAndRefundsUrl} />
-    <Route path={paths.deliveryUrl} />
-    <Route path={paths.termsAndConditionsUrl} />
-    <Route path={paths.privacyPolicyUrl} />
+    <Route path={"/page/:slug"} />
+    <Route path={paths.allBlogsUrl} />
+    <Route path={"/blog/:slug"} />
+    <Route path={"search?q={q}"} />
   </Route>
 );
