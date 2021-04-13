@@ -49,7 +49,7 @@ const Page: React.FC<{
   shop: ProductsList_shop;
 }> = ({ loading, categories, backgroundImage, shop }) => {
   const { data: user } = useUserDetails();
-  const allcategoriesWithoutQurbani = categories && categories.edges && categories.edges.filter(({node:category}) => {
+  const allcategoriesWithoutQurbani = categories && categories.edges && categories.edges.filter(({ node: category }) => {
     return category.name !== "Qurbani"
   });
   const categoriesExist = () => {
@@ -221,7 +221,7 @@ const Page: React.FC<{
         {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
       <div className="home-page__heroImage">
-        <img src={offerImg} alt="buy grocery online" />
+        <img src={offerImg} alt="ramadan deals" />
       </div>
       {categoriesExist() && (
         <div className="home-page__categories" id={"categorysection"}>
@@ -274,10 +274,10 @@ const Page: React.FC<{
                           {/* <img src={category.backgroundImage
                             ? category.backgroundImage.url
                             : catNoImg}/> */}
-                        {/* <ReactSVG path={catImg} /> */}
-                        {category.backgroundImage ? (
-                          <img alt={category.backgroundImage.alt} src={category.backgroundImage.url} />
-                        ) : (
+                          {/* <ReactSVG path={catImg} /> */}
+                          {category.backgroundImage ? (
+                            <img alt={category.backgroundImage.alt} src={category.backgroundImage.url} />
+                          ) : (
                             <div className="noCatImg">
                               <p>Photo Unavailable</p>
                             </div>
