@@ -26,16 +26,10 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-// import catNoImg from "../../images/catNoImg.jpg";
-// import bannerimg from "../../images/homeBanner.jpg";
 // import androidStoreImage from "../../images/playstore.png";
 
 // import appleStoreImage from "../../images/applestore.png";
 
-// import banner1 from "../../images/banner1.jpg";
-// import banner2 from "../../images/banner2.jpg";
-// import banner3 from "../../images/banner3.jpg";
-// import banner4 from "../../images/banner4.jpg";
 // import desktopvipoffer from "../../images/desktopoffer.png";
 import offerImg from "../../images/offerBanner.jpg";
 // import vipoffermob from "../../images/vipoffermob.png";
@@ -55,24 +49,6 @@ const Page: React.FC<{
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
-  // const imagesArray = [
-  //   {
-  //     name: "banner1",
-  //     url: banner1,
-  //   },
-  //   {
-  //     name: "banner2",
-  //     url: banner2,
-  //   },
-  //   {
-  //     name: "banner3",
-  //     url: banner3,
-  //   },
-  //   {
-  //     name: "banner4",
-  //     url: banner4,
-  //   },
-  // ];
 
   const qurbaniPath = { id: "", name: "" };
   return (
@@ -111,8 +87,6 @@ const Page: React.FC<{
                 );
               }}
             >
-              {/* {imagesArray.map(image => (
-            <> */}
               {data.shop.banners &&
                 data.shop.banners.map(url => <img src={url.image} alt={url.alt} />)}
               {/* <div
