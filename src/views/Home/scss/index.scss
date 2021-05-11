@@ -297,6 +297,17 @@
 }
 
 .home-page {
+  .alert {
+    padding: 20px;
+    background-color: #54be42;
+    color: white;
+    margin: 0 0 0;
+    text-align: center;
+    width: 100%;
+    strong {
+      font-weight: 700;
+    }
+  }
   &__hero {
     // background-color: $blue-overlay;
     background-blend-mode: multiply;
