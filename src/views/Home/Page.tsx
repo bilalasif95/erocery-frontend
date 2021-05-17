@@ -195,7 +195,7 @@ const Page: React.FC<{
         {cart => <ProductsFeatured addToCart={cart.add} user={user} />}
       </CartContext.Consumer>
       <div className="home-page__heroImage">
-        <img src={offerImg} alt="ramadan deals" />
+        <img src={offerImg} alt="Buy grocery online" />
       </div>
       {categoriesExist() && (
         <div className="home-page__categories" id={"categorysection"}>
