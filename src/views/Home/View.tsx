@@ -8,10 +8,10 @@ import { TypedHomePageQuery } from "./queries";
 
 const View: React.FC = () => (
   <div className="home-page">
-    <div className="alert">
+    {/* <div className="alert">
       <strong>Important Note:</strong> "Our services will remain closed from
       12th May 2021 till 16th May 2021 due to Eid-ul-Fitr Holidays."
-    </div>
+    </div> */}
     <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
       {({ data, loading }) => {
         return (
