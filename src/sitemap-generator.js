@@ -58,6 +58,8 @@ let slugs = {
     "things-to-start-a-successful-online-grocery-store/",
     "traditional-vs-online-grocery-shopping-we-did-the-math-for-you/",
     "covid-19-third-wave-and-online-grocery-shopping/",
+    "online-qurbani-service-buy-qurbani-animals-online-at-erocery/",
+    "ramadan-deals-by-erocery-a-huge-success/",
   ],
 };
 const pathsConfig = {
