@@ -187,6 +187,7 @@
       position: relative;
       transition: 0.3s;
       cursor: pointer;
+      width: 140px;
       &:hover {
         color: #5fbe43;
       }
@@ -471,6 +472,9 @@
           }
         }
       }
+    }
+    @media (max-width: 1080px) {
+      padding: 0 1rem !important;
     }
   }
   // .res-search{
