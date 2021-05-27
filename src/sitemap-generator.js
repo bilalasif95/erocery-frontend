@@ -60,6 +60,7 @@ let slugs = {
     "covid-19-third-wave-and-online-grocery-shopping/",
     "online-qurbani-service-buy-qurbani-animals-online-at-erocery/",
     "ramadan-deals-by-erocery-a-huge-success/",
+    "why-do-people-prefer-online-shopping-in-pakistan/",
   ],
 };
 const pathsConfig = {
