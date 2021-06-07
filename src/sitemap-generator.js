@@ -61,6 +61,7 @@ let slugs = {
     "online-qurbani-service-buy-qurbani-animals-online-at-erocery/",
     "ramadan-deals-by-erocery-a-huge-success/",
     "why-do-people-prefer-online-shopping-in-pakistan/",
+    "qurbani-rules-and-regulations-according-to-sunnah-full-guide/",
   ],
 };
 const pathsConfig = {
