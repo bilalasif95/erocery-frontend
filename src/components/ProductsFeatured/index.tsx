@@ -111,7 +111,7 @@ class ProductsFeatured extends React.Component<
             return (
               <div className="products-featured">
                 <div className="container featuredContainer">
-                  <h3>FEATURED</h3>
+                  <h1>FEATURED</h1>
                   {/* <Carousel>
                   {products.map(({ node: product }) => (
                     <Link
