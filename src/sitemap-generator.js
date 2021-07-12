@@ -24,6 +24,7 @@ let slugs = {
     "noodles-and-pasta/76/",
     "oral-care/74/",
     "pulses-and-rice/70/",
+    "qurbani-service/103/",
     "repellents-and-shoe-care/61/",
     "salt-and-sugar/69/",
     "skin-care/65/",
