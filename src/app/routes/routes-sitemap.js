@@ -8,6 +8,6 @@ export default (
     <Route path={"/page/:slug"} />
     <Route path={paths.allBlogsUrl} />
     <Route path={"/blog/:slug"} />
-    <Route path={"search?q={q}"} />
+    {/* <Route path={"search?q={q}"} /> */}
   </Route>
 );
