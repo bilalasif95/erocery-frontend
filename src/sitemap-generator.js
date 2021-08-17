@@ -63,6 +63,7 @@ let slugs = {
     "ramadan-deals-by-erocery-a-huge-success/",
     "why-do-people-prefer-online-shopping-in-pakistan/",
     "qurbani-rules-and-regulations-according-to-sunnah-full-guide/",
+    "best-tips-how-to-stop-wasting-money-on-groceries/"
   ],
 };
 const pathsConfig = {
